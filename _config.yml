@@ -9,10 +9,10 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
-title                    : "Your Name / Site Title"
+title                    : "Mohd Bilal"
 title_separator          : "-"
-name                     : &name "Your Name"
-description              : &description "Your Name's academic portfolio"   # Update this with a general description of your site, this is the default if not overridden by a page
+name                     : &name "Mohd Bilal"
+description              : &description "Korean Studies researcher at The Academy of Korean Studies. Digital humanities, colonial Korea, gender, and Korean popular culture."   # Update this with a general description of your site, this is the default if not overridden by a page
 url                      : "https://mohdbilaldh.github.io"
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -24,13 +24,13 @@ repository               : "mohdbilalDH/mohdbilalDH.github.io"
 author:
   # Biographic information
   avatar           : "profile.png"
-  name             : "Your Sidebar Name"
+  name             : "Mohd Bilal"
   pronouns         : # example: "she/her"  
-  bio              : "Short biography for the left-hand sidebar"
-  location         : "Earth"
-  employer         : "Red Brick University"
+  bio              : "MA student in Korean Studies. Digital humanities, colonial Korea, gender, and Korean popular culture."
+  location         : "Republic of Korea"
+  employer         : "The Academy of Korean Studies"
   uri              : # URL
-  email            : "none@example.org" 
+  email            : "mohdbilalkhan2017@gmail.com" 
 
   # Academic websites
   academia         : # URL
@@ -38,7 +38,7 @@ author:
   googlescholar    : # URL - add yours
   inspire-hep      : # URL
   impactstory      : # URL
-  orcid            : "https://orcid.org/yourorcidurl"
+  orcid            : # add after registering at https://orcid.org
   semantic         : # URL
   ssrn             : # URL
   pubmed           : # URL
