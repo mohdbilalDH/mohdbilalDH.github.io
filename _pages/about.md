@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Mohd Bilal"
+title: "Korean Studies &amp; Digital Humanities"
 excerpt: "Korean Studies researcher working on colonial Korea, gender, and Korean popular culture, with computational methods."
 author_profile: true
 redirect_from: 
