@@ -1,0 +1,1880 @@
+{
+ "_meta": {
+  "dataset": "Buddhist Bridges V3.0 (frozen 2026-08-17)",
+  "manifest_check": "769b00c67fdd1a6e",
+  "generated": "2026-08-17",
+  "note": "Full graded source registry (187 sources)."
+ },
+ "sources": [
+  {
+   "id": "S-0001",
+   "key": "acmuller_wonhyo",
+   "citation": "A. Charles Muller, article on Wonhyo/Chinul/Kihwa",
+   "type": "SECONDARY",
+   "url": "http://www.acmuller.net/articles/1995-03-kiyo-wonhyo-chinul-kihwa.html",
+   "archive": "acmuller.net (academic)",
+   "accessed": "2026-08-16",
+   "reliability": "ACADEMIC"
+  },
+  {
+   "id": "S-0002",
+   "key": "aks_pankaj",
+   "citation": "AKS CEFIA Wiki, 'Pankaj Mohan (한국학대학원 교수)'",
+   "type": "WEBSITE",
+   "url": "https://dh.aks.ac.kr/~cefia/wiki/index.php/Pankaj_Mohan_(한국학대학원_교수)",
+   "archive": "Academy of Korean Studies",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0003",
+   "key": "aks_yineunghwa",
+   "citation": "AKS People DB, '이능화'",
+   "type": "ARCHIVAL",
+   "url": "http://people.aks.ac.kr/front/dirSer/ppl/pplView.aks?pplId=PPL_7HIL_A1869_1_0009236",
+   "archive": "Academy of Korean Studies People DB",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0004",
+   "key": "amazon_morningcalm",
+   "citation": "Lokesh Chandra, 'Morning Calm and The Pensive Beyond - Cultural Interflow Between India and Korea' (Aditya Prakashan, 2019), ISBN 978-8194085034",
+   "type": "SECONDARY",
+   "url": "https://www.amazon.com/Morning-Pensive-Beyond-Cultural-Interflow/dp/8194085039",
+   "archive": "Amazon listing",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0005",
+   "key": "archive_tongsa",
+   "citation": "Yi Nŭng-hwa, Chosŏn Pulgyo T'ongsa (1918), Internet Archive scan",
+   "type": "PRIMARY",
+   "url": "https://archive.org/details/12chosnpulgyotongs8800uoft",
+   "archive": "Internet Archive",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0006",
+   "key": "atlasnews_silleuksa_2025",
+   "citation": "Atlas News 2025-12-31: '여주 신륵사, 불심이 강물 같이 흐른다' - Silleuksa feature documenting the Jikong-Naong-Muhak Seon lineage (삼대화상); Jikong's 2y7m stay in Goryeo (until 1328-09); his disciples incl. Baegun Gyeonghan (1298-1374), Muhak Chach'o (1327-1405), Ch'ukwŏn Chich'ŏn (1324-1395); Jahyeon's 2017 monograph on Jikong; decline of Jikong's status after the Injo restoration",
+   "type": "NEWS",
+   "url": "http://www.atlasnews.co.kr/news/articleView.html?idxno=11018",
+   "archive": "Atlas News (아틀라스뉴스)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0007",
+   "key": "atunis_jhaveri",
+   "citation": "ATUNIS Poetry profile, Dileep Jhaveri",
+   "type": "WEBSITE",
+   "url": "https://atunispoetry.com/2018/03/13/dileep-jhaveri",
+   "archive": "ATUNIS Poetry",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0008",
+   "key": "authorscalendar_koun",
+   "citation": "Petri Liukkonen, Authors Calendar: 'Ko Un' (1992 India visit; novel Little Pilgrim set in India)",
+   "type": "WEBSITE",
+   "url": "http://authorscalendar.info/koun.htm",
+   "archive": "authorscalendar.info",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0009",
+   "key": "bbs_gakseong",
+   "citation": "BBS News (2020-09-28), 각성스님 입적 report",
+   "type": "NEWS",
+   "url": "http://news.bbsi.co.kr/news/articleView.html?idxno=3006316",
+   "archive": "BBS News",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0010",
+   "key": "bbs_or_kr_seonmyeong",
+   "citation": "BBS (Buddhist Broadcasting System) overseas pilgrimage program: 세계 선명상 투어 4탄 India-Nepal 8N10D, 26 Dec 2025 - 4 Jan 2026, led by 선업 스님 (former Jogye 포교원장)",
+   "type": "WEBSITE",
+   "url": "https://www.bbs.or.kr/HOME2/?ACT=TRIP&MODE=BOARD&DETAIL=VIEW&ProgramCode=0&BoardType=BBSI_BOARD_PLACE&BoardTitle=해외성지순례&BoardGubun=OUT&IDX=136&Page=1",
+   "archive": "BBS (bbs.or.kr)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0011",
+   "key": "beopbo_2022_jogye",
+   "citation": "Beopbo (2022-05-20): Jogye delegation pilgrimage Sarnath->Bodh Gaya (Mahabodhi), May 2022",
+   "type": "NEWS",
+   "url": "https://www.beopbo.com/news/articleView.html?idxno=309535",
+   "archive": "Beopbo (법보신문)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0012",
+   "key": "beopbo_chosunbulgyo",
+   "citation": "Beopbo, '최남선의 『조선불교』' (2004)",
+   "type": "SECONDARY",
+   "url": "https://www.beopbo.com/news/articleView.html?idxno=28414",
+   "archive": "Beopbo",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0013",
+   "key": "beopbo_lee_youngjae",
+   "citation": "Beopbo (법보신문) series entry: '⑦ 이영재 스님(1900~1927)' - 1924 Nihon Univ grad; 1925 Sri Lanka via India pilgrimage; died en route",
+   "type": "NEWS",
+   "url": "https://www.beopbo.com/news/articleView.html?idxno=29123",
+   "archive": "Beopbo (법보신문)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0014",
+   "key": "beopbo_yeoraesunwon",
+   "citation": "Beopbo (2011-06-30): Yeoraesunwon Bodh Gaya - 10 years of alms-supported operation, abbot Wonman sunim, 달마학교 (Dharma School) for children",
+   "type": "NEWS",
+   "url": "https://www.beopbo.com/news/articleView.html?idxno=66399",
+   "archive": "Beopbo (법보신문)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0015",
+   "key": "beopjeong_site",
+   "citation": "Beopjeong memorial website",
+   "type": "WEBSITE",
+   "url": "http://beopjeong.clean94.or.kr",
+   "archive": "beopjeong.clean94.or.kr",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0016",
+   "key": "britannica_kwc",
+   "citation": "Britannica, 'Kim Woo Choong'",
+   "type": "TERTIARY",
+   "url": "https://www.britannica.com/money/Kim-Woo-Choong",
+   "archive": "Britannica",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0017",
+   "key": "britannica_lee",
+   "citation": "Britannica, 'Lee Kun-Hee'",
+   "type": "TERTIARY",
+   "url": "https://www.britannica.com/money/Lee-Kun-Hee",
+   "archive": "Britannica",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0018",
+   "key": "btn_buddhavara",
+   "citation": "BTN (2026-04-23), 붓다가야 국제승가대학-델리대학 MOU",
+   "type": "NEWS",
+   "url": "https://www.btnnews.tv/news/articleView.html?idxno=89786",
+   "archive": "BTN (불교TV)",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0019",
+   "key": "btn_gakseong",
+   "citation": "BTN (2020-10-02), 각성스님 영결식 report",
+   "type": "NEWS",
+   "url": "http://www.btnnews.tv/news/articleView.html?idxno=62974",
+   "archive": "BTN (불교TV)",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0020",
+   "key": "buddhaland_hoeamsa_1370",
+   "citation": "Dongguk University Buddhist Culture Portal (불교문화포털, buddhaland.dongguk.edu, KBDI0001421) '지공' entry: on King Kongmin's order (1370) a stupa enshrining Jikong's relics was built at Hoeamsa, supervised by Naong, declaring Naong's succession of Jikong",
+   "type": "DATABASE",
+   "url": "https://buddhaland.dongguk.edu/bulVoca/view?dataId=KBDI0001421",
+   "archive": "Dongguk University Buddhist Culture Portal",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0021",
+   "key": "buddhismorkr_bunhwangsa_2022",
+   "citation": "Jogye Order official news (2022): Bunhwangsa India 대웅보전 준공식; project launched 2019-04 by 36th administration (백만원력결집)",
+   "type": "WEBSITE",
+   "url": "https://www.buddhism.or.kr/m/board/view.php",
+   "archive": "Jogye Order (buddhism.or.kr)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0022",
+   "key": "buddhistdoor_gbs2026",
+   "citation": "Buddhist Door Tea House (2026-01-18): 2nd Global Buddhist Summit 2026, Bharat Mandapam, New Delhi, 24-25 Jan 2026; IBC + Ministry of Culture; theme 'Collective Wisdom, United Voice and Mutual Coexistence'; ~200 delegates",
+   "type": "NEWS",
+   "url": "https://teahouse.buddhistdoor.net/2nd-global-buddhist-summit-2026-to-bring-together-buddhist-leaders-in-new-delhi",
+   "archive": "Buddhist Door Tea House",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0023",
+   "key": "budreview_choenamsun",
+   "citation": "Kim Young-jin, '근현대 불교인물 탐구: 최남선', Bulgyo Review (2013-06-19)",
+   "type": "SECONDARY",
+   "url": "https://www.budreview.com/news/articleView.html?idxno=1310",
+   "archive": "Bulgyo Review",
+   "accessed": "2026-08-16",
+   "reliability": "ACADEMIC"
+  },
+  {
+   "id": "S-0024",
+   "key": "budreview_jung",
+   "citation": "Bulgyo Review, Jung Seung-suk author/article page",
+   "type": "WEBSITE",
+   "url": "https://www.budreview.com/news/articleView.html?idxno=20138",
+   "archive": "Bulgyo Review",
+   "accessed": "2026-08-16",
+   "reliability": "ACADEMIC"
+  },
+  {
+   "id": "S-0025",
+   "key": "bulkwang_beopjeong",
+   "citation": "Bulkwang (2024-06-13), '법정 스님의 인도' - India trip and Vinoba Bhave meeting",
+   "type": "NEWS",
+   "url": "https://www.bulkwang.co.kr/news/articleView.html?idxno=38670",
+   "archive": "Bulkwang (불광)",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0026",
+   "key": "cheonji_wookwan",
+   "citation": "Cheonji Ilbo (2010-11-08), Mahayeon founder interview with Wookwan",
+   "type": "NEWS",
+   "url": "http://www.newscj.com/news/articleView.html?idxno=59154",
+   "archive": "Cheonji Ilbo",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0027",
+   "key": "companycheck_samsung",
+   "citation": "CompanyCheck/MCA record, Samsung India Electronics Pvt. Ltd. (CIN U31900DL1995PTC071387, incorporated 03-08-1995)",
+   "type": "DATABASE",
+   "url": "https://www.thecompanycheck.com/company/samsung-india-electronics-private-limited/U31900DL1995PTC071387",
+   "archive": "MCA / CompanyCheck",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0028",
+   "key": "ddindia_icybs2025",
+   "citation": "DD India (2025-08): 3rd International Conference of Young Buddhist Scholars (ICYBS), Dr Ambedkar International Centre, Delhi, Aug 2025; IBC + Ministry of Culture; theme 'Wisdom Transmission in 21st Century'",
+   "type": "NEWS",
+   "url": "https://ddindia.co.in/2025/08/icybs-2025/",
+   "archive": "DD India",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0029",
+   "key": "ddnews_gbs2026",
+   "citation": "DD News (2026-01-18): 2nd Global Buddhist Summit speakers - Thailand, Vietnam, India, Bhutan, Myanmar, Nepal, Japan, Taiwan, US; no Korean speaker named; ~200 delegates, 800+ attendees",
+   "type": "NEWS",
+   "url": "https://ddnews.gov.in/en/second-global-buddhist-summit-to-be-held-in-delhi-on-january-24-25/",
+   "archive": "DD News (Govt of India)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0030",
+   "key": "donga_delegation_1982",
+   "citation": "Dong-A Ilbo 1982-01-19 p.6: '간디首相에 梵鐘전달 佛教대표단 聖地순례' - 6-member Korean Buddhist delegation dispatched by 국제불교문제연구소 toured India's sacred sites (Dec 1981); met PM Indira Gandhi ~30 min, presenting a Silla gold-crown replica and a Buddhist bell; visited Nalanda, donating a Haeinsa Tripitaka Koreana facsimile as research material for Korean Buddhist studies; agreed Kelaniya Temple-Bongeunsa sisterhood in Sri Lanka; director (소장) Kim Gwang-tae (김광태) reported",
+   "type": "PRIMARY",
+   "url": "https://newslibrary.naver.com/viewer/index.naver?articleId=1982011900209206010&editNo=2&printCount=1&publishDate=1982-01-19&officeId=00020&pageNo=6&printNo=18551&publishType=00020",
+   "archive": "Dong-A Ilbo (via Naver News Library)",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0031",
+   "key": "donga_tagore",
+   "citation": "Dong-a Ilbo (2013-05-19) on the Tagore message publication",
+   "type": "NEWS",
+   "url": "https://www.donga.com/news/Society/article/all/20130520/55260892/1",
+   "archive": "Dong-a Ilbo",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0032",
+   "key": "donggukmedia_seo_yashaschandra",
+   "citation": "Dongguk University newspaper (동대신문) '[휴게실] 徐廷柱敎授, 印度詩人 야산챤드라 와' (reposted 2010-08-11): Indian poet Sitanshu Yashaschandra visited Dongguk University and met Sŏ Chŏng-ju (문리대학장); they discussed the mainstream/current state of Indian poetry and Korean-Indian literary exchange; Yashaschandra praised Sŏ's Hwasa for its compassion; proposed mutual poetry translation and a '자비회' literary society; original article date unstated",
+   "type": "NEWS",
+   "url": "https://www.donggukmedia.com/news/articleView.html?idxno=9701",
+   "archive": "Dongguk University Media Center (동대신문)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0033",
+   "key": "drishtiias_gbs2023",
+   "citation": "Drishti IAS (2023): Global Buddhist Summit 2023 New Delhi - 173 international participants incl. 84 Sangha, 151 Indian",
+   "type": "NEWS",
+   "url": "https://www.drishtiias.com/daily-updates/daily-news-analysis/global-buddhist-summit-2023",
+   "archive": "Drishti IAS",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0034",
+   "key": "dvidshub_panikkar",
+   "citation": "DVIDS, 'China Threatens Intervention in Korean War (3 OCT 1950)'",
+   "type": "SECONDARY",
+   "url": "https://www.dvidshub.net/news/454943/china-threatens-intervention-korean-war-3-oct-1950",
+   "archive": "DVIDS (US DoD)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0035",
+   "key": "embassy_india",
+   "citation": "Embassy of India, Seoul - bilateral history page",
+   "type": "WEBSITE",
+   "url": "https://indembassy.or.kr/pages.php?id=21",
+   "archive": "Embassy of India, Seoul",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0036",
+   "key": "encyclopedia_kyomik",
+   "citation": "Encyclopedia.com, 'Kyŏmik' (Baekje Vinaya)",
+   "type": "TERTIARY",
+   "url": "https://www.encyclopedia.com/religion/dictionaries-thesauruses-pictures-and-press-releases/kyomik",
+   "archive": "Encyclopedia.com",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0037",
+   "key": "encykorea_gyeongheung",
+   "citation": "Encyclopedia of Korean Culture, '경흥'",
+   "type": "TERTIARY",
+   "url": "https://encykorea.aks.ac.kr/Article/E0003027",
+   "archive": "Encyclopedia of Korean Culture (AKS)",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0038",
+   "key": "encykorea_haedongjong",
+   "citation": "Encyclopedia of Korean Culture, '해동종'",
+   "type": "TERTIARY",
+   "url": "https://encykorea.aks.ac.kr/Article/E0062550",
+   "archive": "Encyclopedia of Korean Culture (AKS)",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0039",
+   "key": "encykorea_hyecho",
+   "citation": "Encyclopedia of Korean Culture, '혜초'",
+   "type": "TERTIARY",
+   "url": "https://encykorea.aks.ac.kr/Article/E0063646",
+   "archive": "Encyclopedia of Korean Culture (AKS)",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0040",
+   "key": "encykorea_ikwangsu",
+   "citation": "Encyclopedia of Korean Culture, '이광수'",
+   "type": "TERTIARY",
+   "url": "https://encykorea.aks.ac.kr/Article/E0043688",
+   "archive": "Encyclopedia of Korean Culture (AKS)",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0041",
+   "key": "encykorea_jigong",
+   "citation": "Encyclopedia of Korean Culture, '지공선사 부도 및 석등' (Hoeamsa Jigong stupa)",
+   "type": "TERTIARY",
+   "url": "https://encykorea.aks.ac.kr/Article/E0054079",
+   "archive": "Encyclopedia of Korean Culture (AKS)",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0042",
+   "key": "encykorea_jigujeonyo",
+   "citation": "Encyclopedia of Korean Culture, '지구전요'",
+   "type": "TERTIARY",
+   "url": "https://encykorea.aks.ac.kr/Article/E0054094",
+   "archive": "Encyclopedia of Korean Culture (AKS)",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0043",
+   "key": "encykorea_kim_iryeop",
+   "citation": "Encyclopedia of Korean Culture, '김일엽' (E0010283): nun-poet biography - Japan study, 신여자 magazine 1920, Pulgyo magazine, Sudeoksa 1928",
+   "type": "TERTIARY",
+   "url": "https://encykorea.aks.ac.kr/Contents/Item/E0010283",
+   "archive": "Encyclopedia of Korean Culture (AKS)",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0044",
+   "key": "encykorea_marananta",
+   "citation": "Encyclopedia of Korean Culture, '마라난타' (인도의 승려)",
+   "type": "TERTIARY",
+   "url": "https://encykorea.aks.ac.kr/Article/E0017322",
+   "archive": "Encyclopedia of Korean Culture (AKS)",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0045",
+   "key": "encykorea_milgyo",
+   "citation": "Encyclopedia of Korean Culture, '밀교'",
+   "type": "TERTIARY",
+   "url": "https://encykorea.aks.ac.kr/Article/E0020385",
+   "archive": "Encyclopedia of Korean Culture (AKS)",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0046",
+   "key": "encykorea_taehyeon",
+   "citation": "Encyclopedia of Korean Culture, '태현'",
+   "type": "TERTIARY",
+   "url": "https://encykorea.aks.ac.kr/Article/E0059103",
+   "archive": "Encyclopedia of Korean Culture (AKS)",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0047",
+   "key": "encykorea_tongbulgyo",
+   "citation": "Encyclopedia of Korean Culture, '통불교사상'",
+   "type": "TERTIARY",
+   "url": "https://encykorea.aks.ac.kr/Article/E0059330",
+   "archive": "Encyclopedia of Korean Culture (AKS)",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0048",
+   "key": "encykorea_wangoj",
+   "citation": "Encyclopedia of Korean Culture, '왕오천축국전'",
+   "type": "TERTIARY",
+   "url": "https://encykorea.aks.ac.kr/Article/E0039126",
+   "archive": "Encyclopedia of Korean Culture (AKS)",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0049",
+   "key": "encykorea_wonhyo",
+   "citation": "Encyclopedia of Korean Culture, '원효'",
+   "type": "TERTIARY",
+   "url": "https://encykorea.aks.ac.kr/Article/E0040908",
+   "archive": "Encyclopedia of Korean Culture (AKS)",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0050",
+   "key": "encykorea_yineunghwa",
+   "citation": "Encyclopedia of Korean Culture, '이능화'",
+   "type": "TERTIARY",
+   "url": "https://encykorea.aks.ac.kr/Article/E0043938",
+   "archive": "Encyclopedia of Korean Culture (AKS)",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0051",
+   "key": "eob_woncheuk",
+   "citation": "Encyclopedia of Buddhism, 'Wŏnch'ŭk'",
+   "type": "TERTIARY",
+   "url": "https://encyclopediaofbuddhism.org/wiki/W%C5%8Fnch%27%C5%ADk",
+   "archive": "Encyclopedia of Buddhism",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0052",
+   "key": "eob_zhikong",
+   "citation": "Encyclopedia of Buddhism, 'Zhikong Chanxian'",
+   "type": "TERTIARY",
+   "url": "https://encyclopediaofbuddhism.org/wiki/Zhikong_Chanxian",
+   "archive": "Encyclopedia of Buddhism",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0053",
+   "key": "ggbn_delhi_pune",
+   "citation": "Korean Buddhist outlet (2019-03-19): Delhi University and Pune University are the most-chosen universities by Korean Buddhist-students (불교를 전공하는 한국인 최다 선택)",
+   "type": "NEWS",
+   "url": "https://www.ggbn.co.kr/news/articleView.html?idxno=38055",
+   "archive": "GGBN (Korean)",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0054",
+   "key": "ggbn_umyeongju",
+   "citation": "U Myeong-ju, '세계의 불교대학2: 인도 델리대학', GGBn (2019-03-19)",
+   "type": "NEWS",
+   "url": "https://www.ggbn.co.kr/news/articleView.html?idxno=38055",
+   "archive": "GGBn (굿모닝불교)",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0055",
+   "key": "googlebooks_icf",
+   "citation": "'History of the Custodian Force (India) in Korea, 1953-54' (official history), Google Books",
+   "type": "PRIMARY",
+   "url": "https://books.google.com/books?id=KIcUGQAACAAJ",
+   "archive": "Google Books",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0056",
+   "key": "goryeosa_db",
+   "citation": "Goryeosa database (National Institute of Korean History) - negative result: no Hyeil India journey found",
+   "type": "ARCHIVAL",
+   "url": "https://db.history.go.kr/goryeo/",
+   "archive": "National Institute of Korean History DB",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0057",
+   "key": "hani_kimchiha_2026",
+   "citation": "Hani (한겨레) 2026-07-03, 강성만: interview with 임진택 on '김지하를 다시 본다' - documents Kim Chi-ha's life philosophy as rooted in Donghak (수운 최제우's 시천주; 해월 최시형's 향아설위), 증산도 개벽사상, Buddhism and Christianity; no Gandhi/India influence mentioned; 1982 '원주 문건' (생명의 세계관 확립과 협동적 생존의 확장) as the founding text of the Korean life movement",
+   "type": "NEWS",
+   "url": "https://www.hani.co.kr/arti/culture/book/1177518.html",
+   "archive": "Hani (한겨레)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0058",
+   "key": "hani_woj_2019",
+   "citation": "Hani (한겨레) 2019-10-19: '혜초의 왕오천축국전 고국 찾아온다' - second BnF loan approved (17 Oct 2019) for the NMK exhibition Dec 2019 - Apr 2020; manuscript 358.6cm scroll, 227 lines, 5,893 characters; Pelliot discovery 1908; Takakusu Junjiro's 1915 Silla attribution; Ch'oe Nam-sŏn's 1943 Korean introduction",
+   "type": "NEWS",
+   "url": "https://www.hani.co.kr/arti/culture/culture_general/428121.html",
+   "archive": "Hani (한겨레)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0059",
+   "key": "hankookilbo_hoeamsa_relics_2024",
+   "citation": "Hankook Ilbo 2024-04-17: Hoeamsa sarira return finalized - relics of Jikong/Naong plus Buddha relics (brought from India by Jikong) illegally removed in the colonial era, acquired by Boston MFA 1939; return agreed after the 2023 US state visit; delivered 2024-04-16, Korea arrival 04-18, relocation rite at Jogye 04-19, re-enshrinement at Hoeamsa 2024-05-19",
+   "type": "NEWS",
+   "url": "https://www.hankookilbo.com/News/Read/A2024041708440002013?did=GO",
+   "archive": "Hankook Ilbo (한국일보)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0060",
+   "key": "hathi_divik",
+   "citation": "HathiTrust catalog, 'The day breaks O! India' (Choyi Kim Yang-Shik, Hindi tr. Divik Ramesh)",
+   "type": "DATABASE",
+   "url": "https://catalog.hathitrust.org/Record/003818155",
+   "archive": "HathiTrust",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0061",
+   "key": "historylibrary_silla",
+   "citation": "Shin Dong-hun, '삼국통일 전 인도에 도착한 신라스님들' (Silla monks who reached India before unification)",
+   "type": "SECONDARY",
+   "url": "https://historylibrary.net/entry/삼국통일-전-인도에-도착한-신라스님들",
+   "archive": "History Library (historylibrary.net)",
+   "accessed": "2026-08-16",
+   "reliability": "ACADEMIC"
+  },
+  {
+   "id": "S-0062",
+   "key": "hyunbul_dongguk_nalanda",
+   "citation": "Hyunbul News (2023-02-27): '동국대, 날란다大 MOU... 공동 교육·연구 협력' - Dongguk University-Nalanda University academic MOU signed 2023-02-24 at Nalanda (VC Sunaina Singh; Dongguk 건학위원장 돈관 스님, 총장 윤재웅); joint education/research + '순례' themed conference + Korea-India 50th anniversary; article also cites the 1982 delegation (Dong-A 1982-01-19) and Hwang Su-yŏng 1962-63 (Kyonghyang 1963-05-11)",
+   "type": "NEWS",
+   "url": "https://www.hyunbulnews.com/articleView.html?idxno=408238",
+   "archive": "Hyunbul News (현대불교신문)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0063",
+   "key": "hyunbul_hyoseok",
+   "citation": "Hyunbul News (2021-10-14), '[모정불심] 19. 효석 스님의 어머니'",
+   "type": "NEWS",
+   "url": "http://www.hyunbulnews.com/news/articleView.html?idxno=402639",
+   "archive": "Hyunbul News (현대불교)",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0064",
+   "key": "hyunbul_jikong_2017",
+   "citation": "Hyunbul News 2017-01-26: '지공·나옹… 재점화된 禪宗' - Jikong's representative disciples: Naong (Kongmin's preceptor), Baegun Gyeonghan (Jikji author), Muhak Chach'o (T'aejo's preceptor), Ch'ukwŏn Chich'ŏn; revival of studies on Jikong's Seon lineage",
+   "type": "NEWS",
+   "url": "https://www.hyunbulnews.com/news/articleView.html?idxno=290135",
+   "archive": "Hyunbul News (현대불교신문)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0065",
+   "key": "hyunbulnews_bunhwangsa_2022",
+   "citation": "Hyunbul News (2022-05-19): Jogye 150-person official delegation led by 총무원장 Wonhaeng, '공식대표단 첫 순례', Bunhwangsa India dedication",
+   "type": "NEWS",
+   "url": "https://www.hyunbulnews.com/news/articleView.html?idxno=405034",
+   "archive": "Hyunbul News (현대불교신문)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0066",
+   "key": "hyunbulnews_gbs2023",
+   "citation": "Hyunbul News (2023-04-27, 임은호): '조계종, 제1회 글로벌 부디스트 서밋 참가' - GBS 2023 held 20-21 Apr at Ashok Hotel, New Delhi; Jogye 해외특별교구 교구장 직무대행 정범 스님 attended as official representative on behalf of 총무원장; ~30 countries, 500+ leaders; PM Modi, Culture Minister Kishan Reddy",
+   "type": "NEWS",
+   "url": "https://www.hyunbulnews.com/news/articleView.html?idxno=408978",
+   "archive": "Hyunbul News (현대불교신문)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0067",
+   "key": "iats_lokesh",
+   "citation": "IATS oral history interview, Lokesh Chandra",
+   "type": "ARCHIVAL",
+   "url": "https://oralhistory.iats.info/interviews/lokesh-chandra",
+   "archive": "International Association for Tibetan Studies",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0068",
+   "key": "ibcworld_gbs2023",
+   "citation": "IBC official event file: Global Buddhist Summit 2023 - 700+ delegates, ~175 overseas from 31 countries",
+   "type": "PRIMARY",
+   "url": "https://ibcworld.org/events/view/35",
+   "archive": "International Buddhist Confederation (IBC)",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0069",
+   "key": "ibcworld_gbs2026",
+   "citation": "International Buddhist Confederation, official event file: 2nd Global Buddhist Summit 2026 (24-25 Jan 2026)",
+   "type": "PRIMARY",
+   "url": "https://www.ibcworld.org/docs/event_files/2nd%20GBS%202026.pdf",
+   "archive": "International Buddhist Confederation (IBC)",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0070",
+   "key": "ibcworld_icybs2025",
+   "citation": "IBC official event report: 3rd ICYBS 22 Aug 2025, Dr Ambedkar International Centre, New Delhi; IBC + Ministry of Culture + Ministry of Social Justice & Empowerment; theme 'Wisdom Transmission in Buddha Dhamma in the 21st Century'; no Korean participant named",
+   "type": "PRIMARY",
+   "url": "https://www.ibcworld.org/events/view/140",
+   "archive": "International Buddhist Confederation (IBC)",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0071",
+   "key": "ibulgyo_bunhwangsa_2020",
+   "citation": "Ibulgyo (2020-02-06): Bunhwangsa India construction start 2020-03-28, completion targeted 2022",
+   "type": "NEWS",
+   "url": "https://www.ibulgyo.com/news/articleView.html?idxno=204382",
+   "archive": "Ibulgyo (불교닷컴)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0072",
+   "key": "ibulgyo_doseokgi_2026",
+   "citation": "Ibulgyo (불교신문) 2026-03-03: '성지(聖地)로 향하는 배에서 조선 불교의 미래를 고민하다' - paper on Lee Young-jae's 도석기 (space heterotopia; Buddhist college vision)",
+   "type": "NEWS",
+   "url": "https://www.ibulgyo.com/news/articleView.html?idxno=435895",
+   "archive": "Ibulgyo (불교신문)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0073",
+   "key": "ibulgyo_hoeamsa_relic_2024",
+   "citation": "Ibulgyo 2024: '회암사 3여래2조사 사리' - Jogye Order had a separate sarira reliquary made for the returned Hoeamsa relics",
+   "type": "NEWS",
+   "url": "https://www.ibulgyo.com/news/articleView.html?idxno=413032",
+   "archive": "Ibulgyo (불교신문)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0074",
+   "key": "ibulgyo_jogye50th_2023",
+   "citation": "Ibulgyo (불교신문) 2023-03-22, 홍다영: '조계종 한국-인도 수교 50주년 기념 부처님 나라에서 문화교류' - 21 Mar 2023 temple-food dinner at ROK ambassador's residence (Jang Jae-bok); NGMA exhibition '부처님의 땅! 인도에서 한국문화를 만나다' 22 Mar-30 Apr; ~40 attendees incl. Apurva Chandra; Jugyeong (중앙종회의장) represented Jogye",
+   "type": "NEWS",
+   "url": "https://www.ibulgyo.com/news/articleView.html?idxno=400517",
+   "archive": "Ibulgyo (불교신문)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0075",
+   "key": "ibulgyo_lee_youngjae_2021",
+   "citation": "Ibulgyo (불교신문) 2021-02-03, 이성수: '[한국불교 격동 100년] <1> 근대 최초 인도 순례한 이영재 스님' - full biography: born 1900 Cheongju; ordained 1918 Beopjusa; Nihon Univ 1920-23; Tokyo Imperial Univ Indian Philosophy (Sanskrit/Pali); departed Yokohama 1925-11-09 on Hakusan Maru; Ceylon Dec 1925; died 1927-10-12 in Ceylon aged 28; wrote 도석기/남국기/석란의 불교; drew taegeukgi for Mahabodhi Society Vesak in Kandy; Dong-A Ilbo 1927-10-27 obituary",
+   "type": "NEWS",
+   "url": "https://www.ibulgyo.com/news/articleView.html?idxno=210248",
+   "archive": "Ibulgyo (불교신문)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0076",
+   "key": "ibulgyo_wookwan",
+   "citation": "Bulgyo Shinmun (2022-07-28), '조계종 사찰음식명장 우관스님을 만나다'",
+   "type": "NEWS",
+   "url": "http://www.ibulgyo.com/news/articleView.html?idxno=219282",
+   "archive": "Bulgyo Shinmun (불교신문)",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0077",
+   "key": "ibulgyo_zimmermann_2026",
+   "citation": "Ibulgyo (불교신문) 2026-04-15: '독일학자 찐머만, 근대 구법승 이영재 스님 재조명' - German scholar Zimmermann re-examines Lee Young-jae as first modern Korean Buddhist pilgrim",
+   "type": "NEWS",
+   "url": "https://www.ibulgyo.com/news/articleView.html?idxno=437401",
+   "archive": "Ibulgyo (불교신문)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0078",
+   "key": "ics_vyj",
+   "citation": "Institute of Chinese Studies faculty listing, Vyjayanti Raghavan",
+   "type": "WEBSITE",
+   "url": "https://www.icsin.org/faculty/vyjayanti-raghavan",
+   "archive": "Institute of Chinese Studies",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0079",
+   "key": "idsa_panikkar",
+   "citation": "MP-IDSA, 'Beyond Abstention: India, the Korean War Legacy...' (Jul 2025)",
+   "type": "SECONDARY",
+   "url": "https://idsa.in/publisher/comments/beyond-abstention-india-the-korean-war-legacy-and-contemporary-conflicts",
+   "archive": "Manohar Parrikar IDSA",
+   "accessed": "2026-08-16",
+   "reliability": "ACADEMIC"
+  },
+  {
+   "id": "S-0080",
+   "key": "indianarrative_sangwol2023",
+   "citation": "India Narrative (2023-03-22): Sangwol Society 200-strong foot pilgrimage Sarnath->Shravasti; Yogi Adityanath outreach to Korean monks",
+   "type": "NEWS",
+   "url": "https://www.indianarrative.com/culture/yogi-adityanath-reaches-out-to-korean-monks-in-bid-to-revive-buddhist-ties-with-asia/",
+   "archive": "India Narrative",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0081",
+   "key": "indianexpress_gandhi",
+   "citation": "Indian Express (15 Aug 2021), 'How India's independence movement influenced Korea's struggle for freedom from Japanese rule'",
+   "type": "NEWS",
+   "url": "https://indianexpress.com/article/research/how-indias-independence-movement-influenced-koreas-struggle-for-freedom-from-japanese-rule-7454485/",
+   "archive": "Indian Express",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0082",
+   "key": "jnu_kaushal",
+   "citation": "JNU CKS faculty profile, Kaushal Kumar",
+   "type": "WEBSITE",
+   "url": "https://www.jnu.ac.in/index.php/content/kkaushaljnu",
+   "archive": "Jawaharlal Nehru University",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0083",
+   "key": "jnu_neerja",
+   "citation": "JNU CKS faculty profile, Neerja Samajdar",
+   "type": "WEBSITE",
+   "url": "https://www.jnu.ac.in/index.php/content/neerjasingh",
+   "archive": "Jawaharlal Nehru University",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0084",
+   "key": "jnu_ravikesh",
+   "citation": "JNU CKS faculty profile, Ravikesh",
+   "type": "WEBSITE",
+   "url": "https://www.jnu.ac.in/index.php/content/ravikesh",
+   "archive": "Jawaharlal Nehru University",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0085",
+   "key": "jogyesa_2014_pilgrimage",
+   "citation": "Jogye Order official news (2014): 순례단 pilgrimage to 8 sacred sites + Nepal (13N14D, 19 Feb-4 Mar 2014) incl. Yeoraesunwon visit at Bodh Gaya",
+   "type": "WEBSITE",
+   "url": "https://www.jogyesa.kr/board/news/board_view.php?num=3148",
+   "archive": "Jogye Order (jogyesa.kr)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0086",
+   "key": "joongang_tagore",
+   "citation": "JoongAng Ilbo 분수대 (2012-12-10), 'Reading between the lines on Tagore'",
+   "type": "NEWS",
+   "url": "https://www.joongang.co.kr/article/10131809",
+   "archive": "JoongAng Ilbo",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0087",
+   "key": "jungto_india",
+   "citation": "Jungto Society official India pilgrimage program: 36th pilgrimage 14-30 Jan 2027 (16N17D, 500 persons, registration from 2026-05-25); annual program",
+   "type": "WEBSITE",
+   "url": "https://www.jungto.org/india/",
+   "archive": "Jungto Society (jungto.org)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0088",
+   "key": "kaavyaalaya_divik",
+   "citation": "Kaavyaalaya poet profile, Divik Ramesh",
+   "type": "WEBSITE",
+   "url": "https://kaavyaalaya.org/en/p/divik-ramesh",
+   "archive": "Kaavyaalaya",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0089",
+   "key": "kashmirlife_aga",
+   "citation": "Kashmir Life, 'Former Jammu Kashmir Chief Secretary Syed Muzaffar Aga Dies at 108'",
+   "type": "NEWS",
+   "url": "https://kashmirlife.net/former-jammu-kashmir-chief-secretary-syed-muzaffar-aga-dies-at-108-444065/",
+   "archive": "Kashmir Life",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0090",
+   "key": "kbpf_india2026",
+   "citation": "Korea Buddhism Promotion Foundation (대한불교진흥원) official notice (2026-07-02): 2026 India pilgrimage 3-11 Oct 2026 (8N9D), Dharamsala/Ajanta-Ellora/Sanchi, Air India",
+   "type": "WEBSITE",
+   "url": "https://www.kbpf.org/?bmode=view&idx=172150129",
+   "archive": "Korea Buddhism Promotion Foundation (kbpf.org)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0091",
+   "key": "kbs_woj_2010",
+   "citation": "KBS News 2010-12-17: '1283년만에 한국 온 왕오천축국전' - the BnF manuscript arrived in Korea for the NMK '실크로드와 둔황' exhibition; first public display in 1,283 years",
+   "type": "NEWS",
+   "url": "https://news.kbs.co.kr/news/view.do?ncd=2211998",
+   "archive": "KBS News",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0092",
+   "key": "kci_choi",
+   "citation": "Choi Seong-woo / Choi Dong-ho, Tagore reception studies, KCI (ART002541946 / ART001612260)",
+   "type": "SECONDARY",
+   "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002541946",
+   "archive": "KCI",
+   "accessed": "2026-08-16",
+   "reliability": "ACADEMIC"
+  },
+  {
+   "id": "S-0093",
+   "key": "kci_han_tagore",
+   "citation": "Comparative Han Yong-un / Tagore study, KCI (ART002442623)",
+   "type": "SECONDARY",
+   "url": "https://www.kci.go.kr/kciportal/landing/article.kci?arti_id=ART002442623",
+   "archive": "KCI",
+   "accessed": "2026-08-16",
+   "reliability": "ACADEMIC"
+  },
+  {
+   "id": "S-0094",
+   "key": "kci_hong",
+   "citation": "Hong Eun-taek, 'The Problems of Korean Translation of Tagore's Poetry' (2014), KCI",
+   "type": "SECONDARY",
+   "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART001914468",
+   "archive": "KCI",
+   "accessed": "2026-08-16",
+   "reliability": "ACADEMIC"
+  },
+  {
+   "id": "S-0095",
+   "key": "kci_hyecho",
+   "citation": "Jung Byung-sam, 'Hyecho's View on India and Central Asia', KCI",
+   "type": "SECONDARY",
+   "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART001508931",
+   "archive": "KCI (Korea Citation Index)",
+   "accessed": "2026-08-16",
+   "reliability": "ACADEMIC"
+  },
+  {
+   "id": "S-0096",
+   "key": "kci_jung",
+   "citation": "Jung Younghyo, '욕망으로서의 번역과 오역' (Gitanjali/Kim Ŏk), KCI",
+   "type": "SECONDARY",
+   "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART001459996",
+   "archive": "KCI",
+   "accessed": "2026-08-16",
+   "reliability": "ACADEMIC"
+  },
+  {
+   "id": "S-0097",
+   "key": "kci_kimboksoon",
+   "citation": "Kim Bok-soon, study of Yijing's 大唐西域求法高僧傳 and Silla monks, KCI",
+   "type": "SECONDARY",
+   "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART001972941",
+   "archive": "KCI",
+   "accessed": "2026-08-16",
+   "reliability": "ACADEMIC"
+  },
+  {
+   "id": "S-0098",
+   "key": "kci_kimsooyeon",
+   "citation": "Kim Soo-yeon, 'Goryeo 佛頂道場 (Buddha-Usnisa practice halls)', KCI",
+   "type": "SECONDARY",
+   "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART001350854",
+   "archive": "KCI",
+   "accessed": "2026-08-16",
+   "reliability": "ACADEMIC"
+  },
+  {
+   "id": "S-0099",
+   "key": "kci_kimujo",
+   "citation": "Kim Ujo, 'Tagore's Perception of Joseon and Its Reception in Joseon', 인도연구 19(1) 2014, KCI",
+   "type": "SECONDARY",
+   "url": "https://www.kci.go.kr/kciportal/landing/article.kci?arti_id=ART001881271",
+   "archive": "KCI / 인도연구",
+   "accessed": "2026-08-16",
+   "reliability": "ACADEMIC"
+  },
+  {
+   "id": "S-0100",
+   "key": "kci_ko",
+   "citation": "Ko Young-seop, review/discussion of Lamotte incl. Korean monks in India, KCI (SNU)",
+   "type": "SECONDARY",
+   "url": "https://journal.kci.go.kr/snu-ioh/archive/articlePdf?artiId=ART001034128",
+   "archive": "KCI / SNU Journal",
+   "accessed": "2026-08-16",
+   "reliability": "ACADEMIC"
+  },
+  {
+   "id": "S-0101",
+   "key": "kci_lee_youngjae_southasia",
+   "citation": "KCI ART003193373: '이영재(李英宰, 1900~1927)의 남아시아 기행 탐구' - academic study of his Ceylon journey and pilgrimage writings",
+   "type": "SECONDARY",
+   "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003193373",
+   "archive": "KCI (Korea Citation Index)",
+   "accessed": "2026-08-16",
+   "reliability": "ACADEMIC"
+  },
+  {
+   "id": "S-0102",
+   "key": "kci_sohn",
+   "citation": "Sohn Yong-Taek, study of Jigujeonyo, KCI",
+   "type": "SECONDARY",
+   "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART001486717",
+   "archive": "KCI",
+   "accessed": "2026-08-16",
+   "reliability": "ACADEMIC"
+  },
+  {
+   "id": "S-0103",
+   "key": "kimyongjik_book",
+   "citation": "Kim Yong-jik, Munhaksa ŭi sŏpcharak (푸른사상), chapter 'R. Tagore wa Ch'unwŏn Yi Kwang-su'",
+   "type": "SECONDARY",
+   "url": "https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000002900926",
+   "archive": "Kyobo ebook",
+   "accessed": "2026-08-16",
+   "reliability": "ACADEMIC"
+  },
+  {
+   "id": "S-0104",
+   "key": "kiss_hyecho",
+   "citation": "Jeong Soo-il, '혜초의 서역기행과 『왕오천축국전』', KISS",
+   "type": "SECONDARY",
+   "url": "https://kiss.kstudy.com/Detail/Ar?key=3742173",
+   "archive": "KISS (Korean Studies Information)",
+   "accessed": "2026-08-16",
+   "reliability": "ACADEMIC"
+  },
+  {
+   "id": "S-0105",
+   "key": "ko_wiki_hyecho",
+   "citation": "Korean Wikipedia, '혜초' (704-787)",
+   "type": "TERTIARY",
+   "url": "https://ko.wikipedia.org/wiki/혜초",
+   "archive": "Wikipedia (ko)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0106",
+   "key": "ko_wiki_koun",
+   "citation": "Korean Wikipedia, '고은' (b. 1933-08-01; birth name 고은태 高銀泰)",
+   "type": "TERTIARY",
+   "url": "https://ko.wikipedia.org/wiki/고은",
+   "archive": "Wikipedia (ko)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0107",
+   "key": "ko_wiki_yikyugyong",
+   "citation": "Korean Wikipedia, '이규경' (1788-08-05 ~ 1856-05-16)",
+   "type": "TERTIARY",
+   "url": "https://ko.wikipedia.org/wiki/이규경",
+   "archive": "Wikipedia (ko)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0108",
+   "key": "koreabizwire_sangwol2023",
+   "citation": "Korea Bizwire (2023-02-10): 'Buddhist Monks Set Off on Pilgrimage to India and Nepal'",
+   "type": "NEWS",
+   "url": "http://koreabizwire.com/buddhist-monks-set-off-on-pilgrimage-to-india-and-nepal/240292",
+   "archive": "Korea Bizwire",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0109",
+   "key": "koreaherald_bexpo2026",
+   "citation": "Korea Herald (2026-04-09, Sanjay Kumar): IBC DG Abhijit Halder presents Buddha statue to Jung Won-ju (Lay Buddhist Association of the Jogye Order president) at Seoul International Buddhism Expo (Bexpo 2026), 2026-04-04",
+   "type": "NEWS",
+   "url": "https://www.koreaherald.com/article/10713686",
+   "archive": "Korea Herald",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0110",
+   "key": "koreaherald_kritya",
+   "citation": "Korea Herald (2023-01-13 exclusive), Ko Un feature: 14th Kritya International Poetry Festival guest of honor (online 4-13 Jul 2021); New Delhi 2019 Raza Biennale/JNU talk; Mexico City 2018",
+   "type": "NEWS",
+   "url": "https://www.koreaherald.com/article/3041111",
+   "archive": "Korea Herald",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0111",
+   "key": "koreaherald_thimayya",
+   "citation": "Korea Herald, Imjingak memorial/bust unveiling for Thimayya (2026)",
+   "type": "NEWS",
+   "url": "https://www.koreaherald.com/ (search 'Thimayya')",
+   "archive": "Korea Herald",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0112",
+   "key": "koreanmedals_60pfa",
+   "citation": "Korean Medals, '60th Indian Parachute Field Ambulance'",
+   "type": "WEBSITE",
+   "url": "https://www.koreanmedals.com/60th-indian-parachute-field-ambulance",
+   "archive": "koreanmedals.com",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0113",
+   "key": "koreanmedals_icf",
+   "citation": "Korean Medals, 'Indian Custodian Force'",
+   "type": "WEBSITE",
+   "url": "https://www.koreanmedals.com/indian-custodian-force",
+   "archive": "koreanmedals.com",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0114",
+   "key": "koreanmedals_nnrc",
+   "citation": "Korean Medals, 'Neutral Nations Repatriation Commission'",
+   "type": "WEBSITE",
+   "url": "https://www.koreanmedals.com/neutral-nations-repatriation-commission",
+   "archive": "koreanmedals.com",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0115",
+   "key": "koreatimes_bunhwangsa_2022",
+   "citation": "Korea Times (2022-05-24): Jogye Order 성지순례단 at Bunhwangsa India dedication",
+   "type": "NEWS",
+   "url": "https://www.koreatimes.net/ArticleViewer/Article/146716",
+   "archive": "Korea Times (koreatimes.net)",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0116",
+   "key": "koreatimes_tagore",
+   "citation": "Park Jin-young, '동방의 등불은 시가 아닌 메모였다', koreatimes (2019-10-18)",
+   "type": "NEWS",
+   "url": "http://www.koreatimes.com/article/20191017/1274998",
+   "archive": "koreatimes",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0117",
+   "key": "koun",
+   "citation": "Ko Un official website",
+   "type": "WEBSITE",
+   "url": "http://www.koun.co.kr",
+   "archive": "koun.co.kr",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0118",
+   "key": "kyobo_jung",
+   "citation": "Kyobo Books, Jung Seung-suk author profile",
+   "type": "DATABASE",
+   "url": "https://store.kyobobook.co.kr/person/detail/1000310001",
+   "archive": "Kyobo Books",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0119",
+   "key": "kyobo_leejeongho",
+   "citation": "Kyobo Books, Lee Jeong-ho author profile (education, works, award)",
+   "type": "DATABASE",
+   "url": "https://store.kyobobook.co.kr/person/detail/1000272501",
+   "archive": "Kyobo Books",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0120",
+   "key": "kyosu_tagore",
+   "citation": "Kyosu.net (2012-12-17), Tagore message transmission account (Hong Eun-taek)",
+   "type": "SECONDARY",
+   "url": "https://www.kyosu.net/news/articleView.html?idxno=26437",
+   "archive": "kyosu.net",
+   "accessed": "2026-08-16",
+   "reliability": "ACADEMIC"
+  },
+  {
+   "id": "S-0121",
+   "key": "kyunghyang_hwang_1963",
+   "citation": "Kyonghyang Shinmun 1963-05-11 p.5: '우리古代文化와 比較돼 - 印度 佛蹟을 踏査한 黃교수 歸國談' - Prof. Hwang Su-yŏng (Dongguk Univ.) returned 1963-05-09 from a ~5-month survey (left Seoul 1962-01-21); followed Hyecho's route across India (Ganges basin, Central/South/West India, Pakistan-Peshawar); visited Nalanda; regretted the absence of Korean students at the Buddhist research institute near Nalanda; Indian officials requested a translation of Hyecho's travelogue",
+   "type": "PRIMARY",
+   "url": "https://newslibrary.naver.com/viewer/index.naver?articleId=1963051100329205009&editNo=6&printCount=1&publishDate=1963-05-11&officeId=00032&pageNo=5&printNo=5397&publishType=00020",
+   "archive": "Kyonghyang Shinmun (via Naver News Library)",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0122",
+   "key": "kyungnam_pdf",
+   "citation": "Shin Seok-jung study quoting Yi Kwang-su's 1925 Tagore review (Kyungnam University PDF)",
+   "type": "SECONDARY",
+   "url": "https://www.kyungnam.ac.kr/bbs/human/815/90612/download.do",
+   "archive": "Kyungnam University",
+   "accessed": "2026-08-16",
+   "reliability": "ACADEMIC"
+  },
+  {
+   "id": "S-0123",
+   "key": "loc_iryon",
+   "citation": "Library of Congress authority record (Iryŏn, 1206-1289)",
+   "type": "ARCHIVAL",
+   "url": "https://id.loc.gov/authorities/names/n82094556.html",
+   "archive": "Library of Congress",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0124",
+   "key": "mgu_kps",
+   "citation": "Mahatma Gandhi University, K.P.S. Menon biography",
+   "type": "WEBSITE",
+   "url": "https://www.mgu.ac.in/k-p-s-menon",
+   "archive": "MG University",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0125",
+   "key": "mkgandhi_ham",
+   "citation": "mkgandhi.org, 'Ham Sok-hon, the Korean Gandhi'",
+   "type": "WEBSITE",
+   "url": "https://www.mkgandhi.org/articles/ham-sok-hon-korean-Gandhi.php",
+   "archive": "mkgandhi.org",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0126",
+   "key": "mokpo_kimchiha",
+   "citation": "Mokpo City literary biography, '노겸 김지하'",
+   "type": "WEBSITE",
+   "url": "https://www.mokpo.go.kr/munhak/mokpo_literature/native_introduce/kimjiha",
+   "archive": "Mokpo City",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0127",
+   "key": "museum_woj_2010",
+   "citation": "National Museum of Korea press archive 2010-06-29: '혜초의 『왕오천축국전』 한국에 온다' - BnF review board approved (17 Jun 2010) loaning the Wang ocheonchukguk jeon manuscript for the '실크로드와 둔황' exhibition (18 Dec 2010 - 3 Apr 2011); first public display of the manuscript since Pelliot's 1908 Dunhuang discovery",
+   "type": "ARCHIVAL",
+   "url": "https://www.museum.go.kr/site/main/archive/united/8499",
+   "archive": "National Museum of Korea",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0128",
+   "key": "namuwiki_embassy",
+   "citation": "NamuWiki, '주인도 대한민국 대사관' (ROK Embassy in India)",
+   "type": "TERTIARY",
+   "url": "https://en.namu.wiki/w/주인도 대한민국 대사관",
+   "archive": "NamuWiki",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0129",
+   "key": "namuwiki_park",
+   "citation": "NamuWiki, '박찬현'",
+   "type": "TERTIARY",
+   "url": "https://en.namu.wiki/w/박찬현",
+   "archive": "NamuWiki",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0130",
+   "key": "nanet_jiyong",
+   "citation": "Choi Dong-ho, '정지용의 타고르 시집 『기탄자리』 번역 시편: 1923년 1월 발간된 『휘문』 창간호를 중심으로' (한국언어문학; KINX2012046620)",
+   "type": "SECONDARY",
+   "url": "https://dl.nanet.go.kr/detail/KINX2012046620",
+   "archive": "National Assembly Library (nanet)",
+   "accessed": "2026-08-16",
+   "reliability": "ACADEMIC"
+  },
+  {
+   "id": "S-0131",
+   "key": "nehruarchive_cable1",
+   "citation": "Nehru Archive, Cable to V.K. Krishna Menon (4 March 1953)",
+   "type": "ARCHIVAL",
+   "url": "https://nehruarchive.in/documents/cable-to-v-k-krishna-menon-4-march-1953-8b1i8x",
+   "archive": "Nehru Memorial Archive",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0132",
+   "key": "nehruarchive_cable2",
+   "citation": "Nehru Archive, Cable to V.K. Krishna Menon (25 May 1953)",
+   "type": "ARCHIVAL",
+   "url": "https://nehruarchive.in/documents/cable-to-v-k-krishna-menon-25-may-1953-9m5d3q",
+   "archive": "Nehru Memorial Archive",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0133",
+   "key": "nehruarchive_km",
+   "citation": "Nehru Archive, person page for V.K. Krishna Menon",
+   "type": "ARCHIVAL",
+   "url": "https://nehruarchive.in/people/v-k-krishna-menon",
+   "archive": "Nehru Memorial Archive",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0134",
+   "key": "nehruarchive_korea",
+   "citation": "Nehru Archive, Korea documents & cables (4 Mar 1953; 25 May 1953)",
+   "type": "ARCHIVAL",
+   "url": "https://nehruarchive.in/locations/korea",
+   "archive": "Nehru Memorial Archive",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0135",
+   "key": "nehruarchive_panikkar",
+   "citation": "Nehru Archive, Cable to K.M. Panikkar (19 Aug 1950)",
+   "type": "ARCHIVAL",
+   "url": "https://nehruarchive.in/documents/cable-to-k-m-panikkar-19-august-1950-9jj8nn",
+   "archive": "Nehru Memorial Archive",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0136",
+   "key": "nehruarchive_thorat",
+   "citation": "The Nehru Archive, 'Lt. General S.P.P. Thorat' profile",
+   "type": "ARCHIVAL",
+   "url": "https://nehruarchive.in/people/lt-general-s-p-p-thorat",
+   "archive": "Nehru Memorial Archive",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0137",
+   "key": "nih_hyecho",
+   "citation": "National Institute of Korean History, 우리역사넷, Hyecho",
+   "type": "ARCHIVAL",
+   "url": "https://contents.history.go.kr/mobile/kc/view.do?code=kc_age_10&levelId=kc_n102000",
+   "archive": "National Institute of Korean History",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0138",
+   "key": "nrich_jigong_stele",
+   "citation": "National Research Institute of Cultural Heritage, 금석문 DB: 양주 회암사지 지공선사 부도비 (stele text by Yi Saek)",
+   "type": "ARCHIVAL",
+   "url": "https://portal.nrich.go.kr/kor/ksmUsrView.do?menuIdx=584&ksm_idx=8573",
+   "archive": "NRICH 금석문 DB",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0139",
+   "key": "nyt_kpsmenon",
+   "citation": "New York Times (6 Mar 1948), 'MENON BACK IN KOREA; U.N. BODY TO CONVENE'",
+   "type": "NEWS",
+   "url": "https://www.nytimes.com/1948/03/07/archives/menon-back-in-korea-un-body-to-convene.html",
+   "archive": "NYT Archives",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0140",
+   "key": "nyt_mookerjee",
+   "citation": "New York Times obituary (31 Mar 1974), 'Dr. Girija Mookerjee Is Dead; Indian Educator and Author'",
+   "type": "NEWS",
+   "url": "https://www.nytimes.com/1974/03/31/archives/dr-girija-mookerjee-is-dead-indian-educator-and-author.html",
+   "archive": "NYT Archives",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0141",
+   "key": "nyt_nehru",
+   "citation": "New York Times (1 Apr 1951), 'Nehru for Truce in Korea; Attacks Red Expansionism'",
+   "type": "NEWS",
+   "url": "https://www.nytimes.com/1951/04/01/archives/nehru-for-truce-in-korea-attacks-red-expansionism-nehru-for-a-truce.html",
+   "archive": "NYT Archives",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0142",
+   "key": "oapen_heohwangok",
+   "citation": "OAPEN book chapter on the Heo Hwang-ok debate (Routledge, 2024)",
+   "type": "SECONDARY",
+   "url": "https://library.oapen.org/bitstream/handle/20.500.12657/96615/9781003484844_10.4324_9781003484844-2.pdf",
+   "archive": "OAPEN Library",
+   "accessed": "2026-08-16",
+   "reliability": "ACADEMIC"
+  },
+  {
+   "id": "S-0143",
+   "key": "oc_jiyong_museum",
+   "citation": "Jeong Ji-yong Literary Museum (Okcheon), '휘문보고에서 유학시절까지'",
+   "type": "WEBSITE",
+   "url": "https://www.oc.go.kr/jiyong/contents.do?key=2172",
+   "archive": "Jeong Ji-yong Literary Museum",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0144",
+   "key": "openlibrary_mookerjee",
+   "citation": "Open Library, Mookerjee, Girija Kanta (works list, 1905-1974)",
+   "type": "DATABASE",
+   "url": "https://openlibrary.org/authors/OL10731A/Mookerjee_Girija_Kanta",
+   "archive": "Open Library",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0145",
+   "key": "ourbuddhismworld_bexpo2026",
+   "citation": "Our Buddhism World (2026-04-10): IBC and Jogye lay group at Bexpo 2026, Seoul",
+   "type": "NEWS",
+   "url": "https://www.ourbuddhismworld.com/archives/11412",
+   "archive": "Our Buddhism World",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0146",
+   "key": "pib_icybs2025",
+   "citation": "PIB press release PRID=2156138 (2025-08-22): 3rd ICYBS held 22 Aug 2025 at Nalanda Auditorium, Dr Ambedkar International Centre; attendees from India, Sri Lanka, Myanmar, Vietnam, Cambodia, Russia, Taiwan",
+   "type": "PRIMARY",
+   "url": "https://pib.gov.in/PressReleasePage.aspx?PRID=2156138",
+   "archive": "Press Information Bureau, Govt of India",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0147",
+   "key": "pib_sangwol2023",
+   "citation": "PIB press release PRID=1896682 (2023-02-06): 108 Buddhists from ROK on walking pilgrimage hosted by Jogye Order, Sarnath->Shravasti via Nepal, 1100+ km",
+   "type": "PRIMARY",
+   "url": "https://pib.gov.in/PressReleasePage.aspx?PRID=1896682",
+   "archive": "Press Information Bureau, Govt of India",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0148",
+   "key": "poetryfoundation_ko",
+   "citation": "Poetry Foundation, Ko Un biography (documents India travels)",
+   "type": "WEBSITE",
+   "url": "https://www.poetryfoundation.org/poets/ko-un-56d207070306a",
+   "archive": "Poetry Foundation",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0149",
+   "key": "powers_jiabs",
+   "citation": "John Powers, article on Wŏnch'ŭk, Journal of the International Association of Buddhist Studies",
+   "type": "SECONDARY",
+   "url": "https://journals.ub.uni-heidelberg.de/index.php/jiabs/article/download/8793/2700",
+   "archive": "JABS (Heidelberg)",
+   "accessed": "2026-08-16",
+   "reliability": "ACADEMIC"
+  },
+  {
+   "id": "S-0150",
+   "key": "sgs_marananta",
+   "citation": "Samguk Sagi via National Institute of Korean History (sg_024r_0100_0030)",
+   "type": "PRIMARY",
+   "url": "https://db.history.go.kr/id/sg_024r_0100_0030",
+   "archive": "National Institute of Korean History DB",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0151",
+   "key": "snu_koilhong",
+   "citation": "Ko Il-hong (SNU), paper on the Heo Hwang-ok/Yangtze narrative",
+   "type": "SECONDARY",
+   "url": "https://ih.snu.ac.kr/wp-content/uploads/mangboard/2023/09/15/F1769_10_%EC%9D%BC%EB%B0%98_Ko%20Ilhong_3%EA%B5%90.pdf",
+   "archive": "Seoul National University",
+   "accessed": "2026-08-16",
+   "reliability": "ACADEMIC"
+  },
+  {
+   "id": "S-0152",
+   "key": "southasiatime_piparhawa2026",
+   "citation": "South Asia Time (2026-01-03): PM Modi inaugurates Grand International Exhibition of Holy Piparhawa Remains, Rai Pithora Cultural Complex, New Delhi",
+   "type": "NEWS",
+   "url": "https://www.southasiatime.com/2026/01/03/pm-modi-inaugurates-exhibition-of-lord-buddhas-relics/",
+   "archive": "South Asia Time",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0153",
+   "key": "sy_garak",
+   "citation": "Samguk Yusa, Garakguk-gi (sy_003r_0010_0020_0010)",
+   "type": "PRIMARY",
+   "url": "https://db.history.go.kr/item/compareViewer.do?levelId=sy_003r_0010_0020_0010",
+   "archive": "National Institute of Korean History DB",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0154",
+   "key": "sy_marananta",
+   "citation": "Samguk Yusa, Marananta entry (sy_003r_0010_0020_0010)",
+   "type": "PRIMARY",
+   "url": "https://db.history.go.kr/item/compareViewer.do?levelId=sy_003r_0010_0020_0010",
+   "archive": "National Institute of Korean History DB",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0155",
+   "key": "tezpur_mohan",
+   "citation": "Tezpur University CMDR research seminar paper by Pankaj Mohan (India-Korea relations)",
+   "type": "SECONDARY",
+   "url": "https://www.tezu.ernet.in/cmdr/documents/rs/MDP24102.pdf",
+   "archive": "Tezpur University",
+   "accessed": "2026-08-16",
+   "reliability": "ACADEMIC"
+  },
+  {
+   "id": "S-0156",
+   "key": "thefederal_sangwol2023",
+   "citation": "The Federal: South Korean Buddhists walking in India for 1,167 km on 43-day pilgrimage",
+   "type": "NEWS",
+   "url": "https://thefederal.com/news/south-korean-buddhists-walking-in-india-for-1167-km-on-43-day-pilgrimage",
+   "archive": "The Federal",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0157",
+   "key": "toi_kimwoochoong",
+   "citation": "Times of India photo archive (7 Jun 1994) - Kim Woo Choong & S.G. Awasthi at DCM-Daewoo Racer launch, New Delhi",
+   "type": "NEWS",
+   "url": "https://timescontent.timesofindia.com/photo/business/Kim-Woo-Choong/486450",
+   "archive": "Times of India Archive",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0158",
+   "key": "tongbulgyo_gbs2026",
+   "citation": "Tongbulgyo News (2026-02-01, 박정원): '국제불교정상회의 뉴델리서 개최…진우 스님 선명상으로 인류 상생 실천' - 2nd GBS 24-25 Jan 2026 Bharat Mandapam; 30+ countries, 800+ attendees; Jogye 국제교류위원/제전법단장 문종 스님 attended as representative of 총무원장 진우; Jinwoo's message read by Munjong; confirms 1st GBS Apr 2023 Ashok Hotel",
+   "type": "NEWS",
+   "url": "https://www.tongbulgyo.com/news/articleView.html?idxno=8047",
+   "archive": "Tongbulgyo News (통불교신문)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0159",
+   "key": "totetu_lotus",
+   "citation": "TOTETU paper (Sept 2016), Lotus Sutra exhibition Seoul - Lokesh Chandra participation",
+   "type": "SECONDARY",
+   "url": "https://www.totetu.org/assets/media/paper/j028_173.pdf",
+   "archive": "TOTETU (Institute of Oriental Philosophy)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0160",
+   "key": "ucla_kyeongheung",
+   "citation": "UCLA Buddhist studies, 'Kyŏnghŭng's Commentary on Three Maitreya Sutras'",
+   "type": "SECONDARY",
+   "url": "https://www.international.ucla.edu/buddhist/article/127560",
+   "archive": "UCLA International Institute",
+   "accessed": "2026-08-16",
+   "reliability": "ACADEMIC"
+  },
+  {
+   "id": "S-0161",
+   "key": "ucla_taehyeon",
+   "citation": "UCLA dissertation on T'aehyŏn (eScholarship)",
+   "type": "SECONDARY",
+   "url": "https://escholarship.org/content/qt74h5d0nv/qt74h5d0nv.pdf",
+   "archive": "eScholarship (UCLA)",
+   "accessed": "2026-08-16",
+   "reliability": "ACADEMIC"
+  },
+  {
+   "id": "S-0162",
+   "key": "un_kpsmenon",
+   "citation": "UN Digital Library, statement of K.P.S. Menon, Chairman of UNTCOK (19 Feb 1948)",
+   "type": "ARCHIVAL",
+   "url": "https://digitallibrary.un.org/record/4076420",
+   "archive": "UN Digital Library",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0163",
+   "key": "vyj_about",
+   "citation": "Vyjayanti Raghavan personal website - About page",
+   "type": "WEBSITE",
+   "url": "https://vyjayantiraghavan.in/about",
+   "archive": "vyjayantiraghavan.in",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0164",
+   "key": "wiki_dhyana",
+   "citation": "Wikipedia, 'Dhyānabhadra'",
+   "type": "TERTIARY",
+   "url": "https://en.wikipedia.org/wiki/Dhy%C4%81nabhadra",
+   "archive": "Wikipedia",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0165",
+   "key": "wiki_hwang",
+   "citation": "Korean Wikipedia, '황동규'",
+   "type": "TERTIARY",
+   "url": "https://ko.wikipedia.org/wiki/황동규",
+   "archive": "Wikipedia (ko)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0166",
+   "key": "wiki_ilyeon",
+   "citation": "Wikipedia, 'Il-yeon'",
+   "type": "TERTIARY",
+   "url": "https://en.wikipedia.org/wiki/Il-yeon",
+   "archive": "Wikipedia",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0167",
+   "key": "wiki_india_ambassadors",
+   "citation": "Wikipedia, 'List of ambassadors of India to South Korea'",
+   "type": "TERTIARY",
+   "url": "https://en.wikipedia.org/wiki/List_of_ambassadors_of_India_to_South_Korea",
+   "archive": "Wikipedia",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0168",
+   "key": "wiki_kimchiha",
+   "citation": "Korean Wikipedia, '김지하'",
+   "type": "TERTIARY",
+   "url": "https://ko.wikipedia.org/wiki/김지하",
+   "archive": "Wikipedia (ko)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0169",
+   "key": "wiki_kimok",
+   "citation": "English Wikipedia, 'Kim Ok' (1896-unknown; abducted to North Korea)",
+   "type": "TERTIARY",
+   "url": "https://en.wikipedia.org/wiki/Kim_Ok",
+   "archive": "Wikipedia",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0170",
+   "key": "wiki_kwc",
+   "citation": "Wikipedia, 'Kim Woo-choong'",
+   "type": "TERTIARY",
+   "url": "https://en.wikipedia.org/wiki/Kim_Woo-choong",
+   "archive": "Wikipedia",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0171",
+   "key": "wiki_kyeomik",
+   "citation": "Korean Wikipedia, '겸익'",
+   "type": "TERTIARY",
+   "url": "https://ko.wikipedia.org/wiki/겸익",
+   "archive": "Wikipedia (ko)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0172",
+   "key": "wiki_lee",
+   "citation": "Wikipedia, 'Lee Kun-hee'",
+   "type": "TERTIARY",
+   "url": "https://en.wikipedia.org/wiki/Lee_Kun-hee",
+   "archive": "Wikipedia",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0173",
+   "key": "wiki_nehru_trips",
+   "citation": "Wikipedia, 'List of international prime ministerial trips made by Jawaharlal Nehru'",
+   "type": "TERTIARY",
+   "url": "https://en.wikipedia.org/wiki/List_of_international_prime_ministerial_trips_made_by_Jawaharlal_Nehru",
+   "archive": "Wikipedia",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0174",
+   "key": "wiki_oju",
+   "citation": "Wikipedia, 'Oju Yŏnmun Changjŏn San'go'",
+   "type": "TERTIARY",
+   "url": "https://en.wikipedia.org/wiki/Oju_y%C5%8Fnmun_changj%C5%8Fn_san%27go",
+   "archive": "Wikipedia",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0175",
+   "key": "wiki_paek_yongsong",
+   "citation": "Korean Wikipedia, '백용성' (1864-1940): 33 national representatives, Daegaksa founder, anti-Japanese color movement - verification aid only",
+   "type": "TERTIARY",
+   "url": "https://ko.wikipedia.org/wiki/백용성",
+   "archive": "Wikipedia (ko)",
+   "accessed": "2026-08-16",
+   "reliability": "POPULAR"
+  },
+  {
+   "id": "S-0176",
+   "key": "wiki_panikkar",
+   "citation": "Wikipedia, 'K. M. Panikkar'",
+   "type": "TERTIARY",
+   "url": "https://en.wikipedia.org/wiki/K._M._Panikkar",
+   "archive": "Wikipedia",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0177",
+   "key": "wiki_seo",
+   "citation": "Korean Wikipedia, '서정주'",
+   "type": "TERTIARY",
+   "url": "https://ko.wikipedia.org/wiki/서정주",
+   "archive": "Wikipedia (ko)",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0178",
+   "key": "wiki_spp_thorat",
+   "citation": "English Wikipedia, 'S. P. P. Thorat' (12 Aug 1906 - 10 Aug 1992)",
+   "type": "TERTIARY",
+   "url": "https://en.wikipedia.org/wiki/S._P._P._Thorat",
+   "archive": "Wikipedia",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0179",
+   "key": "wiki_suro",
+   "citation": "Wikipedia, 'Suro of Geumgwan Gaya'",
+   "type": "TERTIARY",
+   "url": "https://en.wikipedia.org/wiki/Suro_of_Geumgwan_Gaya",
+   "archive": "Wikipedia",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0180",
+   "key": "wiki_thimayya",
+   "citation": "Wikipedia, 'K. S. Thimayya'",
+   "type": "TERTIARY",
+   "url": "https://en.wikipedia.org/wiki/K._S._Thimayya",
+   "archive": "Wikipedia",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0181",
+   "key": "wiki_yikyugyong",
+   "citation": "Wikipedia, 'Yi Kyugyŏng'",
+   "type": "TERTIARY",
+   "url": "https://en.wikipedia.org/wiki/Yi_Kyugy%C5%8Fng",
+   "archive": "Wikipedia",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0182",
+   "key": "wiki_yisugwang",
+   "citation": "Wikipedia, 'Yi Su-gwang'",
+   "type": "TERTIARY",
+   "url": "https://en.wikipedia.org/wiki/Yi_Su-gwang",
+   "archive": "Wikipedia",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0183",
+   "key": "wisdomlib_choi",
+   "citation": "Wisdomlib, 'Cultural Horizons of India Vol. 2' (Lokesh Chandra chapter on Korea)",
+   "type": "SECONDARY",
+   "url": "https://www.wisdomlib.org/shop/books/india-history/cultural-horizons-of-india/doc422708.html",
+   "archive": "Wisdomlib",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0184",
+   "key": "worldlii_unga",
+   "citation": "WorldLII, UNGA 1953 debate on Korea (India's Resolution rejected)",
+   "type": "ARCHIVAL",
+   "url": "https://www.worldlii.org/int/other/UNGA/1953/",
+   "archive": "WorldLII (UN docs)",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0185",
+   "key": "yangju_museum_jigong",
+   "citation": "Yangju Hoeamsa Museum (Yangju City), '지공선사' exhibit page",
+   "type": "WEBSITE",
+   "url": "http://www.yangju.go.kr/museum/contents.do?key=1652",
+   "archive": "Yangju City",
+   "accessed": "2026-08-16",
+   "reliability": "INSTITUTIONAL"
+  },
+  {
+   "id": "S-0186",
+   "key": "yijing_wikisource",
+   "citation": "Yijing, 大唐西域求法高僧傳 (Da Tang Xiyu qiufa gaoseng zhuan), Wikisource",
+   "type": "PRIMARY",
+   "url": "https://zh.wikisource.org/zh-hans/大唐西域求法高僧傳/卷上",
+   "archive": "Wikisource (Chinese)",
+   "accessed": "2026-08-16",
+   "reliability": "AUTHORITATIVE"
+  },
+  {
+   "id": "S-0187",
+   "key": "yu_press",
+   "citation": "Yeungnam University Press, scholarly edition of Jibong yuseol (외국 section)",
+   "type": "SECONDARY",
+   "url": "https://book.yu.ac.kr/book/book_detail.html?no=670",
+   "archive": "Yeungnam University Press",
+   "accessed": "2026-08-16",
+   "reliability": "ACADEMIC"
+  }
+ ]
+}

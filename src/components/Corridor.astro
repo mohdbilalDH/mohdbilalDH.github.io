@@ -1,0 +1,78 @@
+---
+// V7 — The eight documented routes, as route ribbons: one row per journey,
+// stations positioned west→east. Schematic by design: only travels with recorded
+// intermediate stations are drawn; nothing is interpolated onto a map.
+import story from '../data/story.json';
+
+const routed = story.journeys.filter((j) => j.routed);
+// canonical west→east station x-positions
+const stations: [RegExp, string, number, number][] = [
+  [/Persia/i, 'Persia', 80, 26],
+  [/Kashmir/i, 'Kashmir', 200, 44],
+  [/Nalanda|Bodh Gaya|India/i, 'India', 305, 26],
+  [/Tibet/i, 'Tibet', 470, 26],
+  [/Kucha|Serindia|Central/i, 'Central Asia', 580, 44],
+  [/Chang'an|Tang|Yuan|China(?! \(Guangzhou\))|Hangzhou|Jin/i, 'China', 700, 26],
+  [/Guangzhou/i, 'Guangzhou', 800, 44],
+  [/Korea|Seoul|Silla|Baekje/i, 'Korea', 915, 26],
+];
+const sx = (name: string) => {
+  for (const [re, , xpos] of stations) if (re.test(name)) return xpos;
+  return 500;
+};
+const uniqueStations = [...new Map(stations.map(([, lab, xpos, yrow]) => [lab, [xpos, yrow]])).entries()];
+const Y0 = 78, ROW = 46;
+const H = Y0 + routed.length * ROW + 16;
+// each journey implicitly starts from Korea (all travellers are Korean monks except Dhyānabhadra, India→Korea)
+---
+<figure>
+  <svg viewBox={`0 0 1000 ${H}`} role="img" aria-label="Eight documented journey routes between Korea, China, Central Asia, Tibet, India and Persia, drawn as station-to-station ribbons. Six are Silla-era monks travelling west; one is Dhyanabhadra travelling east to Korea in the fourteenth century; one is the archaeologist Hwang Su-yong in 1962.">
+    <style>
+      .cor-station { font: 600 11.5px var(--sans); fill: var(--muted); }
+      .cor-name { font: 600 13px var(--sans); fill: var(--ink); }
+      .cor-years { font: 11px var(--sans); fill: var(--faint); }
+      .cor-line { fill: none; stroke-width: 2.5; stroke-linecap: round; }
+      .cor-dot { stroke: var(--paper); stroke-width: 1.5; }
+    </style>
+    {uniqueStations.map(([lab, [xpos, yrow]]) => (
+      <>
+        <text class="cor-station" x={xpos} y={yrow} text-anchor="middle">{lab}</text>
+        <line x1={xpos} y1="52" x2={xpos} y2={H - 8} stroke="var(--rule)" stroke-dasharray="2 5" />
+      </>
+    ))}
+    {routed.map((j, i) => {
+      const y = Y0 + i * ROW;
+      const pts = j.points.map((p) => sx(p.name));
+      const col = `var(--${j.band.toLowerCase()})`;
+      const dashed = j.precision === 'APPROX' || !j.start;
+      const path = pts.map((xp, k) => (k === 0 ? `M ${xp} ${y}` : `L ${xp} ${y}`)).join(' ');
+      const east = pts[pts.length - 1] > pts[0];
+      return (
+        <>
+          <text class="cor-name" x="18" y={y - 8}>{j.person_name}</text>
+          <text class="cor-years" x="18" y={y + 8}>{j.start ? `${j.start}–${j.end || '?'}` : 'undated (floruit-derived)'} · {j.band}</text>
+          <path class="cor-line" d={path} stroke={col} stroke-dasharray={dashed ? '5 5' : undefined} />
+          {pts.map((xp) => <circle class="cor-dot" cx={xp} cy={y} r="4.5" fill={col} />)}
+          <path d={east ? `M ${pts[pts.length-1]+7} ${y} l -8 -5 v 10 z` : `M ${pts[pts.length-1]-7} ${y} l 8 -5 v 10 z`} fill={col} />
+        </>
+      );
+    })}
+  </svg>
+  <figcaption>
+    The eight journeys with documented intermediate stations, drawn station-to-station (west at
+    left). Dashed ribbons are undated travels whose windows are derived from the person's floruit.
+    The remaining {story.journeys.length - routed.length} carried journeys record endpoints only
+    and are deliberately not drawn as routes — an endpoint pair is not an itinerary.
+  </figcaption>
+  <details class="chart-table">
+    <summary>Data table for this figure</summary>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Journey</th><th>Person</th><th>Cohort</th><th>Dates</th><th>Stations</th></tr></thead>
+      <tbody>
+        {routed.map((j) => (
+          <tr><td>{j.id}</td><td>{j.person_name}</td><td>{j.band}</td><td>{j.start ? `${j.start}–${j.end || '?'}` : 'undated'}</td><td>{j.points.map((p) => p.name).join(' → ')}</td></tr>
+        ))}
+      </tbody>
+    </table></div>
+  </details>
+</figure>

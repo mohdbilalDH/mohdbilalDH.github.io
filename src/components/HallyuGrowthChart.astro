@@ -1,0 +1,61 @@
+---
+// Three-period bar chart of Hallyu-vocabulary articles in the licensed
+// full-text corpus (ProQuest: TOI + HT + IE). Direct labels, linear scale —
+// the near-silence before 2011 is the finding, so nothing is log-scaled away.
+import hallyu from '../data/hallyu.json';
+
+const periods = hallyu.proquest_periods;
+const MAX = Math.max(...periods.map((p) => p.count));
+const X0 = 90, BARW = 240, GAP = 46, Y1 = 320, H = 270;
+const W = X0 + periods.length * (BARW + GAP) + 30;
+const h = (c) => Math.max((c / MAX) * H, 2.5);
+---
+<figure>
+  <div class="fig-head">
+    <span class="fig-no">Figure · Hallyu in the Indian Press</span>
+    <p class="fig-title">
+      The English-language national press was nearly silent on Hallyu until 2011,
+      then coverage grew twenty-fold after 2017
+    </p>
+  </div>
+  <svg viewBox={`0 0 ${W} 370`} role="img"
+    aria-label={`Bar chart. Hallyu-vocabulary articles in Times of India, Hindustan Times and Indian Express full text: ${periods.map((p) => `${p.label}: ${p.count}`).join('; ')}.`}>
+    {periods.map((p, i) => {
+      const x = X0 + i * (BARW + GAP);
+      return (
+        <>
+          <rect x={x} y={Y1 - h(p.count)} width={BARW} height={h(p.count)}
+            fill="var(--b6)" opacity={0.28 + 0.36 * i} rx="2" />
+          <text x={x + BARW / 2} y={Y1 - h(p.count) - 12} text-anchor="middle"
+            font-family="var(--sans)" font-size="26" font-weight="600" fill="var(--ink)">
+            {p.count.toLocaleString('en-US')}
+          </text>
+          <text x={x + BARW / 2} y={Y1 + 28} text-anchor="middle"
+            font-family="var(--sans)" font-size="19" fill="var(--muted)">{p.label}</text>
+        </>
+      );
+    })}
+    <line x1={X0 - 14} y1={Y1} x2={W - 20} y2={Y1} stroke="var(--rule)" stroke-width="1.5" />
+  </svg>
+  <figcaption>
+    Articles matching the project's Hallyu vocabulary in licensed full text (ProQuest:
+    Times of India, Hindustan Times, Indian Express), searched 2026-08-18. Full-text
+    coverage begins 2005–2009 depending on the paper, so the first bar is a floor, not
+    a census. Across 2000–2010 the same corpus contains {hallyu.korea_baseline_2000_2010.toLocaleString('en-US')}
+    Korea-related articles — but the words “Hallyu” or “Korean wave” appear exactly
+    {hallyu.hallyu_term_uses_2000_2010} time.
+  </figcaption>
+  <details class="chart-table">
+    <summary>Data table</summary>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th scope="col">Period</th><th scope="col">Articles</th><th scope="col">Coverage note</th></tr></thead>
+        <tbody>
+          {periods.map((p) => (
+            <tr><td>{p.label}</td><td class="num">{p.count.toLocaleString('en-US')}</td><td>{p.note}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </details>
+</figure>

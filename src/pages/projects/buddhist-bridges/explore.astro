@@ -1,0 +1,377 @@
+---
+import Project from '../../../layouts/Project.astro';
+import PersonCard from '../../../components/PersonCard.astro';
+import people from '../../../data/people.json';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const TYPO = {
+  PILGRIM_VISITOR: 'pilgrim', TEXTUAL_MEDIATOR: 'textual mediator', STUDENT: 'student',
+  RESIDENT_WORKER: 'resident', ENCOUNTER_FIGURE: 'encounter', INDIRECT_INFLUENCER: 'indirect',
+  PLANNED_PILGRIM: 'planned pilgrim',
+};
+const life = (p) => {
+  if (p.birth && p.death) return `${p.birth}–${p.death}`;
+  if (p.birth) return `b. ${p.birth}`;
+  if (p.floruit[0]) return `fl. ${p.floruit[0]}–${p.floruit[1]} ?`;
+  return 'undated';
+};
+---
+<Project title="Buddhist Bridges — Explore the Evidence" description="The full timeline instrument and prosopographical register behind Five Bridges, One Silence.">
+  <style>
+    .tl-controls { font-family: var(--sans); display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin: 1.2rem 0 0.6rem; }
+    .preset { font: 600 0.8rem/1.3 var(--sans); padding: 0.4rem 0.8rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--card); color: var(--ink); cursor: pointer; }
+    .preset[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+    .zoombar { font-family: var(--sans); font-size: 0.76rem; color: var(--muted); display: flex; gap: 0.7rem; margin: 0.3rem 0 0.6rem; flex-wrap: wrap; }
+    .zoombar button { font: 0.76rem var(--sans); border: none; background: none; color: var(--link); cursor: pointer; padding: 0; text-decoration: underline; text-underline-offset: 2px; }
+    .zoombar button[aria-pressed="true"] { color: var(--ink); font-weight: 600; text-decoration: none; }
+    #tl-chart { position: relative; }
+    #tl-chart svg { display: block; width: 100%; height: auto; background: var(--paper); }
+    #tl-tip { position: absolute; pointer-events: none; display: none; z-index: 20; background: var(--card); border: 1px solid var(--rule); border-radius: 6px; box-shadow: 0 3px 14px rgba(0,0,0,0.18); padding: 0.55rem 0.7rem; max-width: 330px; font: 0.78rem/1.5 var(--sans); }
+    #tl-tip h4 { margin: 0 0 0.15rem; font-size: 0.84rem; }
+    #tl-tip .tt-sub { color: var(--muted); }
+    details.adv { font-family: var(--sans); font-size: 0.8rem; margin: 0.4rem 0 1rem; }
+    details.adv summary { color: var(--link); cursor: pointer; }
+    details.adv .row { display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; padding: 0.6rem 0 0.2rem; color: var(--muted); }
+    details.adv label { cursor: pointer; }
+    .reg-search { font: 0.9rem var(--sans); padding: 0.45rem 0.7rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); color: var(--ink); width: min(320px, 100%); }
+    .reg-row { cursor: pointer; }
+    .reg-row:hover td { background: var(--card); }
+  </style>
+
+  <div class="wrap-wide" style="padding-top: 2.6rem;">
+    <p class="small"><a href={`${base}/projects/buddhist-bridges/`}>← Five bridges, one silence</a></p>
+    <h1 style="font-size: 1.8rem;">Explore the evidence</h1>
+    <p class="lede" style="max-width: 46rem;">
+      Every dated mark in the frozen dataset, and the complete register of the 43 mediators.
+      Any person opens to the full cited record.
+    </p>
+
+    <h2 style="font-size: 1.2rem;">Timeline, 300–2026</h2>
+    <div class="tl-controls" role="group" aria-label="Timeline presets">
+      <button class="preset" data-preset="bridges" aria-pressed="true">The five bridges</button>
+      <button class="preset" data-preset="moved" aria-pressed="false">Who moved?</button>
+      <button class="preset" data-preset="texts" aria-pressed="false">What crossed without travel?</button>
+      <button class="preset" data-preset="institutions" aria-pressed="false">Who organizes it now?</button>
+    </div>
+    <div class="zoombar" role="group" aria-label="Zoom">
+      <span>Zoom:</span>
+      <button data-zoom="full" aria-pressed="true">Full span</button>
+      <button data-zoom="B1">300–900</button>
+      <button data-zoom="B2">900–1392</button>
+      <button data-zoom="modern">1890–2027</button>
+    </div>
+    <details class="adv">
+      <summary>Advanced filters</summary>
+      <div class="row" id="adv-lanes"></div>
+      <div class="row">
+        <label><input type="checkbox" id="adv-corrob"> corroborated only (≥2 sources)</label>
+        <label><input type="checkbox" id="adv-context"> show context/excluded (dimmed)</label>
+        <label><input type="checkbox" id="adv-legendary"> show legendary material</label>
+      </div>
+    </details>
+    <div id="tl-chart" data-base={base}><div id="tl-tip" role="status"></div></div>
+    <p class="small" id="tl-count" aria-live="polite"></p>
+    <p class="small" style="max-width: 46rem;">
+      Solid = explicitly dated · fuzzy/dashed = floruit or approximate · hatched = single source ·
+      ✕ = documented negative · the gray ribbon is record density per decade (a documentation
+      measure, never used to size a mark). Undated records are listed in the register below with
+      “undated”, never placed on the axis.
+    </p>
+
+    <h2 style="font-size: 1.2rem; margin-top: 3rem;">The register</h2>
+    <p class="small" style="max-width: 46rem;">All {people.people.length} carried mediators. Search by name, era, or mediation type; select a row for the full record.</p>
+    <input class="reg-search" id="reg-search" type="search" placeholder="Search the 43 mediators…" aria-label="Search register" />
+    <div class="tablewrap">
+      <table id="reg-table">
+        <thead><tr><th>Name</th><th></th><th>Era</th><th>Dates</th><th>Mediation</th><th>Confidence</th></tr></thead>
+        <tbody>
+          {people.people.map((p) => (
+            <tr class="reg-row" data-person={p.id} data-search={`${p.name} ${p.hangul} ${p.band} ${TYPO[p.typology] ?? p.typology}`.toLowerCase()} tabindex="0">
+              <td style="font-weight: 600;">{p.name}</td>
+              <td style="color: var(--muted);">{p.hangul}</td>
+              <td><span class="badge" style={`color: var(--${p.band.toLowerCase()});`}>{p.band}</span></td>
+              <td class="num">{life(p)}</td>
+              <td>{TYPO[p.typology] ?? p.typology.toLowerCase()}</td>
+              <td><span class={`badge ${p.confidence.toLowerCase()}`}>{p.confidence}</span>{p.single_source && <span class="badge">1 src</span>}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <PersonCard />
+
+  <script>
+    // ——— register ———
+    document.querySelectorAll('.reg-row').forEach((r) => {
+      const open = () => window.__bbShowPerson(r.dataset.person);
+      r.addEventListener('click', open);
+      r.addEventListener('keydown', (ev) => { if (ev.key === 'Enter') open(); });
+    });
+    document.getElementById('reg-search').addEventListener('input', (ev) => {
+      const q = ev.target.value.trim().toLowerCase();
+      document.querySelectorAll('.reg-row').forEach((r) => {
+        r.style.display = !q || r.dataset.search.includes(q) ? '' : 'none';
+      });
+    });
+
+    // ——— timeline instrument (reads the validated timeline.json export) ———
+    const root = document.getElementById('tl-chart');
+    const BASE = root.dataset.base || '';
+    const TIP = document.getElementById('tl-tip');
+    const LANE_LABELS = {
+      people: 'People', travels: 'Travels', texts: 'Texts & translations',
+      institutions: 'Institutions', events: 'Events', encounters: 'Encounters', negatives: 'Documented negatives',
+    };
+    const PRESETS = {
+      bridges: { lanes: ['people', 'events'], zoom: 'full' },
+      moved: { lanes: ['people', 'travels'], zoom: 'full' },
+      texts: { lanes: ['texts', 'people'], zoom: 'full' },
+      institutions: { lanes: ['institutions', 'events'], zoom: 'modern' },
+    };
+    const ZOOMS = { full: [300, 2027], B1: [280, 920], B2: [880, 1410], modern: [1890, 2027] };
+    const BANDCOL = { B1: 'var(--b1)', B2: 'var(--b2)', B3: 'var(--void)', B4: 'var(--b4)', B5: 'var(--b5)', B6: 'var(--b6)' };
+
+    let data, state = {
+      lanes: new Set(PRESETS.bridges.lanes), domain: ZOOMS.full.slice(),
+      corrob: false, context: false, legendary: false, preset: 'bridges',
+    };
+
+    fetch(`${BASE}/data/timeline.json`).then((r) => r.json()).then((d) => {
+      data = d;
+      buildAdvancedLanes();
+      render();
+    });
+
+    function buildAdvancedLanes() {
+      const box = document.getElementById('adv-lanes');
+      box.innerHTML = Object.entries(LANE_LABELS).map(([k, v]) =>
+        `<label><input type="checkbox" data-lane="${k}" ${state.lanes.has(k) ? 'checked' : ''}> ${v}</label>`).join('');
+      box.addEventListener('change', (e) => {
+        const lane = e.target.dataset.lane;
+        if (!lane) return;
+        e.target.checked ? state.lanes.add(lane) : state.lanes.delete(lane);
+        clearPresetPressed(); render();
+      });
+    }
+    document.querySelectorAll('.preset').forEach((b) => b.addEventListener('click', () => {
+      state.preset = b.dataset.preset;
+      const p = PRESETS[state.preset];
+      state.lanes = new Set(p.lanes);
+      state.domain = ZOOMS[p.zoom].slice();
+      document.querySelectorAll('.preset').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      setZoomPressed(p.zoom);
+      buildAdvancedLanes(); render();
+    }));
+    function clearPresetPressed() {
+      document.querySelectorAll('.preset').forEach((x) => x.setAttribute('aria-pressed', 'false'));
+    }
+    function setZoomPressed(key) {
+      document.querySelectorAll('.zoombar button').forEach((x) => x.setAttribute('aria-pressed', String(x.dataset.zoom === key)));
+    }
+    document.querySelectorAll('.zoombar button').forEach((b) => b.addEventListener('click', () => {
+      state.domain = ZOOMS[b.dataset.zoom].slice();
+      setZoomPressed(b.dataset.zoom); render();
+    }));
+    ['adv-corrob', 'adv-context', 'adv-legendary'].forEach((id) => {
+      document.getElementById(id).addEventListener('change', (e) => {
+        if (id === 'adv-corrob') state.corrob = e.target.checked;
+        if (id === 'adv-context') state.context = e.target.checked;
+        if (id === 'adv-legendary') state.legendary = e.target.checked;
+        render();
+      });
+    });
+
+    const NS = 'http://www.w3.org/2000/svg';
+    const el = (tag, attrs, parent) => {
+      const n = document.createElementNS(NS, tag);
+      for (const [k, v] of Object.entries(attrs)) n.setAttribute(k, v);
+      if (parent) parent.appendChild(n);
+      return n;
+    };
+
+    function visibleMarks() {
+      return data.marks.filter((m) => {
+        if (!state.lanes.has(m.lane)) return false;
+        if (m.legendary && !state.legendary) return false;
+        if (m.scope !== 'CARRIED' && !state.context) return false;
+        if (state.corrob && m.source_count < 2) return false;
+        if (m.end < state.domain[0] || m.start > state.domain[1]) return false;
+        return true;
+      });
+    }
+
+    function pack(marks, x, labelPad) {
+      const rows = [];
+      const out = new Map();
+      const sorted = [...marks].sort((a, b) => a.start - b.start || a.end - b.end);
+      for (const m of sorted) {
+        const s = x(m.start), e = Math.max(x(m.end), x(m.start) + 8) + (m.label ? labelPad : 0);
+        let placed = false;
+        for (let i = 0; i < rows.length; i++) {
+          if (s > rows[i] + 4) { out.set(m.id, i); rows[i] = e; placed = true; break; }
+        }
+        if (!placed) { rows.push(e); out.set(m.id, rows.length - 1); }
+      }
+      return { rowOf: out, nRows: rows.length };
+    }
+
+    function render() {
+      const [t0, t1] = state.domain;
+      const W = 1160, M = { l: 10, r: 10 };
+      const x = (yr) => M.l + ((yr - t0) / (t1 - t0)) * (W - M.l - M.r);
+      const marks = visibleMarks();
+      const zoomed = (t1 - t0) < 600;
+      const padFor = (lane) =>
+        lane === 'people' || lane === 'institutions' ? (zoomed ? 130 : 78) : (zoomed ? 360 : 20);
+
+      const old = root.querySelector('svg');
+      if (old) old.remove();
+      const svg = el('svg', { role: 'img', 'aria-label': 'Timeline chart; the register below is the text alternative.' });
+
+      let y = 34;
+      const laneGeom = [];
+      for (const lane of data.lane_order) {
+        if (!state.lanes.has(lane)) continue;
+        const lm = marks.filter((m) => m.lane === lane);
+        if (!lm.length) continue;
+        const rh = lane === 'people' || lane === 'institutions' ? 16 : 14;
+        const { rowOf, nRows } = pack(lm, x, padFor(lane));
+        laneGeom.push({ lane, lm, rowOf, y0: y + 20, rh });
+        y += 20 + nRows * rh + 18;
+      }
+      const AXIS_Y = y + 6, RIB_Y = AXIS_Y + 26, H = RIB_Y + 40;
+      svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+
+      const defs = el('defs', {}, svg);
+      const pat = el('pattern', { id: 'ss-hatch', width: '5', height: '5', patternUnits: 'userSpaceOnUse' }, defs);
+      el('path', { d: 'M0 5 L5 0', stroke: 'var(--paper)', 'stroke-width': '1.4', opacity: '0.85' }, pat);
+
+      let modernLabelDone = false;
+      for (const b of data.bands) {
+        const s = Math.max(b.start, t0), e = Math.min(b.end, t1);
+        if (e <= s) continue;
+        if (b.id !== 'B3') el('rect', { x: x(s), y: 20, width: x(e) - x(s), height: AXIS_Y - 20, fill: BANDCOL[b.id], opacity: '0.07' }, svg);
+        if (x(e) - x(s) > 90) {
+          const t = el('text', { x: x(s) + 4, y: 14, fill: 'var(--faint)', style: 'font: 600 11px var(--sans)' }, svg);
+          t.textContent = `${b.id} · ${b.start}–${b.end === 2027 ? 2026 : b.end}`;
+        } else if (!modernLabelDone && b.id >= 'B4') {
+          const t = el('text', { x: x(Math.min(2027, t1)), y: 14, fill: 'var(--faint)', style: 'font: 600 11px var(--sans)', 'text-anchor': 'end' }, svg);
+          t.textContent = 'B4–B6 · 1900–2026';
+          modernLabelDone = true;
+        }
+      }
+      const g0 = data.meta.gaps[0];
+      if (g0.start < t1 && g0.end > t0 && (t1 - t0) > 600) {
+        const mid = (x(Math.max(g0.start, t0)) + x(Math.min(g0.end, t1))) / 2;
+        el('line', { x1: x(Math.max(g0.start, t0)), y1: (AXIS_Y + 20) / 2, x2: x(Math.min(g0.end, t1)), y2: (AXIS_Y + 20) / 2, stroke: 'var(--void)', 'stroke-width': '2', 'stroke-dasharray': '1 7', 'stroke-linecap': 'round' }, svg);
+        const t = el('text', { x: mid, y: (AXIS_Y + 20) / 2 - 10, 'text-anchor': 'middle', fill: 'var(--muted)', style: 'font: italic 13px var(--serif)' }, svg);
+        t.textContent = 'Joseon: no carried records — a documented finding, not missing data';
+      }
+
+      for (const { lane, lm, rowOf, y0, rh } of laneGeom) {
+        const lt = el('text', { x: M.l, y: y0 - 7, fill: 'var(--muted)', style: 'font: 600 10px var(--sans); letter-spacing: 0.08em; text-transform: uppercase' }, svg);
+        lt.textContent = LANE_LABELS[lane];
+        for (const m of lm) {
+          const ry = y0 + rowOf.get(m.id) * rh;
+          drawMark(svg, m, x, ry, rh, zoomed);
+        }
+      }
+
+      el('line', { x1: M.l, y1: AXIS_Y, x2: W - M.r, y2: AXIS_Y, stroke: 'var(--rule)' }, svg);
+      const step = (t1 - t0) > 1000 ? 200 : (t1 - t0) > 200 ? 100 : 20;
+      for (let yr = Math.ceil(t0 / step) * step; yr <= t1; yr += step) {
+        el('line', { x1: x(yr), y1: AXIS_Y - 3, x2: x(yr), y2: AXIS_Y + 3, stroke: 'var(--faint)' }, svg);
+        const t = el('text', { x: x(yr), y: AXIS_Y + 15, 'text-anchor': 'middle', fill: 'var(--faint)', style: 'font: 10.5px var(--sans)' }, svg);
+        t.textContent = yr;
+      }
+
+      const rd = data.ribbons.record_density;
+      const maxd = Math.max(...Object.values(rd));
+      const rt = el('text', { x: M.l, y: RIB_Y - 3, fill: 'var(--faint)', style: 'font: 600 9.5px var(--sans); letter-spacing: 0.07em; text-transform: uppercase' }, svg);
+      rt.textContent = 'Record density (dated carried records / decade)';
+      for (const [dec, n] of Object.entries(rd)) {
+        const yr = +dec;
+        if (yr < t0 || yr > t1) continue;
+        const h = 4 + (n / maxd) * 22;
+        el('rect', { x: x(yr), y: RIB_Y + 26 - h, width: Math.max(2, x(yr + 10) - x(yr) - 1), height: h, fill: 'var(--faint)', opacity: '0.5' }, svg);
+      }
+
+      root.appendChild(svg);
+      document.getElementById('tl-count').textContent =
+        `${marks.length} marks shown of ${data.marks.length} in the dataset · scope: ${state.context ? 'carried + context/excluded' : 'carried only'}${state.corrob ? ' · corroborated only' : ''}`;
+    }
+
+    function drawMark(svg, m, x, ry, rh, zoomed) {
+      const col = BANDCOL[m.band] || 'var(--faint)';
+      const fuzzy = m.precision === 'FLORUIT' || m.precision === 'APPROX';
+      const dim = m.scope !== 'CARRIED';
+      const g = el('g', { style: `cursor: pointer; ${dim ? 'opacity: 0.35;' : ''}`, tabindex: '0', role: 'img' }, svg);
+      const title = el('title', {}, g);
+      title.textContent = `${m.label} (${fmtSpan(m)})`;
+
+      const x0 = x(Math.max(m.start, state.domain[0]));
+      const x1 = Math.max(x(Math.min(m.end, state.domain[1])), x0 + 6);
+      const h = rh - 5;
+
+      if (m.kind === 'lifeline' || m.kind === 'institution') {
+        el('rect', { x: x0, y: ry, width: x1 - x0, height: h, rx: 3, fill: col, opacity: fuzzy ? '0.4' : '0.9', stroke: fuzzy ? col : 'none', 'stroke-dasharray': fuzzy ? '4 3' : 'none' }, g);
+        if (m.single_source) el('rect', { x: x0, y: ry, width: x1 - x0, height: h, rx: 3, fill: 'url(#ss-hatch)' }, g);
+        for (const tk of m.ticks || []) {
+          if (tk.year >= state.domain[0] && tk.year <= state.domain[1])
+            el('circle', { cx: x(tk.year), cy: ry + h / 2, r: 2.2, fill: 'var(--ink)', opacity: '0.75' }, g);
+        }
+      } else if (m.kind === 'event') {
+        el('circle', { cx: x0, cy: ry + h / 2, r: 5, fill: col, stroke: m.status === 'UNRESOLVED' ? 'var(--ink)' : 'none', 'stroke-dasharray': m.status === 'UNRESOLVED' ? '2 2' : 'none' }, g);
+        if (m.single_source) el('circle', { cx: x0, cy: ry + h / 2, r: 7.5, fill: 'none', stroke: col, 'stroke-dasharray': '2 3' }, g);
+      } else if (m.kind === 'negative') {
+        const t = el('text', { x: x0, y: ry + h, fill: 'var(--negative)', 'text-anchor': 'middle', style: 'font: 700 12px var(--sans)' }, g);
+        t.textContent = '✕';
+      } else {
+        const shape = m.kind === 'text' ? 'M -5 4 L 0 -5 L 5 4 Z' : m.kind === 'travel' ? 'M -5 0 L 0 -5 L 5 0 L 0 5 Z' : 'M -4 -4 h 8 v 8 h -8 Z';
+        el('path', { d: shape, transform: `translate(${x0}, ${ry + h / 2})`, fill: fuzzy ? 'none' : col, stroke: col, 'stroke-width': '1.6' }, g);
+        if (fuzzy && m.end > m.start) {
+          el('line', { x1: x0, y1: ry + h / 2, x2: x1, y2: ry + h / 2, stroke: col, 'stroke-dasharray': '3 4', opacity: '0.7' }, g);
+        }
+      }
+      const showLabel = m.kind === 'lifeline' || m.kind === 'institution' || zoomed;
+      if (showLabel) {
+        const txt = m.label + (fuzzy ? ' ?' : '');
+        const estW = txt.length * (zoomed ? 6.6 : 6.0);
+        const flip = x1 + 5 + estW > 1150;
+        const t = el('text', {
+          x: flip ? x0 - 5 : x1 + 5, y: ry + h - 1, fill: 'var(--ink)',
+          'text-anchor': flip ? 'end' : 'start',
+          style: `font: ${zoomed ? 11.5 : 10.5}px var(--sans)`,
+        }, g);
+        t.textContent = txt;
+      }
+
+      g.addEventListener('mousemove', (ev) => showTip(ev, m));
+      g.addEventListener('mouseleave', hideTip);
+      g.addEventListener('focus', (ev) => showTip(ev, m));
+      g.addEventListener('blur', hideTip);
+      if (m.id.startsWith('P-')) g.addEventListener('click', () => window.__bbShowPerson && window.__bbShowPerson(m.id));
+    }
+
+    const fmtSpan = (m) => m.start === m.end ? `${m.start}` : `${m.start}–${m.end}`;
+
+    function showTip(ev, m) {
+      TIP.innerHTML = `
+        <h4>${esc(m.label)}</h4>
+        <div class="tt-sub">${esc(m.sub || m.kind)} · ${m.band} · ${fmtSpan(m)}${m.precision !== 'EXPLICIT' && m.precision !== 'YEAR' ? ` · ${m.precision.toLowerCase()}` : ''}</div>
+        <div style="margin-top: 0.25rem;"><span class="badge ${m.confidence.toLowerCase()}">${m.confidence}</span>
+        ${m.single_source ? '<span class="badge">single source</span>' : `<span class="badge">${m.source_count} sources</span>`}
+        ${m.scope !== 'CARRIED' ? `<span class="badge">${m.scope.toLowerCase()}</span>` : ''}</div>
+        ${m.id.startsWith('P-') ? '<div class="tt-sub" style="margin-top: 0.25rem;">Click for the full cited record</div>' : ''}`;
+      const r = root.getBoundingClientRect();
+      TIP.style.display = 'block';
+      const tx = Math.min(ev.clientX - r.left + 14, r.width - 340);
+      TIP.style.left = `${Math.max(0, tx)}px`;
+      TIP.style.top = `${ev.clientY - r.top + 14}px`;
+    }
+    function hideTip() { TIP.style.display = 'none'; }
+    const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  </script>
+</Project>

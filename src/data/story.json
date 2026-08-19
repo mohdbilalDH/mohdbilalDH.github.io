@@ -1,0 +1,1790 @@
+{
+ "_meta": {
+  "dataset": "Buddhist Bridges V3.0 (frozen 2026-08-17)",
+  "manifest_check": "769b00c67fdd1a6e",
+  "generated": "2026-08-17",
+  "note": "Curated data for the five-chapter argument."
+ },
+ "bands": [
+  {
+   "id": "B1",
+   "label": "Silla pilgrims go west",
+   "start": 300,
+   "end": 900
+  },
+  {
+   "id": "B2",
+   "label": "The master from Magadha",
+   "start": 900,
+   "end": 1392
+  },
+  {
+   "id": "B3",
+   "label": "The long silence (Joseon)",
+   "start": 1392,
+   "end": 1900
+  },
+  {
+   "id": "B4",
+   "label": "Paper bridges",
+   "start": 1900,
+   "end": 1945
+  },
+  {
+   "id": "B5",
+   "label": "Thin threads",
+   "start": 1945,
+   "end": 1990
+  },
+  {
+   "id": "B6",
+   "label": "The institutional turn",
+   "start": 1990,
+   "end": 2027
+  }
+ ],
+ "cohort_sizes": {
+  "B1": 18,
+  "B2": 6,
+  "B3": 0,
+  "B4": 6,
+  "B5": 5,
+  "B6": 8
+ },
+ "direction_by_band": {
+  "B1": {
+   "BIDIRECTIONAL": 1,
+   "INDIA_TO_KOREA": 8,
+   "KOREA_TO_INDIA": 8,
+   "UNCERTAIN": 1
+  },
+  "B2": {
+   "INDIA_TO_KOREA": 6
+  },
+  "B4": {
+   "INDIA_TO_KOREA": 5,
+   "KOREA_TO_INDIA": 1
+  },
+  "B6": {
+   "BIDIRECTIONAL": 3,
+   "INDIA_TO_KOREA": 4,
+   "KOREA_TO_INDIA": 1
+  },
+  "B5": {
+   "INDIA_TO_KOREA": 4,
+   "KOREA_TO_INDIA": 1
+  }
+ },
+ "mechanism_by_band": {
+  "B1": {
+   "PHYSICAL_MOVEMENT": 31,
+   "TEXTUAL_TRANSMISSION": 17,
+   "INSTITUTIONAL": 3,
+   "PERSON_ENCOUNTER": 1
+  },
+  "B2": {
+   "TEXTUAL_TRANSMISSION": 4,
+   "PHYSICAL_MOVEMENT": 6,
+   "INSTITUTIONAL": 4,
+   "PERSON_ENCOUNTER": 3,
+   "INDIRECT_INFLUENCE": 6
+  },
+  "B4": {
+   "TEXTUAL_TRANSMISSION": 10,
+   "PERSON_ENCOUNTER": 2,
+   "INDIRECT_INFLUENCE": 7,
+   "PHYSICAL_MOVEMENT": 4
+  },
+  "B6": {
+   "PHYSICAL_MOVEMENT": 27,
+   "TEXTUAL_TRANSMISSION": 11,
+   "INSTITUTIONAL": 47
+  },
+  "B5": {
+   "PHYSICAL_MOVEMENT": 8,
+   "PERSON_ENCOUNTER": 6,
+   "TEXTUAL_TRANSMISSION": 2,
+   "INSTITUTIONAL": 4
+  }
+ },
+ "residents": [
+  {
+   "id": "P-0006",
+   "name": "Marananta",
+   "hangul": "마라난타",
+   "hanja": "摩羅難陀",
+   "variants": "Mallananda; 摩羅難陀; 摩羅難陁",
+   "band": "B1",
+   "nationality": "UNCERTAIN (Western Regions/Serindia; some scholars argue Indian; came via Eastern Jin China)",
+   "role": "Buddhist monk ('foreign monk' 胡僧)",
+   "roles": [
+    "MONK_GENERAL"
+   ],
+   "tradition": [
+    "GENERAL_BUDDHISM"
+   ],
+   "typology": "RESIDENT_WORKER",
+   "movement": "worked",
+   "direction": "INDIA_TO_KOREA",
+   "birth": "",
+   "death": "",
+   "birth_precision": "UNKNOWN",
+   "floruit": [
+    "384",
+    "384"
+   ],
+   "floruit_precision": "APPROX",
+   "india_connection": "If Indian (per some scholars, e.g., Lee Sang-ho 1960), the first Indian Buddhist to reach Korea; at minimum connected to Indian Buddhism via Central Asian monastic networks of the Jin period",
+   "korea_connection": "Arrived Baekje 384 (9th month, King Chimnyu's 1st year); received by the king; Buddhism 'began from this' (Samguk Sagi); temple built 385",
+   "evidence": "Samguk Sagi (sg_024r_0100_0030) and Samguk Yusa records; both mark 384 as the start of Baekje Buddhism",
+   "significance": "Traditional founder of Baekje Buddhism; earliest documented Buddhist arrival in Korean history",
+   "confidence": "MEDIUM",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "3",
+   "sources": [
+    {
+     "id": "S-0150",
+     "citation": "Samguk Sagi via National Institute of Korean History (sg_024r_0100_0030)",
+     "url": "https://db.history.go.kr/id/sg_024r_0100_0030",
+     "type": "PRIMARY",
+     "reliability": "AUTHORITATIVE"
+    },
+    {
+     "id": "S-0154",
+     "citation": "Samguk Yusa, Marananta entry (sy_003r_0010_0020_0010)",
+     "url": "https://db.history.go.kr/item/compareViewer.do?levelId=sy_003r_0010_0020_0010",
+     "type": "PRIMARY",
+     "reliability": "AUTHORITATIVE"
+    },
+    {
+     "id": "S-0044",
+     "citation": "Encyclopedia of Korean Culture, '마라난타' (인도의 승려)",
+     "url": "https://encykorea.aks.ac.kr/Article/E0017322",
+     "type": "TERTIARY",
+     "reliability": "AUTHORITATIVE"
+    }
+   ]
+  },
+  {
+   "id": "P-0012",
+   "name": "Baedalta",
+   "hangul": "",
+   "hanja": "倍達多",
+   "variants": "倍達多 (modern Sanskrit reconstruction not attested)",
+   "band": "B1",
+   "nationality": "INDIAN",
+   "role": "Indian Tripitaka master (三藏)",
+   "roles": [
+    "MONK_GENERAL"
+   ],
+   "tradition": [
+    "GENERAL_BUDDHISM"
+   ],
+   "typology": "RESIDENT_WORKER",
+   "movement": "worked",
+   "direction": "INDIA_TO_KOREA",
+   "birth": "",
+   "death": "",
+   "birth_precision": "UNKNOWN",
+   "floruit": [
+    "531",
+    "531"
+   ],
+   "floruit_precision": "APPROX",
+   "india_connection": "Indian monk who accompanied Gyeomik to Baekje in 531, carrying Sanskrit Abhidharma and Vinaya texts",
+   "korea_connection": "His arrival in Baekje (531) supported the establishment of the Vinaya school",
+   "evidence": "Korean Buddhist tradition (via Gyeomik narrative); encyclopedia entries on Baekje Vinaya",
+   "significance": "Attested Indian monk physically present in Korea; rare documented 6th-century India-to-Korea movement",
+   "confidence": "MEDIUM",
+   "status": "PARTIAL",
+   "single_source": false,
+   "source_count": "2",
+   "sources": [
+    {
+     "id": "S-0036",
+     "citation": "Encyclopedia.com, 'Kyŏmik' (Baekje Vinaya)",
+     "url": "https://www.encyclopedia.com/religion/dictionaries-thesauruses-pictures-and-press-releases/kyomik",
+     "type": "TERTIARY",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0171",
+     "citation": "Korean Wikipedia, '겸익'",
+     "url": "https://ko.wikipedia.org/wiki/겸익",
+     "type": "TERTIARY",
+     "reliability": "INSTITUTIONAL"
+    }
+   ]
+  },
+  {
+   "id": "P-0023",
+   "name": "Dhyānabhadra",
+   "hangul": "지공",
+   "hanja": "指空",
+   "variants": "Jikong (指空); Shikong; Śūnyadiśya-Dhyānabhadra; Zhikong Chanxian",
+   "band": "B2",
+   "nationality": "INDIAN (Magadha)",
+   "role": "Indian Buddhist master; Seon/Chan patriarch",
+   "roles": [
+    "MASTER_PATRIARCH",
+    "INSTITUTIONAL_LEADER"
+   ],
+   "tradition": [
+    "SEON_CHAN"
+   ],
+   "typology": "RESIDENT_WORKER",
+   "movement": "worked",
+   "direction": "INDIA_TO_KOREA",
+   "birth": "1289",
+   "death": "1363",
+   "birth_precision": "APPROX",
+   "floruit": [
+    "",
+    ""
+   ],
+   "floruit_precision": "",
+   "india_connection": "Born in Magadha (Indian royal family per tradition); ordained at Nalanda; famous in India before leaving",
+   "korea_connection": "Invited by King Ch'ungsuk (met at Mongol court); came to Goryeo 1326; founded Hoeamsa 1328 (reportedly modeled on Nalanda); influenced Korean Seon students incl. Naong Hyegeun and Muhak Chach'o; King Kongmin later sent his relics to Goryeo",
+   "evidence": "Hagiographical and scholastic records; temple foundation (Hoeamsa 1328); lineage transmission to Naong and Muhak",
+   "significance": "The last great Indian monk active in Korea; key figure in late-Goryeo Seon formation",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "5",
+   "sources": [
+    {
+     "id": "S-0052",
+     "citation": "Encyclopedia of Buddhism, 'Zhikong Chanxian'",
+     "url": "https://encyclopediaofbuddhism.org/wiki/Zhikong_Chanxian",
+     "type": "TERTIARY",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0164",
+     "citation": "Wikipedia, 'Dhyānabhadra'",
+     "url": "https://en.wikipedia.org/wiki/Dhy%C4%81nabhadra",
+     "type": "TERTIARY",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0185",
+     "citation": "Yangju Hoeamsa Museum (Yangju City), '지공선사' exhibit page",
+     "url": "http://www.yangju.go.kr/museum/contents.do?key=1652",
+     "type": "WEBSITE",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0041",
+     "citation": "Encyclopedia of Korean Culture, '지공선사 부도 및 석등' (Hoeamsa Jigong stupa)",
+     "url": "https://encykorea.aks.ac.kr/Article/E0054079",
+     "type": "TERTIARY",
+     "reliability": "AUTHORITATIVE"
+    },
+    {
+     "id": "S-0138",
+     "citation": "National Research Institute of Cultural Heritage, 금석문 DB: 양주 회암사지 지공선사 부도비 (stele text by Yi Saek)",
+     "url": "https://portal.nrich.go.kr/kor/ksmUsrView.do?menuIdx=584&ksm_idx=8573",
+     "type": "ARCHIVAL",
+     "reliability": "AUTHORITATIVE"
+    }
+   ]
+  },
+  {
+   "id": "P-0062",
+   "name": "Buddhavara (Ven.)",
+   "hangul": "붓다빠라",
+   "hanja": "",
+   "variants": "붓다빠라 스님; Phra Buddhavara",
+   "band": "B6",
+   "nationality": "KOREAN (South Korea; resident in India)",
+   "role": "Buddhist monk; abbot of Bunhwangsa Temple India (분황사, Bodh Gaya); Chancellor of Bodh Gaya International College of Buddhist Studies; principal of Bodh Gaya International Meditation School; abbot at Sati Aramma (Kimhae)",
+   "roles": [
+    "INSTITUTIONAL_LEADER",
+    "MONK_GENERAL"
+   ],
+   "tradition": [
+    "SEON_CHAN",
+    "THERAVADA_ORIENTED"
+   ],
+   "typology": "RESIDENT_WORKER",
+   "movement": "worked",
+   "direction": "KOREA_TO_INDIA",
+   "birth": "",
+   "death": "",
+   "birth_precision": "UNKNOWN",
+   "floruit": [
+    "2026",
+    "2026"
+   ],
+   "floruit_precision": "APPROX",
+   "india_connection": "Resident in Bodh Gaya leading Korean-led meditation training; signed academic-exchange MOU with University of Delhi (2026-04-23); honored in Korea as '인도 분황사 주지' (Beopbo, 2026-07-08)",
+   "korea_connection": "Foundational figure of Korean Buddhist institutions at Bodh Gaya; lecture circuits in Korea",
+   "evidence": "Delhi University MOU; multiple Korean Buddhist-press reports",
+   "significance": "Builder of the Korean Buddhist institutional bridgehead at Bodh Gaya",
+   "confidence": "MEDIUM",
+   "status": "VERIFIED",
+   "single_source": true,
+   "source_count": "1",
+   "sources": [
+    {
+     "id": "S-0018",
+     "citation": "BTN (2026-04-23), 붓다가야 국제승가대학-델리대학 MOU",
+     "url": "https://www.btnnews.tv/news/articleView.html?idxno=89786",
+     "type": "NEWS",
+     "reliability": "POPULAR"
+    }
+   ]
+  }
+ ],
+ "planned_pilgrims": [
+  {
+   "id": "P-0030",
+   "name": "Rabindranath Tagore",
+   "hangul": "라빈드라나트 타고르",
+   "hanja": "",
+   "variants": "Robindronath Thakur (Bengali); Korean: 타고르/타골/타아골",
+   "band": "B4",
+   "nationality": "INDIAN (Bengal)",
+   "role": "Poet; novelist; playwright; essayist; educator; first Asian Nobel laureate in Literature (1913)",
+   "roles": [
+    "LITERARY_FIGURE",
+    "NON_BUDDHIST_FIGURE"
+   ],
+   "tradition": [
+    "NON_BUDDHIST"
+   ],
+   "typology": "PLANNED_PILGRIM",
+   "movement": "planned",
+   "direction": "INDIA_TO_KOREA",
+   "birth": "1861",
+   "death": "1941",
+   "birth_precision": "YEAR",
+   "floruit": [
+    "",
+    ""
+   ],
+   "floruit_precision": "",
+   "india_connection": "India's national poet; the central Indian figure of Korea's literary imagination in the colonial era",
+   "korea_connection": "Signed a 6-line English message dated 1929-03-28 (Tokyo) later known as 'The Lamp of the East' (동방의 등불), delivered at Yokohama departure for the Korean people; published in Dong-a Ilbo Apr 1929, translated by Chu Yo-han; planned a Korea lecture in June 1929 (cancelled for health); sent 'The Song of the Defeated' to Chin Hak-mun in 1916 (published in Ch'ŏngch'un Nov 1917); met Ch'oe Nam-sŏn and Chin Hak-mun in Tokyo/Yokohama 1916",
+   "evidence": "Dong-a Ilbo archival record; Hong Eun-taek's studies (2012, 2014); Choi Seong-woo's rhetorical analysis (2022); Kim Ujo (2014) in 인도연구; 2011 bust at Daehak-ro (gift of the Indian government)",
+   "significance": "The single most important Indian figure in Korean cultural memory of this period; his 'lamp' message became a national symbol of hope",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "5",
+   "sources": [
+    {
+     "id": "S-0120",
+     "citation": "Kyosu.net (2012-12-17), Tagore message transmission account (Hong Eun-taek)",
+     "url": "https://www.kyosu.net/news/articleView.html?idxno=26437",
+     "type": "SECONDARY",
+     "reliability": "ACADEMIC"
+    },
+    {
+     "id": "S-0086",
+     "citation": "JoongAng Ilbo 분수대 (2012-12-10), 'Reading between the lines on Tagore'",
+     "url": "https://www.joongang.co.kr/article/10131809",
+     "type": "NEWS",
+     "reliability": "POPULAR"
+    },
+    {
+     "id": "S-0116",
+     "citation": "Park Jin-young, '동방의 등불은 시가 아닌 메모였다', koreatimes (2019-10-18)",
+     "url": "http://www.koreatimes.com/article/20191017/1274998",
+     "type": "NEWS",
+     "reliability": "POPULAR"
+    },
+    {
+     "id": "S-0094",
+     "citation": "Hong Eun-taek, 'The Problems of Korean Translation of Tagore's Poetry' (2014), KCI",
+     "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART001914468",
+     "type": "SECONDARY",
+     "reliability": "ACADEMIC"
+    },
+    {
+     "id": "S-0092",
+     "citation": "Choi Seong-woo / Choi Dong-ho, Tagore reception studies, KCI (ART002541946 / ART001612260)",
+     "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002541946",
+     "type": "SECONDARY",
+     "reliability": "ACADEMIC"
+    }
+   ]
+  },
+  {
+   "id": "P-0072",
+   "name": "Yi Yŏng-jae",
+   "hangul": "이영재",
+   "hanja": "李英宰",
+   "variants": "Lee Young-jae; Yi Yeong-jae; dharma names Paekkwang (白光), Pŏmnan (梵鸞), Chongwŏn (宗圓)",
+   "band": "B4",
+   "nationality": "KOREAN (colonial Korea)",
+   "role": "Monk (유학승); Buddhist reformer; first modern-era Korean monk to attempt an India pilgrimage",
+   "roles": [
+    "PILGRIM_MONK"
+   ],
+   "tradition": [
+    "SEON_CHAN"
+   ],
+   "typology": "PLANNED_PILGRIM",
+   "movement": "planned",
+   "direction": "KOREA_TO_INDIA",
+   "birth": "1900",
+   "death": "1927",
+   "birth_precision": "YEAR",
+   "floruit": [
+    "",
+    ""
+   ],
+   "floruit_precision": "",
+   "india_connection": "First modern-era Korean Buddhist pilgrimage attempt (1925): studied Sanskrit/Pali (Indian Philosophy) at Tokyo Imperial University; departed Yokohama 1925-11-09 for Ceylon (Sri Lanka) intending 2 years of study then an India pilgrimage; died in Ceylon 1927-10-12 before reaching India proper",
+   "korea_connection": "Colonial-era Buddhist reformer: '조선불교혁신론' (27 installments, Chosun Ilbo 1922); led the 조선불교동경유학생회 journal 금강저 (1924); travelogues 도석기/남국기/석란의 불교",
+   "evidence": "Ibulgyo 2021-02-03 biography (한국불교 격동 100년 series); Dong-A Ilbo 1927-10-27 obituary; KCI ART003193373; Beopbo series entry",
+   "significance": "Pioneer of modern Korea-India Buddhist engagement: first Korean monk in centuries to set out for India; his vow and writings mark the start of the modern pilgrimage era",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "5",
+   "sources": [
+    {
+     "id": "S-0075",
+     "citation": "Ibulgyo (불교신문) 2021-02-03, 이성수: '[한국불교 격동 100년] <1> 근대 최초 인도 순례한 이영재 스님' - full biography: born 1900 Cheongju; ordained 1918 Beopjusa; Nihon Univ 1920-23; Tokyo Imperial Univ Indian Philosophy (Sanskrit/Pali); departed Yokohama 1925-11-09 on Hakusan Maru; Ceylon Dec 1925; died 1927-10-12 in Ceylon aged 28; wrote 도석기/남국기/석란의 불교; drew taegeukgi for Mahabodhi Society Vesak in Kandy; Dong-A Ilbo 1927-10-27 obituary",
+     "url": "https://www.ibulgyo.com/news/articleView.html?idxno=210248",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0013",
+     "citation": "Beopbo (법보신문) series entry: '⑦ 이영재 스님(1900~1927)' - 1924 Nihon Univ grad; 1925 Sri Lanka via India pilgrimage; died en route",
+     "url": "https://www.beopbo.com/news/articleView.html?idxno=29123",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0101",
+     "citation": "KCI ART003193373: '이영재(李英宰, 1900~1927)의 남아시아 기행 탐구' - academic study of his Ceylon journey and pilgrimage writings",
+     "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003193373",
+     "type": "SECONDARY",
+     "reliability": "ACADEMIC"
+    },
+    {
+     "id": "S-0077",
+     "citation": "Ibulgyo (불교신문) 2026-04-15: '독일학자 찐머만, 근대 구법승 이영재 스님 재조명' - German scholar Zimmermann re-examines Lee Young-jae as first modern Korean Buddhist pilgrim",
+     "url": "https://www.ibulgyo.com/news/articleView.html?idxno=437401",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0072",
+     "citation": "Ibulgyo (불교신문) 2026-03-03: '성지(聖地)로 향하는 배에서 조선 불교의 미래를 고민하다' - paper on Lee Young-jae's 도석기 (space heterotopia; Buddhist college vision)",
+     "url": "https://www.ibulgyo.com/news/articleView.html?idxno=435895",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    }
+   ]
+  }
+ ],
+ "journeys": [
+  {
+   "id": "T-0001",
+   "person": "P-0001",
+   "person_name": "Hyecho",
+   "band": "B1",
+   "start": "719",
+   "end": "727",
+   "precision": "APPROX",
+   "purpose": "PILGRIMAGE",
+   "routed": true,
+   "route_description": "Guangzhou (sea) -> Five Indias -> Persia (Nishapur) -> overland via Pamir/Central Asia -> Kucha (Nov 727)",
+   "confidence": "HIGH",
+   "points": [
+    {
+     "name": "China (Guangzhou)",
+     "lat": "23.129",
+     "lon": "113.264"
+    },
+    {
+     "name": "India (Kashmir)",
+     "lat": "34.083",
+     "lon": "74.797"
+    },
+    {
+     "name": "Persia (Nishapur)",
+     "lat": "36.214",
+     "lon": "58.796"
+    },
+    {
+     "name": "Central Asia (Kucha)",
+     "lat": "41.725",
+     "lon": "82.95"
+    }
+   ]
+  },
+  {
+   "id": "T-0002",
+   "person": "P-0006",
+   "person_name": "Marananta",
+   "band": "B1",
+   "start": "384",
+   "end": "384",
+   "precision": "YEAR",
+   "purpose": "MISSIONARY",
+   "routed": false,
+   "route_description": "From Eastern Jin territory to Baekje by sea (384 CE)",
+   "confidence": "MEDIUM",
+   "points": [
+    {
+     "name": "China (Hangzhou/Jin)",
+     "lat": "30.274",
+     "lon": "120.155"
+    }
+   ]
+  },
+  {
+   "id": "T-0003",
+   "person": "P-0011",
+   "person_name": "Gyeomik",
+   "band": "B1",
+   "start": "526",
+   "end": "531",
+   "precision": "YEAR",
+   "purpose": "PILGRIMAGE",
+   "routed": true,
+   "route_description": "Baekje -> (sea) -> Central India (Sangana monastery, 5 yrs Sanskrit study) -> (sea) -> Baekje 531",
+   "confidence": "MEDIUM",
+   "points": [
+    {
+     "name": "China (Hangzhou/Jin)",
+     "lat": "30.274",
+     "lon": "120.155"
+    }
+   ]
+  },
+  {
+   "id": "T-0004",
+   "person": "P-0012",
+   "person_name": "Baedalta",
+   "band": "B1",
+   "start": "531",
+   "end": "531",
+   "precision": "YEAR",
+   "purpose": "MISSIONARY",
+   "routed": false,
+   "route_description": "India -> Baekje by sea, 531 (with Gyeomik)",
+   "confidence": "MEDIUM",
+   "points": []
+  },
+  {
+   "id": "T-0005",
+   "person": "P-0013",
+   "person_name": "Ariyabalma",
+   "band": "B1",
+   "start": "",
+   "end": "",
+   "precision": "UNKNOWN",
+   "purpose": "PILGRIMAGE",
+   "routed": true,
+   "route_description": "Silla -> Chang'an -> Nalanda; died at Nalanda aged 70+",
+   "confidence": "MEDIUM",
+   "points": [
+    {
+     "name": "China (Tang, Chang'an)",
+     "lat": "34.259",
+     "lon": "108.942"
+    },
+    {
+     "name": "India (Nalanda)",
+     "lat": "25.137",
+     "lon": "85.443"
+    }
+   ]
+  },
+  {
+   "id": "T-0006",
+   "person": "P-0014",
+   "person_name": "Hyeeop",
+   "band": "B1",
+   "start": "",
+   "end": "",
+   "precision": "UNKNOWN",
+   "purpose": "PILGRIMAGE",
+   "routed": true,
+   "route_description": "Silla -> India (Bodhgaya, Nalanda); died in India",
+   "confidence": "MEDIUM",
+   "points": [
+    {
+     "name": "China (Tang, Chang'an)",
+     "lat": "34.259",
+     "lon": "108.942"
+    },
+    {
+     "name": "India (Nalanda)",
+     "lat": "25.137",
+     "lon": "85.443"
+    },
+    {
+     "name": "India (Bodh Gaya)",
+     "lat": "24.696",
+     "lon": "84.991"
+    }
+   ]
+  },
+  {
+   "id": "T-0007",
+   "person": "P-0015",
+   "person_name": "Hyŏnt'ae",
+   "band": "B1",
+   "start": "",
+   "end": "",
+   "precision": "UNKNOWN",
+   "purpose": "PILGRIMAGE",
+   "routed": true,
+   "route_description": "Silla -> India -> Tang; died in China",
+   "confidence": "MEDIUM",
+   "points": [
+    {
+     "name": "India (Nalanda)",
+     "lat": "25.137",
+     "lon": "85.443"
+    },
+    {
+     "name": "China (Tang, Chang'an)",
+     "lat": "34.259",
+     "lon": "108.942"
+    }
+   ]
+  },
+  {
+   "id": "T-0008",
+   "person": "P-0016",
+   "person_name": "Hyŏngak",
+   "band": "B1",
+   "start": "",
+   "end": "",
+   "precision": "UNKNOWN",
+   "purpose": "PILGRIMAGE",
+   "routed": false,
+   "route_description": "Silla -> India with Xuanzhao (Zhenguan era); died at Bodhgaya in 40s",
+   "confidence": "MEDIUM",
+   "points": [
+    {
+     "name": "India (Bodh Gaya)",
+     "lat": "24.696",
+     "lon": "84.991"
+    }
+   ]
+  },
+  {
+   "id": "T-0009",
+   "person": "P-0017",
+   "person_name": "Gubon",
+   "band": "B1",
+   "start": "",
+   "end": "",
+   "precision": "UNKNOWN",
+   "purpose": "PILGRIMAGE",
+   "routed": false,
+   "route_description": "Silla -> India",
+   "confidence": "MEDIUM",
+   "points": [
+    {
+     "name": "India (Nalanda)",
+     "lat": "25.137",
+     "lon": "85.443"
+    }
+   ]
+  },
+  {
+   "id": "T-0010",
+   "person": "P-0020",
+   "person_name": "Ojin",
+   "band": "B1",
+   "start": "789",
+   "end": "789",
+   "precision": "APPROX",
+   "purpose": "PILGRIMAGE",
+   "routed": true,
+   "route_description": "Silla -> Tang -> Central India -> Tibet (death)",
+   "confidence": "MEDIUM",
+   "points": [
+    {
+     "name": "China (Tang, Chang'an)",
+     "lat": "34.259",
+     "lon": "108.942"
+    },
+    {
+     "name": "Tibet",
+     "lat": "29.65",
+     "lon": "91.1"
+    }
+   ]
+  },
+  {
+   "id": "T-0011",
+   "person": "P-0021",
+   "person_name": "Wonpyo",
+   "band": "B1",
+   "start": "742",
+   "end": "765",
+   "precision": "APPROX",
+   "purpose": "PILGRIMAGE",
+   "routed": false,
+   "route_description": "Silla -> Tang -> India -> Tang (death in China)",
+   "confidence": "MEDIUM",
+   "points": [
+    {
+     "name": "China (Tang, Chang'an)",
+     "lat": "34.259",
+     "lon": "108.942"
+    }
+   ]
+  },
+  {
+   "id": "T-0012",
+   "person": "P-0022",
+   "person_name": "Hyŏnyu",
+   "band": "B1",
+   "start": "",
+   "end": "",
+   "precision": "UNKNOWN",
+   "purpose": "PILGRIMAGE",
+   "routed": false,
+   "route_description": "Goguryeo -> (via China) -> Sri Lanka; ordained there",
+   "confidence": "MEDIUM",
+   "points": [
+    {
+     "name": "Sri Lanka",
+     "lat": "7.873",
+     "lon": "80.771"
+    }
+   ]
+  },
+  {
+   "id": "T-0013",
+   "person": "P-0023",
+   "person_name": "Dhyānabhadra",
+   "band": "B2",
+   "start": "1326",
+   "end": "1363",
+   "precision": "YEAR",
+   "purpose": "MISSIONARY",
+   "routed": true,
+   "route_description": "Magadha -> (Tibet) -> Yuan China -> Goryeo (1326) -> Yuan China; died 1363",
+   "confidence": "MEDIUM",
+   "points": [
+    {
+     "name": "India (Nalanda)",
+     "lat": "25.137",
+     "lon": "85.443"
+    },
+    {
+     "name": "Tibet",
+     "lat": "29.65",
+     "lon": "91.1"
+    },
+    {
+     "name": "China (Yuan)",
+     "lat": "39.904",
+     "lon": "116.407"
+    }
+   ]
+  },
+  {
+   "id": "T-0014",
+   "person": "P-0030",
+   "person_name": "Rabindranath Tagore",
+   "band": "B4",
+   "start": "1916",
+   "end": "1929",
+   "precision": "YEAR",
+   "purpose": "OTHER",
+   "routed": false,
+   "route_description": "India -> Japan (5 visits 1916-1929); Tokyo/Yokohama meetings with Koreans; Korea lecture planned June 1929 cancelled",
+   "confidence": "HIGH",
+   "points": [
+    {
+     "name": "India (New Delhi)",
+     "lat": "28.614",
+     "lon": "77.209"
+    },
+    {
+     "name": "Japan (Tokyo/Yokohama)",
+     "lat": "35.676",
+     "lon": "139.65"
+    }
+   ]
+  },
+  {
+   "id": "T-0016",
+   "person": "P-0029",
+   "person_name": "Ch'oe Nam-sŏn",
+   "band": "B4",
+   "start": "1916",
+   "end": "1916",
+   "precision": "YEAR",
+   "purpose": "STUDY",
+   "routed": false,
+   "route_description": "Korea -> Japan (Tokyo 1916)",
+   "confidence": "HIGH",
+   "points": [
+    {
+     "name": "Japan (Tokyo/Yokohama)",
+     "lat": "35.676",
+     "lon": "139.65"
+    }
+   ]
+  },
+  {
+   "id": "T-0025",
+   "person": "P-0051",
+   "person_name": "Ko Un",
+   "band": "B6",
+   "start": "1990",
+   "end": "1990",
+   "precision": "DECADE",
+   "purpose": "OTHER",
+   "routed": false,
+   "route_description": "Korea -> India (1990s travels; Kritya Poetry Festival 2021)",
+   "confidence": "HIGH",
+   "points": [
+    {
+     "name": "Korea (Seoul)",
+     "lat": "37.566",
+     "lon": "126.978"
+    },
+    {
+     "name": "India (New Delhi)",
+     "lat": "28.614",
+     "lon": "77.209"
+    }
+   ]
+  },
+  {
+   "id": "T-0026",
+   "person": "P-0052",
+   "person_name": "Pŏpchŏng",
+   "band": "B5",
+   "start": "1971",
+   "end": "1971",
+   "precision": "YEAR",
+   "purpose": "PILGRIMAGE",
+   "routed": false,
+   "route_description": "Korea -> India (1971; visited Vinoba Bhave's ashram; Sarnath/Bodh Gaya)",
+   "confidence": "HIGH",
+   "points": [
+    {
+     "name": "Korea (Seoul)",
+     "lat": "37.566",
+     "lon": "126.978"
+    },
+    {
+     "name": "India (New Delhi)",
+     "lat": "28.614",
+     "lon": "77.209"
+    }
+   ]
+  },
+  {
+   "id": "T-0027",
+   "person": "P-0053",
+   "person_name": "Lokesh Chandra",
+   "band": "B6",
+   "start": "2016",
+   "end": "2016",
+   "precision": "YEAR",
+   "purpose": "ACADEMIC",
+   "routed": false,
+   "route_description": "India -> Seoul (Sept 2016, Lotus Sutra exhibition)",
+   "confidence": "HIGH",
+   "points": [
+    {
+     "name": "India (New Delhi)",
+     "lat": "28.614",
+     "lon": "77.209"
+    },
+    {
+     "name": "Korea (Seoul)",
+     "lat": "37.566",
+     "lon": "126.978"
+    }
+   ]
+  },
+  {
+   "id": "T-0028",
+   "person": "P-0055",
+   "person_name": "U Myeong-ju",
+   "band": "B6",
+   "start": "2001",
+   "end": "",
+   "precision": "YEAR",
+   "purpose": "ACADEMIC",
+   "routed": false,
+   "route_description": "Korea -> Delhi (MA/PhD, Buddhist Studies; later Korean lecturer at Delhi University)",
+   "confidence": "HIGH",
+   "points": [
+    {
+     "name": "Korea (Seoul)",
+     "lat": "37.566",
+     "lon": "126.978"
+    },
+    {
+     "name": "India (Delhi)",
+     "lat": "28.614",
+     "lon": "77.209"
+    }
+   ]
+  },
+  {
+   "id": "T-0033",
+   "person": "P-0062",
+   "person_name": "Buddhavara (Ven.)",
+   "band": "B6",
+   "start": "",
+   "end": "",
+   "precision": "UNKNOWN",
+   "purpose": "MISSIONARY",
+   "routed": false,
+   "route_description": "Korea <-> India (Bodh Gaya residence; Bunhwangsa India; Delhi Univ MOU 2026)",
+   "confidence": "MEDIUM",
+   "points": [
+    {
+     "name": "Korea (Seoul)",
+     "lat": "37.566",
+     "lon": "126.978"
+    },
+    {
+     "name": "India (Bodh Gaya)",
+     "lat": "24.696",
+     "lon": "84.991"
+    }
+   ]
+  },
+  {
+   "id": "T-0034",
+   "person": "P-0063",
+   "person_name": "Hyoseok (Ven.)",
+   "band": "B6",
+   "start": "",
+   "end": "",
+   "precision": "UNKNOWN",
+   "purpose": "STUDY",
+   "routed": false,
+   "route_description": "Korea -> India (Pune MA -> Delhi PhD)",
+   "confidence": "HIGH",
+   "points": [
+    {
+     "name": "Korea (Seoul)",
+     "lat": "37.566",
+     "lon": "126.978"
+    },
+    {
+     "name": "India (Pune)",
+     "lat": "18.52",
+     "lon": "73.856"
+    }
+   ]
+  },
+  {
+   "id": "T-0035",
+   "person": "P-0064",
+   "person_name": "Wookwan (Ven.)",
+   "band": "B6",
+   "start": "",
+   "end": "",
+   "precision": "UNKNOWN",
+   "purpose": "STUDY",
+   "routed": false,
+   "route_description": "Korea -> India (Delhi University, 5+ years)",
+   "confidence": "HIGH",
+   "points": [
+    {
+     "name": "Korea (Seoul)",
+     "lat": "37.566",
+     "lon": "126.978"
+    },
+    {
+     "name": "India (Delhi)",
+     "lat": "28.614",
+     "lon": "77.209"
+    }
+   ]
+  },
+  {
+   "id": "T-0036",
+   "person": "P-0065",
+   "person_name": "Gakseong (Ven.)",
+   "band": "B6",
+   "start": "1992",
+   "end": "1998",
+   "precision": "YEAR",
+   "purpose": "STUDY",
+   "routed": false,
+   "route_description": "Korea -> India (Delhi University religious studies, 6 years; 4,500 km pilgrimage)",
+   "confidence": "HIGH",
+   "points": [
+    {
+     "name": "Korea (Seoul)",
+     "lat": "37.566",
+     "lon": "126.978"
+    },
+    {
+     "name": "India (Delhi)",
+     "lat": "28.614",
+     "lon": "77.209"
+    }
+   ]
+  },
+  {
+   "id": "T-0038",
+   "person": "P-0072",
+   "person_name": "Yi Yŏng-jae",
+   "band": "B4",
+   "start": "1925",
+   "end": "1927",
+   "precision": "YEAR",
+   "purpose": "PILGRIMAGE",
+   "routed": false,
+   "route_description": "Korea -> Ceylon (Sri Lanka) 1925-11-09 departure from Yokohama; intended India pilgrimage; died in Ceylon 1927-10-12",
+   "confidence": "HIGH",
+   "points": [
+    {
+     "name": "Korea (Seoul)",
+     "lat": "37.566",
+     "lon": "126.978"
+    },
+    {
+     "name": "Sri Lanka",
+     "lat": "7.873",
+     "lon": "80.771"
+    }
+   ]
+  },
+  {
+   "id": "T-0039",
+   "person": "P-0018",
+   "person_name": "Hyeryun",
+   "band": "B1",
+   "start": "",
+   "end": "",
+   "precision": "UNKNOWN",
+   "purpose": "PILGRIMAGE",
+   "routed": false,
+   "route_description": "Silla -> India (per Yijing's enumeration)",
+   "confidence": "MEDIUM",
+   "points": []
+  },
+  {
+   "id": "T-0042",
+   "person": "P-0073",
+   "person_name": "Hwang Su-yŏng",
+   "band": "B5",
+   "start": "1962",
+   "end": "1963",
+   "precision": "YEAR",
+   "purpose": "PILGRIMAGE",
+   "routed": true,
+   "route_description": "Seoul -> India (Ganges basin; Central, South, West India; Pakistan - Peshawar) on an itinerary matching Hyecho's Wang ocheonchukguk jeon route; visited Nalanda; returned Seoul 1963-05-09",
+   "confidence": "HIGH",
+   "points": [
+    {
+     "name": "Korea (Seoul)",
+     "lat": "37.566",
+     "lon": "126.978"
+    },
+    {
+     "name": "India (Nalanda)",
+     "lat": "25.137",
+     "lon": "85.443"
+    }
+   ]
+  }
+ ],
+ "events": [
+  {
+   "id": "EV-0001",
+   "title": "Sangwol/Jogye walking pilgrimage India-Nepal",
+   "type": "PILGRIMAGE",
+   "start": "2023-02",
+   "end": "2023-03",
+   "description": "108+ monastics of the ROK walking pilgrimage hosted by the Jogye Order with Sangwol Society; route Sarnath -> Shravasti via Bodh Gaya, Vulture Peak/Rajgir, Nalanda, Vaishali, Kushinagar, Lumbini, Kapilavastu; 1,167 km / 43 days (~200-strong delegation reported)",
+   "significance": "Largest documented Korean monastic walking pilgrimage in India; PIB-documented",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "sources": [
+    {
+     "id": "S-0147",
+     "citation": "PIB press release PRID=1896682 (2023-02-06): 108 Buddhists from ROK on walking pilgrimage hosted by Jogye Order, Sarnath->Shravasti via Nepal, 1100+ km",
+     "url": "https://pib.gov.in/PressReleasePage.aspx?PRID=1896682",
+     "type": "PRIMARY",
+     "reliability": "AUTHORITATIVE"
+    },
+    {
+     "id": "S-0108",
+     "citation": "Korea Bizwire (2023-02-10): 'Buddhist Monks Set Off on Pilgrimage to India and Nepal'",
+     "url": "http://koreabizwire.com/buddhist-monks-set-off-on-pilgrimage-to-india-and-nepal/240292",
+     "type": "NEWS",
+     "reliability": "POPULAR"
+    },
+    {
+     "id": "S-0080",
+     "citation": "India Narrative (2023-03-22): Sangwol Society 200-strong foot pilgrimage Sarnath->Shravasti; Yogi Adityanath outreach to Korean monks",
+     "url": "https://www.indianarrative.com/culture/yogi-adityanath-reaches-out-to-korean-monks-in-bid-to-revive-buddhist-ties-with-asia/",
+     "type": "NEWS",
+     "reliability": "POPULAR"
+    },
+    {
+     "id": "S-0156",
+     "citation": "The Federal: South Korean Buddhists walking in India for 1,167 km on 43-day pilgrimage",
+     "url": "https://thefederal.com/news/south-korean-buddhists-walking-in-india-for-1167-km-on-43-day-pilgrimage",
+     "type": "NEWS",
+     "reliability": "POPULAR"
+    }
+   ],
+   "participants": []
+  },
+  {
+   "id": "EV-0002",
+   "title": "Bexpo 2026 Buddhist exchange (IBC - Jogye lay)",
+   "type": "EXHIBITION",
+   "start": "2026-04-04",
+   "end": "2026-04-04",
+   "description": "At the Seoul International Buddhism Expo (Bexpo 2026), IBC Director General Abhijit Halder presented a Buddha statue to Jung Won-ju, president of the Lay Buddhist Association of the Jogye Order; cultural/spiritual cooperation agreed",
+   "significance": "First documented IBC-Jogye lay exchange in Korea; institutional channel (INSTITUTIONAL)",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "sources": [
+    {
+     "id": "S-0109",
+     "citation": "Korea Herald (2026-04-09, Sanjay Kumar): IBC DG Abhijit Halder presents Buddha statue to Jung Won-ju (Lay Buddhist Association of the Jogye Order president) at Seoul International Buddhism Expo (Bexpo 2026), 2026-04-04",
+     "url": "https://www.koreaherald.com/article/10713686",
+     "type": "NEWS",
+     "reliability": "POPULAR"
+    },
+    {
+     "id": "S-0145",
+     "citation": "Our Buddhism World (2026-04-10): IBC and Jogye lay group at Bexpo 2026, Seoul",
+     "url": "https://www.ourbuddhismworld.com/archives/11412",
+     "type": "NEWS",
+     "reliability": "POPULAR"
+    }
+   ],
+   "participants": [
+    "EP-0005",
+    "EP-0006"
+   ]
+  },
+  {
+   "id": "EV-0003",
+   "title": "2nd Global Buddhist Summit",
+   "type": "CONFERENCE",
+   "start": "2026-01-24",
+   "end": "2026-01-25",
+   "description": "Bharat Mandapam, New Delhi; IBC + Ministry of Culture; theme 'Collective Wisdom, United Voice and Mutual Coexistence'; 30+ countries, 800+ attendees. Korean participation CONFIRMED: Jogye international-exchange committee member / propagation team head Munjong sunim attended as representative of 총무원장 Jinwoo, whose congratulatory message was read aloud",
+   "significance": "Second edition of India's flagship Buddhist summit; Jogye Order official participation documented",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "sources": [
+    {
+     "id": "S-0158",
+     "citation": "Tongbulgyo News (2026-02-01, 박정원): '국제불교정상회의 뉴델리서 개최…진우 스님 선명상으로 인류 상생 실천' - 2nd GBS 24-25 Jan 2026 Bharat Mandapam; 30+ countries, 800+ attendees; Jogye 국제교류위원/제전법단장 문종 스님 attended as representative of 총무원장 진우; Jinwoo's message read by Munjong; confirms 1st GBS Apr 2023 Ashok Hotel",
+     "url": "https://www.tongbulgyo.com/news/articleView.html?idxno=8047",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0022",
+     "citation": "Buddhist Door Tea House (2026-01-18): 2nd Global Buddhist Summit 2026, Bharat Mandapam, New Delhi, 24-25 Jan 2026; IBC + Ministry of Culture; theme 'Collective Wisdom, United Voice and Mutual Coexistence'; ~200 delegates",
+     "url": "https://teahouse.buddhistdoor.net/2nd-global-buddhist-summit-2026-to-bring-together-buddhist-leaders-in-new-delhi",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0069",
+     "citation": "International Buddhist Confederation, official event file: 2nd Global Buddhist Summit 2026 (24-25 Jan 2026)",
+     "url": "https://www.ibcworld.org/docs/event_files/2nd%20GBS%202026.pdf",
+     "type": "PRIMARY",
+     "reliability": "AUTHORITATIVE"
+    },
+    {
+     "id": "S-0029",
+     "citation": "DD News (2026-01-18): 2nd Global Buddhist Summit speakers - Thailand, Vietnam, India, Bhutan, Myanmar, Nepal, Japan, Taiwan, US; no Korean speaker named; ~200 delegates, 800+ attendees",
+     "url": "https://ddnews.gov.in/en/second-global-buddhist-summit-to-be-held-in-delhi-on-january-24-25/",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    }
+   ],
+   "participants": [
+    "EP-0002",
+    "EP-0003"
+   ]
+  },
+  {
+   "id": "EV-0004",
+   "title": "Jungto Society annual India pilgrimage program",
+   "type": "PILGRIMAGE",
+   "start": "2027-01-14",
+   "end": "2027-01-30",
+   "description": "Annual pilgrimage program (35th edition early 2026 implied; 36th: 14-30 Jan 2027, 16N17D, 500 participants, registration from 2026-05-25); Bodh Gaya region",
+   "significance": "Largest recurring Korean lay pilgrimage to India",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "sources": [
+    {
+     "id": "S-0087",
+     "citation": "Jungto Society official India pilgrimage program: 36th pilgrimage 14-30 Jan 2027 (16N17D, 500 persons, registration from 2026-05-25); annual program",
+     "url": "https://www.jungto.org/india/",
+     "type": "WEBSITE",
+     "reliability": "INSTITUTIONAL"
+    }
+   ],
+   "participants": [
+    "EP-0007"
+   ]
+  },
+  {
+   "id": "EV-0005",
+   "title": "Delhi University - BGICBS academic MOU",
+   "type": "MOU_AGREEMENT",
+   "start": "2026-04-23",
+   "end": "2026-04-23",
+   "description": "Academic exchange agreement between the University of Delhi and the Bodh Gaya International College of Buddhist Studies (BGICBS, Chancellor: Ven. Buddhavara)",
+   "significance": "Formalizes the main Indian university - Korean-led Buddhist college academic channel",
+   "confidence": "MEDIUM",
+   "status": "VERIFIED",
+   "sources": [
+    {
+     "id": "S-0018",
+     "citation": "BTN (2026-04-23), 붓다가야 국제승가대학-델리대학 MOU",
+     "url": "https://www.btnnews.tv/news/articleView.html?idxno=89786",
+     "type": "NEWS",
+     "reliability": "POPULAR"
+    }
+   ],
+   "participants": [
+    "P-0062"
+   ]
+  },
+  {
+   "id": "EV-0006",
+   "title": "Jogye delegation pilgrimage Sarnath -> Bodh Gaya",
+   "type": "PILGRIMAGE",
+   "start": "2022-05",
+   "end": "2022-05",
+   "description": "Jogye Order delegation pilgrimage from Sarnath to Bodh Gaya (Mahabodhi), May 2022",
+   "significance": "Precursor delegation ahead of Bunhwangsa India dedication",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "sources": [
+    {
+     "id": "S-0011",
+     "citation": "Beopbo (2022-05-20): Jogye delegation pilgrimage Sarnath->Bodh Gaya (Mahabodhi), May 2022",
+     "url": "https://www.beopbo.com/news/articleView.html?idxno=309535",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    }
+   ],
+   "participants": []
+  },
+  {
+   "id": "EV-0007",
+   "title": "Jogye pilgrimage to the 8 great sites + Nepal",
+   "type": "PILGRIMAGE",
+   "start": "2014-02-19",
+   "end": "2014-03-04",
+   "description": "13N14D Jogye Order pilgrimage to 8 great Buddhist sites + Nepal, including a visit to Yeoraesunwon (Korean-run temple at Bodh Gaya)",
+   "significance": "Documents Yeoraesunwon's activity by 2014",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "sources": [
+    {
+     "id": "S-0085",
+     "citation": "Jogye Order official news (2014): 순례단 pilgrimage to 8 sacred sites + Nepal (13N14D, 19 Feb-4 Mar 2014) incl. Yeoraesunwon visit at Bodh Gaya",
+     "url": "https://www.jogyesa.kr/board/news/board_view.php?num=3148",
+     "type": "WEBSITE",
+     "reliability": "INSTITUTIONAL"
+    }
+   ],
+   "participants": []
+  },
+  {
+   "id": "EV-0008",
+   "title": "Bunhwangsa India groundbreaking",
+   "type": "TEMPLE_FOUNDATION",
+   "start": "2020-03-28",
+   "end": "2020-03-28",
+   "description": "Groundbreaking of Bunhwangsa India, the Jogye Order's first temple in India, at Bodh Gaya; completion targeted 2022; project launched 2019-04 by the 36th administration (백만원력결집)",
+   "significance": "Jogye Order's first permanent temple in India",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "sources": [
+    {
+     "id": "S-0071",
+     "citation": "Ibulgyo (2020-02-06): Bunhwangsa India construction start 2020-03-28, completion targeted 2022",
+     "url": "https://www.ibulgyo.com/news/articleView.html?idxno=204382",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    }
+   ],
+   "participants": []
+  },
+  {
+   "id": "EV-0009",
+   "title": "Bunhwangsa India dedication (대웅보전 준공식)",
+   "type": "TEMPLE_DEDICATION",
+   "start": "2022-05",
+   "end": "2022-05",
+   "description": "Dedication ceremony of the main hall (대웅보전) of Bunhwangsa India; 150-person Jogye official delegation ('official first pilgrimage' - 공식대표단 첫 순례) led by 총무원장 Wonhaeng; 3 years after the 2019 vow",
+   "significance": "First official Jogye Order pilgrimage delegation to India; temple completion",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "sources": [
+    {
+     "id": "S-0065",
+     "citation": "Hyunbul News (2022-05-19): Jogye 150-person official delegation led by 총무원장 Wonhaeng, '공식대표단 첫 순례', Bunhwangsa India dedication",
+     "url": "https://www.hyunbulnews.com/news/articleView.html?idxno=405034",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0021",
+     "citation": "Jogye Order official news (2022): Bunhwangsa India 대웅보전 준공식; project launched 2019-04 by 36th administration (백만원력결집)",
+     "url": "https://www.buddhism.or.kr/m/board/view.php",
+     "type": "WEBSITE",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0115",
+     "citation": "Korea Times (2022-05-24): Jogye Order 성지순례단 at Bunhwangsa India dedication",
+     "url": "https://www.koreatimes.net/ArticleViewer/Article/146716",
+     "type": "NEWS",
+     "reliability": "POPULAR"
+    }
+   ],
+   "participants": [
+    "EP-0004"
+   ]
+  },
+  {
+   "id": "EV-0010",
+   "title": "Global Buddhist Summit 2023",
+   "type": "CONFERENCE",
+   "start": "2023-04-20",
+   "end": "2023-04-21",
+   "description": "First Global Buddhist Summit, Ashok Hotel, New Delhi (IBC + Ministry of Culture); ~30 countries, 500+ Buddhist leaders; PM Modi and Culture Minister Kishan Reddy attended; themes incl. environmental crisis/sustainability and preservation of the Nalanda Buddhist tradition. Korean participation CONFIRMED: Jogye 해외특별교구 교구장 직무대행 Jeongbeom sunim attended as official representative on behalf of 총무원장",
+   "significance": "First edition of India's flagship Buddhist summit; Jogye Order official participation documented",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "sources": [
+    {
+     "id": "S-0066",
+     "citation": "Hyunbul News (2023-04-27, 임은호): '조계종, 제1회 글로벌 부디스트 서밋 참가' - GBS 2023 held 20-21 Apr at Ashok Hotel, New Delhi; Jogye 해외특별교구 교구장 직무대행 정범 스님 attended as official representative on behalf of 총무원장; ~30 countries, 500+ leaders; PM Modi, Culture Minister Kishan Reddy",
+     "url": "https://www.hyunbulnews.com/news/articleView.html?idxno=408978",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0068",
+     "citation": "IBC official event file: Global Buddhist Summit 2023 - 700+ delegates, ~175 overseas from 31 countries",
+     "url": "https://ibcworld.org/events/view/35",
+     "type": "PRIMARY",
+     "reliability": "AUTHORITATIVE"
+    },
+    {
+     "id": "S-0033",
+     "citation": "Drishti IAS (2023): Global Buddhist Summit 2023 New Delhi - 173 international participants incl. 84 Sangha, 151 Indian",
+     "url": "https://www.drishtiias.com/daily-updates/daily-news-analysis/global-buddhist-summit-2023",
+     "type": "NEWS",
+     "reliability": "POPULAR"
+    }
+   ],
+   "participants": [
+    "EP-0001"
+   ]
+  },
+  {
+   "id": "EV-0011",
+   "title": "ICYBS 2025 (3rd Int'l Conf. of Young Buddhist Scholars)",
+   "type": "CONFERENCE",
+   "start": "2025-08-22",
+   "end": "2025-08-22",
+   "description": "Dr Ambedkar International Centre, Delhi; IBC + Ministry of Culture + Ministry of Social Justice & Empowerment; theme 'Wisdom Transmission in Buddha Dhamma in the 21st Century'; 4 panels + National Museum special presentation; key figures: Jangchup Choeden Rinpoche (SG IBC), Rana Pratap Singh (VC Gautam Buddha Univ.), K.T.S. Sarao, Abhijit Halder (DG IBC), Yeshi Dawa. Official IBC report names no Korean participant; PIB attendee list (India, Sri Lanka, Myanmar, Vietnam, Cambodia, Russia, Taiwan) contains no Korea",
+   "significance": "Young-scholars track of the GBS cycle; Korean participation NOT DOCUMENTED",
+   "confidence": "MEDIUM",
+   "status": "UNRESOLVED",
+   "sources": [
+    {
+     "id": "S-0070",
+     "citation": "IBC official event report: 3rd ICYBS 22 Aug 2025, Dr Ambedkar International Centre, New Delhi; IBC + Ministry of Culture + Ministry of Social Justice & Empowerment; theme 'Wisdom Transmission in Buddha Dhamma in the 21st Century'; no Korean participant named",
+     "url": "https://www.ibcworld.org/events/view/140",
+     "type": "PRIMARY",
+     "reliability": "AUTHORITATIVE"
+    },
+    {
+     "id": "S-0146",
+     "citation": "PIB press release PRID=2156138 (2025-08-22): 3rd ICYBS held 22 Aug 2025 at Nalanda Auditorium, Dr Ambedkar International Centre; attendees from India, Sri Lanka, Myanmar, Vietnam, Cambodia, Russia, Taiwan",
+     "url": "https://pib.gov.in/PressReleasePage.aspx?PRID=2156138",
+     "type": "PRIMARY",
+     "reliability": "AUTHORITATIVE"
+    },
+    {
+     "id": "S-0028",
+     "citation": "DD India (2025-08): 3rd International Conference of Young Buddhist Scholars (ICYBS), Dr Ambedkar International Centre, Delhi, Aug 2025; IBC + Ministry of Culture; theme 'Wisdom Transmission in 21st Century'",
+     "url": "https://ddindia.co.in/2025/08/icybs-2025/",
+     "type": "NEWS",
+     "reliability": "POPULAR"
+    }
+   ],
+   "participants": [
+    "EP-0006"
+   ]
+  },
+  {
+   "id": "EV-0012",
+   "title": "KBPF 2026 India pilgrimage (Dharamsala/Ajanta-Ellora/Sanchi)",
+   "type": "PILGRIMAGE",
+   "start": "2026-10-03",
+   "end": "2026-10-11",
+   "description": "8N9D India pilgrimage organized by the Korea Buddhism Promotion Foundation (대한불교진흥원): Dharamsala, Ajanta/Ellora caves, Sanchi Stupa; Air India; fees 4.59M KRW (10+ persons) / 4.09M (15+); registration open from 2026-07-02",
+   "significance": "Distinct 2026 India pilgrimage by a Korean Buddhist foundation (not Jogye Order); answers the 'distinct 2026 pilgrimage' open question",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "sources": [
+    {
+     "id": "S-0090",
+     "citation": "Korea Buddhism Promotion Foundation (대한불교진흥원) official notice (2026-07-02): 2026 India pilgrimage 3-11 Oct 2026 (8N9D), Dharamsala/Ajanta-Ellora/Sanchi, Air India",
+     "url": "https://www.kbpf.org/?bmode=view&idx=172150129",
+     "type": "WEBSITE",
+     "reliability": "INSTITUTIONAL"
+    }
+   ],
+   "participants": []
+  },
+  {
+   "id": "EV-0013",
+   "title": "BBS Seon Meditation Tour 4 India-Nepal",
+   "type": "PILGRIMAGE",
+   "start": "2025-12-26",
+   "end": "2026-01-04",
+   "description": "8N10D India-Nepal pilgrimage organized by BBS (Buddhist Broadcasting System): Delhi, Lucknow, Varanasi, Bodh Gaya, Rajgir, Vaishali, Kushinagar, Shravasti, Lumbini, Pokhara, Kathmandu; led by 선업 스님 (former Jogye 포교원장); 3.42M KRW",
+   "significance": "Korean Buddhist broadcaster-organized pilgrimage crossing into 2026; documents the 2026 pilgrimage landscape",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "sources": [
+    {
+     "id": "S-0010",
+     "citation": "BBS (Buddhist Broadcasting System) overseas pilgrimage program: 세계 선명상 투어 4탄 India-Nepal 8N10D, 26 Dec 2025 - 4 Jan 2026, led by 선업 스님 (former Jogye 포교원장)",
+     "url": "https://www.bbs.or.kr/HOME2/?ACT=TRIP&MODE=BOARD&DETAIL=VIEW&ProgramCode=0&BoardType=BBSI_BOARD_PLACE&BoardTitle=해외성지순례&BoardGubun=OUT&IDX=136&Page=1",
+     "type": "WEBSITE",
+     "reliability": "INSTITUTIONAL"
+    }
+   ],
+   "participants": []
+  },
+  {
+   "id": "EV-0014",
+   "title": "Korea-India 50th anniversary cultural exchange (Jogye + ROK Embassy)",
+   "type": "EXHIBITION",
+   "start": "2023-03-21",
+   "end": "2023-03-25",
+   "description": "Co-hosted by the Jogye Order (총무원장 Jinwoo) and the ROK Embassy in India: 21 Mar 2023 temple-food dinner (사찰음식 만찬) at ambassador Jang Jae-bok's residence (chef 정관스님; 어산종장 동환스님's 축원 화청); NGMA exhibition '부처님의 땅! 인도에서 한국문화를 만나다' (22 Mar - 30 Apr: 연등, media art, temple-stay photos); ~40 attendees incl. Apurva Chandra (Indian I&B Secretary) and Korean lawmakers; ambassador praised the Sangwol pilgrimage for strengthening bilateral ties",
+   "significance": "First Jogye Order-ROK Embassy co-hosted cultural event in India; official diplomatic recognition of the Sangwol pilgrimage's value",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "sources": [
+    {
+     "id": "S-0074",
+     "citation": "Ibulgyo (불교신문) 2023-03-22, 홍다영: '조계종 한국-인도 수교 50주년 기념 부처님 나라에서 문화교류' - 21 Mar 2023 temple-food dinner at ROK ambassador's residence (Jang Jae-bok); NGMA exhibition '부처님의 땅! 인도에서 한국문화를 만나다' 22 Mar-30 Apr; ~40 attendees incl. Apurva Chandra; Jugyeong (중앙종회의장) represented Jogye",
+     "url": "https://www.ibulgyo.com/news/articleView.html?idxno=400517",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    }
+   ],
+   "participants": [
+    "EP-0008",
+    "EP-0009"
+   ]
+  },
+  {
+   "id": "EV-0015",
+   "title": "Korean Buddhist delegation to India (국제불교문제연구소)",
+   "type": "PILGRIMAGE",
+   "start": "1981-12",
+   "end": "1982-01",
+   "description": "6-member Korean Buddhist delegation dispatched by the International Buddhist Problems Research Institute (국제불교문제연구소) toured India's sacred sites (Dec 1981) and recently returned (reported 1982-01-19); met PM Indira Gandhi for ~30 minutes, presenting a Silla gold-crown replica and a Buddhist bell; visited Nalanda and donated a facsimile of the Haeinsa Tripitaka Koreana as research material for Korean Buddhist studies; in Sri Lanka agreed a sisterhood between Kelaniya Temple and Korea's Bongeunsa",
+   "significance": "First documented institutional Korean Buddhist delegation to India in the post-war era; audience with the Indian PM; Tripitaka donation at Nalanda",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "sources": [
+    {
+     "id": "S-0030",
+     "citation": "Dong-A Ilbo 1982-01-19 p.6: '간디首相에 梵鐘전달 佛教대표단 聖地순례' - 6-member Korean Buddhist delegation dispatched by 국제불교문제연구소 toured India's sacred sites (Dec 1981); met PM Indira Gandhi ~30 min, presenting a Silla gold-crown replica and a Buddhist bell; visited Nalanda, donating a Haeinsa Tripitaka Koreana facsimile as research material for Korean Buddhist studies; agreed Kelaniya Temple-Bongeunsa sisterhood in Sri Lanka; director (소장) Kim Gwang-tae (김광태) reported",
+     "url": "https://newslibrary.naver.com/viewer/index.naver?articleId=1982011900209206010&editNo=2&printCount=1&publishDate=1982-01-19&officeId=00020&pageNo=6&printNo=18551&publishType=00020",
+     "type": "PRIMARY",
+     "reliability": "AUTHORITATIVE"
+    },
+    {
+     "id": "S-0062",
+     "citation": "Hyunbul News (2023-02-27): '동국대, 날란다大 MOU... 공동 교육·연구 협력' - Dongguk University-Nalanda University academic MOU signed 2023-02-24 at Nalanda (VC Sunaina Singh; Dongguk 건학위원장 돈관 스님, 총장 윤재웅); joint education/research + '순례' themed conference + Korea-India 50th anniversary; article also cites the 1982 delegation (Dong-A 1982-01-19) and Hwang Su-yŏng 1962-63 (Kyonghyang 1963-05-11)",
+     "url": "https://www.hyunbulnews.com/articleView.html?idxno=408238",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    }
+   ],
+   "participants": [
+    "EP-0010"
+   ]
+  },
+  {
+   "id": "EV-0016",
+   "title": "Dongguk University - Nalanda University MOU",
+   "type": "MOU_AGREEMENT",
+   "start": "2023-02-24",
+   "end": "2023-02-24",
+   "description": "Academic cooperation agreement signed at Nalanda University between Dongguk University (president 윤재웅; 건학위원장 돈관 스님) and Nalanda University (Vice-Chancellor Sunaina Singh): joint education and research cooperation, plus a '순례' (pilgrimage) themed international conference and Korea-India 50th-anniversary activities",
+   "significance": "First MOU between a Korean Buddhist university and the modern Nalanda University; revives the ancient Nalanda-Silla channel as contemporary institutional exchange",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "sources": [
+    {
+     "id": "S-0062",
+     "citation": "Hyunbul News (2023-02-27): '동국대, 날란다大 MOU... 공동 교육·연구 협력' - Dongguk University-Nalanda University academic MOU signed 2023-02-24 at Nalanda (VC Sunaina Singh; Dongguk 건학위원장 돈관 스님, 총장 윤재웅); joint education/research + '순례' themed conference + Korea-India 50th anniversary; article also cites the 1982 delegation (Dong-A 1982-01-19) and Hwang Su-yŏng 1962-63 (Kyonghyang 1963-05-11)",
+     "url": "https://www.hyunbulnews.com/articleView.html?idxno=408238",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    }
+   ],
+   "participants": []
+  },
+  {
+   "id": "EV-0017",
+   "title": "Enshrinement of Dhyānabhadra's relics at Hoeamsa",
+   "type": "RELIC_TRANSFER",
+   "start": "1370",
+   "end": "1370",
+   "description": "On King Kongmin's order (1370) a stupa enshrining the relics of the Indian master Dhyānabhadra (Jikong) was built at Hoeamsa, supervised by Naong Hyegeun - formally declaring Naong's succession of Jikong's lineage",
+   "significance": "Earliest documented enshrinement of an Indian master's relics in Korea; material anchor of the Jikong lineage at the Nalanda-modeled Hoeamsa",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "sources": [
+    {
+     "id": "S-0020",
+     "citation": "Dongguk University Buddhist Culture Portal (불교문화포털, buddhaland.dongguk.edu, KBDI0001421) '지공' entry: on King Kongmin's order (1370) a stupa enshrining Jikong's relics was built at Hoeamsa, supervised by Naong, declaring Naong's succession of Jikong",
+     "url": "https://buddhaland.dongguk.edu/bulVoca/view?dataId=KBDI0001421",
+     "type": "DATABASE",
+     "reliability": "AUTHORITATIVE"
+    },
+    {
+     "id": "S-0064",
+     "citation": "Hyunbul News 2017-01-26: '지공·나옹… 재점화된 禪宗' - Jikong's representative disciples: Naong (Kongmin's preceptor), Baegun Gyeonghan (Jikji author), Muhak Chach'o (T'aejo's preceptor), Ch'ukwŏn Chich'ŏn; revival of studies on Jikong's Seon lineage",
+     "url": "https://www.hyunbulnews.com/news/articleView.html?idxno=290135",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    }
+   ],
+   "participants": [
+    "P-0024"
+   ]
+  },
+  {
+   "id": "EV-0018",
+   "title": "Return of Hoeamsa relics (Jikong/Naong + Buddha relics) from Boston MFA",
+   "type": "RELIC_TRANSFER",
+   "start": "2024-04",
+   "end": "2024-05",
+   "description": "Relics of Dhyānabhadra (Jikong) and Naong, enshrined with Buddha relics (Shakyamuni, Kashyapa, Dipankara) that Jikong brought from India, were returned to Korea from the Boston Museum of Fine Arts (illegally removed during the colonial era; acquired by the MFA 1939; return agreed 2023-24): delivered 2024-04-16, arrived in Korea 04-18, relocation rite at Jogye's Buddhist History & Culture Memorial Hall 04-19, re-enshrined at Hoeamsa 2024-05-19",
+   "significance": "Modern completion of the 14th-century relic legacy: relics of Indian provenance (Buddha's relics carried from India by the Indian master Jikong) physically returned to the temple he founded",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "sources": [
+    {
+     "id": "S-0059",
+     "citation": "Hankook Ilbo 2024-04-17: Hoeamsa sarira return finalized - relics of Jikong/Naong plus Buddha relics (brought from India by Jikong) illegally removed in the colonial era, acquired by Boston MFA 1939; return agreed after the 2023 US state visit; delivered 2024-04-16, Korea arrival 04-18, relocation rite at Jogye 04-19, re-enshrinement at Hoeamsa 2024-05-19",
+     "url": "https://www.hankookilbo.com/News/Read/A2024041708440002013?did=GO",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0073",
+     "citation": "Ibulgyo 2024: '회암사 3여래2조사 사리' - Jogye Order had a separate sarira reliquary made for the returned Hoeamsa relics",
+     "url": "https://www.ibulgyo.com/news/articleView.html?idxno=413032",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    }
+   ],
+   "participants": []
+  },
+  {
+   "id": "EV-0019",
+   "title": "Wang ocheonchukguk jeon first public display at National Museum of Korea",
+   "type": "EXHIBITION",
+   "start": "2010-12-18",
+   "end": "2011-04-03",
+   "description": "The BnF's Dunhuang manuscript of Hyecho's Wang ocheonchukguk jeon (往五天竺國傳) - the sole surviving 8th-century record of India by a Silla monk - was loaned to the National Museum of Korea for the '실크로드와 둔황: 혜초와 함께 하는 서역기행' special exhibition (18 Dec 2010 - 3 Apr 2011; manuscript on display until 17 Mar 2011 per the BnF's 3-month loan limit): the manuscript's first public display anywhere since Pelliot's 1908 Dunhuang discovery; a second BnF loan followed for the NMK exhibition Dec 2019 - Apr 2020",
+   "significance": "World-first public display of Korea's oldest travel record of India; made Hyecho's 8th-century India pilgrimage tangible for the Korean public and scholars",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "sources": [
+    {
+     "id": "S-0127",
+     "citation": "National Museum of Korea press archive 2010-06-29: '혜초의 『왕오천축국전』 한국에 온다' - BnF review board approved (17 Jun 2010) loaning the Wang ocheonchukguk jeon manuscript for the '실크로드와 둔황' exhibition (18 Dec 2010 - 3 Apr 2011); first public display of the manuscript since Pelliot's 1908 Dunhuang discovery",
+     "url": "https://www.museum.go.kr/site/main/archive/united/8499",
+     "type": "ARCHIVAL",
+     "reliability": "AUTHORITATIVE"
+    },
+    {
+     "id": "S-0091",
+     "citation": "KBS News 2010-12-17: '1283년만에 한국 온 왕오천축국전' - the BnF manuscript arrived in Korea for the NMK '실크로드와 둔황' exhibition; first public display in 1,283 years",
+     "url": "https://news.kbs.co.kr/news/view.do?ncd=2211998",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0058",
+     "citation": "Hani (한겨레) 2019-10-19: '혜초의 왕오천축국전 고국 찾아온다' - second BnF loan approved (17 Oct 2019) for the NMK exhibition Dec 2019 - Apr 2020; manuscript 358.6cm scroll, 227 lines, 5,893 characters; Pelliot discovery 1908; Takakusu Junjiro's 1915 Silla attribution; Ch'oe Nam-sŏn's 1943 Korean introduction",
+     "url": "https://www.hani.co.kr/arti/culture/culture_general/428121.html",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    }
+   ],
+   "participants": []
+  }
+ ],
+ "source_mix_by_band": [
+  {
+   "band": "B1",
+   "type": "ARCHIVAL",
+   "count": 1
+  },
+  {
+   "band": "B1",
+   "type": "PRIMARY",
+   "count": 8
+  },
+  {
+   "band": "B1",
+   "type": "SECONDARY",
+   "count": 17
+  },
+  {
+   "band": "B1",
+   "type": "TERTIARY",
+   "count": 15
+  },
+  {
+   "band": "B2",
+   "type": "ARCHIVAL",
+   "count": 2
+  },
+  {
+   "band": "B2",
+   "type": "DATABASE",
+   "count": 2
+  },
+  {
+   "band": "B2",
+   "type": "NEWS",
+   "count": 7
+  },
+  {
+   "band": "B2",
+   "type": "SECONDARY",
+   "count": 1
+  },
+  {
+   "band": "B2",
+   "type": "TERTIARY",
+   "count": 4
+  },
+  {
+   "band": "B2",
+   "type": "WEBSITE",
+   "count": 1
+  },
+  {
+   "band": "B4",
+   "type": "ARCHIVAL",
+   "count": 1
+  },
+  {
+   "band": "B4",
+   "type": "NEWS",
+   "count": 7
+  },
+  {
+   "band": "B4",
+   "type": "PRIMARY",
+   "count": 1
+  },
+  {
+   "band": "B4",
+   "type": "SECONDARY",
+   "count": 8
+  },
+  {
+   "band": "B4",
+   "type": "TERTIARY",
+   "count": 2
+  },
+  {
+   "band": "B4",
+   "type": "WEBSITE",
+   "count": 1
+  },
+  {
+   "band": "B5",
+   "type": "NEWS",
+   "count": 6
+  },
+  {
+   "band": "B5",
+   "type": "PRIMARY",
+   "count": 2
+  },
+  {
+   "band": "B5",
+   "type": "TERTIARY",
+   "count": 1
+  },
+  {
+   "band": "B5",
+   "type": "WEBSITE",
+   "count": 1
+  },
+  {
+   "band": "B6",
+   "type": "ARCHIVAL",
+   "count": 2
+  },
+  {
+   "band": "B6",
+   "type": "DATABASE",
+   "count": 1
+  },
+  {
+   "band": "B6",
+   "type": "NEWS",
+   "count": 30
+  },
+  {
+   "band": "B6",
+   "type": "PRIMARY",
+   "count": 5
+  },
+  {
+   "band": "B6",
+   "type": "SECONDARY",
+   "count": 3
+  },
+  {
+   "band": "B6",
+   "type": "TERTIARY",
+   "count": 1
+  },
+  {
+   "band": "B6",
+   "type": "WEBSITE",
+   "count": 9
+  }
+ ],
+ "b3_note": "Joseon (1392–1900): 11 candidate rows classified, all excluded on evidence. Zero carried records is a documented finding under stated inclusion criteria, not an absence of Buddhism and not missing data."
+}

@@ -1,0 +1,109 @@
+---
+// The project's thesis as one figure: five cohorts on an honest linear axis,
+// the Joseon void as annotated absence, the modern century magnified below.
+import story from '../data/story.json';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const sizes = story.cohort_sizes;
+
+const X0 = 20, X1 = 980, Y_TOP = 46, H = 26;
+const T0 = 300, T1 = 2027;
+const x = (yr: number) => X0 + ((yr - T0) / (T1 - T0)) * (X1 - X0);
+
+// magnified modern row
+const Z0 = 1890, Z1 = 2027, ZY = 172;
+const zx = (yr: number) => X0 + ((yr - Z0) / (Z1 - Z0)) * (X1 - X0);
+
+const bands = story.bands;
+const b = Object.fromEntries(bands.map((bd) => [bd.id, bd]));
+const label = {
+  B1: `Silla pilgrims go west`,
+  B2: `The master from Magadha`,
+  B4: `Paper bridges`,
+  B5: `Thin threads`,
+  B6: `The institutional turn`,
+};
+---
+<figure aria-labelledby="strip-caption">
+  <svg viewBox="0 0 1000 262" role="img" aria-label="Timeline of India–Korea Buddhist exchange, 300 to 2026: five discrete cohorts of documented mediators separated by a five-hundred-year gap in the Joseon period. The modern century is magnified in a second row.">
+    <style>
+      .blk { rx: 2; }
+      .blk-label { font: 600 15px var(--sans); fill: var(--ink); }
+      .blk-count { font: 12.5px var(--sans); fill: var(--muted); }
+      .axis-year { font: 12px var(--sans); fill: var(--faint); }
+      .void-label { font: italic 13.5px var(--serif); fill: var(--muted); }
+      a:hover .blk { stroke: var(--ink); stroke-width: 1.5; }
+      a:focus .blk { stroke: var(--focus); stroke-width: 2; }
+    </style>
+
+    <!-- row 1: full span, linear time -->
+    <line x1={X0} y1={Y_TOP + H + 10} x2={X1} y2={Y_TOP + H + 10} stroke="var(--rule)" />
+    {[300, 900, 1392, 1900, 2026].map((yr) => (
+      <>
+        <line x1={x(yr)} y1={Y_TOP + H + 7} x2={x(yr)} y2={Y_TOP + H + 13} stroke="var(--faint)" />
+        <text class="axis-year" x={x(yr)} y={Y_TOP + H + 27} text-anchor={yr === 300 ? 'start' : yr === 2026 ? 'end' : 'middle'}>{yr}</text>
+      </>
+    ))}
+
+    <a href={`${base}/projects/buddhist-bridges/explore/`}><rect class="blk" x={x(300)} y={Y_TOP} width={x(900) - x(300)} height={H} fill="var(--b1)"><title>B1 · 300–900 · 18 people</title></rect></a>
+    <a href={`${base}/projects/buddhist-bridges/explore/`}><rect class="blk" x={x(900) + 2} y={Y_TOP} width={x(1392) - x(900) - 2} height={H} fill="var(--b2)"><title>B2 · 900–1392 · 6 people</title></rect></a>
+    <!-- the void: a line, not a block — absence, annotated -->
+    <line x1={x(1392) + 3} y1={Y_TOP + H / 2} x2={x(1900) - 3} y2={Y_TOP + H / 2} stroke="var(--void)" stroke-width="2.5" stroke-dasharray="1 6" stroke-linecap="round" />
+    <a href={`${base}/projects/buddhist-bridges/explore/`}><rect class="blk" x={x(1900)} y={Y_TOP} width={x(1945) - x(1900)} height={H} fill="var(--b4)"><title>B4 · 1900–1945 · 6 people</title></rect></a>
+    <a href={`${base}/projects/buddhist-bridges/explore/`}><rect class="blk" x={x(1945) + 2} y={Y_TOP} width={x(1990) - x(1945) - 2} height={H} fill="var(--b5)"><title>B5 · 1945–1990 · 5 people</title></rect></a>
+    <a href={`${base}/projects/buddhist-bridges/explore/`}><rect class="blk" x={x(1990) + 2} y={Y_TOP} width={x(2027) - x(1990) - 2} height={H} fill="var(--b6)"><title>B6 · 1990–2026 · 8 people</title></rect></a>
+
+    <text class="blk-label" x={x(300)} y={Y_TOP - 18}>{label.B1}</text>
+    <text class="blk-count" x={x(300)} y={Y_TOP - 4}>B1 · 300–900 · {sizes.B1} people</text>
+    <text class="blk-label" x={x(900) + 6} y={Y_TOP - 18}>{label.B2}</text>
+    <text class="blk-count" x={x(900) + 6} y={Y_TOP - 4}>B2 · 900–1392 · {sizes.B2}</text>
+    <text class="void-label" x={(x(1392) + x(1900)) / 2} y={Y_TOP - 11} text-anchor="middle">Joseon, 1392–1900 — no carried records</text>
+
+    <!-- magnifier guides -->
+    <polygon points={`${x(1900)},${Y_TOP + H + 34} ${X1},${Y_TOP + H + 34} ${X1},${ZY - 26} ${X0},${ZY - 26}`} fill="var(--card)" opacity="0.55" />
+
+    <!-- row 2: the modern century, magnified -->
+    <text class="blk-count" x={X0} y={ZY - 34}>The modern century, magnified</text>
+    <line x1={X0} y1={ZY + H + 10} x2={X1} y2={ZY + H + 10} stroke="var(--rule)" />
+    {[1900, 1945, 1990, 2026].map((yr) => (
+      <>
+        <line x1={zx(yr)} y1={ZY + H + 7} x2={zx(yr)} y2={ZY + H + 13} stroke="var(--faint)" />
+        <text class="axis-year" x={zx(yr)} y={ZY + H + 27} text-anchor={yr === 2026 ? 'end' : 'middle'}>{yr}</text>
+      </>
+    ))}
+    <a href={`${base}/projects/buddhist-bridges/explore/`}><rect class="blk" x={zx(1900)} y={ZY} width={zx(1945) - zx(1900)} height={H} fill="var(--b4)"><title>B4 · 1900–1945 · 6 people</title></rect></a>
+    <a href={`${base}/projects/buddhist-bridges/explore/`}><rect class="blk" x={zx(1945) + 2} y={ZY} width={zx(1990) - zx(1945) - 2} height={H} fill="var(--b5)"><title>B5 · 1945–1990 · 5 people</title></rect></a>
+    <a href={`${base}/projects/buddhist-bridges/explore/`}><rect class="blk" x={zx(1990) + 2} y={ZY} width={zx(2027) - zx(1990) - 2} height={H} fill="var(--b6)"><title>B6 · 1990–2026 · 8 people</title></rect></a>
+
+    <text class="blk-label" x={zx(1900)} y={ZY - 4}>{label.B4}</text>
+    <text class="blk-count" x={zx(1900)} y={ZY + H + 45}>B4 · {sizes.B4} people — influence without travel</text>
+    <text class="blk-label" x={zx(1945) + 6} y={ZY - 4}>{label.B5}</text>
+    <text class="blk-count" x={zx(1945) + 6} y={ZY + H + 45}>B5 · {sizes.B5}</text>
+    <text class="blk-label" x={zx(1990) + 6} y={ZY - 4}>{label.B6}</text>
+    <text class="blk-count" x={zx(1990) + 6} y={ZY + H + 45}>B6 · {sizes.B6} — movement returns</text>
+  </svg>
+  <figcaption id="strip-caption">
+    Documented mediators of India–Korea Buddhist exchange, 300–2026, by period cohort.
+    Each block is a generation of carried records in the frozen V3.0 dataset; the dotted line is the
+    Joseon interruption — eleven candidates examined, none met the evidence bar. Time is linear in
+    each row; the lower row magnifies 1890–2026. Click a cohort to open it in the timeline.
+  </figcaption>
+  <details class="chart-table">
+    <summary>Data table for this figure</summary>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Cohort</th><th>Period</th><th class="num">People</th><th>Character</th></tr></thead>
+        <tbody>
+          {bands.map((bd) => (
+            <tr>
+              <td>{bd.id}</td>
+              <td>{bd.start}–{bd.end === 2027 ? 2026 : bd.end}</td>
+              <td class="num">{sizes[bd.id]}</td>
+              <td>{bd.id === 'B3' ? 'No carried records (documented finding, not missing data)' : label[bd.id]}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </details>
+</figure>

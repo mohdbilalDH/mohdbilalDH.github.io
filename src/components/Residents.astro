@@ -1,0 +1,65 @@
+---
+// V5 — Four residents in sixteen centuries: the one role that recurs in every era of contact.
+import story from '../data/story.json';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const marks = [
+  { id: 'P-0006', year: 384, span: 'arrived 384', line: 'Serindian monk credited with founding Baekje Buddhism — the earliest documented Buddhist arrival in Korea (Samguk sagi; Samguk yusa).' },
+  { id: 'P-0012', year: 531, span: 'active c. 526–531', line: 'Indian master with whom the Baekje monk Gyeomik studied and translated Vinaya texts.' },
+  { id: 'P-0023', year: 1328, span: 'in Korea 1326–1363', line: 'Dhyānabhadra (Jikong), monk from Magadha; founded Hoeamsa and shaped late-Goryeo Seon through his Korean disciples.' },
+  { id: 'P-0062', year: 2020, span: 'active 2010s–2026', line: 'Ven. Buddhavara, builder of the Korean Buddhist bridgehead at Bodh Gaya (Bunhwangsa India; Delhi University MOU).' },
+];
+const people = Object.fromEntries(story.residents.map((r) => [r.id, r]));
+const X0 = 30, X1 = 970, T0 = 300, T1 = 2027;
+const x = (yr: number) => X0 + ((yr - T0) / (T1 - T0)) * (X1 - X0);
+---
+<figure>
+  <header class="fig-head">
+    <span class="fig-no">Figure 4</span>
+    <p class="fig-title">Long-term residence occurs four times in sixteen centuries, roughly once per era of contact</p>
+  </header>
+  <svg viewBox="0 0 1000 96" role="img" aria-label="Four long-term religious residents across sixteen centuries: Marananta in 384, Baedalta around 531, Dhyanabhadra from 1326, and Buddhavara in the 2020s. No resident is documented between the fourteenth and the twenty-first century.">
+    <style>
+      .res-year { font: 600 13px var(--sans); fill: var(--ink); }
+      .res-axis { font: 11px var(--sans); fill: var(--faint); }
+    </style>
+    <line x1={X0} y1="58" x2={X1} y2="58" stroke="var(--rule)" />
+    <text class="res-axis" x={X0} y="82">300</text>
+    <text class="res-axis" x={X1} y="82" text-anchor="end">2026</text>
+    {marks.map((mk, i) => {
+      const p = people[mk.id];
+      const band = p ? p.band.toLowerCase() : 'b1';
+      const ly = i === 0 ? 16 : 38;
+      return (
+        <>
+          <circle cx={x(mk.year)} cy="58" r="7" fill={`var(--${band})`} stroke="var(--paper)" stroke-width="2" />
+          {i === 0 && <line x1={x(mk.year)} y1="24" x2={x(mk.year)} y2="48" stroke="var(--rule)" />}
+          <text class="res-year" x={x(mk.year)} y={ly} text-anchor={mk.year > 1900 ? 'end' : mk.year > 1000 ? 'middle' : 'start'}>{p ? p.name.replace(' (Ven.)', '') : ''} · {mk.year}</text>
+        </>
+      );
+    })}
+  </svg>
+  <figcaption>
+    A resident is a mediator who lived and worked in the other country for an extended period.
+    The carried record contains exactly four, and none between Dhyānabhadra's death in 1363 and
+    the present generation.
+  </figcaption>
+</figure>
+<div class="tablewrap">
+  <table>
+    <thead><tr><th>Resident</th><th>When</th><th>What the record shows</th><th>Confidence</th></tr></thead>
+    <tbody>
+      {marks.map((mk) => {
+        const p = people[mk.id];
+        return (
+          <tr>
+            <td><button class="linklike" data-person={mk.id} style="font-weight: 600;">{p ? p.name : mk.id}</button>{p && p.hangul ? ` (${p.hangul})` : ''}</td>
+            <td>{mk.span}</td>
+            <td>{mk.line}</td>
+            <td><span class={`badge ${p ? p.confidence.toLowerCase() : ''}`}>{p ? p.confidence : ''}</span>{p && p.single_source ? ' · single source' : ''}</td>
+          </tr>
+        );
+      })}
+    </tbody>
+  </table>
+</div>

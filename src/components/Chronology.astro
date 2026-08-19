@@ -1,0 +1,231 @@
+---
+// The centerpiece: one honest linear strip, five era tabs, and an in-place
+// era panel with people lifelines. Click a life to open its cited record.
+import story from '../data/story.json';
+import people from '../data/people.json';
+
+const sizes = story.cohort_sizes;
+const X0 = 14, X1 = 986, T0 = 300, T1 = 2027, Y = 26, H = 30;
+const x = (yr) => X0 + ((yr - T0) / (T1 - T0)) * (X1 - X0);
+const AX = Y + H + 12;
+
+const eras = [
+  { id: 'B1', years: '300–900', s: 300, e: 900, name: 'Pilgrims', line: 'Eighteen monastics. In no other era did movement run both ways: eight toward India, eight toward Korea.' },
+  { id: 'B2', years: '900–1392', s: 900, e: 1392, name: 'The master from Magadha', line: 'Six Seon figures around one Indian monk, Dhyānabhadra, whose arrival in 1326 is the era’s only documented journey.' },
+  { id: 'B3', years: '1392–1900', s: 1392, e: 1900, name: 'The silence', line: 'Joseon. Eleven candidates were examined and none met the evidence bar.' },
+  { id: 'B4', years: '1900–1945', s: 1900, e: 1945, name: 'Paper bridges', line: 'Six figures, four of them not Buddhists. Both attempted pilgrimages went unrealized; texts crossed instead.' },
+  { id: 'B5', years: '1945–1990', s: 1945, e: 1990, name: 'Thin threads', line: 'Five mediators in forty-five years, a connection held by individuals rather than institutions.' },
+  { id: 'B6', years: '1990–2026', s: 1990, e: 2027, name: 'The institutional turn', line: 'Eight mediators, seven of whom travelled. Orders, universities, relic returns, and the record’s first women.' },
+];
+
+const slim = people.people.map((p) => ({
+  id: p.id, name: p.name, band: p.band,
+  b: p.birth ? parseInt(p.birth) : null, d: p.death ? parseInt(p.death) : null,
+  fs: p.floruit && p.floruit[0] ? parseInt(p.floruit[0]) : null,
+  fe: p.floruit && p.floruit[1] ? parseInt(p.floruit[1]) : null,
+  ss: !!p.single_source, conf: p.confidence,
+}));
+---
+<figure aria-labelledby="chron-caption" id="chronology">
+  <header class="fig-head">
+    <span class="fig-no">Figure 1</span>
+    <p class="fig-title">Sixteen centuries of contact form five separate cohorts, not one continuous exchange</p>
+  </header>
+  <svg viewBox="0 0 1000 106" role="img" aria-label="Linear timeline, 300 to 2026: five cohorts of documented mediators with a five-hundred-year gap during Joseon. Details for each era open below.">
+    <style>
+      .axis-year { font: 11.5px var(--sans); fill: var(--faint); }
+      .strip-note { font: italic 13px var(--serif); fill: var(--muted); }
+      .blk { cursor: pointer; }
+      .blk:hover rect, .blk:focus rect { stroke: var(--ink); stroke-width: 1.5; }
+    </style>
+    <line x1={X0} y1={AX} x2={X1} y2={AX} stroke="var(--rule)" />
+    {[300, 900, 1392, 1900, 2026].map((yr) => (
+      <>
+        <line x1={x(yr)} y1={AX - 3} x2={x(yr)} y2={AX + 3} stroke="var(--faint)" />
+        <text class="axis-year" x={x(yr)} y={AX + 16} text-anchor={yr === 300 ? 'start' : yr === 2026 ? 'end' : 'middle'}>{yr}</text>
+      </>
+    ))}
+    <text class="strip-note" x={(x(1392) + x(1900)) / 2} y={Y - 8} text-anchor="middle">Joseon: no carried records</text>
+    <g class="blk" data-era="B1" tabindex="0" role="button" aria-label="Open era: Pilgrims, 300 to 900"><rect x={x(300)} y={Y} width={x(900) - x(300) - 2} height={H} rx="2" fill="var(--b1)" /></g>
+    <g class="blk" data-era="B2" tabindex="0" role="button" aria-label="Open era: The master from Magadha, 900 to 1392"><rect x={x(900)} y={Y} width={x(1392) - x(900) - 2} height={H} rx="2" fill="var(--b2)" /></g>
+    <g class="blk" data-era="B3" tabindex="0" role="button" aria-label="Open era: the Joseon silence, 1392 to 1900"><rect x={x(1392)} y={Y} width={x(1900) - x(1392) - 2} height={H} rx="2" fill="transparent" stroke="none" /><line x1={x(1392) + 4} y1={Y + H / 2} x2={x(1900) - 6} y2={Y + H / 2} stroke="var(--void)" stroke-width="2.5" stroke-dasharray="1 6" stroke-linecap="round" /></g>
+    <g class="blk" data-era="B4" tabindex="0" role="button" aria-label="Open era: Paper bridges, 1900 to 1945"><rect x={x(1900)} y={Y} width={x(1945) - x(1900) - 1} height={H} rx="2" fill="var(--b4)" /></g>
+    <g class="blk" data-era="B5" tabindex="0" role="button" aria-label="Open era: Thin threads, 1945 to 1990"><rect x={x(1945)} y={Y} width={x(1990) - x(1945) - 1} height={H} rx="2" fill="var(--b5)" /></g>
+    <g class="blk" data-era="B6" tabindex="0" role="button" aria-label="Open era: The institutional turn, 1990 to 2026"><rect x={x(1990)} y={Y} width={x(2027) - x(1990)} height={H} rx="2" fill="var(--b6)" /></g>
+  </svg>
+
+  <div class="era-tabs" role="tablist" aria-label="Eras">
+    {eras.map((e) => (
+      <button class="era-tab" role="tab" data-era={e.id} aria-selected="false">
+        <span class="dot" style={e.id === 'B3' ? 'background: transparent; border: 1.5px dashed var(--void);' : `background: var(--${e.id.toLowerCase()});`}></span>
+        <span class="tname">{e.name}</span>
+        <span class="tyears">{e.years}{e.id === 'B3' ? '' : ` · ${sizes[e.id]}`}</span>
+      </button>
+    ))}
+  </div>
+
+  <div id="era-panel" hidden></div>
+
+  <figcaption id="chron-caption">
+    Documented mediators of India–Korea Buddhist exchange, 300–2026, on a linear axis. Each block
+    is one cohort of the frozen V3.0 dataset. The dotted line marks the Joseon interruption.
+    Select an era to see its people, and a person to read the full cited record. Dashed bars are
+    floruit-derived lifespans; hatched bars rest on a single source.
+  </figcaption>
+  <details class="chart-table">
+    <summary>Data table for this figure</summary>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Era</th><th>Period</th><th class="num">People</th><th>Character</th></tr></thead>
+      <tbody>{eras.map((e) => <tr><td>{e.name}</td><td>{e.years}</td><td class="num">{e.id === 'B3' ? 0 : sizes[e.id]}</td><td>{e.line}</td></tr>)}</tbody>
+    </table></div>
+  </details>
+</figure>
+
+<style>
+  .era-tabs { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 0.5rem 0 0; font-family: var(--sans); }
+  .era-tab {
+    display: flex; align-items: center; gap: 0.45rem;
+    border: 1px solid var(--rule); border-radius: 999px; background: var(--paper);
+    padding: 0.32rem 0.85rem 0.32rem 0.6rem; cursor: pointer; color: var(--ink);
+  }
+  .era-tab:hover { border-color: var(--accent); }
+  .era-tab[aria-selected="true"] { background: var(--card); border-color: var(--ink); }
+  .era-tab .dot { width: 11px; height: 11px; border-radius: 3px; }
+  .era-tab .tname { font-size: 0.8rem; font-weight: 600; }
+  .era-tab .tyears { font-size: 0.72rem; color: var(--muted); }
+  #era-panel {
+    border: 1px solid var(--rule); border-radius: 10px; background: var(--card);
+    padding: 1.1rem 1.3rem 1.2rem; margin-top: 0.8rem;
+  }
+</style>
+
+<style is:global>
+  #era-panel h3 { margin: 0 0 0.15rem; font-size: 1.1rem; }
+  #era-panel .era-line { font: 0.85rem/1.55 var(--sans); color: var(--muted); margin: 0 0 0.6rem; }
+  #era-panel svg { display: block; width: 100%; height: auto; }
+  #era-panel .life { cursor: pointer; }
+  #era-panel .life:hover rect, #era-panel .life:focus rect { stroke: var(--ink); stroke-width: 1.3; }
+  #era-panel .life text { font: 11.5px var(--sans); fill: var(--ink); }
+  #era-panel .undated { font: 0.8rem/1.7 var(--sans); color: var(--muted); margin: 0.5rem 0 0; }
+  #era-panel .undated button { font: 0.78rem var(--sans); border: 1px solid var(--rule); border-radius: 999px; background: var(--paper); color: var(--ink); padding: 0.15rem 0.6rem; cursor: pointer; margin: 0 0.25rem 0.3rem 0; }
+  #era-panel .undated button:hover { border-color: var(--accent); }
+  #era-panel .hint { font: 0.72rem var(--sans); color: var(--faint); margin: 0.5rem 0 0; }
+</style>
+
+<script define:vars={{ eras, slim }}>
+  const panel = document.getElementById('era-panel');
+  const tabs = [...document.querySelectorAll('.era-tab')];
+  const blocks = [...document.querySelectorAll('#chronology .blk')];
+  const NS = 'http://www.w3.org/2000/svg';
+
+  function openEra(id, scroll) {
+    const era = eras.find((e) => e.id === id);
+    tabs.forEach((t) => t.setAttribute('aria-selected', String(t.dataset.era === id)));
+    if (era.id === 'B3') { renderVoid(era); } else { renderEra(era); }
+    panel.hidden = false;
+    if (scroll) panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function renderVoid(era) {
+    panel.innerHTML = `
+      <h3>${era.name} · ${era.years}</h3>
+      <p class="era-line">${era.line}</p>
+      <p style="font-size: 0.92rem; margin: 0;">
+        The five Joseon centuries carry <strong>zero records</strong>. Eleven candidate rows
+        (three people, three texts, one place, four links) were classified and all excluded on
+        evidence, as the Neo-Confucian state closed the channels Buddhism had used. Between the
+        enshrinement of Dhyānabhadra’s relics in 1370 and the next documented event, a 1981
+        delegation, lie <strong>611 years</strong>. One lead remains open for a future collection
+        round: Yi Kyu-gyŏng’s nineteenth-century encyclopedia entries on India.
+      </p>
+      <p class="hint">The void is a finding under stated inclusion criteria, not a claim that no contact ever occurred.</p>`;
+  }
+
+  function renderEra(era) {
+    const ppl = slim.filter((p) => p.band === era.id);
+    const dated = ppl.filter((p) => (p.b && p.d) || p.b || p.fs);
+    const undated = ppl.filter((p) => !((p.b && p.d) || p.b || p.fs));
+    const spans = dated.map((p) => {
+      const fuzzy = !(p.b && p.d);
+      let s = p.b ?? p.fs, e = p.d ?? p.fe ?? ((p.b ?? p.fs) + 10);
+      if (e - s < 4) { s -= 2; e += 2; }
+      return { ...p, s, e, fuzzy };
+    }).sort((a, b) => a.s - b.s);
+    const t0 = Math.min(era.s, ...spans.map((p) => p.s)) - 8;
+    const t1 = Math.max(era.e === 2027 ? 2026 : era.e, ...spans.map((p) => p.e)) + 8;
+    const W = 960, RH = 24, Y0 = 8;
+    const px = (yr) => 6 + ((yr - t0) / (t1 - t0)) * (W - 190);
+    const H = Y0 + spans.length * RH + 30;
+
+    panel.innerHTML = `
+      <h3>${era.name} · ${era.years} · ${ppl.length} people</h3>
+      <p class="era-line">${era.line}</p>`;
+    const svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    svg.setAttribute('role', 'list');
+    const defs = document.createElementNS(NS, 'defs');
+    defs.innerHTML = `<pattern id="era-hatch" width="5" height="5" patternUnits="userSpaceOnUse"><path d="M0 5 L5 0" stroke="var(--card)" stroke-width="1.6"/></pattern>`;
+    svg.appendChild(defs);
+    const ax = document.createElementNS(NS, 'line');
+    ax.setAttribute('x1', '6'); ax.setAttribute('x2', String(px(t1)));
+    ax.setAttribute('y1', String(H - 20)); ax.setAttribute('y2', String(H - 20));
+    ax.setAttribute('stroke', 'var(--rule)');
+    svg.appendChild(ax);
+    for (const yr of [era.s, era.e === 2027 ? 2026 : era.e]) {
+      const t = document.createElementNS(NS, 'text');
+      t.setAttribute('x', String(px(yr))); t.setAttribute('y', String(H - 6));
+      t.setAttribute('style', 'font: 10.5px var(--sans); fill: var(--faint)');
+      t.setAttribute('text-anchor', yr === era.s ? 'start' : 'end');
+      t.textContent = yr;
+      svg.appendChild(t);
+    }
+    spans.forEach((p, i) => {
+      const g = document.createElementNS(NS, 'g');
+      g.setAttribute('class', 'life'); g.setAttribute('tabindex', '0'); g.setAttribute('role', 'listitem');
+      const y = Y0 + i * RH;
+      const r = document.createElementNS(NS, 'rect');
+      r.setAttribute('x', String(px(p.s))); r.setAttribute('y', String(y));
+      r.setAttribute('width', String(Math.max(6, px(p.e) - px(p.s)))); r.setAttribute('height', '13'); r.setAttribute('rx', '3');
+      r.setAttribute('fill', `var(--${era.id.toLowerCase()})`);
+      if (p.fuzzy) { r.setAttribute('opacity', '0.45'); r.setAttribute('stroke', `var(--${era.id.toLowerCase()})`); r.setAttribute('stroke-dasharray', '4 3'); }
+      g.appendChild(r);
+      if (p.ss) {
+        const h = r.cloneNode(); h.setAttribute('fill', 'url(#era-hatch)'); h.removeAttribute('opacity'); g.appendChild(h);
+      }
+      const t = document.createElementNS(NS, 'text');
+      t.setAttribute('x', String(px(p.e) + 7)); t.setAttribute('y', String(y + 11));
+      t.textContent = p.name + (p.fuzzy ? ' ?' : '');
+      g.appendChild(t);
+      const ti = document.createElementNS(NS, 'title');
+      ti.textContent = `${p.name} · ${p.fuzzy ? 'floruit-derived' : `${p.s}–${p.e}`} · open record`;
+      g.appendChild(ti);
+      g.addEventListener('click', () => window.__bbShowPerson(p.id));
+      g.addEventListener('keydown', (ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); window.__bbShowPerson(p.id); } });
+      svg.appendChild(g);
+    });
+    panel.appendChild(svg);
+    if (undated.length) {
+      const div = document.createElement('p');
+      div.className = 'undated';
+      div.append('Known only by name and record — no safe dates: ');
+      undated.forEach((p) => {
+        const b = document.createElement('button');
+        b.textContent = p.name;
+        b.addEventListener('click', () => window.__bbShowPerson(p.id));
+        div.appendChild(b);
+      });
+      panel.appendChild(div);
+    }
+    const hint = document.createElement('p');
+    hint.className = 'hint';
+    hint.textContent = 'Solid bars are documented lifespans; fuzzy dashed bars are floruit-derived windows; hatching marks lives resting on a single source. Select a person for the full cited record.';
+    panel.appendChild(hint);
+  }
+
+  tabs.forEach((t) => t.addEventListener('click', () => openEra(t.dataset.era, false)));
+  blocks.forEach((b) => {
+    b.addEventListener('click', () => openEra(b.dataset.era, true));
+    b.addEventListener('keydown', (ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); openEra(b.dataset.era, true); } });
+  });
+  openEra('B1', false);
+</script>

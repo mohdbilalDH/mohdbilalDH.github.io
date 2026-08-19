@@ -1,0 +1,76 @@
+---
+// V3 — Which way did the bridge point? Diverging bars per cohort:
+// left = movement/influence toward India, right = toward Korea.
+import story from '../data/story.json';
+
+const d = story.direction_by_band;
+const bandsShown = ['B1', 'B2', 'B4', 'B5', 'B6'];
+const names = { B1: '300–900', B2: '900–1392', B4: '1900–1945', B5: '1945–1990', B6: '1990–2026' };
+const CX = 500, UNIT = 38, ROW = 64, Y0 = 66, BAR = 20;
+const get = (b: string, k: string) => (d[b] && d[b][k]) || 0;
+const H = Y0 + bandsShown.length * ROW + 10;
+---
+<figure>
+  <header class="fig-head">
+    <span class="fig-no">Figure 2</span>
+    <p class="fig-title">Movement was balanced only before 900; after Goryeo the flow runs from India to Korea</p>
+  </header>
+  <svg viewBox={`0 0 1000 ${H}`} role="img" aria-label="Direction of influence per cohort. Before 900 movement is balanced, eight people each way. From Goryeo to 1990 the flow runs almost entirely India to Korea. Only after 1990 does real bidirectionality appear, with three bidirectional mediators.">
+    <style>
+      .dir-head { font: 600 13px var(--sans); fill: var(--muted); }
+      .dir-band { font: 600 14px var(--sans); fill: var(--ink); }
+      .dir-years { font: 11.5px var(--sans); fill: var(--faint); }
+      .dir-n { font: 600 13px var(--sans); fill: var(--ink); }
+      .dir-bidir { font: 11.5px var(--sans); fill: var(--muted); }
+    </style>
+    <text class="dir-head" x={CX - 20} y="24" text-anchor="end">← toward India</text>
+    <text class="dir-head" x={CX + 20} y="24">toward Korea →</text>
+    <line x1={CX} y1="34" x2={CX} y2={H - 14} stroke="var(--rule)" />
+    {bandsShown.map((b, i) => {
+      const y = Y0 + i * ROW;
+      const ki = get(b, 'KOREA_TO_INDIA');
+      const ik = get(b, 'INDIA_TO_KOREA');
+      const bi = get(b, 'BIDIRECTIONAL');
+      const un = get(b, 'UNCERTAIN');
+      return (
+        <>
+          <text class="dir-band" x="20" y={y + 4}>{b}</text>
+          <text class="dir-years" x="20" y={y + 20}>{names[b]}</text>
+          {ki > 0 && (
+            <>
+              <rect x={CX - 8 - ki * UNIT} y={y - BAR / 2} width={ki * UNIT} height={BAR} rx="3" fill={`var(--${b.toLowerCase()})`} />
+              <text class="dir-n" x={CX - 14 - ki * UNIT} y={y + 4} text-anchor="end">{ki}</text>
+            </>
+          )}
+          {ik > 0 && (
+            <>
+              <rect x={CX + 8} y={y - BAR / 2} width={ik * UNIT} height={BAR} rx="3" fill={`var(--${b.toLowerCase()})`} />
+              <text class="dir-n" x={CX + 14 + ik * UNIT} y={y + 4}>{ik}</text>
+            </>
+          )}
+          {(bi > 0 || un > 0) && (
+            <text class="dir-bidir" x={CX} y={y + BAR / 2 + 16} text-anchor="middle">{bi > 0 ? `⇄ ${bi} bidirectional` : ''}{bi > 0 && un > 0 ? ' · ' : ''}{un > 0 ? `${un} uncertain` : ''}</text>
+          )}
+        </>
+      );
+    })}
+  </svg>
+  <figcaption>
+    Direction of influence for the 43 carried mediators, by cohort. Eight early mediators
+    travelled toward India and eight carried influence toward Korea. From B2 to B5 the bridge
+    points one way, India to Korea, in 19 of 25 later cases. Careers marked ⇄ worked in both
+    directions and appear only after 1990. One early case is direction-uncertain and shown as
+    such.
+  </figcaption>
+  <details class="chart-table">
+    <summary>Data table for this figure</summary>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Cohort</th><th class="num">→ India</th><th class="num">→ Korea</th><th class="num">Bidirectional</th><th class="num">Uncertain</th></tr></thead>
+      <tbody>
+        {bandsShown.map((b) => (
+          <tr><td>{b} ({names[b]})</td><td class="num">{get(b,'KOREA_TO_INDIA')}</td><td class="num">{get(b,'INDIA_TO_KOREA')}</td><td class="num">{get(b,'BIDIRECTIONAL')}</td><td class="num">{get(b,'UNCERTAIN')}</td></tr>
+        ))}
+      </tbody>
+    </table></div>
+  </details>
+</figure>

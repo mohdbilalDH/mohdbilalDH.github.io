@@ -1,0 +1,2339 @@
+{
+ "_meta": {
+  "dataset": "Buddhist Bridges V3.0 (frozen 2026-08-17)",
+  "manifest_check": "769b00c67fdd1a6e",
+  "generated": "2026-08-17",
+  "note": "43 carried people: frozen record + prosopography register + floruits + typology."
+ },
+ "people": [
+  {
+   "id": "P-0001",
+   "name": "Hyecho",
+   "hangul": "혜초",
+   "hanja": "慧超",
+   "variants": "Hye-ch'o; Huichao; Hye Ch'o; 慧超; 惠超",
+   "band": "B1",
+   "nationality": "KOREAN (Silla)",
+   "role": "Buddhist monk; pilgrim; translator",
+   "roles": [
+    "PILGRIM_MONK"
+   ],
+   "tradition": [
+    "ESOTERIC"
+   ],
+   "typology": "PILGRIM_VISITOR",
+   "movement": "visited",
+   "direction": "BIDIRECTIONAL",
+   "birth": "704",
+   "death": "787",
+   "birth_precision": "APPROX",
+   "floruit": [
+    "",
+    ""
+   ],
+   "floruit_precision": "",
+   "india_connection": "Pilgrimage to the Five Indias c. 723-727 (sea out via Guangzhou, land back via Central Asia/Persia); visited Kushinagara, Varanasi, Rajagrha, Bodhgaya, Lumbini, Kashmir, Gandhara",
+   "korea_connection": "Silla-born; never returned to Korea; active in Tang; among Amoghavajra's six great disciples; later in Japanese Shingon lineage",
+   "evidence": "Wang ocheonchukguk jeon (往五天竺國傳), the sole surviving 8th-c. East Asian record of India/Central Asia; Dunhuang ms. (Pelliot 1908), Bibliothèque nationale de France",
+   "significance": "First Korean recorded to have travelled to India by sea and returned overland leaving a written record; 'world's oldest of the four great travelogues' per Korean scholarship",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "6",
+   "sources": [
+    {
+     "id": "S-0048",
+     "citation": "Encyclopedia of Korean Culture, '왕오천축국전'",
+     "url": "https://encykorea.aks.ac.kr/Article/E0039126",
+     "type": "TERTIARY",
+     "reliability": "AUTHORITATIVE"
+    },
+    {
+     "id": "S-0039",
+     "citation": "Encyclopedia of Korean Culture, '혜초'",
+     "url": "https://encykorea.aks.ac.kr/Article/E0063646",
+     "type": "TERTIARY",
+     "reliability": "AUTHORITATIVE"
+    },
+    {
+     "id": "S-0137",
+     "citation": "National Institute of Korean History, 우리역사넷, Hyecho",
+     "url": "https://contents.history.go.kr/mobile/kc/view.do?code=kc_age_10&levelId=kc_n102000",
+     "type": "ARCHIVAL",
+     "reliability": "AUTHORITATIVE"
+    },
+    {
+     "id": "S-0095",
+     "citation": "Jung Byung-sam, 'Hyecho's View on India and Central Asia', KCI",
+     "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART001508931",
+     "type": "SECONDARY",
+     "reliability": "ACADEMIC"
+    },
+    {
+     "id": "S-0104",
+     "citation": "Jeong Soo-il, '혜초의 서역기행과 『왕오천축국전』', KISS",
+     "url": "https://kiss.kstudy.com/Detail/Ar?key=3742173",
+     "type": "SECONDARY",
+     "reliability": "ACADEMIC"
+    },
+    {
+     "id": "S-0105",
+     "citation": "Korean Wikipedia, '혜초' (704-787)",
+     "url": "https://ko.wikipedia.org/wiki/혜초",
+     "type": "TERTIARY",
+     "reliability": "INSTITUTIONAL"
+    }
+   ]
+  },
+  {
+   "id": "P-0002",
+   "name": "Woncheuk",
+   "hangul": "원측",
+   "hanja": "圓測",
+   "variants": "Wŏnch'ŭk; Wonchuk; Wuan-tshe (Tibetan); Ximing dashi; 圓測",
+   "band": "B1",
+   "nationality": "KOREAN (Silla)",
+   "role": "Buddhist monk; Yogacara scholar; abbot",
+   "roles": [
+    "SCHOLAR_MONK"
+   ],
+   "tradition": [
+    "YOGACARA"
+   ],
+   "typology": "TEXTUAL_MEDIATOR",
+   "movement": "-",
+   "direction": "INDIA_TO_KOREA",
+   "birth": "613",
+   "death": "696",
+   "birth_precision": "YEAR",
+   "floruit": [
+    "",
+    ""
+   ],
+   "floruit_precision": "",
+   "india_connection": "Studied Indian Yogacara doctrine (Vasubandhu's texts) via Xuanzang's translations in Chang'an; never travelled to India",
+   "korea_connection": "Silla royal family (grandson of King Chinp'yong per some accounts); ordained at 15 in Silla before going to Tang",
+   "evidence": "Commentaries (e.g., on Samdhinirmocana-sutra) studied and quoted in Tibetan doxographies; long-standing rivalry with Kuiji",
+   "significance": "One of the most influential Silla monks in Tang China; his works transmitted to Tibet",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "2",
+   "sources": [
+    {
+     "id": "S-0149",
+     "citation": "John Powers, article on Wŏnch'ŭk, Journal of the International Association of Buddhist Studies",
+     "url": "https://journals.ub.uni-heidelberg.de/index.php/jiabs/article/download/8793/2700",
+     "type": "SECONDARY",
+     "reliability": "ACADEMIC"
+    },
+    {
+     "id": "S-0051",
+     "citation": "Encyclopedia of Buddhism, 'Wŏnch'ŭk'",
+     "url": "https://encyclopediaofbuddhism.org/wiki/W%C5%8Fnch%27%C5%ADk",
+     "type": "TERTIARY",
+     "reliability": "INSTITUTIONAL"
+    }
+   ]
+  },
+  {
+   "id": "P-0003",
+   "name": "Wŏnhyo",
+   "hangul": "원효",
+   "hanja": "元曉",
+   "variants": "Wonhyo; Wŏn-hyo; 元曉; Haedong bosal; 'Jinna bosal' epithet in China",
+   "band": "B1",
+   "nationality": "KOREAN (Silla)",
+   "role": "Buddhist philosopher-monk; author; popularizer; founder of Haedongjong",
+   "roles": [
+    "SCHOLAR_MONK"
+   ],
+   "tradition": [
+    "HWA_EOM",
+    "GENERAL_BUDDHISM"
+   ],
+   "typology": "TEXTUAL_MEDIATOR",
+   "movement": "-",
+   "direction": "INDIA_TO_KOREA",
+   "birth": "617",
+   "death": "686",
+   "birth_precision": "YEAR",
+   "floruit": [
+    "",
+    ""
+   ],
+   "floruit_precision": "",
+   "india_connection": "Deeply studied Indian-origin texts, esp. the Awakening of Faith (attributed to Asvaghosa); wrote famous Haedong-so commentaries; legend of an aborted trip to Tang/India",
+   "korea_connection": "Silla native; tutored many Silla monks; works transmitted to Tang and Japan",
+   "evidence": "Haedong-so commentaries studied in Tang/Japan; called 'Jinna bosal' in China (equated with Indian logician Dignaga); T'ong pulgyo synthesis",
+   "significance": "Korea's greatest Buddhist philosopher; synthesized Indian/Chinese Buddhist thought for Korea",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "3",
+   "sources": [
+    {
+     "id": "S-0001",
+     "citation": "A. Charles Muller, article on Wonhyo/Chinul/Kihwa",
+     "url": "http://www.acmuller.net/articles/1995-03-kiyo-wonhyo-chinul-kihwa.html",
+     "type": "SECONDARY",
+     "reliability": "ACADEMIC"
+    },
+    {
+     "id": "S-0049",
+     "citation": "Encyclopedia of Korean Culture, '원효'",
+     "url": "https://encykorea.aks.ac.kr/Article/E0040908",
+     "type": "TERTIARY",
+     "reliability": "AUTHORITATIVE"
+    },
+    {
+     "id": "S-0038",
+     "citation": "Encyclopedia of Korean Culture, '해동종'",
+     "url": "https://encykorea.aks.ac.kr/Article/E0062550",
+     "type": "TERTIARY",
+     "reliability": "AUTHORITATIVE"
+    }
+   ]
+  },
+  {
+   "id": "P-0004",
+   "name": "Kyŏnghŭng",
+   "hangul": "경흥",
+   "hanja": "憬興",
+   "variants": "Gyeongheung; 憬興; Su Kyŏnghŭng",
+   "band": "B1",
+   "nationality": "KOREAN (Silla; born Ungcheon, former Baekje territory)",
+   "role": "Buddhist monk; commentator; one of Silla's 'Three/Four Great Writers'",
+   "roles": [
+    "SCHOLAR_MONK"
+   ],
+   "tradition": [
+    "PURE_LAND"
+   ],
+   "typology": "TEXTUAL_MEDIATOR",
+   "movement": "-",
+   "direction": "INDIA_TO_KOREA",
+   "birth": "",
+   "death": "",
+   "birth_precision": "UNKNOWN",
+   "floruit": [
+    "681",
+    "692"
+   ],
+   "floruit_precision": "APPROX",
+   "india_connection": "Authored commentaries on Indian-derived sutras (Three Pure Land sutras incl. the Smaller Sukhavativyuha; Golden Light Sutra) without travelling to India",
+   "korea_connection": "Silla monk under King Sinmun (r. 681-692); works survive via Japanese holdings",
+   "evidence": "Sam Mireukgyeong so (三彌勒經疏) and Muryangsugyong yonuisulmunchan survive; the latter long studied in Japan; ~40 works recorded, 3 extant",
+   "significance": "Major Silla exegete of Indian Buddhist scriptural heritage; bridge from Baekje-refugee traditions into Unified Silla scholarship",
+   "confidence": "MEDIUM",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "2",
+   "sources": [
+    {
+     "id": "S-0037",
+     "citation": "Encyclopedia of Korean Culture, '경흥'",
+     "url": "https://encykorea.aks.ac.kr/Article/E0003027",
+     "type": "TERTIARY",
+     "reliability": "AUTHORITATIVE"
+    },
+    {
+     "id": "S-0160",
+     "citation": "UCLA Buddhist studies, 'Kyŏnghŭng's Commentary on Three Maitreya Sutras'",
+     "url": "https://www.international.ucla.edu/buddhist/article/127560",
+     "type": "SECONDARY",
+     "reliability": "ACADEMIC"
+    }
+   ]
+  },
+  {
+   "id": "P-0005",
+   "name": "T'aehyŏn",
+   "hangul": "태현",
+   "hanja": "太賢",
+   "variants": "Taehyon; Tae-hyŏn; 太賢; 大賢",
+   "band": "B1",
+   "nationality": "KOREAN (Silla)",
+   "role": "Buddhist monk; Yogacara commentator; one of Silla's Four Great Writers",
+   "roles": [
+    "SCHOLAR_MONK"
+   ],
+   "tradition": [
+    "YOGACARA"
+   ],
+   "typology": "TEXTUAL_MEDIATOR",
+   "movement": "-",
+   "direction": "INDIA_TO_KOREA",
+   "birth": "",
+   "death": "",
+   "birth_precision": "UNKNOWN",
+   "floruit": [
+    "742",
+    "765"
+   ],
+   "floruit_precision": "APPROX",
+   "india_connection": "Commented on Xuanzang/Dharmapala-derived Cheng Weishi Lun (Indian Yogacara thought); no India travel",
+   "korea_connection": "Silla monk; 52 works recorded, 5 extant",
+   "evidence": "Seong yusik non hakki (成唯識論學記) and Daeseung gisillon naeui yaktamgi (Awakening of Faith commentary); Beommanggyeong gojeokki (Brahma's Net Sutra)",
+   "significance": "Key Silla interpreter of Indian-origin Yogacara texts; foundational figure claimed by early Goryeo Yugajong",
+   "confidence": "MEDIUM",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "2",
+   "sources": [
+    {
+     "id": "S-0046",
+     "citation": "Encyclopedia of Korean Culture, '태현'",
+     "url": "https://encykorea.aks.ac.kr/Article/E0059103",
+     "type": "TERTIARY",
+     "reliability": "AUTHORITATIVE"
+    },
+    {
+     "id": "S-0161",
+     "citation": "UCLA dissertation on T'aehyŏn (eScholarship)",
+     "url": "https://escholarship.org/content/qt74h5d0nv/qt74h5d0nv.pdf",
+     "type": "SECONDARY",
+     "reliability": "ACADEMIC"
+    }
+   ]
+  },
+  {
+   "id": "P-0006",
+   "name": "Marananta",
+   "hangul": "마라난타",
+   "hanja": "摩羅難陀",
+   "variants": "Mallananda; 摩羅難陀; 摩羅難陁",
+   "band": "B1",
+   "nationality": "UNCERTAIN (Western Regions/Serindia; some scholars argue Indian; came via Eastern Jin China)",
+   "role": "Buddhist monk ('foreign monk' 胡僧)",
+   "roles": [
+    "MONK_GENERAL"
+   ],
+   "tradition": [
+    "GENERAL_BUDDHISM"
+   ],
+   "typology": "RESIDENT_WORKER",
+   "movement": "worked",
+   "direction": "INDIA_TO_KOREA",
+   "birth": "",
+   "death": "",
+   "birth_precision": "UNKNOWN",
+   "floruit": [
+    "384",
+    "384"
+   ],
+   "floruit_precision": "APPROX",
+   "india_connection": "If Indian (per some scholars, e.g., Lee Sang-ho 1960), the first Indian Buddhist to reach Korea; at minimum connected to Indian Buddhism via Central Asian monastic networks of the Jin period",
+   "korea_connection": "Arrived Baekje 384 (9th month, King Chimnyu's 1st year); received by the king; Buddhism 'began from this' (Samguk Sagi); temple built 385",
+   "evidence": "Samguk Sagi (sg_024r_0100_0030) and Samguk Yusa records; both mark 384 as the start of Baekje Buddhism",
+   "significance": "Traditional founder of Baekje Buddhism; earliest documented Buddhist arrival in Korean history",
+   "confidence": "MEDIUM",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "3",
+   "sources": [
+    {
+     "id": "S-0150",
+     "citation": "Samguk Sagi via National Institute of Korean History (sg_024r_0100_0030)",
+     "url": "https://db.history.go.kr/id/sg_024r_0100_0030",
+     "type": "PRIMARY",
+     "reliability": "AUTHORITATIVE"
+    },
+    {
+     "id": "S-0154",
+     "citation": "Samguk Yusa, Marananta entry (sy_003r_0010_0020_0010)",
+     "url": "https://db.history.go.kr/item/compareViewer.do?levelId=sy_003r_0010_0020_0010",
+     "type": "PRIMARY",
+     "reliability": "AUTHORITATIVE"
+    },
+    {
+     "id": "S-0044",
+     "citation": "Encyclopedia of Korean Culture, '마라난타' (인도의 승려)",
+     "url": "https://encykorea.aks.ac.kr/Article/E0017322",
+     "type": "TERTIARY",
+     "reliability": "AUTHORITATIVE"
+    }
+   ]
+  },
+  {
+   "id": "P-0010",
+   "name": "Hyeil (Silla esoteric monk)",
+   "hangul": "혜일",
+   "hanja": "惠日",
+   "variants": "惠日; C. Huiri",
+   "band": "B1",
+   "nationality": "KOREAN (Silla)",
+   "role": "Buddhist monk; Esoteric (Milgyo) master",
+   "roles": [
+    "SCHOLAR_MONK"
+   ],
+   "tradition": [
+    "ESOTERIC"
+   ],
+   "typology": "TEXTUAL_MEDIATOR",
+   "movement": "-",
+   "direction": "INDIA_TO_KOREA",
+   "birth": "",
+   "death": "",
+   "birth_precision": "UNKNOWN",
+   "floruit": [
+    "705",
+    "774"
+   ],
+   "floruit_precision": "APPROX",
+   "india_connection": "Inherited Indian-origin esoteric teaching of Amoghavajra; introduced to Silla the Buddha-Usnisa Dharani tradition",
+   "korea_connection": "Carried Amoghavajra-lineage Vajrayana back to Silla (King Wonseong era, c. 789)",
+   "evidence": "KCI scholarship traces Goryeo Buddha-Usnisa practice halls to the Bukong->Hyeil lineage; EncyKorea '밀교' lists Silla 惠日 among esoteric monks",
+   "significance": "Key conduit of Indian-origin esoteric Buddhism to late Silla",
+   "confidence": "MEDIUM",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "2",
+   "sources": [
+    {
+     "id": "S-0098",
+     "citation": "Kim Soo-yeon, 'Goryeo 佛頂道場 (Buddha-Usnisa practice halls)', KCI",
+     "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART001350854",
+     "type": "SECONDARY",
+     "reliability": "ACADEMIC"
+    },
+    {
+     "id": "S-0045",
+     "citation": "Encyclopedia of Korean Culture, '밀교'",
+     "url": "https://encykorea.aks.ac.kr/Article/E0020385",
+     "type": "TERTIARY",
+     "reliability": "AUTHORITATIVE"
+    }
+   ]
+  },
+  {
+   "id": "P-0011",
+   "name": "Gyeomik",
+   "hangul": "겸익",
+   "hanja": "謙益",
+   "variants": "Kyŏmik; Gyomik; 謙益",
+   "band": "B1",
+   "nationality": "KOREAN (Baekje)",
+   "role": "Monk; Vinaya (Lu) scholar-translator",
+   "roles": [
+    "PILGRIM_MONK",
+    "SCHOLAR_MONK",
+    "TRANSLATOR"
+   ],
+   "tradition": [
+    "VINAYA"
+   ],
+   "typology": "STUDENT",
+   "movement": "studied",
+   "direction": "INDIA_TO_KOREA",
+   "birth": "",
+   "death": "",
+   "birth_precision": "UNKNOWN",
+   "floruit": [
+    "526",
+    "531"
+   ],
+   "floruit_precision": "APPROX",
+   "india_connection": "Travelled to India by sea in 526 (Seongwang 4); studied Sanskrit 5 years at Sangana; returned 531 with Indian monk Baedalta bearing Sanskrit Abhidharma and Five-Part Vinaya texts",
+   "korea_connection": "Translated 72 volumes of Vinaya with 28 monks; founded the Baekje Vinaya school",
+   "evidence": "Recorded in Korean tradition (Samguk Yusa and later compilations); encyclopedia entries on the Baekje Vinaya school",
+   "significance": "Baekje's greatest documented Indian pilgrim; brought Vinaya and Sanskrit scholarship to Korea",
+   "confidence": "MEDIUM",
+   "status": "PARTIAL",
+   "single_source": false,
+   "source_count": "2",
+   "sources": [
+    {
+     "id": "S-0036",
+     "citation": "Encyclopedia.com, 'Kyŏmik' (Baekje Vinaya)",
+     "url": "https://www.encyclopedia.com/religion/dictionaries-thesauruses-pictures-and-press-releases/kyomik",
+     "type": "TERTIARY",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0171",
+     "citation": "Korean Wikipedia, '겸익'",
+     "url": "https://ko.wikipedia.org/wiki/겸익",
+     "type": "TERTIARY",
+     "reliability": "INSTITUTIONAL"
+    }
+   ]
+  },
+  {
+   "id": "P-0012",
+   "name": "Baedalta",
+   "hangul": "",
+   "hanja": "倍達多",
+   "variants": "倍達多 (modern Sanskrit reconstruction not attested)",
+   "band": "B1",
+   "nationality": "INDIAN",
+   "role": "Indian Tripitaka master (三藏)",
+   "roles": [
+    "MONK_GENERAL"
+   ],
+   "tradition": [
+    "GENERAL_BUDDHISM"
+   ],
+   "typology": "RESIDENT_WORKER",
+   "movement": "worked",
+   "direction": "INDIA_TO_KOREA",
+   "birth": "",
+   "death": "",
+   "birth_precision": "UNKNOWN",
+   "floruit": [
+    "531",
+    "531"
+   ],
+   "floruit_precision": "APPROX",
+   "india_connection": "Indian monk who accompanied Gyeomik to Baekje in 531, carrying Sanskrit Abhidharma and Vinaya texts",
+   "korea_connection": "His arrival in Baekje (531) supported the establishment of the Vinaya school",
+   "evidence": "Korean Buddhist tradition (via Gyeomik narrative); encyclopedia entries on Baekje Vinaya",
+   "significance": "Attested Indian monk physically present in Korea; rare documented 6th-century India-to-Korea movement",
+   "confidence": "MEDIUM",
+   "status": "PARTIAL",
+   "single_source": false,
+   "source_count": "2",
+   "sources": [
+    {
+     "id": "S-0036",
+     "citation": "Encyclopedia.com, 'Kyŏmik' (Baekje Vinaya)",
+     "url": "https://www.encyclopedia.com/religion/dictionaries-thesauruses-pictures-and-press-releases/kyomik",
+     "type": "TERTIARY",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0171",
+     "citation": "Korean Wikipedia, '겸익'",
+     "url": "https://ko.wikipedia.org/wiki/겸익",
+     "type": "TERTIARY",
+     "reliability": "INSTITUTIONAL"
+    }
+   ]
+  },
+  {
+   "id": "P-0013",
+   "name": "Ariyabalma",
+   "hangul": "",
+   "hanja": "阿離耶跋摩",
+   "variants": "阿離耶跋摩",
+   "band": "B1",
+   "nationality": "KOREAN (Silla)",
+   "role": "Pilgrim monk",
+   "roles": [
+    "PILGRIM_MONK"
+   ],
+   "tradition": [
+    "GENERAL_BUDDHISM"
+   ],
+   "typology": "STUDENT",
+   "movement": "studied",
+   "direction": "KOREA_TO_INDIA",
+   "birth": "",
+   "death": "",
+   "birth_precision": "UNKNOWN",
+   "floruit": [
+    "671",
+    "695"
+   ],
+   "floruit_precision": "APPROX",
+   "india_connection": "From Chang'an went to India, stayed at Nalanda, studied sutras and died there aged 70+",
+   "korea_connection": "Recorded in Yijing's Da Tang Xiyu qiufa gaoseng zhuan (大唐西域求法高僧傳) as a Silla person (新罗人)",
+   "evidence": "Yijing's 7th-century record (contemporary witness); modern Korean scholarship (KCI)",
+   "significance": "Contemporary 7th-century testimony of a Silla monk resident at Nalanda",
+   "confidence": "MEDIUM",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "2",
+   "sources": [
+    {
+     "id": "S-0186",
+     "citation": "Yijing, 大唐西域求法高僧傳 (Da Tang Xiyu qiufa gaoseng zhuan), Wikisource",
+     "url": "https://zh.wikisource.org/zh-hans/大唐西域求法高僧傳/卷上",
+     "type": "PRIMARY",
+     "reliability": "AUTHORITATIVE"
+    },
+    {
+     "id": "S-0061",
+     "citation": "Shin Dong-hun, '삼국통일 전 인도에 도착한 신라스님들' (Silla monks who reached India before unification)",
+     "url": "https://historylibrary.net/entry/삼국통일-전-인도에-도착한-신라스님들",
+     "type": "SECONDARY",
+     "reliability": "ACADEMIC"
+    }
+   ]
+  },
+  {
+   "id": "P-0014",
+   "name": "Hyeeop",
+   "hangul": "혜업",
+   "hanja": "慧業",
+   "variants": "Hyŏp; 慧業",
+   "band": "B1",
+   "nationality": "KOREAN (Silla)",
+   "role": "Pilgrim monk",
+   "roles": [
+    "PILGRIM_MONK"
+   ],
+   "tradition": [
+    "GENERAL_BUDDHISM"
+   ],
+   "typology": "PILGRIM_VISITOR",
+   "movement": "visited",
+   "direction": "KOREA_TO_INDIA",
+   "birth": "",
+   "death": "",
+   "birth_precision": "UNKNOWN",
+   "floruit": [
+    "671",
+    "695"
+   ],
+   "floruit_precision": "APPROX",
+   "india_connection": "Travelled to India, dwelt at Bodhi temple (Bodhgaya) and Nalanda; died there aged ~60; his Sanskrit manuscripts were seen at Nalanda by Yijing's party",
+   "korea_connection": "Silla monk; noted in a colophon as '新罗僧慧业写记' at the Buddha-tooth tree",
+   "evidence": "Yijing's Da Tang Xiyu qiufa gaoseng zhuan",
+   "significance": "Physical presence of a Silla monk at Bodhgaya/Nalanda attested in Yijing's record",
+   "confidence": "MEDIUM",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "2",
+   "sources": [
+    {
+     "id": "S-0186",
+     "citation": "Yijing, 大唐西域求法高僧傳 (Da Tang Xiyu qiufa gaoseng zhuan), Wikisource",
+     "url": "https://zh.wikisource.org/zh-hans/大唐西域求法高僧傳/卷上",
+     "type": "PRIMARY",
+     "reliability": "AUTHORITATIVE"
+    },
+    {
+     "id": "S-0061",
+     "citation": "Shin Dong-hun, '삼국통일 전 인도에 도착한 신라스님들' (Silla monks who reached India before unification)",
+     "url": "https://historylibrary.net/entry/삼국통일-전-인도에-도착한-신라스님들",
+     "type": "SECONDARY",
+     "reliability": "ACADEMIC"
+    }
+   ]
+  },
+  {
+   "id": "P-0015",
+   "name": "Hyŏnt'ae",
+   "hangul": "현태",
+   "hanja": "賢泰",
+   "variants": "賢泰",
+   "band": "B1",
+   "nationality": "KOREAN (Silla)",
+   "role": "Pilgrim monk",
+   "roles": [
+    "PILGRIM_MONK"
+   ],
+   "tradition": [
+    "GENERAL_BUDDHISM"
+   ],
+   "typology": "PILGRIM_VISITOR",
+   "movement": "visited",
+   "direction": "KOREA_TO_INDIA",
+   "birth": "",
+   "death": "",
+   "birth_precision": "UNKNOWN",
+   "floruit": [
+    "671",
+    "695"
+   ],
+   "floruit_precision": "APPROX",
+   "india_connection": "Travelled to India; returned to Tang; died in China",
+   "korea_connection": "Silla monk recorded among the Silla contingent in Yijing's compilation",
+   "evidence": "Yijing's Da Tang Xiyu qiufa gaoseng zhuan",
+   "significance": "Part of the documented 7th-century Silla cohort at Indian Buddhist sites",
+   "confidence": "MEDIUM",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "2",
+   "sources": [
+    {
+     "id": "S-0186",
+     "citation": "Yijing, 大唐西域求法高僧傳 (Da Tang Xiyu qiufa gaoseng zhuan), Wikisource",
+     "url": "https://zh.wikisource.org/zh-hans/大唐西域求法高僧傳/卷上",
+     "type": "PRIMARY",
+     "reliability": "AUTHORITATIVE"
+    },
+    {
+     "id": "S-0061",
+     "citation": "Shin Dong-hun, '삼국통일 전 인도에 도착한 신라스님들' (Silla monks who reached India before unification)",
+     "url": "https://historylibrary.net/entry/삼국통일-전-인도에-도착한-신라스님들",
+     "type": "SECONDARY",
+     "reliability": "ACADEMIC"
+    }
+   ]
+  },
+  {
+   "id": "P-0016",
+   "name": "Hyŏngak",
+   "hangul": "현각",
+   "hanja": "玄恪",
+   "variants": "玄恪",
+   "band": "B1",
+   "nationality": "KOREAN (Silla)",
+   "role": "Pilgrim monk",
+   "roles": [
+    "PILGRIM_MONK"
+   ],
+   "tradition": [
+    "GENERAL_BUDDHISM"
+   ],
+   "typology": "PILGRIM_VISITOR",
+   "movement": "visited",
+   "direction": "KOREA_TO_INDIA",
+   "birth": "",
+   "death": "",
+   "birth_precision": "UNKNOWN",
+   "floruit": [
+    "627",
+    "649"
+   ],
+   "floruit_precision": "APPROX",
+   "india_connection": "Accompanied Chinese monk Xuanzhao (玄照) in the Zhenguan era to Dajue Temple (Bodhgaya); died sick there in his 40s",
+   "korea_connection": "Silla monk recorded in Yijing's compilation",
+   "evidence": "Yijing's Da Tang Xiyu qiufa gaoseng zhuan",
+   "significance": "Documented Silla monk who died at Bodhgaya in the 7th century",
+   "confidence": "MEDIUM",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "2",
+   "sources": [
+    {
+     "id": "S-0186",
+     "citation": "Yijing, 大唐西域求法高僧傳 (Da Tang Xiyu qiufa gaoseng zhuan), Wikisource",
+     "url": "https://zh.wikisource.org/zh-hans/大唐西域求法高僧傳/卷上",
+     "type": "PRIMARY",
+     "reliability": "AUTHORITATIVE"
+    },
+    {
+     "id": "S-0061",
+     "citation": "Shin Dong-hun, '삼국통일 전 인도에 도착한 신라스님들' (Silla monks who reached India before unification)",
+     "url": "https://historylibrary.net/entry/삼국통일-전-인도에-도착한-신라스님들",
+     "type": "SECONDARY",
+     "reliability": "ACADEMIC"
+    }
+   ]
+  },
+  {
+   "id": "P-0017",
+   "name": "Gubon",
+   "hangul": "구본",
+   "hanja": "求本",
+   "variants": "求本",
+   "band": "B1",
+   "nationality": "KOREAN (Silla)",
+   "role": "Pilgrim monk",
+   "roles": [
+    "PILGRIM_MONK"
+   ],
+   "tradition": [
+    "GENERAL_BUDDHISM"
+   ],
+   "typology": "PILGRIM_VISITOR",
+   "movement": "visited",
+   "direction": "KOREA_TO_INDIA",
+   "birth": "",
+   "death": "",
+   "birth_precision": "UNKNOWN",
+   "floruit": [
+    "671",
+    "695"
+   ],
+   "floruit_precision": "APPROX",
+   "india_connection": "Went to India (recorded with the Silla contingent in Yijing)",
+   "korea_connection": "Silla monk recorded in Yijing's compilation",
+   "evidence": "Yijing's Da Tang Xiyu qiufa gaoseng zhuan",
+   "significance": "Part of the documented 7th-century Silla cohort in India",
+   "confidence": "MEDIUM",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "2",
+   "sources": [
+    {
+     "id": "S-0186",
+     "citation": "Yijing, 大唐西域求法高僧傳 (Da Tang Xiyu qiufa gaoseng zhuan), Wikisource",
+     "url": "https://zh.wikisource.org/zh-hans/大唐西域求法高僧傳/卷上",
+     "type": "PRIMARY",
+     "reliability": "AUTHORITATIVE"
+    },
+    {
+     "id": "S-0061",
+     "citation": "Shin Dong-hun, '삼국통일 전 인도에 도착한 신라스님들' (Silla monks who reached India before unification)",
+     "url": "https://historylibrary.net/entry/삼국통일-전-인도에-도착한-신라스님들",
+     "type": "SECONDARY",
+     "reliability": "ACADEMIC"
+    }
+   ]
+  },
+  {
+   "id": "P-0018",
+   "name": "Hyeryun",
+   "hangul": "혜륜",
+   "hanja": "慧輪",
+   "variants": "慧輪",
+   "band": "B1",
+   "nationality": "KOREAN (Silla; reading per Kim Bok-soon; Yijing wrote 高麗)",
+   "role": "Pilgrim monk",
+   "roles": [
+    "PILGRIM_MONK"
+   ],
+   "tradition": [
+    "GENERAL_BUDDHISM"
+   ],
+   "typology": "PILGRIM_VISITOR",
+   "movement": "visited",
+   "direction": "KOREA_TO_INDIA",
+   "birth": "",
+   "death": "",
+   "birth_precision": "UNKNOWN",
+   "floruit": [
+    "671",
+    "695"
+   ],
+   "floruit_precision": "APPROX",
+   "india_connection": "Included in Yijing's Da Tang Xiyu qiufa gaoseng zhuan among Korean monks",
+   "korea_connection": "Korean monk; linked to the 高麗-雞貴 identification question",
+   "evidence": "Yijing's Da Tang Xiyu qiufa gaoseng zhuan; KCI scholarship (Kim Bok-soon)",
+   "significance": "Contributes to the documented Korean monastic presence in Yijing's India network",
+   "confidence": "MEDIUM",
+   "status": "PARTIAL",
+   "single_source": false,
+   "source_count": "3",
+   "sources": [
+    {
+     "id": "S-0097",
+     "citation": "Kim Bok-soon, study of Yijing's 大唐西域求法高僧傳 and Silla monks, KCI",
+     "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART001972941",
+     "type": "SECONDARY",
+     "reliability": "ACADEMIC"
+    },
+    {
+     "id": "S-0061",
+     "citation": "Shin Dong-hun, '삼국통일 전 인도에 도착한 신라스님들' (Silla monks who reached India before unification)",
+     "url": "https://historylibrary.net/entry/삼국통일-전-인도에-도착한-신라스님들",
+     "type": "SECONDARY",
+     "reliability": "ACADEMIC"
+    },
+    {
+     "id": "S-0186",
+     "citation": "Yijing, 大唐西域求法高僧傳 (Da Tang Xiyu qiufa gaoseng zhuan), Wikisource",
+     "url": "https://zh.wikisource.org/zh-hans/大唐西域求法高僧傳/卷上",
+     "type": "PRIMARY",
+     "reliability": "AUTHORITATIVE"
+    }
+   ]
+  },
+  {
+   "id": "P-0020",
+   "name": "Ojin",
+   "hangul": "오진",
+   "hanja": "悟真",
+   "variants": "悟真",
+   "band": "B1",
+   "nationality": "KOREAN (Silla)",
+   "role": "Esoteric Buddhist monk",
+   "roles": [
+    "PILGRIM_MONK"
+   ],
+   "tradition": [
+    "ESOTERIC"
+   ],
+   "typology": "PILGRIM_VISITOR",
+   "movement": "visited",
+   "direction": "KOREA_TO_INDIA",
+   "birth": "",
+   "death": "",
+   "birth_precision": "UNKNOWN",
+   "floruit": [
+    "785",
+    "798"
+   ],
+   "floruit_precision": "APPROX",
+   "india_connection": "Went to Tang with Hyeil (惠日, c. 789, King Wonseong era); went to Central India and died in Tibet",
+   "korea_connection": "Silla esoteric monk; part of the Amoghavajra-lineage transmission to Silla",
+   "evidence": "KCI scholarship (Ko Young-seop on Lamotte); EncyKorea '밀교'",
+   "significance": "Documented late-8th-century Silla monk who reached Central India",
+   "confidence": "MEDIUM",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "2",
+   "sources": [
+    {
+     "id": "S-0100",
+     "citation": "Ko Young-seop, review/discussion of Lamotte incl. Korean monks in India, KCI (SNU)",
+     "url": "https://journal.kci.go.kr/snu-ioh/archive/articlePdf?artiId=ART001034128",
+     "type": "SECONDARY",
+     "reliability": "ACADEMIC"
+    },
+    {
+     "id": "S-0045",
+     "citation": "Encyclopedia of Korean Culture, '밀교'",
+     "url": "https://encykorea.aks.ac.kr/Article/E0020385",
+     "type": "TERTIARY",
+     "reliability": "AUTHORITATIVE"
+    }
+   ]
+  },
+  {
+   "id": "P-0021",
+   "name": "Wonpyo",
+   "hangul": "원표",
+   "hanja": "",
+   "variants": "원표 (元表 in some transcriptions)",
+   "band": "B1",
+   "nationality": "KOREAN (Unified Silla)",
+   "role": "Monk",
+   "roles": [
+    "PILGRIM_MONK"
+   ],
+   "tradition": [
+    "GENERAL_BUDDHISM"
+   ],
+   "typology": "PILGRIM_VISITOR",
+   "movement": "visited",
+   "direction": "KOREA_TO_INDIA",
+   "birth": "",
+   "death": "",
+   "birth_precision": "UNKNOWN",
+   "floruit": [
+    "742",
+    "765"
+   ],
+   "floruit_precision": "APPROX",
+   "india_connection": "Travelled to India via Tang (King Gyeongdeok era, 742-765); returned to Tang and died in China",
+   "korea_connection": "Unified Silla monk",
+   "evidence": "KCI scholarship (Ko Young-seop on Lamotte)",
+   "significance": "Documented 8th-century Unified Silla monk who reached India",
+   "confidence": "MEDIUM",
+   "status": "VERIFIED",
+   "single_source": true,
+   "source_count": "1",
+   "sources": [
+    {
+     "id": "S-0100",
+     "citation": "Ko Young-seop, review/discussion of Lamotte incl. Korean monks in India, KCI (SNU)",
+     "url": "https://journal.kci.go.kr/snu-ioh/archive/articlePdf?artiId=ART001034128",
+     "type": "SECONDARY",
+     "reliability": "ACADEMIC"
+    }
+   ]
+  },
+  {
+   "id": "P-0022",
+   "name": "Hyŏnyu",
+   "hangul": "현유",
+   "hanja": "",
+   "variants": "賢遊? (transcription uncertain)",
+   "band": "B1",
+   "nationality": "KOREAN (Goguryeo)",
+   "role": "Monk",
+   "roles": [
+    "PILGRIM_MONK"
+   ],
+   "tradition": [
+    "GENERAL_BUDDHISM"
+   ],
+   "typology": "STUDENT",
+   "movement": "studied",
+   "direction": "UNCERTAIN",
+   "birth": "",
+   "death": "",
+   "birth_precision": "UNKNOWN",
+   "floruit": [
+    "671",
+    "695"
+   ],
+   "floruit_precision": "APPROX",
+   "india_connection": "Followed Chinese monk Sengche (僧哲) to Sri Lanka and was ordained there (South Asian connection; not mainland India)",
+   "korea_connection": "Goguryeo monk",
+   "evidence": "KCI scholarship (Ko Young-seop on Lamotte)",
+   "significance": "Documented Korean monk in the South Asian monastic world (Sri Lanka) in the 7th century",
+   "confidence": "MEDIUM",
+   "status": "PARTIAL",
+   "single_source": true,
+   "source_count": "1",
+   "sources": [
+    {
+     "id": "S-0100",
+     "citation": "Ko Young-seop, review/discussion of Lamotte incl. Korean monks in India, KCI (SNU)",
+     "url": "https://journal.kci.go.kr/snu-ioh/archive/articlePdf?artiId=ART001034128",
+     "type": "SECONDARY",
+     "reliability": "ACADEMIC"
+    }
+   ]
+  },
+  {
+   "id": "P-0009",
+   "name": "Iryŏn",
+   "hangul": "일연",
+   "hanja": "一然",
+   "variants": "Il-yeon; Ilyon; Ichinen (Japanese); 一然; born Kim Gyeon-myeong",
+   "band": "B2",
+   "nationality": "KOREAN (Goryeo)",
+   "role": "Buddhist monk; historian; author",
+   "roles": [
+    "SCHOLAR_MONK"
+   ],
+   "tradition": [
+    "SEON_CHAN"
+   ],
+   "typology": "TEXTUAL_MEDIATOR",
+   "movement": "-",
+   "direction": "INDIA_TO_KOREA",
+   "birth": "1206",
+   "death": "1289",
+   "birth_precision": "YEAR",
+   "floruit": [
+    "",
+    ""
+   ],
+   "floruit_precision": "",
+   "india_connection": "Compiled the Samguk Yusa (三國遺事, c. 1283-1287), the primary medieval Korean source preserving the Marananta, Gyeomik, Heo Hwang-ok and Suro traditions about Indian contact",
+   "korea_connection": "Goryeo monk; author of Korea's most important historical compendium after Kim Busik's Samguk Sagi",
+   "evidence": "Samguk Yusa is the source for most legendary India-Korea traditions studied today",
+   "significance": "Sole compiler of many early India-Korea narratives; critical for the Marananta/Heo Hwang-ok/Suro historiography",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "2",
+   "sources": [
+    {
+     "id": "S-0123",
+     "citation": "Library of Congress authority record (Iryŏn, 1206-1289)",
+     "url": "https://id.loc.gov/authorities/names/n82094556.html",
+     "type": "ARCHIVAL",
+     "reliability": "AUTHORITATIVE"
+    },
+    {
+     "id": "S-0166",
+     "citation": "Wikipedia, 'Il-yeon'",
+     "url": "https://en.wikipedia.org/wiki/Il-yeon",
+     "type": "TERTIARY",
+     "reliability": "INSTITUTIONAL"
+    }
+   ]
+  },
+  {
+   "id": "P-0023",
+   "name": "Dhyānabhadra",
+   "hangul": "지공",
+   "hanja": "指空",
+   "variants": "Jikong (指空); Shikong; Śūnyadiśya-Dhyānabhadra; Zhikong Chanxian",
+   "band": "B2",
+   "nationality": "INDIAN (Magadha)",
+   "role": "Indian Buddhist master; Seon/Chan patriarch",
+   "roles": [
+    "MASTER_PATRIARCH",
+    "INSTITUTIONAL_LEADER"
+   ],
+   "tradition": [
+    "SEON_CHAN"
+   ],
+   "typology": "RESIDENT_WORKER",
+   "movement": "worked",
+   "direction": "INDIA_TO_KOREA",
+   "birth": "1289",
+   "death": "1363",
+   "birth_precision": "APPROX",
+   "floruit": [
+    "",
+    ""
+   ],
+   "floruit_precision": "",
+   "india_connection": "Born in Magadha (Indian royal family per tradition); ordained at Nalanda; famous in India before leaving",
+   "korea_connection": "Invited by King Ch'ungsuk (met at Mongol court); came to Goryeo 1326; founded Hoeamsa 1328 (reportedly modeled on Nalanda); influenced Korean Seon students incl. Naong Hyegeun and Muhak Chach'o; King Kongmin later sent his relics to Goryeo",
+   "evidence": "Hagiographical and scholastic records; temple foundation (Hoeamsa 1328); lineage transmission to Naong and Muhak",
+   "significance": "The last great Indian monk active in Korea; key figure in late-Goryeo Seon formation",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "5",
+   "sources": [
+    {
+     "id": "S-0052",
+     "citation": "Encyclopedia of Buddhism, 'Zhikong Chanxian'",
+     "url": "https://encyclopediaofbuddhism.org/wiki/Zhikong_Chanxian",
+     "type": "TERTIARY",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0164",
+     "citation": "Wikipedia, 'Dhyānabhadra'",
+     "url": "https://en.wikipedia.org/wiki/Dhy%C4%81nabhadra",
+     "type": "TERTIARY",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0185",
+     "citation": "Yangju Hoeamsa Museum (Yangju City), '지공선사' exhibit page",
+     "url": "http://www.yangju.go.kr/museum/contents.do?key=1652",
+     "type": "WEBSITE",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0041",
+     "citation": "Encyclopedia of Korean Culture, '지공선사 부도 및 석등' (Hoeamsa Jigong stupa)",
+     "url": "https://encykorea.aks.ac.kr/Article/E0054079",
+     "type": "TERTIARY",
+     "reliability": "AUTHORITATIVE"
+    },
+    {
+     "id": "S-0138",
+     "citation": "National Research Institute of Cultural Heritage, 금석문 DB: 양주 회암사지 지공선사 부도비 (stele text by Yi Saek)",
+     "url": "https://portal.nrich.go.kr/kor/ksmUsrView.do?menuIdx=584&ksm_idx=8573",
+     "type": "ARCHIVAL",
+     "reliability": "AUTHORITATIVE"
+    }
+   ]
+  },
+  {
+   "id": "P-0024",
+   "name": "Naong Hyegeun",
+   "hangul": "나옹 혜근",
+   "hanja": "懶翁惠勤",
+   "variants": "懶翁 惠勤",
+   "band": "B2",
+   "nationality": "KOREAN (Goryeo)",
+   "role": "Seon monk",
+   "roles": [
+    "MASTER_PATRIARCH",
+    "INSTITUTIONAL_LEADER"
+   ],
+   "tradition": [
+    "SEON_CHAN"
+   ],
+   "typology": "ENCOUNTER_FIGURE",
+   "movement": "-",
+   "direction": "INDIA_TO_KOREA",
+   "birth": "1320",
+   "death": "1376",
+   "birth_precision": "YEAR",
+   "floruit": [
+    "",
+    ""
+   ],
+   "floruit_precision": "",
+   "india_connection": "Received bodhisattva precepts from the Indian master Dhyānabhadra (Jikong) at age 7 (at Sungsusa) and met him again in Yuan China at age 38, receiving Jikong's exhortation to return to Korea",
+   "korea_connection": "Major Goryeo Seon master; successor-influence of Jikong's lineage",
+   "evidence": "KCI scholarship (Ko Young-seop on Lamotte) documenting the Jikong-Naong relationship",
+   "significance": "The channel through which the Indian monk Dhyānabhadra's teaching entered mainstream Goryeo Seon",
+   "confidence": "MEDIUM",
+   "status": "VERIFIED",
+   "single_source": true,
+   "source_count": "1",
+   "sources": [
+    {
+     "id": "S-0100",
+     "citation": "Ko Young-seop, review/discussion of Lamotte incl. Korean monks in India, KCI (SNU)",
+     "url": "https://journal.kci.go.kr/snu-ioh/archive/articlePdf?artiId=ART001034128",
+     "type": "SECONDARY",
+     "reliability": "ACADEMIC"
+    }
+   ]
+  },
+  {
+   "id": "P-0074",
+   "name": "Muhak Chach'o",
+   "hangul": "무학 자초",
+   "hanja": "無學 自超",
+   "variants": "Muhak Taesa; Muhak Daesa",
+   "band": "B2",
+   "nationality": "KOREAN",
+   "role": "Seon master; royal preceptor (왕사) of King T'aejo (Yi Sŏng-gye); abbot of Hoeamsa; third of the Jikong-Naong-Muhak line (삼대화상)",
+   "roles": [
+    "MASTER_PATRIARCH",
+    "INSTITUTIONAL_LEADER"
+   ],
+   "tradition": [
+    "SEON_CHAN"
+   ],
+   "typology": "INDIRECT_INFLUENCER",
+   "movement": "-",
+   "direction": "INDIA_TO_KOREA",
+   "birth": "1327",
+   "death": "1405",
+   "birth_precision": "",
+   "floruit": [
+    "",
+    ""
+   ],
+   "floruit_precision": "",
+   "india_connection": "No documented travel to India. India connection is indirect, through his teacher Jikong (Dhyānabhadra): per tradition he received Jikong's teaching (in Yuan China) before returning to Goryeo; he later co-led Hoeamsa, the temple Jikong founded (reportedly modeled on Nalanda), where Jikong's relics were enshrined (1370)",
+   "korea_connection": "With King T'aejo developed Hoeamsa as the leading early-Joseon temple; the Jikong-Naong-Muhak lineage formed the foundation of early Joseon Seon Buddhism; his stupa and stele were erected at Hoeamsa by order of King T'aejong",
+   "evidence": "Hyunbul News 2017-01-26 (Jikong's disciples incl. Muhak); Atlas News 2025-12-31 Silleuksa feature (삼대화상 선맥); Dongguk Buddhist Culture Portal (1370 relic stupa)",
+   "significance": "Key carrier of the Indian master Jikong's lineage into Joseon Buddhism; with T'aejo he sustained the Nalanda-modeled Hoeamsa, the most prominent material legacy of Korea-India Buddhist contact in the late medieval era",
+   "confidence": "MEDIUM",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "3",
+   "sources": [
+    {
+     "id": "S-0064",
+     "citation": "Hyunbul News 2017-01-26: '지공·나옹… 재점화된 禪宗' - Jikong's representative disciples: Naong (Kongmin's preceptor), Baegun Gyeonghan (Jikji author), Muhak Chach'o (T'aejo's preceptor), Ch'ukwŏn Chich'ŏn; revival of studies on Jikong's Seon lineage",
+     "url": "https://www.hyunbulnews.com/news/articleView.html?idxno=290135",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0006",
+     "citation": "Atlas News 2025-12-31: '여주 신륵사, 불심이 강물 같이 흐른다' - Silleuksa feature documenting the Jikong-Naong-Muhak Seon lineage (삼대화상); Jikong's 2y7m stay in Goryeo (until 1328-09); his disciples incl. Baegun Gyeonghan (1298-1374), Muhak Chach'o (1327-1405), Ch'ukwŏn Chich'ŏn (1324-1395); Jahyeon's 2017 monograph on Jikong; decline of Jikong's status after the Injo restoration",
+     "url": "http://www.atlasnews.co.kr/news/articleView.html?idxno=11018",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0020",
+     "citation": "Dongguk University Buddhist Culture Portal (불교문화포털, buddhaland.dongguk.edu, KBDI0001421) '지공' entry: on King Kongmin's order (1370) a stupa enshrining Jikong's relics was built at Hoeamsa, supervised by Naong, declaring Naong's succession of Jikong",
+     "url": "https://buddhaland.dongguk.edu/bulVoca/view?dataId=KBDI0001421",
+     "type": "DATABASE",
+     "reliability": "AUTHORITATIVE"
+    }
+   ]
+  },
+  {
+   "id": "P-0075",
+   "name": "Baegun Gyeonghan",
+   "hangul": "백운 경한",
+   "hanja": "白雲 景閑",
+   "variants": "Baegun",
+   "band": "B2",
+   "nationality": "KOREAN",
+   "role": "Seon master; author of Jikjisimcheyojeol (1377) - the world's oldest extant book printed with movable metal type",
+   "roles": [
+    "MASTER_PATRIARCH"
+   ],
+   "tradition": [
+    "SEON_CHAN"
+   ],
+   "typology": "INDIRECT_INFLUENCER",
+   "movement": "-",
+   "direction": "INDIA_TO_KOREA",
+   "birth": "1298",
+   "death": "1374",
+   "birth_precision": "",
+   "floruit": [
+    "",
+    ""
+   ],
+   "floruit_precision": "",
+   "india_connection": "No documented travel to India. India connection is indirect: per tradition he received inka (인가) from the Indian master Jikong (Dhyānabhadra) in Yuan China; his lineage transmission otherwise ran through Chinese masters (e.g. Shiwu Qinggong)",
+   "korea_connection": "Compiled the Jikjisimcheyojeol at Chwiamsa, Cheongju; a landmark of Korean Seon literature",
+   "evidence": "Hyunbul News 2017-01-26 (Jikong's disciples incl. Baegun); Atlas News 2025-12-31 Silleuksa feature",
+   "significance": "Demonstrates the reach of the Indian master Jikong's teaching among the most eminent Goryeo Seon masters of the Mongol period",
+   "confidence": "MEDIUM",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "2",
+   "sources": [
+    {
+     "id": "S-0064",
+     "citation": "Hyunbul News 2017-01-26: '지공·나옹… 재점화된 禪宗' - Jikong's representative disciples: Naong (Kongmin's preceptor), Baegun Gyeonghan (Jikji author), Muhak Chach'o (T'aejo's preceptor), Ch'ukwŏn Chich'ŏn; revival of studies on Jikong's Seon lineage",
+     "url": "https://www.hyunbulnews.com/news/articleView.html?idxno=290135",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0006",
+     "citation": "Atlas News 2025-12-31: '여주 신륵사, 불심이 강물 같이 흐른다' - Silleuksa feature documenting the Jikong-Naong-Muhak Seon lineage (삼대화상); Jikong's 2y7m stay in Goryeo (until 1328-09); his disciples incl. Baegun Gyeonghan (1298-1374), Muhak Chach'o (1327-1405), Ch'ukwŏn Chich'ŏn (1324-1395); Jahyeon's 2017 monograph on Jikong; decline of Jikong's status after the Injo restoration",
+     "url": "http://www.atlasnews.co.kr/news/articleView.html?idxno=11018",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    }
+   ]
+  },
+  {
+   "id": "P-0077",
+   "name": "Ch'ukwŏn Chijŏn",
+   "hangul": "축원 지천",
+   "hanja": "竺源 智泉",
+   "variants": "Ch'ukwŏn Chich'ŏn; Chukwon Jicheon; 竺源 智泉; National Preceptor Chŏngji (정지국사)",
+   "band": "B2",
+   "nationality": "KOREAN",
+   "role": "Goryeo Seon monk; disciple of the Indian master Jikong (Dhyānabhadra); titled National Preceptor Chŏngji (정지국사)",
+   "roles": [
+    "MASTER_PATRIARCH"
+   ],
+   "tradition": [
+    "SEON_CHAN"
+   ],
+   "typology": "INDIRECT_INFLUENCER",
+   "movement": "-",
+   "direction": "INDIA_TO_KOREA",
+   "birth": "1324",
+   "death": "1395",
+   "birth_precision": "",
+   "floruit": [
+    "",
+    ""
+   ],
+   "floruit_precision": "",
+   "india_connection": "No documented travel to India. India connection is indirect: per tradition he was one of Jikong's representative disciples (with Naong, Baegun Gyeonghan and Muhak Chach'o), receiving the Indian master's teaching in Yuan China",
+   "korea_connection": "Listed among Jikong's representative disciples in modern scholarship and temple tradition; the Jikong-Naong-Muhak lineage formed the foundation of early Joseon Seon Buddhism",
+   "evidence": "Hyunbul News 2017-01-26 (Jikong's disciples incl. Ch'ukwŏn); Atlas News 2025-12-31 Silleuksa feature (정지국사 축원지천, 1324-1395)",
+   "significance": "Completes the documented circle of the Indian master Jikong's Korean disciples in the late Goryeo period",
+   "confidence": "MEDIUM",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "2",
+   "sources": [
+    {
+     "id": "S-0064",
+     "citation": "Hyunbul News 2017-01-26: '지공·나옹… 재점화된 禪宗' - Jikong's representative disciples: Naong (Kongmin's preceptor), Baegun Gyeonghan (Jikji author), Muhak Chach'o (T'aejo's preceptor), Ch'ukwŏn Chich'ŏn; revival of studies on Jikong's Seon lineage",
+     "url": "https://www.hyunbulnews.com/news/articleView.html?idxno=290135",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0006",
+     "citation": "Atlas News 2025-12-31: '여주 신륵사, 불심이 강물 같이 흐른다' - Silleuksa feature documenting the Jikong-Naong-Muhak Seon lineage (삼대화상); Jikong's 2y7m stay in Goryeo (until 1328-09); his disciples incl. Baegun Gyeonghan (1298-1374), Muhak Chach'o (1327-1405), Ch'ukwŏn Chich'ŏn (1324-1395); Jahyeon's 2017 monograph on Jikong; decline of Jikong's status after the Injo restoration",
+     "url": "http://www.atlasnews.co.kr/news/articleView.html?idxno=11018",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    }
+   ]
+  },
+  {
+   "id": "P-0028",
+   "name": "Yi Nŭng-hwa",
+   "hangul": "이능화",
+   "hanja": "李能和",
+   "variants": "Yi Neunghwa; courtesy name Chahyŏn; pen names Kanjŏng, Sanghyŏn, Munŭng kŏsa",
+   "band": "B4",
+   "nationality": "KOREAN (Joseon -> colonial Korea)",
+   "role": "Historian; religious scholar; folklorist ('father of Korean religious studies'); school principal",
+   "roles": [
+    "MODERN_INTELLECTUAL",
+    "ACADEMIC"
+   ],
+   "tradition": [
+    "NON_BUDDHIST"
+   ],
+   "typology": "TEXTUAL_MEDIATOR",
+   "movement": "-",
+   "direction": "INDIA_TO_KOREA",
+   "birth": "1869",
+   "death": "1943",
+   "birth_precision": "DAY",
+   "floruit": [
+    "",
+    ""
+   ],
+   "floruit_precision": "",
+   "india_connection": "In Chosŏn Pulgyo T'ongsa (朝鮮佛敎通史, 1918) wrote the first comprehensive Korean Buddhist history tracing Korean Buddhism to its Indian origins; his comparative-religion framework (Paekkyo hoet'ong, 1912) engaged Indian religions",
+   "korea_connection": "National religious historian; pioneer of Korean religious studies",
+   "evidence": "Chosŏn Pulgyo T'ongsa (Internet Archive scan); EncyKorea and AKS biographical entries",
+   "significance": "Definitive early-20th-century account of Korean Buddhism's Indian-rooted history",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "3",
+   "sources": [
+    {
+     "id": "S-0050",
+     "citation": "Encyclopedia of Korean Culture, '이능화'",
+     "url": "https://encykorea.aks.ac.kr/Article/E0043938",
+     "type": "TERTIARY",
+     "reliability": "AUTHORITATIVE"
+    },
+    {
+     "id": "S-0003",
+     "citation": "AKS People DB, '이능화'",
+     "url": "http://people.aks.ac.kr/front/dirSer/ppl/pplView.aks?pplId=PPL_7HIL_A1869_1_0009236",
+     "type": "ARCHIVAL",
+     "reliability": "AUTHORITATIVE"
+    },
+    {
+     "id": "S-0005",
+     "citation": "Yi Nŭng-hwa, Chosŏn Pulgyo T'ongsa (1918), Internet Archive scan",
+     "url": "https://archive.org/details/12chosnpulgyotongs8800uoft",
+     "type": "PRIMARY",
+     "reliability": "AUTHORITATIVE"
+    }
+   ]
+  },
+  {
+   "id": "P-0029",
+   "name": "Ch'oe Nam-sŏn",
+   "hangul": "최남선",
+   "hanja": "崔南善",
+   "variants": "Choi Nam-sun; pen name Yuktang (六堂)",
+   "band": "B4",
+   "nationality": "KOREAN (Korean Empire -> colonial Korea)",
+   "role": "Enlightenment thinker; historian; publisher; magazine editor",
+   "roles": [
+    "MODERN_INTELLECTUAL"
+   ],
+   "tradition": [
+    "NON_BUDDHIST"
+   ],
+   "typology": "TEXTUAL_MEDIATOR",
+   "movement": "-",
+   "direction": "INDIA_TO_KOREA",
+   "birth": "1890",
+   "death": "1957",
+   "birth_precision": "YEAR",
+   "floruit": [
+    "",
+    ""
+   ],
+   "floruit_precision": "",
+   "india_connection": "(a) Met Tagore at his Imperial University lecture in Tokyo, 1916 (first documented Korean-intellectual contact with Tagore); (b) in Chosŏn Pulgyo (1930, written for the Korean delegation to the Hawai'i Pan-Pacific Buddhist Youth Conference) argued Buddhism reached Korea directly from India/Xiyu via a 'northern route', independent of the China route; coined the scheme: India's introductory Buddhism, China's sectional Buddhism, Korea's conclusive Buddhism",
+   "korea_connection": "National enlightenment icon; Dangun/Bulham culture theory",
+   "evidence": "budreview.com profile (Kim Young-jin 2013) quoting the India/Xiyu direct-route claim; beopbo.com on Chosŏn Pulgyo (2004); EncyKorea '통불교사상'",
+   "significance": "Cast Korea as the culmination (not periphery) of India-originated Buddhism in world civilizational history",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "3",
+   "sources": [
+    {
+     "id": "S-0023",
+     "citation": "Kim Young-jin, '근현대 불교인물 탐구: 최남선', Bulgyo Review (2013-06-19)",
+     "url": "https://www.budreview.com/news/articleView.html?idxno=1310",
+     "type": "SECONDARY",
+     "reliability": "ACADEMIC"
+    },
+    {
+     "id": "S-0012",
+     "citation": "Beopbo, '최남선의 『조선불교』' (2004)",
+     "url": "https://www.beopbo.com/news/articleView.html?idxno=28414",
+     "type": "SECONDARY",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0047",
+     "citation": "Encyclopedia of Korean Culture, '통불교사상'",
+     "url": "https://encykorea.aks.ac.kr/Article/E0059330",
+     "type": "TERTIARY",
+     "reliability": "AUTHORITATIVE"
+    }
+   ]
+  },
+  {
+   "id": "P-0030",
+   "name": "Rabindranath Tagore",
+   "hangul": "라빈드라나트 타고르",
+   "hanja": "",
+   "variants": "Robindronath Thakur (Bengali); Korean: 타고르/타골/타아골",
+   "band": "B4",
+   "nationality": "INDIAN (Bengal)",
+   "role": "Poet; novelist; playwright; essayist; educator; first Asian Nobel laureate in Literature (1913)",
+   "roles": [
+    "LITERARY_FIGURE",
+    "NON_BUDDHIST_FIGURE"
+   ],
+   "tradition": [
+    "NON_BUDDHIST"
+   ],
+   "typology": "PLANNED_PILGRIM",
+   "movement": "planned",
+   "direction": "INDIA_TO_KOREA",
+   "birth": "1861",
+   "death": "1941",
+   "birth_precision": "YEAR",
+   "floruit": [
+    "",
+    ""
+   ],
+   "floruit_precision": "",
+   "india_connection": "India's national poet; the central Indian figure of Korea's literary imagination in the colonial era",
+   "korea_connection": "Signed a 6-line English message dated 1929-03-28 (Tokyo) later known as 'The Lamp of the East' (동방의 등불), delivered at Yokohama departure for the Korean people; published in Dong-a Ilbo Apr 1929, translated by Chu Yo-han; planned a Korea lecture in June 1929 (cancelled for health); sent 'The Song of the Defeated' to Chin Hak-mun in 1916 (published in Ch'ŏngch'un Nov 1917); met Ch'oe Nam-sŏn and Chin Hak-mun in Tokyo/Yokohama 1916",
+   "evidence": "Dong-a Ilbo archival record; Hong Eun-taek's studies (2012, 2014); Choi Seong-woo's rhetorical analysis (2022); Kim Ujo (2014) in 인도연구; 2011 bust at Daehak-ro (gift of the Indian government)",
+   "significance": "The single most important Indian figure in Korean cultural memory of this period; his 'lamp' message became a national symbol of hope",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "5",
+   "sources": [
+    {
+     "id": "S-0120",
+     "citation": "Kyosu.net (2012-12-17), Tagore message transmission account (Hong Eun-taek)",
+     "url": "https://www.kyosu.net/news/articleView.html?idxno=26437",
+     "type": "SECONDARY",
+     "reliability": "ACADEMIC"
+    },
+    {
+     "id": "S-0086",
+     "citation": "JoongAng Ilbo 분수대 (2012-12-10), 'Reading between the lines on Tagore'",
+     "url": "https://www.joongang.co.kr/article/10131809",
+     "type": "NEWS",
+     "reliability": "POPULAR"
+    },
+    {
+     "id": "S-0116",
+     "citation": "Park Jin-young, '동방의 등불은 시가 아닌 메모였다', koreatimes (2019-10-18)",
+     "url": "http://www.koreatimes.com/article/20191017/1274998",
+     "type": "NEWS",
+     "reliability": "POPULAR"
+    },
+    {
+     "id": "S-0094",
+     "citation": "Hong Eun-taek, 'The Problems of Korean Translation of Tagore's Poetry' (2014), KCI",
+     "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART001914468",
+     "type": "SECONDARY",
+     "reliability": "ACADEMIC"
+    },
+    {
+     "id": "S-0092",
+     "citation": "Choi Seong-woo / Choi Dong-ho, Tagore reception studies, KCI (ART002541946 / ART001612260)",
+     "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002541946",
+     "type": "SECONDARY",
+     "reliability": "ACADEMIC"
+    }
+   ]
+  },
+  {
+   "id": "P-0034",
+   "name": "Han Yong-un",
+   "hangul": "한용운",
+   "hanja": "韓龍雲",
+   "variants": "Han Yong-woon; Buddhist name Manhae (萬海/卍海)",
+   "band": "B4",
+   "nationality": "KOREAN",
+   "role": "Buddhist monk-poet; independence activist",
+   "roles": [
+    "LITERARY_FIGURE",
+    "ACTIVIST",
+    "MONK_GENERAL"
+   ],
+   "tradition": [
+    "SEON_CHAN"
+   ],
+   "typology": "TEXTUAL_MEDIATOR",
+   "movement": "-",
+   "direction": "INDIA_TO_KOREA",
+   "birth": "1879",
+   "death": "1944",
+   "birth_precision": "YEAR",
+   "floruit": [
+    "",
+    ""
+   ],
+   "floruit_precision": "",
+   "india_connection": "Deeply engaged with Tagore: published the essay 「타골의 시를 읽고」('After Reading Tagore's Poem', 1926); KCI comparative studies document Gitanjali's influence on Nim-ŭi Ch'immuk (1926) alongside his critical distance - Han faulted Tagore's detachment from colonial resistance",
+   "korea_connection": "National poet and independence icon; Nim-ŭi Ch'immuk is a canonical work",
+   "evidence": "KCI comparative Han/Tagore study (ART002442623); Kim Ujo, 'Tagore's Perception of Joseon and Its Reception in Joseon', 인도연구 19(1), 2014",
+   "significance": "Emblematic case of Korean creative absorption of Tagore's spiritual lyricism transformed into national resistance poetry",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "2",
+   "sources": [
+    {
+     "id": "S-0093",
+     "citation": "Comparative Han Yong-un / Tagore study, KCI (ART002442623)",
+     "url": "https://www.kci.go.kr/kciportal/landing/article.kci?arti_id=ART002442623",
+     "type": "SECONDARY",
+     "reliability": "ACADEMIC"
+    },
+    {
+     "id": "S-0099",
+     "citation": "Kim Ujo, 'Tagore's Perception of Joseon and Its Reception in Joseon', 인도연구 19(1) 2014, KCI",
+     "url": "https://www.kci.go.kr/kciportal/landing/article.kci?arti_id=ART001881271",
+     "type": "SECONDARY",
+     "reliability": "ACADEMIC"
+    }
+   ]
+  },
+  {
+   "id": "P-0038",
+   "name": "Mohandas Karamchand Gandhi",
+   "hangul": "",
+   "hanja": "",
+   "variants": "Mahatma Gandhi; Gandhiji",
+   "band": "B4",
+   "nationality": "INDIAN",
+   "role": "Lawyer; political and spiritual leader of the Indian independence movement",
+   "roles": [
+    "ACTIVIST",
+    "NON_BUDDHIST_FIGURE"
+   ],
+   "tradition": [
+    "NON_BUDDHIST"
+   ],
+   "typology": "INDIRECT_INFLUENCER",
+   "movement": "-",
+   "direction": "INDIA_TO_KOREA",
+   "birth": "1869",
+   "death": "1948",
+   "birth_precision": "DAY",
+   "floruit": [
+    "",
+    ""
+   ],
+   "floruit_precision": "",
+   "india_connection": "Central figure of the Indian independence movement",
+   "korea_connection": "MEDIATED influence: Korean press under Japanese rule reported his Non-Cooperation Movement, influencing Korea's own independence movement; Korean thinker-activist Ham Sok-hon (1901-1989), 'the Korean Gandhi', was directly influenced by his philosophy; later influence on Korean democracy movements",
+   "evidence": "Indian Express (15 Aug 2021) on Gandhi's influence on Korea's freedom struggle; mkgandhi.org on Ham Sok-hon",
+   "significance": "His nonviolence doctrine became a model for Korea's independence and later democracy movements",
+   "confidence": "MEDIUM",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "2",
+   "sources": [
+    {
+     "id": "S-0081",
+     "citation": "Indian Express (15 Aug 2021), 'How India's independence movement influenced Korea's struggle for freedom from Japanese rule'",
+     "url": "https://indianexpress.com/article/research/how-indias-independence-movement-influenced-koreas-struggle-for-freedom-from-japanese-rule-7454485/",
+     "type": "NEWS",
+     "reliability": "POPULAR"
+    },
+    {
+     "id": "S-0125",
+     "citation": "mkgandhi.org, 'Ham Sok-hon, the Korean Gandhi'",
+     "url": "https://www.mkgandhi.org/articles/ham-sok-hon-korean-Gandhi.php",
+     "type": "WEBSITE",
+     "reliability": "INSTITUTIONAL"
+    }
+   ]
+  },
+  {
+   "id": "P-0072",
+   "name": "Yi Yŏng-jae",
+   "hangul": "이영재",
+   "hanja": "李英宰",
+   "variants": "Lee Young-jae; Yi Yeong-jae; dharma names Paekkwang (白光), Pŏmnan (梵鸞), Chongwŏn (宗圓)",
+   "band": "B4",
+   "nationality": "KOREAN (colonial Korea)",
+   "role": "Monk (유학승); Buddhist reformer; first modern-era Korean monk to attempt an India pilgrimage",
+   "roles": [
+    "PILGRIM_MONK"
+   ],
+   "tradition": [
+    "SEON_CHAN"
+   ],
+   "typology": "PLANNED_PILGRIM",
+   "movement": "planned",
+   "direction": "KOREA_TO_INDIA",
+   "birth": "1900",
+   "death": "1927",
+   "birth_precision": "YEAR",
+   "floruit": [
+    "",
+    ""
+   ],
+   "floruit_precision": "",
+   "india_connection": "First modern-era Korean Buddhist pilgrimage attempt (1925): studied Sanskrit/Pali (Indian Philosophy) at Tokyo Imperial University; departed Yokohama 1925-11-09 for Ceylon (Sri Lanka) intending 2 years of study then an India pilgrimage; died in Ceylon 1927-10-12 before reaching India proper",
+   "korea_connection": "Colonial-era Buddhist reformer: '조선불교혁신론' (27 installments, Chosun Ilbo 1922); led the 조선불교동경유학생회 journal 금강저 (1924); travelogues 도석기/남국기/석란의 불교",
+   "evidence": "Ibulgyo 2021-02-03 biography (한국불교 격동 100년 series); Dong-A Ilbo 1927-10-27 obituary; KCI ART003193373; Beopbo series entry",
+   "significance": "Pioneer of modern Korea-India Buddhist engagement: first Korean monk in centuries to set out for India; his vow and writings mark the start of the modern pilgrimage era",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "5",
+   "sources": [
+    {
+     "id": "S-0075",
+     "citation": "Ibulgyo (불교신문) 2021-02-03, 이성수: '[한국불교 격동 100년] <1> 근대 최초 인도 순례한 이영재 스님' - full biography: born 1900 Cheongju; ordained 1918 Beopjusa; Nihon Univ 1920-23; Tokyo Imperial Univ Indian Philosophy (Sanskrit/Pali); departed Yokohama 1925-11-09 on Hakusan Maru; Ceylon Dec 1925; died 1927-10-12 in Ceylon aged 28; wrote 도석기/남국기/석란의 불교; drew taegeukgi for Mahabodhi Society Vesak in Kandy; Dong-A Ilbo 1927-10-27 obituary",
+     "url": "https://www.ibulgyo.com/news/articleView.html?idxno=210248",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0013",
+     "citation": "Beopbo (법보신문) series entry: '⑦ 이영재 스님(1900~1927)' - 1924 Nihon Univ grad; 1925 Sri Lanka via India pilgrimage; died en route",
+     "url": "https://www.beopbo.com/news/articleView.html?idxno=29123",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0101",
+     "citation": "KCI ART003193373: '이영재(李英宰, 1900~1927)의 남아시아 기행 탐구' - academic study of his Ceylon journey and pilgrimage writings",
+     "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003193373",
+     "type": "SECONDARY",
+     "reliability": "ACADEMIC"
+    },
+    {
+     "id": "S-0077",
+     "citation": "Ibulgyo (불교신문) 2026-04-15: '독일학자 찐머만, 근대 구법승 이영재 스님 재조명' - German scholar Zimmermann re-examines Lee Young-jae as first modern Korean Buddhist pilgrim",
+     "url": "https://www.ibulgyo.com/news/articleView.html?idxno=437401",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0072",
+     "citation": "Ibulgyo (불교신문) 2026-03-03: '성지(聖地)로 향하는 배에서 조선 불교의 미래를 고민하다' - paper on Lee Young-jae's 도석기 (space heterotopia; Buddhist college vision)",
+     "url": "https://www.ibulgyo.com/news/articleView.html?idxno=435895",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    }
+   ]
+  },
+  {
+   "id": "P-0052",
+   "name": "Pŏpchŏng",
+   "hangul": "법정",
+   "hanja": "法頂",
+   "variants": "Beopjeong; Beopjeong Sunim; 法頂; birth name Park Jae-cheol",
+   "band": "B5",
+   "nationality": "KOREAN (South Korea)",
+   "role": "Buddhist monk; essayist (author of 무소유 / 'Nothing to Possess')",
+   "roles": [
+    "MONK_GENERAL",
+    "LITERARY_FIGURE"
+   ],
+   "tradition": [
+    "SEON_CHAN"
+   ],
+   "typology": "PILGRIM_VISITOR",
+   "movement": "visited",
+   "direction": "INDIA_TO_KOREA",
+   "birth": "1932",
+   "death": "2010",
+   "birth_precision": "YEAR",
+   "floruit": [
+    "",
+    ""
+   ],
+   "floruit_precision": "",
+   "india_connection": "Travelled to India in 1971; met Vinoba Bhave (Gandhian land-gift/ahimsa leader); Mahatma Gandhi's words quoted at the opening of his best-known essay collection 무소유",
+   "korea_connection": "One of the most beloved Korean Buddhist essayists of the 20th century",
+   "evidence": "Bulkwang article (2024) on his India trip and Vinoba Bhave meeting; Gandhi quote opening 무소유",
+   "significance": "Brought Gandhian renunciation-ethics into mainstream Korean Buddhist thought; 무소유 became a cultural phenomenon",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "2",
+   "sources": [
+    {
+     "id": "S-0025",
+     "citation": "Bulkwang (2024-06-13), '법정 스님의 인도' - India trip and Vinoba Bhave meeting",
+     "url": "https://www.bulkwang.co.kr/news/articleView.html?idxno=38670",
+     "type": "NEWS",
+     "reliability": "POPULAR"
+    },
+    {
+     "id": "S-0015",
+     "citation": "Beopjeong memorial website",
+     "url": "http://beopjeong.clean94.or.kr",
+     "type": "WEBSITE",
+     "reliability": "INSTITUTIONAL"
+    }
+   ]
+  },
+  {
+   "id": "P-0068",
+   "name": "Sŏ Chŏng-ju",
+   "hangul": "서정주",
+   "hanja": "徐廷柱",
+   "variants": "Seo Jeong-ju; pen name Midang (未堂)",
+   "band": "B5",
+   "nationality": "KOREAN (colonial Korea -> South Korea)",
+   "role": "Poet; educator (Dongguk/Kyonggi university professor)",
+   "roles": [
+    "LITERARY_FIGURE",
+    "ACADEMIC"
+   ],
+   "tradition": [
+    "LAY_BUDDHIST"
+   ],
+   "typology": "ENCOUNTER_FIGURE",
+   "movement": "-",
+   "direction": "INDIA_TO_KOREA",
+   "birth": "1915",
+   "death": "2000",
+   "birth_precision": "DAY",
+   "floruit": [
+    "",
+    ""
+   ],
+   "floruit_precision": "",
+   "india_connection": "Met Indian poet Sitanshu Yashaschandra at Dongguk University (visit date unstated; article reposted 2010-08-11): the two discussed the mainstream and current state of Indian poetry and Korean-Indian literary exchange; Yashaschandra praised Sŏ's poem Hwasa (화사) for its compassion (자비심); they proposed mutual poetry translation and a '자비회' (Compassion Society) literary body",
+   "korea_connection": "One of Korea's most influential 20th-century poets (Hwasajip, Guksoto, Jilmajae Sinhwa); professor and Dean of the College of Liberal Arts (문리대학장) at Dongguk University; president of the Korean Writers Association (한국문인협회)",
+   "evidence": "Dongguk University newspaper (동대신문) interview article '[휴게실] 徐廷柱敎授, 印度詩人 야산챤드라 와' (reposted 2010-08-11)",
+   "significance": "Major Korean poet; documented literary encounter with an Indian poet at a Buddhist university; contested historical legacy (pro-Japanese activity)",
+   "confidence": "MEDIUM",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "2",
+   "sources": [
+    {
+     "id": "S-0177",
+     "citation": "Korean Wikipedia, '서정주'",
+     "url": "https://ko.wikipedia.org/wiki/서정주",
+     "type": "TERTIARY",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0032",
+     "citation": "Dongguk University newspaper (동대신문) '[휴게실] 徐廷柱敎授, 印度詩人 야산챤드라 와' (reposted 2010-08-11): Indian poet Sitanshu Yashaschandra visited Dongguk University and met Sŏ Chŏng-ju (문리대학장); they discussed the mainstream/current state of Indian poetry and Korean-Indian literary exchange; Yashaschandra praised Sŏ's Hwasa for its compassion; proposed mutual poetry translation and a '자비회' literary society; original article date unstated",
+     "url": "https://www.donggukmedia.com/news/articleView.html?idxno=9701",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    }
+   ]
+  },
+  {
+   "id": "P-0071",
+   "name": "Vinoba Bhave",
+   "hangul": "",
+   "hanja": "",
+   "variants": "Acharya Vinoba Bhave; विनोबा भावे",
+   "band": "B5",
+   "nationality": "INDIAN",
+   "role": "Gandhian philosopher; leader of the Bhoodan (land-gift) movement; spiritual successor of Gandhi",
+   "roles": [
+    "ACTIVIST",
+    "NON_BUDDHIST_FIGURE"
+   ],
+   "tradition": [
+    "NON_BUDDHIST"
+   ],
+   "typology": "ENCOUNTER_FIGURE",
+   "movement": "-",
+   "direction": "INDIA_TO_KOREA",
+   "birth": "1895",
+   "death": "1982",
+   "birth_precision": "YEAR",
+   "floruit": [
+    "",
+    ""
+   ],
+   "floruit_precision": "",
+   "india_connection": "Major Gandhian leader; his ashram was visited by Korean monk Pŏpchŏng in 1971",
+   "korea_connection": "Met Korean Buddhist monk Pŏpchŏng (1971) at his ashram in India; the encounter transmitted Gandhian renunciation philosophy to Korea via Pŏpchŏng's essays",
+   "evidence": "Bulkwang article (2024) on Pŏpchŏng's India trip and the Vinoba Bhave meeting",
+   "significance": "The Indian intermediary through whom Gandhian simplicity reached mainstream Korean Buddhist thought",
+   "confidence": "MEDIUM",
+   "status": "VERIFIED",
+   "single_source": true,
+   "source_count": "1",
+   "sources": [
+    {
+     "id": "S-0025",
+     "citation": "Bulkwang (2024-06-13), '법정 스님의 인도' - India trip and Vinoba Bhave meeting",
+     "url": "https://www.bulkwang.co.kr/news/articleView.html?idxno=38670",
+     "type": "NEWS",
+     "reliability": "POPULAR"
+    }
+   ]
+  },
+  {
+   "id": "P-0073",
+   "name": "Hwang Su-yŏng",
+   "hangul": "황수영",
+   "hanja": "黃壽永",
+   "variants": "Hwang Su-yeong; 黃壽永",
+   "band": "B5",
+   "nationality": "KOREAN",
+   "role": "Art historian; professor at Dongguk University; pioneer of modern Korean field surveys of Indian Buddhist heritage",
+   "roles": [
+    "ACADEMIC",
+    "MODERN_INTELLECTUAL"
+   ],
+   "tradition": [
+    "LAY_BUDDHIST"
+   ],
+   "typology": "PILGRIM_VISITOR",
+   "movement": "visited",
+   "direction": "KOREA_TO_INDIA",
+   "birth": "",
+   "death": "",
+   "birth_precision": "",
+   "floruit": [
+    "1962",
+    "1963"
+   ],
+   "floruit_precision": "APPROX",
+   "india_connection": "Surveyed India's Buddhist sites and ancient culture 1962-01-21 -> 1963-05-09 (~5 months): Ganges basin (Buddha's sites), Central, South and West India, and Pakistan (Peshawar area - trod the Ganuo-si temple site recorded in Hyecho's Wang ocheonchukguk jeon); itinerary arranged by the Indian government matched Hyecho's route; visited Nalanda; urged that Korea send students to India, regretting that Korean students were absent from the international students gathered at the Buddhist research institute near Nalanda",
+   "korea_connection": "Returned to Korea 1963-05-09 (Kyonghyang interview); compared Indian Buddhist remains with Korea's ancient culture (Korean stone pagodas); Indian officials requested a translation of Hyecho's travel record; his fieldwork was covered serially in Kyonghyang Shinmun",
+   "evidence": "Kyonghyang Shinmun 1963-05-11 (帰国 interview, p.5); corroborated by Hyunbul News 2023-02-27 (Dongguk-Nalanda MOU feature)",
+   "significance": "First documented modern Korean academic field survey of India's Buddhist heritage following Hyecho's route; precursor of Korea-India Buddhist-studies exchange",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "2",
+   "sources": [
+    {
+     "id": "S-0121",
+     "citation": "Kyonghyang Shinmun 1963-05-11 p.5: '우리古代文化와 比較돼 - 印度 佛蹟을 踏査한 黃교수 歸國談' - Prof. Hwang Su-yŏng (Dongguk Univ.) returned 1963-05-09 from a ~5-month survey (left Seoul 1962-01-21); followed Hyecho's route across India (Ganges basin, Central/South/West India, Pakistan-Peshawar); visited Nalanda; regretted the absence of Korean students at the Buddhist research institute near Nalanda; Indian officials requested a translation of Hyecho's travelogue",
+     "url": "https://newslibrary.naver.com/viewer/index.naver?articleId=1963051100329205009&editNo=6&printCount=1&publishDate=1963-05-11&officeId=00032&pageNo=5&printNo=5397&publishType=00020",
+     "type": "PRIMARY",
+     "reliability": "AUTHORITATIVE"
+    },
+    {
+     "id": "S-0062",
+     "citation": "Hyunbul News (2023-02-27): '동국대, 날란다大 MOU... 공동 교육·연구 협력' - Dongguk University-Nalanda University academic MOU signed 2023-02-24 at Nalanda (VC Sunaina Singh; Dongguk 건학위원장 돈관 스님, 총장 윤재웅); joint education/research + '순례' themed conference + Korea-India 50th anniversary; article also cites the 1982 delegation (Dong-A 1982-01-19) and Hwang Su-yŏng 1962-63 (Kyonghyang 1963-05-11)",
+     "url": "https://www.hyunbulnews.com/articleView.html?idxno=408238",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    }
+   ]
+  },
+  {
+   "id": "P-0076",
+   "name": "Sitanshu Yashaschandra",
+   "hangul": "시탄슈 야사찬드라",
+   "hanja": "",
+   "variants": "Sitāṃśu Yaśaścandra; 시탄 슈 야사찬드라",
+   "band": "B5",
+   "nationality": "INDIAN",
+   "role": "Gujarati poet; scholar of Gujarati literature",
+   "roles": [
+    "LITERARY_FIGURE",
+    "ACADEMIC",
+    "NON_BUDDHIST_FIGURE"
+   ],
+   "tradition": [
+    "NON_BUDDHIST"
+   ],
+   "typology": "ENCOUNTER_FIGURE",
+   "movement": "-",
+   "direction": "INDIA_TO_KOREA",
+   "birth": "1941",
+   "death": "",
+   "birth_precision": "YEAR",
+   "floruit": [
+    "",
+    ""
+   ],
+   "floruit_precision": "",
+   "india_connection": "Gujarati poet described in the Dongguk newspaper as 'the youngest genius poet of India after Tagore'; visited Dongguk University (Seoul) and met Sŏ Chŏng-ju, discussing the mainstream and current state of Indian poetry; praised Sŏ's poem Hwasa (화사) for its compassion (자비심); proposed mutual Korean-Indian poetry translation and a '자비회' (Compassion Society) literary body, to be discussed with the Indian ambassador to Korea",
+   "korea_connection": "Documented Indian counterpart in Sŏ Chŏng-ju's literary encounter at Dongguk University",
+   "evidence": "Dongguk University newspaper (동대신문) interview article '[휴게실] 徐廷柱敎授, 印度詩人 야산챤드라 와' (reposted 2010-08-11)",
+   "significance": "Documented Indian literary counterpart of Korea's foremost modern poet at a Buddhist university",
+   "confidence": "MEDIUM",
+   "status": "VERIFIED",
+   "single_source": true,
+   "source_count": "1",
+   "sources": [
+    {
+     "id": "S-0032",
+     "citation": "Dongguk University newspaper (동대신문) '[휴게실] 徐廷柱敎授, 印度詩人 야산챤드라 와' (reposted 2010-08-11): Indian poet Sitanshu Yashaschandra visited Dongguk University and met Sŏ Chŏng-ju (문리대학장); they discussed the mainstream/current state of Indian poetry and Korean-Indian literary exchange; Yashaschandra praised Sŏ's Hwasa for its compassion; proposed mutual poetry translation and a '자비회' literary society; original article date unstated",
+     "url": "https://www.donggukmedia.com/news/articleView.html?idxno=9701",
+     "type": "NEWS",
+     "reliability": "INSTITUTIONAL"
+    }
+   ]
+  },
+  {
+   "id": "P-0051",
+   "name": "Ko Un",
+   "hangul": "고은",
+   "hanja": "高銀",
+   "variants": "Go Eun; 高銀; birth name Ko Un-tae (고은태, 高銀泰)",
+   "band": "B6",
+   "nationality": "KOREAN (South Korea)",
+   "role": "Poet",
+   "roles": [
+    "LITERARY_FIGURE",
+    "MONK_GENERAL"
+   ],
+   "tradition": [
+    "SEON_CHAN"
+   ],
+   "typology": "PILGRIM_VISITOR",
+   "movement": "visited",
+   "direction": "BIDIRECTIONAL",
+   "birth": "1933",
+   "death": "",
+   "birth_precision": "DAY",
+   "floruit": [
+    "",
+    ""
+   ],
+   "floruit_precision": "",
+   "india_connection": "Travelled in India in the 1990s (Poetry Foundation bio); 1992 India visit (Authors Calendar); Feb 2019 New Delhi - Raza Biennale of Indian Poetry and talk at JNU (Korea Herald); guest of honor at 14th Kritya International Poetry Festival, read at its inauguration (online, 4-13 Jul 2021); novel Little Pilgrim (1992) set in India",
+   "korea_connection": "One of Korea's most celebrated living poets; official site koun.co.kr",
+   "evidence": "Korea Herald 2023-01-13 exclusive on Ko Un's India/international career (Kritya 2021 guest of honor; New Delhi 2019; Mexico City 2018); Poetry Foundation bio; Authors Calendar (1992 visit)",
+   "significance": "Korea's most translated contemporary poet; major cultural bridge between Korea and South Asia",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "5",
+   "sources": [
+    {
+     "id": "S-0148",
+     "citation": "Poetry Foundation, Ko Un biography (documents India travels)",
+     "url": "https://www.poetryfoundation.org/poets/ko-un-56d207070306a",
+     "type": "WEBSITE",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0110",
+     "citation": "Korea Herald (2023-01-13 exclusive), Ko Un feature: 14th Kritya International Poetry Festival guest of honor (online 4-13 Jul 2021); New Delhi 2019 Raza Biennale/JNU talk; Mexico City 2018",
+     "url": "https://www.koreaherald.com/article/3041111",
+     "type": "NEWS",
+     "reliability": "POPULAR"
+    },
+    {
+     "id": "S-0117",
+     "citation": "Ko Un official website",
+     "url": "http://www.koun.co.kr",
+     "type": "WEBSITE",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0106",
+     "citation": "Korean Wikipedia, '고은' (b. 1933-08-01; birth name 고은태 高銀泰)",
+     "url": "https://ko.wikipedia.org/wiki/고은",
+     "type": "TERTIARY",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0008",
+     "citation": "Petri Liukkonen, Authors Calendar: 'Ko Un' (1992 India visit; novel Little Pilgrim set in India)",
+     "url": "http://authorscalendar.info/koun.htm",
+     "type": "WEBSITE",
+     "reliability": "POPULAR"
+    }
+   ]
+  },
+  {
+   "id": "P-0053",
+   "name": "Lokesh Chandra",
+   "hangul": "",
+   "hanja": "",
+   "variants": "Lokesh Chandra (son of Sanskritist Raghu Vira)",
+   "band": "B6",
+   "nationality": "INDIAN",
+   "role": "Indologist; Sanskritist; Vedic/Buddhist studies scholar; former Member of Parliament (Rajya Sabha)",
+   "roles": [
+    "ACADEMIC",
+    "INSTITUTIONAL_LEADER"
+   ],
+   "tradition": [
+    "LAY_BUDDHIST"
+   ],
+   "typology": "PILGRIM_VISITOR",
+   "movement": "visited",
+   "direction": "INDIA_TO_KOREA",
+   "birth": "1927",
+   "death": "",
+   "birth_precision": "YEAR",
+   "floruit": [
+    "",
+    ""
+   ],
+   "floruit_precision": "",
+   "india_connection": "India's foremost living Indologist; leading scholar of Buddhist Sanskrit and Korea's Buddhist heritage",
+   "korea_connection": "(1) Author of 'Morning Calm and The Pensive Beyond - Cultural Interflow Between India and Korea' (Aditya Prakashan, 2019); (2) Chapter 'Buddhism as the creative vision of Korea' in Cultural Horizons of India Vol. 2 (1990); (3) Ribbon-cutting at the Lotus Sutra exhibition in Seoul, Sept 2016, with Lee Soo-sung (former PM of Korea) and Chae Young Kim",
+   "evidence": "2019 monograph dedicated to India-Korea cultural interflow; Korean-themed chapter since 1990; participation in Seoul exhibition 2016",
+   "significance": "Principal Indian scholar connecting India's Buddhist heritage with Korean Buddhist culture in the modern era",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "4",
+   "sources": [
+    {
+     "id": "S-0004",
+     "citation": "Lokesh Chandra, 'Morning Calm and The Pensive Beyond - Cultural Interflow Between India and Korea' (Aditya Prakashan, 2019), ISBN 978-8194085034",
+     "url": "https://www.amazon.com/Morning-Pensive-Beyond-Cultural-Interflow/dp/8194085039",
+     "type": "SECONDARY",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0183",
+     "citation": "Wisdomlib, 'Cultural Horizons of India Vol. 2' (Lokesh Chandra chapter on Korea)",
+     "url": "https://www.wisdomlib.org/shop/books/india-history/cultural-horizons-of-india/doc422708.html",
+     "type": "SECONDARY",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0159",
+     "citation": "TOTETU paper (Sept 2016), Lotus Sutra exhibition Seoul - Lokesh Chandra participation",
+     "url": "https://www.totetu.org/assets/media/paper/j028_173.pdf",
+     "type": "SECONDARY",
+     "reliability": "INSTITUTIONAL"
+    },
+    {
+     "id": "S-0067",
+     "citation": "IATS oral history interview, Lokesh Chandra",
+     "url": "https://oralhistory.iats.info/interviews/lokesh-chandra",
+     "type": "ARCHIVAL",
+     "reliability": "INSTITUTIONAL"
+    }
+   ]
+  },
+  {
+   "id": "P-0054",
+   "name": "Jung Seung-suk",
+   "hangul": "정승석",
+   "hanja": "",
+   "variants": "Jeong Seung-seok; Chung Seung-suk",
+   "band": "B6",
+   "nationality": "KOREAN (South Korea)",
+   "role": "Scholar of Indian philosophy (academic; Buddhist/Indian philosophy writing)",
+   "roles": [
+    "ACADEMIC"
+   ],
+   "tradition": [
+    "UNKNOWN"
+   ],
+   "typology": "TEXTUAL_MEDIATOR",
+   "movement": "-",
+   "direction": "INDIA_TO_KOREA",
+   "birth": "",
+   "death": "",
+   "birth_precision": "UNKNOWN",
+   "floruit": [
+    "1980",
+    "1991"
+   ],
+   "floruit_precision": "APPROX",
+   "india_connection": "Career scholar of Indian philosophy; all degrees from Dongguk University (NOT India-trained)",
+   "korea_connection": "Contributes to Korean-language scholarship/publishing on Indian philosophy (Buddhist review, Beopbo, Kyobo author pages)",
+   "evidence": "Author profile and works on Indian philosophy (Kyobo); Buddhist-press articles",
+   "significance": "Representative Korean academic of Indian philosophy in the domestic tradition",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "2",
+   "sources": [
+    {
+     "id": "S-0024",
+     "citation": "Bulgyo Review, Jung Seung-suk author/article page",
+     "url": "https://www.budreview.com/news/articleView.html?idxno=20138",
+     "type": "WEBSITE",
+     "reliability": "ACADEMIC"
+    },
+    {
+     "id": "S-0118",
+     "citation": "Kyobo Books, Jung Seung-suk author profile",
+     "url": "https://store.kyobobook.co.kr/person/detail/1000310001",
+     "type": "DATABASE",
+     "reliability": "INSTITUTIONAL"
+    }
+   ]
+  },
+  {
+   "id": "P-0055",
+   "name": "U Myeong-ju",
+   "hangul": "우명주",
+   "hanja": "",
+   "variants": "Woo Myung-ju; U Myung-ju",
+   "band": "B6",
+   "nationality": "KOREAN (South Korea)",
+   "role": "Buddhist-studies researcher; former journalist (한겨레21 India correspondent); former Korean lecturer at University of Delhi",
+   "roles": [
+    "ACADEMIC"
+   ],
+   "tradition": [
+    "LAY_BUDDHIST"
+   ],
+   "typology": "STUDENT",
+   "movement": "studied",
+   "direction": "BIDIRECTIONAL",
+   "birth": "",
+   "death": "",
+   "birth_precision": "UNKNOWN",
+   "floruit": [
+    "2001",
+    "2019"
+   ],
+   "floruit_precision": "APPROX",
+   "india_connection": "MA (c. 2001) and PhD in Buddhist Studies at University of Delhi; resided in Delhi; taught Korean at Delhi University; wrote '세계의 불교대학2: 인도 델리대학' (2019-03-19)",
+   "korea_connection": "Returned to Korea; researcher at Dongguk University Gyeongju",
+   "evidence": "Her published first-hand article on Delhi University's Buddhist studies program (2019)",
+   "significance": "Documented the Delhi University-Korean Buddhist connection for Korean readers; bridge figure",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "single_source": true,
+   "source_count": "1",
+   "sources": [
+    {
+     "id": "S-0054",
+     "citation": "U Myeong-ju, '세계의 불교대학2: 인도 델리대학', GGBn (2019-03-19)",
+     "url": "https://www.ggbn.co.kr/news/articleView.html?idxno=38055",
+     "type": "NEWS",
+     "reliability": "POPULAR"
+    }
+   ]
+  },
+  {
+   "id": "P-0062",
+   "name": "Buddhavara (Ven.)",
+   "hangul": "붓다빠라",
+   "hanja": "",
+   "variants": "붓다빠라 스님; Phra Buddhavara",
+   "band": "B6",
+   "nationality": "KOREAN (South Korea; resident in India)",
+   "role": "Buddhist monk; abbot of Bunhwangsa Temple India (분황사, Bodh Gaya); Chancellor of Bodh Gaya International College of Buddhist Studies; principal of Bodh Gaya International Meditation School; abbot at Sati Aramma (Kimhae)",
+   "roles": [
+    "INSTITUTIONAL_LEADER",
+    "MONK_GENERAL"
+   ],
+   "tradition": [
+    "SEON_CHAN",
+    "THERAVADA_ORIENTED"
+   ],
+   "typology": "RESIDENT_WORKER",
+   "movement": "worked",
+   "direction": "KOREA_TO_INDIA",
+   "birth": "",
+   "death": "",
+   "birth_precision": "UNKNOWN",
+   "floruit": [
+    "2026",
+    "2026"
+   ],
+   "floruit_precision": "APPROX",
+   "india_connection": "Resident in Bodh Gaya leading Korean-led meditation training; signed academic-exchange MOU with University of Delhi (2026-04-23); honored in Korea as '인도 분황사 주지' (Beopbo, 2026-07-08)",
+   "korea_connection": "Foundational figure of Korean Buddhist institutions at Bodh Gaya; lecture circuits in Korea",
+   "evidence": "Delhi University MOU; multiple Korean Buddhist-press reports",
+   "significance": "Builder of the Korean Buddhist institutional bridgehead at Bodh Gaya",
+   "confidence": "MEDIUM",
+   "status": "VERIFIED",
+   "single_source": true,
+   "source_count": "1",
+   "sources": [
+    {
+     "id": "S-0018",
+     "citation": "BTN (2026-04-23), 붓다가야 국제승가대학-델리대학 MOU",
+     "url": "https://www.btnnews.tv/news/articleView.html?idxno=89786",
+     "type": "NEWS",
+     "reliability": "POPULAR"
+    }
+   ]
+  },
+  {
+   "id": "P-0063",
+   "name": "Hyoseok (Ven.)",
+   "hangul": "효석",
+   "hanja": "",
+   "variants": "효석 스님",
+   "band": "B6",
+   "nationality": "KOREAN (South Korea)",
+   "role": "Bhikkhuni (nun); professor at Bongnyeongsa monastic college; attendant to preceptor Ven. Bongak",
+   "roles": [
+    "BHIKKHUNI",
+    "ACADEMIC"
+   ],
+   "tradition": [
+    "SEON_CHAN"
+   ],
+   "typology": "STUDENT",
+   "movement": "studied",
+   "direction": "INDIA_TO_KOREA",
+   "birth": "1970",
+   "death": "",
+   "birth_precision": "DECADE",
+   "floruit": [
+    "",
+    ""
+   ],
+   "floruit_precision": "",
+   "india_connection": "Studied cultural anthropology in India - MA from Pune University (뿌나대학), PhD from Delhi University (델리대학); studied yoga in India (certificate)",
+   "korea_connection": "Returned to Korea, teaches at Bongnyeongsa monastic college",
+   "evidence": "Published profile essay documenting both degrees and India residence",
+   "significance": "One of the few documented Korean nuns with Indian university doctorates",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "single_source": true,
+   "source_count": "1",
+   "sources": [
+    {
+     "id": "S-0063",
+     "citation": "Hyunbul News (2021-10-14), '[모정불심] 19. 효석 스님의 어머니'",
+     "url": "http://www.hyunbulnews.com/news/articleView.html?idxno=402639",
+     "type": "NEWS",
+     "reliability": "POPULAR"
+    }
+   ]
+  },
+  {
+   "id": "P-0064",
+   "name": "Wookwan (Ven.)",
+   "hangul": "우관",
+   "hanja": "",
+   "variants": "Wookwan Sunim; 우관스님",
+   "band": "B6",
+   "nationality": "KOREAN (South Korea)",
+   "role": "Bhikkhuni; founder/director of Mahayeon Temple Food Culture Center (Icheon); 2022 Jogye Order Temple-Food Master; inaugural director of Bongwonsa Temple-Food Culture Research Institute",
+   "roles": [
+    "BHIKKHUNI",
+    "INSTITUTIONAL_LEADER"
+   ],
+   "tradition": [
+    "SEON_CHAN"
+   ],
+   "typology": "STUDENT",
+   "movement": "studied",
+   "direction": "BIDIRECTIONAL",
+   "birth": "",
+   "death": "",
+   "birth_precision": "UNKNOWN",
+   "floruit": [
+    "2005",
+    "2015"
+   ],
+   "floruit_precision": "APPROX",
+   "india_connection": "Studied at University of Delhi - MA in Buddhist Studies and PhD coursework (박사 수료), 5+ years in India; gave monthly Korean-language dharma talks for the Korean community in Delhi; volunteered at Sujata School, Bodh Gaya",
+   "korea_connection": "Korea's leading temple-food authority; international ambassador of Korean temple cuisine (New York/London Korean Cultural Centers, 2017-2019); author of 'Wookwan's Korean Temple Food' (2019, IBPA Benjamin Franklin Award silver)",
+   "evidence": "Jogye master designation 2022; Benjamin Franklin Award; Delhi University record",
+   "significance": "The only bhikkhuni temple-food master in the Jogye Order; India-trained international communicator",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "2",
+   "sources": [
+    {
+     "id": "S-0076",
+     "citation": "Bulgyo Shinmun (2022-07-28), '조계종 사찰음식명장 우관스님을 만나다'",
+     "url": "http://www.ibulgyo.com/news/articleView.html?idxno=219282",
+     "type": "NEWS",
+     "reliability": "POPULAR"
+    },
+    {
+     "id": "S-0026",
+     "citation": "Cheonji Ilbo (2010-11-08), Mahayeon founder interview with Wookwan",
+     "url": "http://www.newscj.com/news/articleView.html?idxno=59154",
+     "type": "NEWS",
+     "reliability": "POPULAR"
+    }
+   ]
+  },
+  {
+   "id": "P-0065",
+   "name": "Gakseong (Ven.)",
+   "hangul": "각성",
+   "hanja": "",
+   "variants": "각성 스님; Gakseong Sunim",
+   "band": "B6",
+   "nationality": "KOREAN (South Korea)",
+   "role": "Buddhist monk; abbot of Guryongsa (Seoul, 2010-2020); 17th Jogye Central Assembly member (2018-2020)",
+   "roles": [
+    "MONK_GENERAL",
+    "INSTITUTIONAL_LEADER"
+   ],
+   "tradition": [
+    "SEON_CHAN"
+   ],
+   "typology": "STUDENT",
+   "movement": "studied",
+   "direction": "INDIA_TO_KOREA",
+   "birth": "1971",
+   "death": "2020",
+   "birth_precision": "DECADE",
+   "floruit": [
+    "",
+    ""
+   ],
+   "floruit_precision": "",
+   "india_connection": "Went to India in 1992 to study - University of Delhi, religious studies, 6 years; alone toured ~4,500 km of Buddhist pilgrimage sites in India",
+   "korea_connection": "Returned to Tongdosa monastic college; abbot of Guryongsa; social welfare leadership",
+   "evidence": "BTN obituary/report; BBS obituary report",
+   "significance": "Documented modern example of a Jogye monk with long India university study",
+   "confidence": "HIGH",
+   "status": "VERIFIED",
+   "single_source": false,
+   "source_count": "2",
+   "sources": [
+    {
+     "id": "S-0019",
+     "citation": "BTN (2020-10-02), 각성스님 영결식 report",
+     "url": "http://www.btnnews.tv/news/articleView.html?idxno=62974",
+     "type": "NEWS",
+     "reliability": "POPULAR"
+    },
+    {
+     "id": "S-0009",
+     "citation": "BBS News (2020-09-28), 각성스님 입적 report",
+     "url": "http://news.bbsi.co.kr/news/articleView.html?idxno=3006316",
+     "type": "NEWS",
+     "reliability": "POPULAR"
+    }
+   ]
+  }
+ ]
+}

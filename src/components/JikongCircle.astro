@@ -1,0 +1,77 @@
+---
+// The Goryeo bridge as it actually is in the data: one Indian master, four Korean
+// disciples, one temple, and a relic trail that reaches 2024. Hand-laid; nine nodes
+// do not need a force simulation.
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const P = (id: string) => `${base}/people/${id}/`;
+---
+<figure>
+  <svg viewBox="0 0 1000 330" role="img" aria-label="The Dhyanabhadra circle: the Indian master Dhyanabhadra, arrived from Nalanda via Yuan China, taught four Korean disciples including Naong and Muhak, and founded Hoeamsa temple. His relics were enshrined there in 1370; in 2024 relics from Hoeamsa returned to Korea from the Boston Museum of Fine Arts.">
+    <style>
+      .jk-name { font: 600 14px var(--sans); fill: var(--ink); }
+      .jk-sub { font: 11px var(--sans); fill: var(--muted); }
+      .jk-edge { stroke: var(--b2); stroke-width: 2; fill: none; stroke-dasharray: 5 4; }
+      .jk-edge-solid { stroke: var(--b2); stroke-width: 2; fill: none; }
+      .jk-elabel { font: italic 11px var(--serif); fill: var(--muted); }
+      .jk-ev { font: 11.5px var(--sans); fill: var(--muted); }
+    </style>
+
+    <!-- provenance edge from India -->
+    <path class="jk-edge-solid" d="M 120 90 C 220 70, 330 90, 425 118" marker-end="none" />
+    <text class="jk-name" x="60" y="76">Nalanda</text>
+    <text class="jk-sub" x="60" y="92">Magadha, India</text>
+    <text class="jk-elabel" x="230" y="70">arrived via Yuan China, 1326</text>
+
+    <!-- master -->
+    <a href={P('P-0023')}>
+      <circle cx="470" cy="130" r="30" fill="var(--b2)" />
+      <text class="jk-name" x="470" y="181" text-anchor="middle">Dhyānabhadra 지공</text>
+      <text class="jk-sub" x="470" y="196" text-anchor="middle">monk of Magadha · d. 1363</text>
+    </a>
+
+    <!-- disciples -->
+    <path class="jk-edge" d="M 498 118 C 610 70, 700 62, 775 62" />
+    <path class="jk-edge" d="M 500 128 C 630 120, 720 132, 790 148" />
+    <path class="jk-edge" d="M 496 146 C 600 200, 680 224, 748 234" />
+    <text class="jk-elabel" x="612" y="96" text-anchor="middle">teacher → disciple</text>
+    <a href={P('P-0024')}>
+      <circle cx="790" cy="62" r="13" fill="var(--b2)" />
+      <text class="jk-name" x="810" y="60">Naong Hyegeun 나옹</text>
+      <text class="jk-sub" x="810" y="75">royal preceptor</text>
+    </a>
+    <a href={P('P-0074')}>
+      <circle cx="805" cy="150" r="13" fill="var(--b2)" />
+      <text class="jk-name" x="825" y="148">Muhak Chach'o 무학</text>
+      <text class="jk-sub" x="825" y="163">advisor to T'aejo</text>
+    </a>
+    <a href={P('P-0075')}>
+      <circle cx="762" cy="236" r="13" fill="var(--b2)" />
+      <text class="jk-name" x="782" y="234">Baegun Gyeonghan 백운</text>
+      <text class="jk-sub" x="782" y="249">author, Jikji lineage</text>
+    </a>
+    <a href={P('P-0077')}>
+      <circle cx="600" cy="292" r="13" fill="var(--b2)" />
+      <text class="jk-name" x="620" y="290">Ch'ukwŏn Chijŏn 축원</text>
+    </a>
+    <path class="jk-edge" d="M 480 158 C 510 230, 550 270, 587 286" />
+
+    <!-- temple + relic trail -->
+    <path class="jk-edge-solid" d="M 440 140 C 380 160, 330 170, 285 176" />
+    <rect x="230" y="160" width="34" height="34" rx="4" fill="none" stroke="var(--b2)" stroke-width="2.5" />
+    <text class="jk-name" x="247" y="216" text-anchor="middle">Hoeamsa 회암사</text>
+    <text class="jk-sub" x="247" y="231" text-anchor="middle">founded/rebuilt under his direction</text>
+    <text class="jk-elabel" x="352" y="152">founded</text>
+
+    <path class="jk-edge-solid" d="M 247 194 C 247 250, 247 268, 247 276" />
+    <path d="M 240 300 l 7 -12 l 7 12 l -7 12 z" fill="var(--b2)" />
+    <text class="jk-ev" x="262" y="296">1370 · relics enshrined at Hoeamsa (EV-0017)</text>
+    <text class="jk-ev" x="262" y="314">2024 · Hoeamsa relics returned from Boston MFA (EV-0018)</text>
+  </svg>
+  <figcaption>
+    The entire documented Goryeo bridge: one Indian master, four Korean disciples, one temple.
+    Dashed lines mark teacher–disciple ties recorded at MEDIUM confidence (hagiographic sources);
+    solid lines are movement and institutional ties. The relic trail makes this the one medieval
+    cluster that reaches the present: relics enshrined in 1370 returned to Korea from the Boston
+    Museum of Fine Arts in 2024.
+  </figcaption>
+</figure>

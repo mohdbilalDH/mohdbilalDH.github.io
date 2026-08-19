@@ -1,0 +1,71 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+<Base title="Projects" current="projects"
+  description="Digital Humanities research projects by Mohd Bilal: the Buddhist Bridges prosopography of India–Korea exchange, and a corpus study of Hallyu in the Indian press.">
+  <div class="wrap">
+    <div class="page-head">
+      <p class="eyebrow">Research Projects</p>
+      <h1>Projects</h1>
+      <p class="lede">
+        Digital Humanities projects built on documented sources, graded evidence, and
+        reproducible pipelines. Each project publishes its data, its method, and its limits.
+      </p>
+    </div>
+
+    <div class="project-grid">
+      <a class="project-card" href="/projects/buddhist-bridges/">
+        <span class="visual" aria-hidden="true">
+          <svg viewBox="0 0 100 100">
+            <rect x="0" y="0" width="100" height="100" fill="var(--card)" />
+            <rect x="10" y="16" width="14" height="6" rx="1.2" fill="var(--b1)" />
+            <rect x="26" y="30" width="11" height="6" rx="1.2" fill="var(--b2)" />
+            <line x1="39" y1="47" x2="61" y2="47" stroke="var(--void)" stroke-width="2.5" stroke-dasharray="2 4" />
+            <rect x="63" y="58" width="8" height="6" rx="1.2" fill="var(--b4)" />
+            <rect x="73" y="70" width="8" height="6" rx="1.2" fill="var(--b5)" />
+            <rect x="82" y="82" width="10" height="6" rx="1.2" fill="var(--b6)" />
+          </svg>
+        </span>
+        <h3>Buddhist Bridges — Five Bridges, One Silence</h3>
+        <p class="desc">
+          Who actually mediated Buddhist exchange between India and Korea, 300–2026?
+          A source-graded prosopography of 43 documented mediators, with a frozen,
+          checksummed dataset and an interactive chronology.
+        </p>
+        <span class="meta">
+          <span class="status-badge complete">Dataset frozen · V3.0</span>
+          &nbsp; Prosopography · timeline · network · Python + Astro · data CC-BY-4.0
+        </span>
+      </a>
+
+      <a class="project-card" href="/projects/hallyu-indian-press/">
+        <span class="visual" aria-hidden="true">
+          <svg viewBox="0 0 100 100">
+            <rect x="0" y="0" width="100" height="100" fill="var(--card)" />
+            <rect x="16" y="79" width="18" height="2" fill="var(--b6)" opacity="0.55" />
+            <rect x="42" y="74" width="18" height="7" fill="var(--b6)" opacity="0.75" />
+            <rect x="68" y="20" width="18" height="61" fill="var(--b6)" />
+            <line x1="10" y1="81.5" x2="92" y2="81.5" stroke="var(--rule)" stroke-width="1" />
+          </svg>
+        </span>
+        <h3>Framing Hallyu in the Indian Press, 2000–2026</h3>
+        <p class="desc">
+          How did Indian English-language newspapers represent and frame Hallyu as Korean
+          popular culture became visible in India? A reproducible corpus project; the
+          2000–2010 pilot is complete and has already produced a publishable-grade
+          negative finding.
+        </p>
+        <span class="meta">
+          <span class="status-badge in-progress">Pilot complete · corpus in progress</span>
+          &nbsp; Web archives · SQLite + FTS5 · Python · metadata-only publishing
+        </span>
+      </a>
+    </div>
+
+    <p style="margin: var(--s-6) 0 var(--s-7); color: var(--muted); font-size: 0.95rem;">
+      Both projects follow the same discipline: raw sources cached with provenance, analysis
+      separated from presentation, and only claims the sources can carry. Code and data are
+      released under open licences as each project reaches a citable state.
+    </p>
+  </div>
+</Base>

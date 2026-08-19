@@ -1,0 +1,34 @@
+---
+import '../styles/global.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+const {
+  title,
+  description = 'Mohd Bilal — Korean Studies and Digital Humanities. Modern Korean history, colonial-era cultural history, gender, kisaeng studies, and computational research on Korea and India.',
+  current = '',
+} = Astro.props;
+const pageTitle = title ? `${title} · Mohd Bilal` : 'Mohd Bilal — Korean Studies & Digital Humanities';
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{pageTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+  <meta property="og:title" content={title ?? 'Mohd Bilal — Korean Studies & Digital Humanities'} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <slot name="head" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <SiteHeader current={current} />
+  <main id="main">
+    <slot />
+  </main>
+  <SiteFooter />
+</body>
+</html>

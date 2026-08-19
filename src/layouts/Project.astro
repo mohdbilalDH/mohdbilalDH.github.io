@@ -1,0 +1,40 @@
+---
+// Project pages carry the full site chrome so navigation stays consistent
+// across the site, plus optional Google Scholar citation metadata.
+import '../styles/global.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+const {
+  title,
+  description = 'A Digital Humanities research project by Mohd Bilal.',
+  citation = false,
+} = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title} · Mohd Bilal</title>
+  <meta name="description" content={description} />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  {citation && (
+    <>
+      <meta name="citation_title" content="Buddhist Bridges: Five Bridges, One Silence — India–Korea Buddhist Exchange, 300–2026" />
+      <meta name="citation_author" content="Khan, Mohd Bilal" />
+      <meta name="citation_publication_date" content="2026" />
+    </>
+  )}
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <SiteHeader current="projects" />
+  <main id="main">
+    <slot />
+  </main>
+  <SiteFooter />
+</body>
+</html>

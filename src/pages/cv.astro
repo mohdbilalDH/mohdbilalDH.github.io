@@ -1,0 +1,214 @@
+---
+import Base from '../layouts/Base.astro';
+import presentations from '../data/presentations.json';
+const years = [...new Set(presentations.map((p) => p.year))].sort((a, b) => b - a);
+---
+<Base title="CV" current="cv"
+  description="Curriculum vitae of Mohd Bilal — Korean Studies, modern Korean history, gender and cultural history, Digital Humanities. The Academy of Korean Studies.">
+  <div class="wrap">
+    <div class="page-head" style="margin-bottom: var(--s-5);">
+      <p class="eyebrow">Curriculum Vitae</p>
+      <h1>Mohd Bilal</h1>
+      <p class="lede">Korean Studies · Modern Korean History · Gender &amp; Cultural History · Digital Humanities</p>
+      <p style="font: var(--t-caption)/1.7 var(--sans); color: var(--muted); margin-top: var(--s-3);">
+        Division of Global Korean Studies, The Academy of Korean Studies, Seongnam, Republic of Korea<br />
+        <a href="mailto:mohdbilalkhan2017@gmail.com">mohdbilalkhan2017@gmail.com</a> ·
+        <a href="https://github.com/mohdbilalDH">github.com/mohdbilalDH</a>
+      </p>
+      <p class="no-print" style="margin-top: var(--s-4);">
+        <a href="/files/mohd-bilal-cv.pdf" download
+          style="font: 500 var(--t-ui) var(--sans); border: 1px solid var(--rule); border-radius: var(--radius); padding: 0.45rem 0.9rem; text-decoration: none;">
+          ↓ Download PDF
+        </a>
+      </p>
+    </div>
+
+    <section class="cv-section">
+      <h2>Research profile</h2>
+      <p style="font-size: 0.98rem;">
+        Korean Studies scholar specializing in modern and contemporary Korean history,
+        colonial-era cultural history, gender history, and kisaeng studies. My research also
+        engages with comparative Korean–Indian cultural history and Digital Humanities
+        approaches to historical and cultural materials, examining gender, performance,
+        cultural memory, representation, and cultural exchange across Korea and India.
+      </p>
+    </section>
+
+    <section class="cv-section">
+      <h2>Education</h2>
+      <div class="cv-item">
+        <div class="cv-when">2024–present</div>
+        <div class="cv-what">
+          <div class="role">M.A. in Korean Studies</div>
+          <div class="org">The Academy of Korean Studies, Republic of Korea</div>
+        </div>
+      </div>
+      <div class="cv-item">
+        <div class="cv-when">Fall 2025</div>
+        <div class="cv-what">
+          <div class="role">Exchange Student, International College</div>
+          <div class="org">Seoul National University, Republic of Korea</div>
+          <div class="detail">GPA 4.3/4.3</div>
+        </div>
+      </div>
+      <div class="cv-item">
+        <div class="cv-when">2020–2023</div>
+        <div class="cv-what">
+          <div class="role">B.A. in Korean Studies</div>
+          <div class="org">Jawaharlal Nehru University, New Delhi, India</div>
+          <div class="detail">GPA 3.43/4.00</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <h2>Research &amp; professional experience</h2>
+      <div class="cv-item">
+        <div class="cv-when">2025–present</div>
+        <div class="cv-what">
+          <div class="role">Graduate Teaching Assistant</div>
+          <div class="org">Division of Global Korean Studies, The Academy of Korean Studies</div>
+          <div class="detail">
+            Support teaching and academic activities across departmental courses and programs:
+            course administration, preparation of academic materials, coordination of lectures
+            and seminars, academic communication, proofreading, data collection, and
+            departmental documents and reports.
+          </div>
+        </div>
+      </div>
+      <div class="cv-item">
+        <div class="cv-when">2025</div>
+        <div class="cv-what">
+          <div class="role">K-Campus Ambassador</div>
+          <div class="org">JoongAng Ilbo, Seoul, Republic of Korea (March–August 2025)</div>
+          <div class="detail">
+            Selected through JoongAng Ilbo's K-Culture platform; digital media and cultural
+            communication activities, cross-cultural public engagement, and collaboration with
+            student ambassadors from diverse national backgrounds.
+          </div>
+        </div>
+      </div>
+      <div class="cv-item">
+        <div class="cv-when">2024</div>
+        <div class="cv-what">
+          <div class="role">University Research Assistant</div>
+          <div class="org">The Academy of Korean Studies (September–December 2024)</div>
+          <div class="detail">
+            Research Assistant on faculty-led project AKSR2024-C19: organization and execution
+            of the 2024 AKS International Conference “A History of Luxury Goods Trade Network in
+            Asia.” Coordinated international scholars and logistics; proofread research papers
+            and assisted in preparing conference proceedings, program, and schedule.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <h2>Publications</h2>
+      <div class="cv-item">
+        <div class="cv-when">2024</div>
+        <div class="cv-what">
+          <div class="role">“Hybridizing Culture and Linguistics: A Case Study of K-Dramas’ Impact in India.”</div>
+          <div class="org">With Santosh Kumar Ranjan. <em>The Myanmar Journal</em> 11, no. 1 (2024): 165–188.</div>
+        </div>
+      </div>
+      <div class="cv-item">
+        <div class="cv-when">Under review</div>
+        <div class="cv-what">
+          <div class="role">“The Role of Remakes and Adaptations in Activating Indian Agency.”</div>
+          <div class="org"><em>Asian Communication Research</em>, special issue “Circuits of K-content.”</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <h2>Conference presentations</h2>
+      {years.map((y) => (
+        presentations.filter((p) => p.year === y).map((p, i) => (
+          <div class="cv-item">
+            <div class="cv-when">{i === 0 ? y : ''}</div>
+            <div class="cv-what">
+              <div class="role">“{p.title}.”</div>
+              <div class="org">{p.venue}{p.place ? `, ${p.place}` : ''}, {p.when}.</div>
+            </div>
+          </div>
+        ))
+      ))}
+    </section>
+
+    <section class="cv-section">
+      <h2>Academic training</h2>
+      <div class="cv-item">
+        <div class="cv-when">2026</div>
+        <div class="cv-what">
+          <div class="role">The 11th RIKS Academy for Young Scholars of Korean Studies</div>
+          <div class="org">Research Institute of Korean Studies (RIKS), Korea University (August 3–7, 2026)</div>
+        </div>
+      </div>
+      <div class="cv-item">
+        <div class="cv-when">2026</div>
+        <div class="cv-what">
+          <div class="role">20th Kyujanggak Korean Studies Summer School and Classical Chinese Workshop</div>
+          <div class="org">Seoul National University (June–July 2026)</div>
+        </div>
+      </div>
+      <div class="cv-item">
+        <div class="cv-when">2023</div>
+        <div class="cv-what">
+          <div class="role">17th Kyujanggak Korean Studies Summer Workshop</div>
+          <div class="org">Seoul National University (July 2023)</div>
+        </div>
+      </div>
+      <div class="cv-item">
+        <div class="cv-when">2022</div>
+        <div class="cv-what">
+          <div class="role">33rd AKS Summer Program for International Students</div>
+          <div class="org">The Academy of Korean Studies (August 2022)</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <h2>Awards &amp; fellowships</h2>
+      <div class="cv-item">
+        <div class="cv-when">2024–present</div>
+        <div class="cv-what">
+          <div class="role">Academy of Korean Studies Graduate Scholarship for Master's Degree</div>
+          <div class="detail">Full tuition, monthly living stipend, research support, and Korean language training.</div>
+        </div>
+      </div>
+      <div class="cv-item">
+        <div class="cv-when">2023–2024</div>
+        <div class="cv-what">
+          <div class="role">Korea Foundation (KF) Scholarship for Graduate Studies</div>
+          <div class="detail">Awarded for research on Korea's kisaeng and India's devadasi.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <h2>Professional memberships</h2>
+      <div class="cv-item">
+        <div class="cv-when"></div>
+        <div class="cv-what">
+          <div class="detail" style="margin-top: 0;">
+            The Korean Association for Digital Humanities (KADH) · Royal Asiatic Society Korea
+            Branch · Association for Korean Studies in Europe (AKSE)
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cv-section" style="margin-bottom: var(--s-7);">
+      <h2>Languages</h2>
+      <div class="cv-item">
+        <div class="cv-when"></div>
+        <div class="cv-what">
+          <div class="detail" style="margin-top: 0;">
+            Hindi (native) · English (academic fluency) · Korean (advanced) · Classical Chinese (intermediate)
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Base>

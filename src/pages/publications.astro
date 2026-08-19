@@ -1,0 +1,74 @@
+---
+import Base from '../layouts/Base.astro';
+import presentations from '../data/presentations.json';
+const years = [...new Set(presentations.map((p) => p.year))].sort((a, b) => b - a);
+const jsonld = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'ScholarlyArticle',
+  headline: 'Hybridizing Culture and Linguistics: A Case Study of K-Dramas’ Impact in India',
+  author: [
+    { '@type': 'Person', name: 'Mohd Bilal' },
+    { '@type': 'Person', name: 'Santosh Kumar Ranjan' },
+  ],
+  datePublished: '2024',
+  isPartOf: { '@type': 'PublicationIssue', issueNumber: '1', isPartOf: { '@type': 'PublicationVolume', volumeNumber: '11', isPartOf: { '@type': 'Periodical', name: 'The Myanmar Journal' } } },
+  pagination: '165-188',
+});
+---
+<Base title="Publications" current="publications"
+  description="Publications and conference presentations by Mohd Bilal — Korean Studies, Hallyu, kisaeng studies, Buddhism, and India–Korea comparative research.">
+  <Fragment slot="head">
+    <meta name="citation_title" content="Hybridizing Culture and Linguistics: A Case Study of K-Dramas' Impact in India" />
+    <meta name="citation_author" content="Bilal, Mohd" />
+    <meta name="citation_author" content="Ranjan, Santosh Kumar" />
+    <meta name="citation_publication_date" content="2024" />
+    <meta name="citation_journal_title" content="The Myanmar Journal" />
+    <meta name="citation_volume" content="11" />
+    <meta name="citation_issue" content="1" />
+    <meta name="citation_firstpage" content="165" />
+    <meta name="citation_lastpage" content="188" />
+    <script type="application/ld+json" set:html={jsonld}></script>
+  </Fragment>
+
+  <div class="wrap">
+    <div class="page-head">
+      <p class="eyebrow">Scholarship</p>
+      <h1>Publications</h1>
+    </div>
+
+    <h2 style="margin-top: 0;">Journal articles</h2>
+    <ul class="pub-list">
+      <li>
+        <span class="pub-title">“Hybridizing Culture and Linguistics: A Case Study of K-Dramas’ Impact in India.”</span>
+        <span class="pub-venue">With Santosh Kumar Ranjan. <em>The Myanmar Journal</em> 11, no. 1 (2024): 165–188.</span>
+      </li>
+    </ul>
+
+    <h2>Under review</h2>
+    <ul class="pub-list">
+      <li>
+        <span class="pub-title">“The Role of Remakes and Adaptations in Activating Indian Agency.”</span>
+        <span class="pub-venue"><em>Asian Communication Research</em>, special issue “Circuits of K-content: Co-productions, Collaborations, and Connections.”</span>
+        <p class="pub-meta">Manuscript under review</p>
+      </li>
+    </ul>
+
+    <h2>Conference presentations</h2>
+    {years.map((y) => (
+      <>
+        <p class="year-kicker">{y}</p>
+        <ul class="pub-list">
+          {presentations.filter((p) => p.year === y).map((p) => (
+            <li>
+              <span class="pub-title">“{p.title}.”</span>
+              <span class="pub-venue">{p.venue}{p.place ? `, ${p.place}` : ''}, {p.when}.</span>
+            </li>
+          ))}
+        </ul>
+      </>
+    ))}
+    <p style="margin-bottom: var(--s-7); color: var(--muted); font-size: 0.9rem;">
+      A complete academic record, including training and awards, is on the <a href="/cv/">CV</a>.
+    </p>
+  </div>
+</Base>

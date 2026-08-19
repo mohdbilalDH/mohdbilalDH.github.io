@@ -1,0 +1,81 @@
+---
+// Shared person-record dialog. Any element can call window.__bbShowPerson('P-0001').
+// All content comes verbatim from the frozen record via people.json.
+import people from '../data/people.json';
+const slim = people.people.map((p) => ({
+  id: p.id, name: p.name, hangul: p.hangul, band: p.band,
+  birth: p.birth, death: p.death, floruit: p.floruit,
+  role: p.role, typology: p.typology, movement: p.movement, direction: p.direction,
+  significance: p.significance, evidence: p.evidence,
+  india: p.india_connection, korea: p.korea_connection,
+  confidence: p.confidence, status: p.status, single_source: p.single_source,
+  sources: p.sources,
+}));
+---
+<dialog id="bb-person" aria-label="Person record">
+  <div id="bb-person-body"></div>
+</dialog>
+
+<style is:global>
+  #bb-person {
+    border: 1px solid var(--rule); border-radius: 10px; padding: 0;
+    width: min(680px, 92vw); max-height: 84vh;
+    background: var(--paper); color: var(--ink);
+  }
+  #bb-person::backdrop { background: rgba(10, 10, 12, 0.45); }
+  #bb-person .inner { padding: 1.4rem 1.6rem 1.6rem; }
+  #bb-person h3 { margin: 0.2rem 0 0.2rem; font-size: 1.35rem; }
+  #bb-person .close {
+    float: right; font: 1rem var(--sans); border: none; background: none;
+    color: var(--muted); cursor: pointer; padding: 0.2rem 0.4rem;
+  }
+  #bb-person dt { font: 600 0.66rem/1.4 var(--sans); letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); margin-top: 0.85rem; }
+  #bb-person dd { margin: 0.1rem 0 0; font-size: 0.92rem; }
+  #bb-person .srcline { font: 0.8rem/1.5 var(--sans); margin-top: 0.3rem; }
+  #bb-person .srcrel { color: var(--faint); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; }
+</style>
+
+<script define:vars={{ slim }}>
+  window.__bbPeople = Object.fromEntries(slim.map((p) => [p.id, p]));
+  const DIRL = { INDIA_TO_KOREA: 'India → Korea', KOREA_TO_INDIA: 'Korea → India', BIDIRECTIONAL: 'bidirectional ⇄', UNCERTAIN: 'uncertain' };
+  const escapeHtml = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  window.__bbShowPerson = function (id) {
+    const p = window.__bbPeople[id];
+    if (!p) return;
+    const dlg = document.getElementById('bb-person');
+    const life = p.birth && p.death ? `${p.birth}–${p.death}`
+      : p.birth ? `b. ${p.birth}`
+      : p.floruit && p.floruit[0] ? `floruit c. ${p.floruit[0]}–${p.floruit[1]} (derived)` : 'no safe dates';
+    const srcs = (p.sources || []).map((s) => `
+      <div class="srcline">${s.url ? `<a href="${escapeHtml(s.url)}" rel="noopener">${escapeHtml(s.citation)}</a>` : escapeHtml(s.citation)}
+      <div class="srcrel">${escapeHtml(s.type)} · ${escapeHtml(s.reliability)} · ${escapeHtml(s.id)}</div></div>`).join('');
+    document.getElementById('bb-person-body').innerHTML = `
+      <div class="inner">
+        <button class="close" aria-label="Close">✕ close</button>
+        <p class="eyebrow" style="color: var(--${p.band.toLowerCase()}); margin-bottom: 0.1rem;">${p.band} · ${p.id} · frozen V3.0</p>
+        <h3>${escapeHtml(p.name)} ${p.hangul ? `<span style="font-weight: 400; color: var(--muted);">${escapeHtml(p.hangul)}</span>` : ''}</h3>
+        <p style="margin: 0.3rem 0 0.4rem;">
+          <span class="badge ${p.confidence.toLowerCase()}">${p.confidence}</span>
+          <span class="badge">${escapeHtml(p.status)}</span>
+          ${p.single_source ? '<span class="badge" style="color: var(--negative);">single source</span>' : ''}
+        </p>
+        <dl>
+          <dt>Dates</dt><dd>${life}</dd>
+          <dt>Role</dt><dd>${escapeHtml(p.role)}</dd>
+          <dt>Mediation</dt><dd>${escapeHtml((p.typology || '').replace(/_/g, ' ').toLowerCase())} · movement: ${p.movement === '-' ? 'none documented' : escapeHtml(p.movement)} · direction: ${DIRL[p.direction] || escapeHtml(p.direction)}</dd>
+          ${p.significance ? `<dt>Significance</dt><dd>${escapeHtml(p.significance)}</dd>` : ''}
+          <dt>India connection</dt><dd>${escapeHtml(p.india)}</dd>
+          <dt>Korea connection</dt><dd>${escapeHtml(p.korea)}</dd>
+          <dt>Evidence</dt><dd>${escapeHtml(p.evidence)}</dd>
+          <dt>Sources (${(p.sources || []).length})</dt><dd>${srcs}</dd>
+        </dl>
+        <p class="small" style="margin-top: 1rem;">Confidence grades the source basis, not historical importance. Fields are shown verbatim from the frozen record.</p>
+      </div>`;
+    dlg.querySelector('.close').addEventListener('click', () => dlg.close());
+    dlg.showModal();
+  };
+  document.getElementById('bb-person').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) e.currentTarget.close();
+  });
+</script>

@@ -1,0 +1,82 @@
+---
+// V4 — What carried the connection? Small multiples per cohort; identity is carried
+// by row position and label, magnitude by bar length in the cohort's own color.
+import story from '../data/story.json';
+
+const m = story.mechanism_by_band;
+const mechs = [
+  ['PHYSICAL_MOVEMENT', 'Movement'],
+  ['TEXTUAL_TRANSMISSION', 'Texts'],
+  ['INSTITUTIONAL', 'Institutions'],
+  ['INDIRECT_INFLUENCE', 'Indirect'],
+  ['PERSON_ENCOUNTER', 'Encounter'],
+];
+const cols = ['B1', 'B2', 'B3', 'B4', 'B5', 'B6'];
+const years = { B1: '300–900', B2: '900–1392', B3: '1392–1900', B4: '1900–45', B5: '1945–90', B6: '1990–2026' };
+const get = (b: string, k: string) => (m[b] && m[b][k]) || 0;
+const maxv = Math.max(...cols.flatMap((b) => mechs.map(([k]) => get(b, k))));
+const COLW = 148, X0 = 118, ROWH = 30, Y0 = 66, BARH = 14;
+const W = X0 + cols.length * COLW;
+const H = Y0 + mechs.length * ROWH + 14;
+const bw = (v: number) => (v / maxv) * (COLW - 44);
+---
+<figure>
+  <header class="fig-head">
+    <span class="fig-no">Figure 3</span>
+    <p class="fig-title">Each rebuilt bridge used a different material: bodies, then texts, then institutions</p>
+  </header>
+  <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Carried connection records by mechanism and cohort. Movement dominates before 900, texts carry the middle eras, institutions dominate after 1990, and the Joseon column is empty.">
+    <style>
+      .mech-col { font: 600 14px var(--sans); fill: var(--ink); }
+      .mech-years { font: 11px var(--sans); fill: var(--faint); }
+      .mech-row { font: 12.5px var(--sans); fill: var(--muted); }
+      .mech-n { font: 600 11.5px var(--sans); fill: var(--ink); }
+      .mech-void { font: italic 12.5px var(--serif); fill: var(--muted); }
+    </style>
+    {mechs.map(([k, lab], ri) => (
+      <text class="mech-row" x={X0 - 10} y={Y0 + ri * ROWH + BARH - 2} text-anchor="end">{lab}</text>
+    ))}
+    {cols.map((b, ci) => {
+      const cx = X0 + ci * COLW;
+      return (
+        <>
+          <text class="mech-col" x={cx} y="26">{b}</text>
+          <text class="mech-years" x={cx} y="42">{years[b]}</text>
+          <line x1={cx - 4} y1={Y0 - 10} x2={cx - 4} y2={Y0 + mechs.length * ROWH} stroke="var(--rule)" />
+          {b === 'B3' ? (
+            <text class="mech-void" x={cx + 4} y={Y0 + 2.4 * ROWH} >0 carried records</text>
+          ) : (
+            mechs.map(([k], ri) => {
+              const v = get(b, k);
+              const y = Y0 + ri * ROWH;
+              return v > 0 ? (
+                <>
+                  <rect x={cx} y={y} width={bw(v)} height={BARH} rx="2.5" fill={`var(--${b.toLowerCase()})`} />
+                  <text class="mech-n" x={cx + bw(v) + 6} y={y + BARH - 3}>{v}</text>
+                </>
+              ) : (
+                <text class="mech-n" x={cx} y={y + BARH - 3} fill="var(--faint)" font-weight="400">·</text>
+              );
+            })
+          )}
+        </>
+      );
+    })}
+  </svg>
+  <figcaption>
+    Carried connection records (people, travels, texts, institutions, links, events) by mediation
+    mechanism and cohort. Counts are records rather than people, since one person can hold
+    several connections. The empty Joseon column is part of the finding and is shown as such.
+  </figcaption>
+  <details class="chart-table">
+    <summary>Data table for this figure</summary>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Mechanism</th>{cols.map((b) => <th class="num">{b}</th>)}</tr></thead>
+      <tbody>
+        {mechs.map(([k, lab]) => (
+          <tr><td>{lab}</td>{cols.map((b) => <td class="num">{get(b, k)}</td>)}</tr>
+        ))}
+      </tbody>
+    </table></div>
+  </details>
+</figure>

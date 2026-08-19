@@ -1,0 +1,15 @@
+{
+  "generated_from": "hallyu-indian-press data/processed/proquest_counts.csv + outputs/tables/pilot_eval.txt, searched 2026-08-18",
+  "proquest_periods": [
+    { "label": "2005–2010", "count": 58, "note": "TOI from 2006-01-06, HT from 2005-01-01, IE from 2009-04-23 (full-text start dates)" },
+    { "label": "2011–2016", "count": 211, "note": "TOI + HT + IE" },
+    { "label": "2017–2026", "count": 4422, "note": "TOI + HT + IE, to 2026-08-18, print-edition objects only" }
+  ],
+  "korea_baseline_2000_2010": 10146,
+  "hallyu_term_uses_2000_2010": 1,
+  "pilot": {
+    "hindu_headline_matches": 83,
+    "hindu_years": "2002–2010",
+    "corpus_docs": 50
+  }
+}

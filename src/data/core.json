@@ -1,0 +1,56 @@
+{
+ "_meta": {
+  "dataset": "Buddhist Bridges V3.0 (frozen 2026-08-17)",
+  "manifest_check": "769b00c67fdd1a6e",
+  "generated": "2026-08-17",
+  "note": "Site-wide counts and band definitions."
+ },
+ "bands": [
+  {
+   "id": "B1",
+   "label": "Silla pilgrims go west",
+   "start": 300,
+   "end": 900
+  },
+  {
+   "id": "B2",
+   "label": "The master from Magadha",
+   "start": 900,
+   "end": 1392
+  },
+  {
+   "id": "B3",
+   "label": "The long silence (Joseon)",
+   "start": 1392,
+   "end": 1900
+  },
+  {
+   "id": "B4",
+   "label": "Paper bridges",
+   "start": 1900,
+   "end": 1945
+  },
+  {
+   "id": "B5",
+   "label": "Thin threads",
+   "start": 1945,
+   "end": 1990
+  },
+  {
+   "id": "B6",
+   "label": "The institutional turn",
+   "start": 1990,
+   "end": 2027
+  }
+ ],
+ "counts": {
+  "people_carried": 43,
+  "people_total": 76,
+  "events": 19,
+  "sources": 187,
+  "travels": 41,
+  "journeys_routed": 8,
+  "texts": 30,
+  "institutions": 31
+ }
+}

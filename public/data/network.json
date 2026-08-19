@@ -1,0 +1,1110 @@
+{
+ "_meta": {
+  "dataset": "Buddhist Bridges V3.0 (frozen 2026-08-17)",
+  "manifest_check": "769b00c67fdd1a6e",
+  "generated": "2026-08-17",
+  "note": "Two period slices; the all-at-once graph is deliberately not exported."
+ },
+ "slices": {
+  "b2_circle": {
+   "nodes": [
+    {
+     "id": "EV-0017",
+     "label": "Enshrinement of Dhyānabhadra's relics at Hoeamsa",
+     "type": "EVENTS",
+     "band": "B2",
+     "confidence": "HIGH",
+     "single_source": "0"
+    },
+    {
+     "id": "I-0003",
+     "label": "Hoeamsa",
+     "type": "INSTITUTIONS",
+     "band": "B2",
+     "confidence": "MEDIUM",
+     "single_source": "0"
+    },
+    {
+     "id": "P-0009",
+     "label": "Iryŏn",
+     "type": "PEOPLE",
+     "band": "B2",
+     "confidence": "HIGH",
+     "single_source": "0"
+    },
+    {
+     "id": "P-0023",
+     "label": "Dhyānabhadra",
+     "type": "PEOPLE",
+     "band": "B2",
+     "confidence": "HIGH",
+     "single_source": "0"
+    },
+    {
+     "id": "P-0024",
+     "label": "Naong Hyegeun",
+     "type": "PEOPLE",
+     "band": "B2",
+     "confidence": "MEDIUM",
+     "single_source": "1"
+    },
+    {
+     "id": "P-0074",
+     "label": "Muhak Chach'o",
+     "type": "PEOPLE",
+     "band": "B2",
+     "confidence": "MEDIUM",
+     "single_source": "0"
+    },
+    {
+     "id": "P-0075",
+     "label": "Baegun Gyeonghan",
+     "type": "PEOPLE",
+     "band": "B2",
+     "confidence": "MEDIUM",
+     "single_source": "0"
+    },
+    {
+     "id": "P-0077",
+     "label": "Ch'ukwŏn Chijŏn",
+     "type": "PEOPLE",
+     "band": "B2",
+     "confidence": "MEDIUM",
+     "single_source": "0"
+    },
+    {
+     "id": "TX-0003",
+     "label": "Samguk Yusa",
+     "type": "TEXTS",
+     "band": "B2",
+     "confidence": "HIGH",
+     "single_source": "0"
+    }
+   ],
+   "edges": [
+    {
+     "id": "E-0003",
+     "source": "P-0023",
+     "target": "P-0024",
+     "kind": "PERSON_ENCOUNTER",
+     "subtype": "TEACHER_STUDENT",
+     "direction": "UNDIRECTED",
+     "confidence": "MEDIUM",
+     "evidence": "KCI scholarship (Ko Young-seop); Jikong's precepts and exhortation"
+    },
+    {
+     "id": "E-0008",
+     "source": "P-0023",
+     "target": "P-0074",
+     "kind": "PERSON_ENCOUNTER",
+     "subtype": "TEACHER_STUDENT",
+     "direction": "UNDIRECTED",
+     "confidence": "MEDIUM",
+     "evidence": "Per tradition (Jahyeon 2017 monograph; Hyunbul 2017-01-26): Muhak received Jikong's teaching in Yuan China; later Naong's disciple"
+    },
+    {
+     "id": "E-0009",
+     "source": "P-0023",
+     "target": "P-0075",
+     "kind": "PERSON_ENCOUNTER",
+     "subtype": "TEACHER_STUDENT",
+     "direction": "UNDIRECTED",
+     "confidence": "MEDIUM",
+     "evidence": "Per tradition (Jahyeon 2017 monograph; Hyunbul 2017-01-26): Baegun received Jikong's inka in Yuan China"
+    },
+    {
+     "id": "E-0011",
+     "source": "P-0023",
+     "target": "P-0077",
+     "kind": "PERSON_ENCOUNTER",
+     "subtype": "TEACHER_STUDENT",
+     "direction": "UNDIRECTED",
+     "confidence": "MEDIUM",
+     "evidence": "Per tradition (Jahyeon 2017 monograph; Hyunbul 2017-01-26; Atlas News 2025-12-31): Ch'ukwŏn was one of Jikong's representative disciples"
+    },
+    {
+     "id": "E-0014",
+     "source": "P-0009",
+     "target": "TX-0003",
+     "kind": "TEXTUAL_TRANSMISSION",
+     "subtype": "AUTHOR",
+     "direction": "PERSON_TO_TEXT",
+     "confidence": "HIGH",
+     "evidence": ""
+    },
+    {
+     "id": "E-0026",
+     "source": "P-0023",
+     "target": "I-0003",
+     "kind": "INSTITUTIONAL",
+     "subtype": "INSTITUTION_MAPPING",
+     "direction": "PERSON_TO_INSTITUTION",
+     "confidence": "HIGH",
+     "evidence": "Ordained at Nalanda; founded Hoeamsa 1328"
+    },
+    {
+     "id": "E-0036",
+     "source": "P-0074",
+     "target": "I-0003",
+     "kind": "INSTITUTIONAL",
+     "subtype": "INSTITUTION_MAPPING",
+     "direction": "PERSON_TO_INSTITUTION",
+     "confidence": "HIGH",
+     "evidence": "Hoeamsa"
+    },
+    {
+     "id": "E-0057",
+     "source": "I-0003",
+     "target": "EV-0017",
+     "kind": "INSTITUTIONAL",
+     "subtype": "ORGANIZER",
+     "direction": "INSTITUTION_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "S-0020;S-0064"
+    },
+    {
+     "id": "E-0071",
+     "source": "P-0024",
+     "target": "EV-0017",
+     "kind": "INSTITUTIONAL",
+     "subtype": "EVENT_PARTICIPATION",
+     "direction": "PERSON_TO_EVENT",
+     "confidence": "MEDIUM",
+     "evidence": "Naong supervised construction of the 1370 relic stupa on King Kongmin's order (buddhaland_hoeamsa_1370)"
+    }
+   ]
+  },
+  "b6_web": {
+   "nodes": [
+    {
+     "id": "EP-0001",
+     "label": "Jeongbeom sunim (정범 스님)",
+     "type": "PEOPLE",
+     "band": "",
+     "confidence": "HIGH",
+     "single_source": "0"
+    },
+    {
+     "id": "EP-0002",
+     "label": "Munjong sunim (문종 스님)",
+     "type": "PEOPLE",
+     "band": "",
+     "confidence": "HIGH",
+     "single_source": "0"
+    },
+    {
+     "id": "EP-0003",
+     "label": "Jinwoo sunim (진우 스님)",
+     "type": "PEOPLE",
+     "band": "",
+     "confidence": "HIGH",
+     "single_source": "0"
+    },
+    {
+     "id": "EP-0004",
+     "label": "Wonhaeng sunim (원행 스님)",
+     "type": "PEOPLE",
+     "band": "",
+     "confidence": "HIGH",
+     "single_source": "0"
+    },
+    {
+     "id": "EP-0005",
+     "label": "Jung Won-ju (정원주)",
+     "type": "PEOPLE",
+     "band": "",
+     "confidence": "HIGH",
+     "single_source": "0"
+    },
+    {
+     "id": "EP-0006",
+     "label": "Abhijit Halder",
+     "type": "PEOPLE",
+     "band": "",
+     "confidence": "HIGH",
+     "single_source": "0"
+    },
+    {
+     "id": "EP-0007",
+     "label": "Pomnyun sunim (법륜 스님)",
+     "type": "PEOPLE",
+     "band": "",
+     "confidence": "HIGH",
+     "single_source": "0"
+    },
+    {
+     "id": "EP-0008",
+     "label": "Jugyeong sunim (주경 스님)",
+     "type": "PEOPLE",
+     "band": "",
+     "confidence": "HIGH",
+     "single_source": "0"
+    },
+    {
+     "id": "EP-0009",
+     "label": "Jang Jae-bok (장재복)",
+     "type": "PEOPLE",
+     "band": "",
+     "confidence": "HIGH",
+     "single_source": "0"
+    },
+    {
+     "id": "EP-0010",
+     "label": "Korean Buddhist delegation (6 members, 국제불교문제연구소 파견)",
+     "type": "PEOPLE",
+     "band": "",
+     "confidence": "HIGH",
+     "single_source": "0"
+    },
+    {
+     "id": "EV-0001",
+     "label": "Sangwol/Jogye walking pilgrimage India-Nepal",
+     "type": "EVENTS",
+     "band": "B6",
+     "confidence": "HIGH",
+     "single_source": "0"
+    },
+    {
+     "id": "EV-0002",
+     "label": "Bexpo 2026 Buddhist exchange (IBC - Jogye lay)",
+     "type": "EVENTS",
+     "band": "B6",
+     "confidence": "HIGH",
+     "single_source": "0"
+    },
+    {
+     "id": "EV-0003",
+     "label": "2nd Global Buddhist Summit",
+     "type": "EVENTS",
+     "band": "B6",
+     "confidence": "HIGH",
+     "single_source": "0"
+    },
+    {
+     "id": "EV-0004",
+     "label": "Jungto Society annual India pilgrimage program",
+     "type": "EVENTS",
+     "band": "B6",
+     "confidence": "HIGH",
+     "single_source": "1"
+    },
+    {
+     "id": "EV-0005",
+     "label": "Delhi University - BGICBS academic MOU",
+     "type": "EVENTS",
+     "band": "B6",
+     "confidence": "MEDIUM",
+     "single_source": "1"
+    },
+    {
+     "id": "EV-0006",
+     "label": "Jogye delegation pilgrimage Sarnath -> Bodh Gaya",
+     "type": "EVENTS",
+     "band": "B6",
+     "confidence": "HIGH",
+     "single_source": "1"
+    },
+    {
+     "id": "EV-0007",
+     "label": "Jogye pilgrimage to the 8 great sites + Nepal",
+     "type": "EVENTS",
+     "band": "B6",
+     "confidence": "HIGH",
+     "single_source": "1"
+    },
+    {
+     "id": "EV-0008",
+     "label": "Bunhwangsa India groundbreaking",
+     "type": "EVENTS",
+     "band": "B6",
+     "confidence": "HIGH",
+     "single_source": "1"
+    },
+    {
+     "id": "EV-0009",
+     "label": "Bunhwangsa India dedication (대웅보전 준공식)",
+     "type": "EVENTS",
+     "band": "B6",
+     "confidence": "HIGH",
+     "single_source": "0"
+    },
+    {
+     "id": "EV-0010",
+     "label": "Global Buddhist Summit 2023",
+     "type": "EVENTS",
+     "band": "B6",
+     "confidence": "HIGH",
+     "single_source": "0"
+    },
+    {
+     "id": "EV-0011",
+     "label": "ICYBS 2025 (3rd Int'l Conf. of Young Buddhist Scholars)",
+     "type": "EVENTS",
+     "band": "B6",
+     "confidence": "MEDIUM",
+     "single_source": "0"
+    },
+    {
+     "id": "EV-0012",
+     "label": "KBPF 2026 India pilgrimage (Dharamsala/Ajanta-Ellora/Sanchi)",
+     "type": "EVENTS",
+     "band": "B6",
+     "confidence": "HIGH",
+     "single_source": "1"
+    },
+    {
+     "id": "EV-0013",
+     "label": "BBS Seon Meditation Tour 4 India-Nepal",
+     "type": "EVENTS",
+     "band": "B6",
+     "confidence": "HIGH",
+     "single_source": "1"
+    },
+    {
+     "id": "EV-0014",
+     "label": "Korea-India 50th anniversary cultural exchange (Jogye + ROK Embassy)",
+     "type": "EVENTS",
+     "band": "B6",
+     "confidence": "HIGH",
+     "single_source": "1"
+    },
+    {
+     "id": "EV-0015",
+     "label": "Korean Buddhist delegation to India (국제불교문제연구소)",
+     "type": "EVENTS",
+     "band": "B5",
+     "confidence": "HIGH",
+     "single_source": "0"
+    },
+    {
+     "id": "EV-0016",
+     "label": "Dongguk University - Nalanda University MOU",
+     "type": "EVENTS",
+     "band": "B6",
+     "confidence": "HIGH",
+     "single_source": "1"
+    },
+    {
+     "id": "EV-0018",
+     "label": "Return of Hoeamsa relics (Jikong/Naong + Buddha relics) from Boston MFA",
+     "type": "EVENTS",
+     "band": "B6",
+     "confidence": "HIGH",
+     "single_source": "0"
+    },
+    {
+     "id": "I-0003",
+     "label": "Hoeamsa",
+     "type": "INSTITUTIONS",
+     "band": "B2",
+     "confidence": "MEDIUM",
+     "single_source": "0"
+    },
+    {
+     "id": "I-0010",
+     "label": "Dongguk University",
+     "type": "INSTITUTIONS",
+     "band": "B6",
+     "confidence": "MEDIUM",
+     "single_source": "0"
+    },
+    {
+     "id": "I-0012",
+     "label": "University of Delhi",
+     "type": "INSTITUTIONS",
+     "band": "B6",
+     "confidence": "MEDIUM",
+     "single_source": "0"
+    },
+    {
+     "id": "I-0014",
+     "label": "Bodh Gaya International College of Buddhist Studies",
+     "type": "INSTITUTIONS",
+     "band": "B6",
+     "confidence": "MEDIUM",
+     "single_source": "0"
+    },
+    {
+     "id": "I-0015",
+     "label": "Bunhwangsa India",
+     "type": "INSTITUTIONS",
+     "band": "B6",
+     "confidence": "MEDIUM",
+     "single_source": "0"
+    },
+    {
+     "id": "I-0016",
+     "label": "Mahayeon Temple Food Culture Center",
+     "type": "INSTITUTIONS",
+     "band": "B6",
+     "confidence": "MEDIUM",
+     "single_source": "0"
+    },
+    {
+     "id": "I-0020",
+     "label": "Songgwangsa lineage",
+     "type": "INSTITUTIONS",
+     "band": "B5",
+     "confidence": "MEDIUM",
+     "single_source": "0"
+    },
+    {
+     "id": "I-0021",
+     "label": "Bongnyeongsa",
+     "type": "INSTITUTIONS",
+     "band": "B6",
+     "confidence": "MEDIUM",
+     "single_source": "0"
+    },
+    {
+     "id": "I-0022",
+     "label": "Jogye Order of Korean Buddhism",
+     "type": "INSTITUTIONS",
+     "band": "B6",
+     "confidence": "MEDIUM",
+     "single_source": "0"
+    },
+    {
+     "id": "I-0023",
+     "label": "Sangwol Society",
+     "type": "INSTITUTIONS",
+     "band": "B6",
+     "confidence": "MEDIUM",
+     "single_source": "0"
+    },
+    {
+     "id": "I-0024",
+     "label": "Jungto Society",
+     "type": "INSTITUTIONS",
+     "band": "B6",
+     "confidence": "MEDIUM",
+     "single_source": "0"
+    },
+    {
+     "id": "I-0026",
+     "label": "International Buddhist Confederation (IBC)",
+     "type": "INSTITUTIONS",
+     "band": "B6",
+     "confidence": "MEDIUM",
+     "single_source": "0"
+    },
+    {
+     "id": "I-0027",
+     "label": "Korea Buddhism Promotion Foundation",
+     "type": "INSTITUTIONS",
+     "band": "B6",
+     "confidence": "MEDIUM",
+     "single_source": "0"
+    },
+    {
+     "id": "I-0028",
+     "label": "Buddhist Broadcasting System",
+     "type": "INSTITUTIONS",
+     "band": "B6",
+     "confidence": "MEDIUM",
+     "single_source": "0"
+    },
+    {
+     "id": "I-0030",
+     "label": "International Buddhist Problems Research Institute",
+     "type": "INSTITUTIONS",
+     "band": "B5",
+     "confidence": "MEDIUM",
+     "single_source": "0"
+    },
+    {
+     "id": "I-0031",
+     "label": "Nalanda University",
+     "type": "INSTITUTIONS",
+     "band": "B6",
+     "confidence": "MEDIUM",
+     "single_source": "0"
+    },
+    {
+     "id": "P-0052",
+     "label": "Pŏpchŏng",
+     "type": "PEOPLE",
+     "band": "B5",
+     "confidence": "HIGH",
+     "single_source": "0"
+    },
+    {
+     "id": "P-0053",
+     "label": "Lokesh Chandra",
+     "type": "PEOPLE",
+     "band": "B6",
+     "confidence": "HIGH",
+     "single_source": "0"
+    },
+    {
+     "id": "P-0054",
+     "label": "Jung Seung-suk",
+     "type": "PEOPLE",
+     "band": "B6",
+     "confidence": "HIGH",
+     "single_source": "0"
+    },
+    {
+     "id": "P-0055",
+     "label": "U Myeong-ju",
+     "type": "PEOPLE",
+     "band": "B6",
+     "confidence": "HIGH",
+     "single_source": "1"
+    },
+    {
+     "id": "P-0062",
+     "label": "Buddhavara (Ven.)",
+     "type": "PEOPLE",
+     "band": "B6",
+     "confidence": "MEDIUM",
+     "single_source": "1"
+    },
+    {
+     "id": "P-0063",
+     "label": "Hyoseok (Ven.)",
+     "type": "PEOPLE",
+     "band": "B6",
+     "confidence": "HIGH",
+     "single_source": "1"
+    },
+    {
+     "id": "P-0064",
+     "label": "Wookwan (Ven.)",
+     "type": "PEOPLE",
+     "band": "B6",
+     "confidence": "HIGH",
+     "single_source": "0"
+    },
+    {
+     "id": "P-0068",
+     "label": "Sŏ Chŏng-ju",
+     "type": "PEOPLE",
+     "band": "B5",
+     "confidence": "MEDIUM",
+     "single_source": "0"
+    },
+    {
+     "id": "P-0071",
+     "label": "Vinoba Bhave",
+     "type": "PEOPLE",
+     "band": "B5",
+     "confidence": "MEDIUM",
+     "single_source": "1"
+    },
+    {
+     "id": "P-0073",
+     "label": "Hwang Su-yŏng",
+     "type": "PEOPLE",
+     "band": "B5",
+     "confidence": "HIGH",
+     "single_source": "0"
+    },
+    {
+     "id": "P-0076",
+     "label": "Sitanshu Yashaschandra",
+     "type": "PEOPLE",
+     "band": "B5",
+     "confidence": "MEDIUM",
+     "single_source": "1"
+    },
+    {
+     "id": "TX-0018",
+     "label": "Muso-yu",
+     "type": "TEXTS",
+     "band": "B5",
+     "confidence": "HIGH",
+     "single_source": "0"
+    },
+    {
+     "id": "TX-0019",
+     "label": "Wookwan's Korean Temple Food",
+     "type": "TEXTS",
+     "band": "B6",
+     "confidence": "HIGH",
+     "single_source": "0"
+    },
+    {
+     "id": "TX-0020",
+     "label": "Morning Calm and The Pensive Beyond",
+     "type": "TEXTS",
+     "band": "B6",
+     "confidence": "HIGH",
+     "single_source": "0"
+    }
+   ],
+   "edges": [
+    {
+     "id": "E-0007",
+     "source": "P-0052",
+     "target": "P-0071",
+     "kind": "PERSON_ENCOUNTER",
+     "subtype": "MET_IN_PERSON",
+     "direction": "UNDIRECTED",
+     "confidence": "MEDIUM",
+     "evidence": "1971 ashram visit; Bulkwang 2024"
+    },
+    {
+     "id": "E-0010",
+     "source": "P-0068",
+     "target": "P-0076",
+     "kind": "PERSON_ENCOUNTER",
+     "subtype": "MET_IN_PERSON",
+     "direction": "UNDIRECTED",
+     "confidence": "MEDIUM",
+     "evidence": "Dongguk University newspaper interview article (동대신문, reposted 2010-08-11)"
+    },
+    {
+     "id": "E-0019",
+     "source": "P-0052",
+     "target": "TX-0018",
+     "kind": "TEXTUAL_TRANSMISSION",
+     "subtype": "AUTHOR",
+     "direction": "PERSON_TO_TEXT",
+     "confidence": "HIGH",
+     "evidence": ""
+    },
+    {
+     "id": "E-0020",
+     "source": "P-0064",
+     "target": "TX-0019",
+     "kind": "TEXTUAL_TRANSMISSION",
+     "subtype": "AUTHOR",
+     "direction": "PERSON_TO_TEXT",
+     "confidence": "HIGH",
+     "evidence": ""
+    },
+    {
+     "id": "E-0021",
+     "source": "P-0053",
+     "target": "TX-0020",
+     "kind": "TEXTUAL_TRANSMISSION",
+     "subtype": "AUTHOR",
+     "direction": "PERSON_TO_TEXT",
+     "confidence": "HIGH",
+     "evidence": ""
+    },
+    {
+     "id": "E-0027",
+     "source": "P-0052",
+     "target": "I-0020",
+     "kind": "INSTITUTIONAL",
+     "subtype": "INSTITUTION_MAPPING",
+     "direction": "PERSON_TO_INSTITUTION",
+     "confidence": "HIGH",
+     "evidence": "Songgwangsa lineage"
+    },
+    {
+     "id": "E-0028",
+     "source": "P-0054",
+     "target": "I-0010",
+     "kind": "INSTITUTIONAL",
+     "subtype": "INSTITUTION_MAPPING",
+     "direction": "PERSON_TO_INSTITUTION",
+     "confidence": "HIGH",
+     "evidence": "Dongguk University (MA 1980, PhD 1991)"
+    },
+    {
+     "id": "E-0029",
+     "source": "P-0055",
+     "target": "I-0010",
+     "kind": "INSTITUTIONAL",
+     "subtype": "INSTITUTION_MAPPING",
+     "direction": "PERSON_TO_INSTITUTION",
+     "confidence": "HIGH",
+     "evidence": "Dongguk University Gyeongju campus -> I-0010 (note: campus)"
+    },
+    {
+     "id": "E-0030",
+     "source": "P-0062",
+     "target": "I-0015",
+     "kind": "INSTITUTIONAL",
+     "subtype": "INSTITUTION_MAPPING",
+     "direction": "PERSON_TO_INSTITUTION",
+     "confidence": "HIGH",
+     "evidence": "Bunhwangsa India; Bodh Gaya International College of Buddhist Studies"
+    },
+    {
+     "id": "E-0031",
+     "source": "P-0062",
+     "target": "I-0014",
+     "kind": "INSTITUTIONAL",
+     "subtype": "INSTITUTION_MAPPING",
+     "direction": "PERSON_TO_INSTITUTION",
+     "confidence": "HIGH",
+     "evidence": "Bunhwangsa India; Bodh Gaya International College of Buddhist Studies"
+    },
+    {
+     "id": "E-0032",
+     "source": "P-0063",
+     "target": "I-0021",
+     "kind": "INSTITUTIONAL",
+     "subtype": "INSTITUTION_MAPPING",
+     "direction": "PERSON_TO_INSTITUTION",
+     "confidence": "MEDIUM",
+     "evidence": "Bongnyeongsa mapped; \"Seoul Beopryongsa bhikkhuni hall\" not in institutions.csv"
+    },
+    {
+     "id": "E-0033",
+     "source": "P-0064",
+     "target": "I-0016",
+     "kind": "INSTITUTIONAL",
+     "subtype": "INSTITUTION_MAPPING",
+     "direction": "PERSON_TO_INSTITUTION",
+     "confidence": "MEDIUM",
+     "evidence": "Mahayeon Temple Food Culture Center mapped; \"Bongwonsa\" not in institutions.csv"
+    },
+    {
+     "id": "E-0034",
+     "source": "P-0068",
+     "target": "I-0010",
+     "kind": "INSTITUTIONAL",
+     "subtype": "INSTITUTION_MAPPING",
+     "direction": "PERSON_TO_INSTITUTION",
+     "confidence": "HIGH",
+     "evidence": "Dongguk University (professor)"
+    },
+    {
+     "id": "E-0035",
+     "source": "P-0073",
+     "target": "I-0010",
+     "kind": "INSTITUTIONAL",
+     "subtype": "INSTITUTION_MAPPING",
+     "direction": "PERSON_TO_INSTITUTION",
+     "confidence": "HIGH",
+     "evidence": "Dongguk University"
+    },
+    {
+     "id": "E-0037",
+     "source": "I-0022",
+     "target": "EV-0001",
+     "kind": "INSTITUTIONAL",
+     "subtype": "ORGANIZER",
+     "direction": "INSTITUTION_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "S-0147;S-0108;S-0080;S-0156"
+    },
+    {
+     "id": "E-0038",
+     "source": "I-0023",
+     "target": "EV-0001",
+     "kind": "INSTITUTIONAL",
+     "subtype": "ORGANIZER",
+     "direction": "INSTITUTION_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "S-0147;S-0108;S-0080;S-0156"
+    },
+    {
+     "id": "E-0039",
+     "source": "I-0026",
+     "target": "EV-0002",
+     "kind": "INSTITUTIONAL",
+     "subtype": "ORGANIZER",
+     "direction": "INSTITUTION_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "S-0109;S-0145"
+    },
+    {
+     "id": "E-0040",
+     "source": "I-0026",
+     "target": "EV-0003",
+     "kind": "INSTITUTIONAL",
+     "subtype": "ORGANIZER",
+     "direction": "INSTITUTION_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "S-0158;S-0022;S-0069;S-0029"
+    },
+    {
+     "id": "E-0041",
+     "source": "I-0024",
+     "target": "EV-0004",
+     "kind": "INSTITUTIONAL",
+     "subtype": "ORGANIZER",
+     "direction": "INSTITUTION_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "S-0087"
+    },
+    {
+     "id": "E-0042",
+     "source": "I-0012",
+     "target": "EV-0005",
+     "kind": "INSTITUTIONAL",
+     "subtype": "ORGANIZER",
+     "direction": "INSTITUTION_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "S-0018"
+    },
+    {
+     "id": "E-0043",
+     "source": "I-0014",
+     "target": "EV-0005",
+     "kind": "INSTITUTIONAL",
+     "subtype": "ORGANIZER",
+     "direction": "INSTITUTION_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "S-0018"
+    },
+    {
+     "id": "E-0044",
+     "source": "I-0022",
+     "target": "EV-0006",
+     "kind": "INSTITUTIONAL",
+     "subtype": "ORGANIZER",
+     "direction": "INSTITUTION_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "S-0011"
+    },
+    {
+     "id": "E-0045",
+     "source": "I-0022",
+     "target": "EV-0007",
+     "kind": "INSTITUTIONAL",
+     "subtype": "ORGANIZER",
+     "direction": "INSTITUTION_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "S-0085"
+    },
+    {
+     "id": "E-0046",
+     "source": "I-0015",
+     "target": "EV-0008",
+     "kind": "INSTITUTIONAL",
+     "subtype": "ORGANIZER",
+     "direction": "INSTITUTION_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "S-0071"
+    },
+    {
+     "id": "E-0047",
+     "source": "I-0015",
+     "target": "EV-0009",
+     "kind": "INSTITUTIONAL",
+     "subtype": "ORGANIZER",
+     "direction": "INSTITUTION_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "S-0065;S-0021;S-0115"
+    },
+    {
+     "id": "E-0048",
+     "source": "I-0022",
+     "target": "EV-0009",
+     "kind": "INSTITUTIONAL",
+     "subtype": "ORGANIZER",
+     "direction": "INSTITUTION_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "S-0065;S-0021;S-0115"
+    },
+    {
+     "id": "E-0049",
+     "source": "I-0026",
+     "target": "EV-0010",
+     "kind": "INSTITUTIONAL",
+     "subtype": "ORGANIZER",
+     "direction": "INSTITUTION_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "S-0066;S-0068;S-0033"
+    },
+    {
+     "id": "E-0050",
+     "source": "I-0026",
+     "target": "EV-0011",
+     "kind": "INSTITUTIONAL",
+     "subtype": "ORGANIZER",
+     "direction": "INSTITUTION_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "S-0070;S-0146;S-0028"
+    },
+    {
+     "id": "E-0051",
+     "source": "I-0027",
+     "target": "EV-0012",
+     "kind": "INSTITUTIONAL",
+     "subtype": "ORGANIZER",
+     "direction": "INSTITUTION_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "S-0090"
+    },
+    {
+     "id": "E-0052",
+     "source": "I-0028",
+     "target": "EV-0013",
+     "kind": "INSTITUTIONAL",
+     "subtype": "ORGANIZER",
+     "direction": "INSTITUTION_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "S-0010"
+    },
+    {
+     "id": "E-0053",
+     "source": "I-0022",
+     "target": "EV-0014",
+     "kind": "INSTITUTIONAL",
+     "subtype": "ORGANIZER",
+     "direction": "INSTITUTION_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "S-0074"
+    },
+    {
+     "id": "E-0054",
+     "source": "I-0030",
+     "target": "EV-0015",
+     "kind": "INSTITUTIONAL",
+     "subtype": "ORGANIZER",
+     "direction": "INSTITUTION_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "S-0030;S-0062"
+    },
+    {
+     "id": "E-0055",
+     "source": "I-0010",
+     "target": "EV-0016",
+     "kind": "INSTITUTIONAL",
+     "subtype": "ORGANIZER",
+     "direction": "INSTITUTION_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "S-0062"
+    },
+    {
+     "id": "E-0056",
+     "source": "I-0031",
+     "target": "EV-0016",
+     "kind": "INSTITUTIONAL",
+     "subtype": "ORGANIZER",
+     "direction": "INSTITUTION_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "S-0062"
+    },
+    {
+     "id": "E-0058",
+     "source": "I-0003",
+     "target": "EV-0018",
+     "kind": "INSTITUTIONAL",
+     "subtype": "ORGANIZER",
+     "direction": "INSTITUTION_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "S-0059;S-0073"
+    },
+    {
+     "id": "E-0059",
+     "source": "P-0062",
+     "target": "EV-0005",
+     "kind": "INSTITUTIONAL",
+     "subtype": "EVENT_PARTICIPATION",
+     "direction": "PERSON_TO_EVENT",
+     "confidence": "MEDIUM",
+     "evidence": "BGICBS Chancellor (signatory institution's monastic head) per BTN (btn_buddhavara)"
+    },
+    {
+     "id": "E-0060",
+     "source": "EP-0001",
+     "target": "EV-0010",
+     "kind": "INSTITUTIONAL",
+     "subtype": "EVENT_PARTICIPATION",
+     "direction": "PERSON_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "Jogye 해외특별교구 교구장 직무대행; attended GBS 2023 as official representative on behalf of 총무원장 (hyunbulnews_gbs2023)"
+    },
+    {
+     "id": "E-0061",
+     "source": "EP-0002",
+     "target": "EV-0003",
+     "kind": "INSTITUTIONAL",
+     "subtype": "EVENT_PARTICIPATION",
+     "direction": "PERSON_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "Jogye 국제교류위원/제전법단장; attended 2nd GBS 2026 as representative of 총무원장 Jinwoo (tongbulgyo_gbs2026)"
+    },
+    {
+     "id": "E-0062",
+     "source": "EP-0003",
+     "target": "EV-0003",
+     "kind": "INSTITUTIONAL",
+     "subtype": "EVENT_PARTICIPATION",
+     "direction": "PERSON_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "Congratulatory message read aloud by Munjong on behalf of 총무원장 Jinwoo (tongbulgyo_gbs2026)"
+    },
+    {
+     "id": "E-0063",
+     "source": "EP-0004",
+     "target": "EV-0009",
+     "kind": "INSTITUTIONAL",
+     "subtype": "EVENT_PARTICIPATION",
+     "direction": "PERSON_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "Led the 150-person Jogye official delegation to the Bunhwangsa India dedication (hyunbulnews_bunhwangsa_2022)"
+    },
+    {
+     "id": "E-0064",
+     "source": "EP-0005",
+     "target": "EV-0002",
+     "kind": "INSTITUTIONAL",
+     "subtype": "EVENT_PARTICIPATION",
+     "direction": "PERSON_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "Received the IBC Buddha statue as president of the Lay Buddhist Association of the Jogye Order (koreaherald_bexpo2026)"
+    },
+    {
+     "id": "E-0065",
+     "source": "EP-0006",
+     "target": "EV-0002",
+     "kind": "INSTITUTIONAL",
+     "subtype": "EVENT_PARTICIPATION",
+     "direction": "PERSON_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "Presented the Buddha statue as IBC Director General at Bexpo 2026 (koreaherald_bexpo2026)"
+    },
+    {
+     "id": "E-0066",
+     "source": "EP-0006",
+     "target": "EV-0011",
+     "kind": "INSTITUTIONAL",
+     "subtype": "EVENT_PARTICIPATION",
+     "direction": "PERSON_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "IBC Director General; spoke at ICYBS 2025 and announced broadening the conference to neighboring countries (ibcworld_icybs2025)"
+    },
+    {
+     "id": "E-0067",
+     "source": "EP-0007",
+     "target": "EV-0004",
+     "kind": "INSTITUTIONAL",
+     "subtype": "EVENT_PARTICIPATION",
+     "direction": "PERSON_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "Jungto Society founder; leads the annual India pilgrimage program (jungto_india)"
+    },
+    {
+     "id": "E-0068",
+     "source": "EP-0008",
+     "target": "EV-0014",
+     "kind": "INSTITUTIONAL",
+     "subtype": "EVENT_PARTICIPATION",
+     "direction": "PERSON_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "Jogye 중앙종회의장; represented the order at the 50th-anniversary exchange (ibulgyo_jogye50th_2023)"
+    },
+    {
+     "id": "E-0069",
+     "source": "EP-0009",
+     "target": "EV-0014",
+     "kind": "INSTITUTIONAL",
+     "subtype": "EVENT_PARTICIPATION",
+     "direction": "PERSON_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "ROK Ambassador to India; hosted the temple-food dinner at the ambassador's residence (ibulgyo_jogye50th_2023)"
+    },
+    {
+     "id": "E-0070",
+     "source": "EP-0010",
+     "target": "EV-0015",
+     "kind": "INSTITUTIONAL",
+     "subtype": "EVENT_PARTICIPATION",
+     "direction": "PERSON_TO_EVENT",
+     "confidence": "HIGH",
+     "evidence": "6-member delegation dispatched by 국제불교문제연구소; toured Indian sacred sites, met PM Gandhi, donated the Tripitaka facsimile at Nalanda (donga_delegation_1982)"
+    }
+   ]
+  }
+ }
+}
