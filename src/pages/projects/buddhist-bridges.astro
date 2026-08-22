@@ -1,0 +1,455 @@
+---
+import Base from '../../layouts/Base.astro';
+import network from '../../data/network.json';
+
+const meta = network._meta;
+const slices = Object.entries(network.slices).map(([key, s]: [string, any]) => ({
+  key,
+  nodes: s.nodes.length,
+  edges: s.edges.length,
+}));
+const totalNodes = slices.reduce((n, s) => n + s.nodes, 0);
+const totalEdges = slices.reduce((n, s) => n + s.edges, 0);
+---
+
+<Base
+  title="Buddhist Bridges — a Network Dataset of India–Korea Mediators"
+  description="A network dataset of the monks, scholars, and travelers who carried Buddhism between India and Korea, built for historical network analysis."
+>
+  <section class="band container">
+    <p class="caption-mono-sm rise">Status: in analysis</p>
+    <h1 class="display-md rise rise-2">Buddhist Bridges</h1>
+
+    <div class="prose lede">
+      <p class="body-lg rise rise-3">
+        Buddhism did not travel between India and Korea on its own; people carried it.
+        Buddhist Bridges is a network dataset of those people — the monks, scholars,
+        and travelers who moved between the two regions — with each person, journey,
+        and connection recorded as data.
+      </p>
+      <p class="body-md rise rise-3">
+        Treating the exchange as a network makes questions answerable that a list of
+        names cannot: who the central mediators were, when movement clustered, and
+        where the long gaps lie.
+      </p>
+    </div>
+  </section>
+
+  <div class="container"><hr class="hr" /></div>
+
+  <section class="band container reveal">
+    <h2 class="display-sm">The network</h2>
+
+    <figure class="figure net-frame">
+      <div class="net-controls">
+        <div class="net-toggle" role="tablist" aria-label="Network period slice">
+          <button class="pill pill--sm is-active" role="tab" aria-selected="true" data-slice="b2_circle">
+            Medieval circle
+          </button>
+          <button class="pill pill--sm" role="tab" aria-selected="false" data-slice="b6_web">
+            Modern web
+          </button>
+        </div>
+        <p class="caption-mono-sm net-counts" data-counts>
+          {slices[0].nodes} nodes · {slices[0].edges} edges
+        </p>
+      </div>
+
+      <div class="net-canvas-wrap">
+        <canvas id="net-canvas" aria-label="Interactive network graph of India–Korea mediators. Node details appear on hover."></canvas>
+        <div class="net-tip caption-mono-sm" data-tip hidden></div>
+      </div>
+
+      <figcaption class="caption-mono-sm net-legend">
+        <span><i class="dot dot-people"></i>People</span>
+        <span><i class="dot dot-events"></i>Events</span>
+        <span><i class="dot dot-inst"></i>Institutions</span>
+        <span><i class="dot dot-texts"></i>Texts</span>
+      </figcaption>
+    </figure>
+
+    <figure class="card counts-card reveal">
+      <p class="caption-mono-sm counts-title">Dataset</p>
+      <div class="counts-grid">
+        <div>
+          <p class="display-sm num">{totalNodes}</p>
+          <p class="caption-mono-sm">nodes across two period slices</p>
+        </div>
+        <div>
+          <p class="display-sm num">{totalEdges}</p>
+          <p class="caption-mono-sm">recorded connections</p>
+        </div>
+        <div>
+          <p class="display-sm num">2</p>
+          <p class="caption-mono-sm">period slices exported</p>
+        </div>
+      </div>
+      <figcaption class="caption-mono-sm counts-src">{meta.dataset}</figcaption>
+    </figure>
+  </section>
+
+  <div class="container"><hr class="hr" /></div>
+
+  <section class="band container reveal">
+    <div class="cta-row">
+      <a class="pill" href="/projects/janghan">Janghan (장한, 1927) →</a>
+      <a class="pill" href="/projects">All projects →</a>
+    </div>
+  </section>
+
+  <script>
+    // Self-contained force-directed graph. Data: /data/network.json (first-party).
+    const COLORS: Record<string, string> = {
+      PEOPLE: '#2597d0',
+      EVENTS: '#779bc1',
+      INSTITUTIONS: '#151515',
+      TEXTS: '#9abfda',
+    };
+
+    interface SimNode {
+      id: string;
+      label: string;
+      type: string;
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+    }
+
+    const canvas = document.getElementById('net-canvas') as HTMLCanvasElement | null;
+    const tip = document.querySelector('[data-tip]') as HTMLElement | null;
+    const countsEl = document.querySelector('[data-counts]') as HTMLElement | null;
+
+    if (canvas) {
+      const ctx = canvas.getContext('2d')!;
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let nodes: SimNode[] = [];
+      let edges: { source: string; target: string }[] = [];
+      let byId = new Map<string, SimNode>();
+      let raf = 0;
+      let ticks = 0;
+      let hovered: SimNode | null = null;
+      let W = 0;
+      let H = 0;
+
+      function resize() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        W = canvas.clientWidth;
+        H = canvas.clientHeight;
+        canvas.width = W * dpr;
+        canvas.height = H * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      function load(sliceKey: string, data: any) {
+        const s = data.slices[sliceKey];
+        nodes = s.nodes.map((n: any, i: number) => {
+          const a = (i / s.nodes.length) * Math.PI * 2;
+          const r = Math.min(W, H) * 0.32;
+          return {
+            id: n.id,
+            label: n.label,
+            type: n.type,
+            x: W / 2 + Math.cos(a) * r,
+            y: H / 2 + Math.sin(a) * r,
+            vx: 0,
+            vy: 0,
+          };
+        });
+        byId = new Map(nodes.map((n) => [n.id, n]));
+        edges = s.edges.filter((e: any) => byId.has(e.source) && byId.has(e.target));
+        if (countsEl) countsEl.textContent = `${nodes.length} nodes · ${edges.length} edges`;
+        ticks = 0;
+        cancelAnimationFrame(raf);
+        if (reduce) {
+          for (let i = 0; i < 300; i++) step();
+          draw();
+        } else {
+          loop();
+        }
+      }
+
+      function step() {
+        // repulsion
+        for (let i = 0; i < nodes.length; i++) {
+          for (let j = i + 1; j < nodes.length; j++) {
+            const a = nodes[i];
+            const b = nodes[j];
+            let dx = a.x - b.x;
+            let dy = a.y - b.y;
+            let d2 = dx * dx + dy * dy || 1;
+            const f = Math.min((nodes.length <= 12 ? 3200 : 1600) / d2, 0.8);
+            const d = Math.sqrt(d2);
+            dx /= d;
+            dy /= d;
+            a.vx += dx * f;
+            a.vy += dy * f;
+            b.vx -= dx * f;
+            b.vy -= dy * f;
+          }
+        }
+        // springs
+        for (const e of edges) {
+          const a = byId.get(e.source)!;
+          const b = byId.get(e.target)!;
+          const dx = b.x - a.x;
+          const dy = b.y - a.y;
+          const d = Math.sqrt(dx * dx + dy * dy) || 1;
+          const f = (d - (nodes.length <= 12 ? 150 : 100)) * 0.004;
+          a.vx += (dx / d) * f;
+          a.vy += (dy / d) * f;
+          b.vx -= (dx / d) * f;
+          b.vy -= (dy / d) * f;
+        }
+        // center gravity + integrate
+        for (const n of nodes) {
+          n.vx += (W / 2 - n.x) * 0.0015;
+          n.vy += (H / 2 - n.y) * 0.0015;
+          n.vx *= 0.86;
+          n.vy *= 0.86;
+          n.x += n.vx;
+          n.y += n.vy;
+          n.x = Math.max(16, Math.min(W - 16, n.x));
+          n.y = Math.max(16, Math.min(H - 16, n.y));
+        }
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+        ctx.strokeStyle = 'rgba(7,7,9,0.14)';
+        ctx.lineWidth = 1;
+        for (const e of edges) {
+          const a = byId.get(e.source)!;
+          const b = byId.get(e.target)!;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+        const small = nodes.length <= 12;
+        for (const n of nodes) {
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, n === hovered ? 7 : 5, 0, Math.PI * 2);
+          ctx.fillStyle = COLORS[n.type] || '#60606c';
+          ctx.fill();
+          if (small) {
+            ctx.fillStyle = 'rgba(21,21,21,0.78)';
+            ctx.font = '11px Geist Mono, monospace';
+            ctx.fillText(n.label.slice(0, 28), n.x + 9, n.y + 4);
+          }
+        }
+      }
+
+      function loop() {
+        step();
+        draw();
+        ticks++;
+        if (ticks < 600) raf = requestAnimationFrame(loop);
+      }
+
+      canvas.addEventListener('pointermove', (ev) => {
+        const rect = canvas.getBoundingClientRect();
+        const mx = ev.clientX - rect.left;
+        const my = ev.clientY - rect.top;
+        hovered = null;
+        for (const n of nodes) {
+          const dx = n.x - mx;
+          const dy = n.y - my;
+          if (dx * dx + dy * dy < 100) {
+            hovered = n;
+            break;
+          }
+        }
+        if (tip) {
+          if (hovered) {
+            tip.hidden = false;
+            tip.textContent = `${hovered.label} · ${hovered.type.toLowerCase()}`;
+            tip.style.left = `${Math.min(mx + 12, W - 160)}px`;
+            tip.style.top = `${my + 12}px`;
+          } else {
+            tip.hidden = true;
+          }
+        }
+        if (reduce) draw();
+      });
+
+      canvas.addEventListener('pointerleave', () => {
+        hovered = null;
+        if (tip) tip.hidden = true;
+        if (reduce) draw();
+      });
+
+      fetch('/data/network.json')
+        .then((r) => r.json())
+        .then((data) => {
+          resize();
+          load('b2_circle', data);
+          document.querySelectorAll<HTMLButtonElement>('[data-slice]').forEach((btn) => {
+            btn.addEventListener('click', () => {
+              document.querySelectorAll('[data-slice]').forEach((b) => {
+                b.classList.remove('is-active');
+                b.setAttribute('aria-selected', 'false');
+              });
+              btn.classList.add('is-active');
+              btn.setAttribute('aria-selected', 'true');
+              load(btn.dataset.slice!, data);
+            });
+          });
+          let rt: number | undefined;
+          window.addEventListener('resize', () => {
+            clearTimeout(rt);
+            rt = window.setTimeout(() => {
+              resize();
+              const active = document.querySelector<HTMLElement>('[data-slice].is-active');
+              load(active?.dataset.slice || 'b2_circle', data);
+            }, 150);
+          });
+        });
+    }
+  </script>
+
+  <style>
+    .lede {
+      margin-top: var(--s-2xl);
+    }
+
+    .lede .body-md {
+      color: var(--body);
+    }
+
+    .net-frame {
+      margin: var(--s-2xl) 0 0;
+    }
+
+    .net-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--s-md);
+      margin-bottom: var(--s-lg);
+    }
+
+    .net-toggle {
+      display: flex;
+      gap: var(--s-sm);
+    }
+
+    .net-toggle .pill.is-active {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: var(--canvas);
+    }
+
+    .net-counts {
+      margin: 0;
+    }
+
+    .net-canvas-wrap {
+      position: relative;
+      background: var(--canvas);
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+
+    #net-canvas {
+      width: 100%;
+      height: 480px;
+      display: block;
+      cursor: crosshair;
+    }
+
+    @media (max-width: 767px) {
+      #net-canvas {
+        height: 360px;
+      }
+    }
+
+    .net-tip {
+      position: absolute;
+      pointer-events: none;
+      background: var(--canvas-soft);
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-sm);
+      padding: var(--s-xs) var(--s-sm);
+      color: var(--body);
+      text-transform: none;
+      letter-spacing: 0.02em;
+      max-width: 240px;
+    }
+
+    .net-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--s-lg);
+    }
+
+    .net-legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-sm);
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .dot-people {
+      background: var(--accent);
+    }
+
+    .dot-events {
+      background: var(--accent-mid);
+    }
+
+    .dot-inst {
+      background: var(--ink);
+    }
+
+    .dot-texts {
+      background: var(--accent-soft);
+    }
+
+    .counts-card {
+      margin: var(--s-lg) 0 0;
+    }
+
+    .counts-title {
+      margin: 0 0 var(--s-lg);
+    }
+
+    .counts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s-xl);
+    }
+
+    @media (max-width: 560px) {
+      .counts-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .counts-grid .num {
+      margin: 0 0 var(--s-xs);
+    }
+
+    .counts-grid p {
+      margin: 0;
+    }
+
+    .counts-src {
+      margin-top: var(--s-lg);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--s-md);
+    }
+  </style>
+</Base>

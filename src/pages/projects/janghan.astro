@@ -1,0 +1,57 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+
+<Base
+  title="Janghan (장한, 1927) — Digitizing a Kisaeng Magazine"
+  description="Building a machine-readable corpus of Janghan (장한), the 1927 magazine written by kisaeng — OCR correction, Hanja-mixed tokenization, and provenance tracking."
+>
+  <section class="band container">
+    <p class="caption-mono-sm rise">Status: corpus building</p>
+    <h1 class="display-md rise rise-2">Janghan (장한, 1927)</h1>
+
+    <div class="prose lede">
+      <p class="body-lg rise rise-3">
+        In 1927, kisaeng in Seoul published a magazine of their own: Janghan (장한).
+        This project is building a machine-readable corpus of it — a digitization
+        effort, page by page, so that the magazine can be read, searched, and cited
+        as data.
+      </p>
+    </div>
+  </section>
+
+  <div class="container"><hr class="hr" /></div>
+
+  <section class="band container reveal">
+    <h2 class="display-sm">Method</h2>
+    <div class="prose section-body">
+      <p class="body-md">
+        Colonial-period Korean print is hard on machines: vertical layouts, Hanja-mixed
+        script, and inconsistent typography defeat off-the-shelf OCR. The pipeline here
+        pairs OCR correction with Hanja-aware tokenization, and every text carries
+        provenance — which page, which scan, which correction pass — so the corpus
+        stays auditable.
+      </p>
+    </div>
+  </section>
+
+  <div class="container"><hr class="hr" /></div>
+
+  <section class="band container reveal">
+    <a class="pill" href="/projects">All projects →</a>
+  </section>
+
+  <style>
+    .lede {
+      margin-top: var(--s-2xl);
+    }
+
+    .section-body {
+      margin-top: var(--s-lg);
+    }
+
+    .section-body p {
+      margin: 0;
+    }
+  </style>
+</Base>

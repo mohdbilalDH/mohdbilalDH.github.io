@@ -1,34 +1,239 @@
 ---
 import '../styles/global.css';
-import SiteHeader from '../components/SiteHeader.astro';
-import SiteFooter from '../components/SiteFooter.astro';
-const {
-  title,
-  description = 'Mohd Bilal — Korean Studies and Digital Humanities. Modern Korean history, colonial-era cultural history, gender, kisaeng studies, and computational research on Korea and India.',
-  current = '',
-} = Astro.props;
-const pageTitle = title ? `${title} · Mohd Bilal` : 'Mohd Bilal — Korean Studies & Digital Humanities';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+
+const nav = [
+  { href: '/about', label: 'About' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/publications', label: 'Publications' },
+  { href: '/notes', label: 'Notes' },
+  { href: '/cv', label: 'CV' },
+];
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) => path === href || (href !== '/' && path.startsWith(href + '/'));
 ---
+
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{pageTitle}</title>
-  <meta name="description" content={description} />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
-  <meta property="og:title" content={title ?? 'Mohd Bilal — Korean Studies & Digital Humanities'} />
-  <meta property="og:description" content={description} />
-  <meta property="og:type" content="website" />
-  <slot name="head" />
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <SiteHeader current={current} />
-  <main id="main">
-    <slot />
-  </main>
-  <SiteFooter />
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Mohd Bilal" />
+    <meta property="og:image" content={new URL('/og.png', Astro.site)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL('/og.png', Astro.site)} />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="generator" content={Astro.generator} />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: 'Mohd Bilal',
+        url: Astro.site?.href,
+        email: 'mailto:mohdbilalkhan2017@gmail.com',
+        affiliation: {
+          '@type': 'CollegeOrUniversity',
+          name: 'The Academy of Korean Studies',
+        },
+        sameAs: ['https://github.com/mohdbilaldh'],
+      })}
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="wordmark body-sm" href="/">Mohd Bilal</a>
+        <nav aria-label="Site">
+          <button class="nav-toggle pill pill--sm" aria-expanded="false" aria-controls="site-nav">Menu</button>
+          <ul id="site-nav" class="nav-list body-sm">
+            {
+              nav.map((item) => (
+                <li>
+                  <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <hr class="hr" />
+      <div class="container footer-inner">
+        <p class="body-sm footer-name">Mohd Bilal</p>
+        <ul class="footer-links body-sm">
+          <li><a href="mailto:mohdbilalkhan2017@gmail.com">Email</a></li>
+          <li><a href="https://github.com/mohdbilaldh" rel="me">GitHub</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile nav toggle
+      const toggle = document.querySelector('.nav-toggle');
+      const list = document.getElementById('site-nav');
+      toggle?.addEventListener('click', () => {
+        const open = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!open));
+        list?.classList.toggle('is-open', !open);
+      });
+
+      // Scroll reveals (reduced-motion: the CSS never hides content without this class)
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const targets = document.querySelectorAll('.reveal');
+      if (reduce || !('IntersectionObserver' in window)) {
+        targets.forEach((el) => el.classList.add('is-visible'));
+      } else {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15 }
+        );
+        targets.forEach((el) => io.observe(el));
+      }
+    </script>
+
+    <style>
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: var(--canvas);
+        border-bottom: 1px solid var(--hairline);
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 64px;
+      }
+
+      .wordmark {
+        color: var(--ink);
+        letter-spacing: -0.01em;
+      }
+
+      .nav-list {
+        display: flex;
+        gap: var(--s-xl);
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .nav-list a {
+        color: var(--body);
+        transition: color 0.2s ease;
+      }
+
+      .nav-list a:hover,
+      .nav-list a[aria-current='page'] {
+        color: var(--ink);
+      }
+
+      .nav-toggle {
+        display: none;
+      }
+
+      @media (max-width: 767px) {
+        .nav-toggle {
+          display: inline-flex;
+        }
+
+        .nav-list {
+          display: none;
+          position: absolute;
+          top: 64px;
+          left: 0;
+          right: 0;
+          flex-direction: column;
+          gap: 0;
+          background: var(--canvas);
+          border-bottom: 1px solid var(--hairline);
+          padding: var(--s-sm) 0;
+        }
+
+        .nav-list.is-open {
+          display: flex;
+        }
+
+        .nav-list li a {
+          display: block;
+          padding: var(--s-md) var(--s-xl);
+        }
+      }
+
+      .site-footer {
+        margin-top: var(--s-4xl);
+      }
+
+      .footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: var(--s-lg);
+        padding-block: var(--s-3xl);
+      }
+
+      .footer-name {
+        color: var(--body);
+        margin: 0;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: var(--s-xl);
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .footer-links a {
+        color: var(--body);
+      }
+
+      .footer-links a:hover {
+        color: var(--ink);
+      }
+    </style>
+  </body>
 </html>

@@ -1,0 +1,126 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="About — Mohd Bilal | Academy of Korean Studies"
+  description="Researcher of Hallyu in India and India–Korea exchange. Master's student in Korean Studies at the Academy of Korean Studies; builds corpora, networks, and datasets for cultural history."
+>
+  <section class="band container">
+    <h1 class="display-md rise">About</h1>
+
+    <div class="prose about-lede">
+      <p class="body-lg rise rise-2">
+        I study how Korea and India read each other. That single question runs through
+        everything on this site: how Indian newspapers frame the Korean Wave, how
+        Buddhist monks and scholars moved between the two countries across centuries,
+        and how kisaeng wrote about their own lives in a 1927 Seoul magazine.
+      </p>
+      <p class="body-md rise rise-3">
+        I work on these questions computationally. Rather than reading a handful of
+        sources closely and stopping there, I build the full corpus first — thousands
+        of newspaper articles, a network of historical mediators, a digitized magazine —
+        and then ask what patterns hold across all of it. The projects on this site are
+        that method in practice.
+      </p>
+    </div>
+  </section>
+
+  <div class="container"><hr class="hr" /></div>
+
+  <section class="band container reveal">
+    <h2 class="display-sm">Background</h2>
+    <div class="prose section-body">
+      <p class="body-md">
+        I'm from India, and I came to Korean Studies from that side of the exchange.
+        I hold a BA in Korean Studies and I'm now a Master's student at the Academy of
+        Korean Studies in South Korea, where my research sits between Hallyu studies,
+        cultural history, and digital humanities.
+      </p>
+    </div>
+  </section>
+
+  <div class="container"><hr class="hr" /></div>
+
+  <section class="band container reveal">
+    <div class="two-col">
+      <div>
+        <h2 class="display-sm">Languages</h2>
+        <ul class="fact-list body-md">
+          <li>English — fluent</li>
+          <li>Hindi/Urdu — native</li>
+          <li>Korean — working research proficiency</li>
+          <li>Hanja-mixed and classical texts — reading ability</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="display-sm">Tools</h2>
+        <p class="body-md section-body">
+          Python for corpus work and analysis; SQLite and DuckDB for corpus storage;
+          Kiwi for Korean tokenization; network analysis for the historical projects;
+          Astro for this site.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="hr" /></div>
+
+  <section class="band container reveal">
+    <div class="prose">
+      <p class="body-md cta-line">
+        For the formal record — education, skills, and everything in one document —
+      </p>
+      <a class="pill pill--filled" href="/cv">Read my CV →</a>
+    </div>
+  </section>
+
+  <style>
+    .about-lede {
+      margin-top: var(--s-2xl);
+    }
+
+    .section-body {
+      margin-top: var(--s-lg);
+    }
+
+    .section-body p,
+    p.section-body {
+      margin: 0;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s-3xl);
+    }
+
+    @media (max-width: 767px) {
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .fact-list {
+      list-style: none;
+      margin: var(--s-lg) 0 0;
+      padding: 0;
+      display: grid;
+      gap: var(--s-md);
+    }
+
+    .fact-list li {
+      padding-bottom: var(--s-md);
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .fact-list li:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .cta-line {
+      margin: 0 0 var(--s-lg);
+    }
+  </style>
+</Base>
