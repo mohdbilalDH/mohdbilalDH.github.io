@@ -1,0 +1,316 @@
+[
+ {
+  "name": "編輯 人",
+  "items": [
+   "jh01.a02"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "金月仙",
+  "items": [
+   "jh01.a03"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "梅軒",
+  "items": [
+   "jh01.a04",
+   "jh02.b03",
+   "jh02.b05"
+  ],
+  "cross_issue": "梅軒"
+ },
+ {
+  "name": "金南洙",
+  "items": [
+   "jh01.a05",
+   "jh02.b17"
+  ],
+  "cross_issue": "金南洙"
+ },
+ {
+  "name": "李月香",
+  "items": [
+   "jh01.a06"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "尹玉香",
+  "items": [
+   "jh01.a08"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "木村",
+  "items": [
+   "jh01.a09"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "米國 씌·와이·번쓰",
+  "items": [
+   "jh01.a11"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "金綠珠",
+  "items": [
+   "jh01.a12"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "배瓊淑(瓚淑",
+  "items": [
+   "jh01.a13"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "中華民國 王大名",
+  "items": [
+   "jh01.a14"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "KO 生",
+  "items": [
+   "jh01.a15"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "오므브",
+  "items": [
+   "jh01.a16"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "김도심",
+  "items": [
+   "jh01.a19"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "-記者",
+  "items": [
+   "jh01.a21"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "桂山月",
+  "items": [
+   "jh01.a22"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "튜루게네푸 作",
+  "items": [
+   "jh01.a23"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "嚴山月",
+  "items": [
+   "jh01.a25"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "金蘭紅",
+  "items": [
+   "jh01.a26",
+   "jh02.b16"
+  ],
+  "cross_issue": "金蘭紅"
+ },
+ {
+  "name": "톨톨l 綠觀",
+  "items": [
+   "jh01.a27"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "B 연구생",
+  "items": [
+   "jh01.a28"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "金桂花",
+  "items": [
+   "jh01.a29"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "大版醫科 醫學士 趙東款",
+  "items": [
+   "jh01.a30"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "金-運",
+  "items": [
+   "jh01.a31"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "패부자",
+  "items": [
+   "jh01.a33",
+   "jh02.b34"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "전산옥",
+  "items": [
+   "jh01.a35"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "박점홍",
+  "items": [
+   "jh01.a36"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "朴綠珠",
+  "items": [
+   "jh01.a37"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "朴点紅",
+  "items": [
+   "jh01.a39"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "저근로",
+  "items": [
+   "jh01.a41"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "호도 (홍도",
+  "items": [
+   "jh01.a42"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "一妓生",
+  "items": [
+   "jh01.a43"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "비취",
+  "items": [
+   "jh01.a44"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "김채봉",
+  "items": [
+   "jh01.a45",
+   "jh01.a51"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "김계현",
+  "items": [
+   "jh01.a46"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "白紅黃",
+  "items": [
+   "jh01.a47"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "金季鉉",
+  "items": [
+   "jh02.b02"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "田蘭紅",
+  "items": [
+   "jh02.b07"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "吳虹月",
+  "items": [
+   "jh02.b13"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "裵花月",
+  "items": [
+   "jh02.b18"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "玉",
+  "items": [
+   "jh02.b22"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "朴瓚花",
+  "items": [
+   "jh02.b33"
+  ],
+  "cross_issue": null
+ },
+ {
+  "name": "가운",
+  "items": [
+   "jh02.b36"
+  ],
+  "cross_issue": "가운"
+ },
+ {
+  "name": "王白波",
+  "items": [
+   "jh02.b41"
+  ],
+  "cross_issue": null
+ }
+]

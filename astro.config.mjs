@@ -9,13 +9,11 @@ export default defineConfig({
   base: '/',
   trailingSlash: 'ignore',
   integrations: [sitemap()],
-  // Old-site URLs → new pages. Static output renders these as meta-refresh
-  // stubs with canonical links, since GitHub Pages has no server redirects.
+  // Stubs for the briefly-live redesign URLs → their equivalents in the
+  // restored structure (static meta-refresh; GitHub Pages has no server redirects).
   redirects: {
-    '/contact': '/',
-    '/visualizations': '/projects',
-    '/projects/hallyu-indian-press': '/projects/hallyu-press',
-    '/projects/buddhist-bridges/explore': '/projects/buddhist-bridges',
-    '/janghan': '/projects/janghan',
+    '/about': '/',
+    '/notes': '/',
+    '/projects/hallyu-press': '/projects/hallyu-indian-press',
   },
 });

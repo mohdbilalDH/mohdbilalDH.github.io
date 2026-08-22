@@ -1,0 +1,201 @@
+---
+import Project from '../../../layouts/Project.astro';
+import Chronology from '../../../components/Chronology.astro';
+import DirectionChart from '../../../components/DirectionChart.astro';
+import MechanismChart from '../../../components/MechanismChart.astro';
+import Residents from '../../../components/Residents.astro';
+import PersonCard from '../../../components/PersonCard.astro';
+import core from '../../../data/core.json';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const c = core.counts;
+const jsonld = JSON.stringify({
+  '@context': 'https://schema.org', '@type': 'Dataset',
+  name: 'Buddhist Bridges: India–Korea Buddhist Mediators Dataset (V3.0)',
+  description: 'Source-graded dataset of documented mediators of India–Korea Buddhist exchange, 300–2026 CE.',
+  creator: { '@type': 'Person', name: 'Mohd Bilal Khan' },
+  license: 'https://creativecommons.org/licenses/by/4.0/', version: '3.0', datePublished: '2026-08-17',
+});
+---
+<Project title="Buddhist Bridges — Five Bridges, One Silence" citation={true}>
+  <script type="application/ld+json" set:html={jsonld}></script>
+  <style>
+    .meta-line {
+      font: var(--t-caption)/1.6 var(--sans); color: var(--muted);
+      border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+      padding: 0.55rem 0; margin: var(--s-5) 0 var(--s-4);
+    }
+    section.act { border-top: 1px solid var(--rule); margin-top: var(--s-7); padding-top: 0.2rem; }
+    .act h2 .act-no {
+      font: 600 var(--t-label)/1 var(--sans); letter-spacing: 0.13em;
+      color: var(--accent); display: block; margin-bottom: 0.45rem; text-transform: uppercase;
+    }
+    .capsule {
+      border-left: 3px solid var(--rule);
+      padding: 0.2rem 0 0.2rem 1.15rem; margin: var(--s-5) 0;
+      font-size: 0.97rem; color: var(--ink);
+    }
+    .capsule .cap-kicker {
+      font: 600 var(--t-label)/1.4 var(--sans); letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted); margin: 0 0 0.35rem;
+    }
+    .capsule p { margin: 0; }
+    .method {
+      border: 1px solid var(--rule); border-radius: var(--radius);
+      padding: var(--s-5) 1.4rem; font-size: 0.95rem; background: var(--card);
+    }
+    .method p { margin-bottom: 0.8rem; }
+    .method ul { margin: 0 0 0.8rem; padding-left: 1.2rem; }
+    .method li { margin-bottom: 0.4rem; }
+    .cite {
+      background: var(--codebg); border-radius: var(--radius); padding: 0.9rem 1.1rem;
+      font: 0.8rem/1.65 var(--mono); overflow-x: auto;
+    }
+    .dlrow { font: var(--t-caption) var(--sans); display: flex; flex-wrap: wrap; gap: 0.4rem 1.3rem; margin: 0.5rem 0 0; }
+  </style>
+
+  <div class="wrap breakout-figs" style="padding-top: 2.8rem;">
+    <p class="eyebrow">Digital humanities · Korean Buddhist history</p>
+    <h1>Five bridges, one silence</h1>
+    <p class="lede">
+      Was there ever a continuous Buddhist bridge between India and Korea? The documented record
+      says no. It shows five short-lived bridges, built by different kinds of people in different
+      directions, and one interruption five centuries long.
+    </p>
+    <p class="meta-line">
+      {c.people_carried} documented mediators · {c.events} events · {c.sources} graded sources ·
+      dataset frozen and checksummed (V3.0, 2026) · every claim opens to its record and sources
+    </p>
+
+    <Chronology />
+
+    <section class="act">
+      <h2><span class="act-no">Part I</span>The direction inverts</h2>
+      <p>
+        Before 900 the bridge was made of journeys, and it ran both ways. Of eighteen carried
+        mediators, eight moved toward India and eight carried Buddhism toward Korea. No later era
+        is balanced. From Goryeo onward India comes to Korea: first in one person, the monk
+        Dhyānabhadra, then in texts, then in institutions. Two-way movement does not return until
+        the 1990s.
+      </p>
+      <DirectionChart />
+      <aside class="capsule">
+        <p class="cap-kicker">The evidence, close up</p>
+        <p>
+          The best documented life of the balanced era is Hyecho (혜초, 704–787), who sailed to
+          India around 719 and walked back through Kashmir, Persia, and Central Asia. His
+          <em>Wang ocheonchukguk jeon</em>, the only surviving eighth-century East Asian account
+          of India, spent a millennium in the Dunhuang cave library and was first exhibited in
+          Korea in 2010. <button class="linklike" data-person="P-0001">Open his record</button>
+        </p>
+      </aside>
+    </section>
+
+    <section class="act">
+      <h2><span class="act-no">Part II</span>Five hundred years of silence</h2>
+      <p>
+        The most important number in the dataset is zero. For the whole of Joseon (1392–1900) no
+        person, journey, text, or institution meets the evidence bar. Eleven candidates were
+        examined and all were excluded, as the Neo-Confucian state closed the channels Buddhism
+        had used. Between the enshrinement of Dhyānabhadra's relics in 1370 and the next
+        documented event, a delegation of 1981, lie 611 years. A narrative of unbroken
+        transmission has to pass over these five centuries in silence; the record does not
+        support it. What survived travelled by lineage and by print until a later generation
+        could rebuild the crossing.
+      </p>
+      <p class="small">
+        The zero is a finding under stated inclusion criteria, and it is documented: the eleven
+        excluded candidates remain in the dataset for inspection. It is not a claim that no
+        contact ever occurred.
+      </p>
+    </section>
+
+    <section class="act">
+      <h2><span class="act-no">Part III</span>The bridge changes material</h2>
+      <p>
+        Each rebuilding used a different substance. The ancient bridge was made of people who
+        travelled. The colonial-era bridge was made of paper: four of its six mediators were not
+        Buddhists, both attempted pilgrimages went unrealized, and what actually crossed was
+        text, above all Tagore in Korean translation. The present bridge, built since the 1990s,
+        is institutional. Orders, universities, and pilgrimage programs now carry the connection,
+        movement itself has returned (seven of the eight recent mediators travelled), and the
+        record includes its first women.
+      </p>
+      <MechanismChart />
+      <aside class="capsule">
+        <p class="cap-kicker">The evidence, close up</p>
+        <p>
+          Two documents anchor the colonial chapter: the six-line message Tagore sent the
+          <em>Dong-a Ilbo</em> in 1929, remembered as "The Lamp of the East," and the fifteen-line
+          poem later circulated under the same title, which the dataset records as a composite
+          fabrication. One event closes the longer arc: in 2024, relics from Hoeamsa, where
+          Dhyānabhadra's remains were enshrined in 1370, returned to Korea from the Boston Museum
+          of Fine Arts. <button class="linklike" data-person="P-0030">Tagore's record</button>
+        </p>
+      </aside>
+      <p>
+        One role recurs in every era of contact and in no other: the mediator who stays.
+      </p>
+      <Residents />
+    </section>
+
+    <section class="act">
+      <h2>Why it matters</h2>
+      <p>
+        The India–Korea Buddhist relationship is usually told either as myth or as modern
+        diplomacy. The documented record supports neither framing. It shows a connection built
+        five times by five different cohorts, out of changing materials, and interrupted for half
+        a millennium. For Korean Studies this periodizes the relationship and gives the Joseon
+        interruption evidential weight. For the study of religion it shows transmission
+        surviving without contact. For digital humanities it is a case for small, carefully
+        graded datasets: 43 people with full sourcing can carry an argument that a large scraped
+        corpus cannot.
+      </p>
+      <p>
+        <a href={`${base}/projects/buddhist-bridges/explore/`}><strong>Explore the full evidence</strong></a>
+        <span class="small">· the complete timeline instrument and the register of all {c.people_carried} mediators</span>
+      </p>
+    </section>
+
+    <section class="act">
+      <h2>Data and method</h2>
+      <div class="method">
+        <p>
+          The dataset records {c.people_total} people ({c.people_carried} carried after
+          Buddhist-relevance classification), {c.travels} travels, {c.texts} texts,
+          {c.institutions} institutions, and {c.events} events, resting on {c.sources} graded
+          sources. The rule of collection: <em>no relationship is recorded as influential
+          without documentary evidence; association with both countries is not influence.</em>
+        </p>
+        <ul>
+          <li>Every record carries a confidence grade, a completeness status, and a date-precision field. Records without a safe date are never placed on the axis.</li>
+          <li>Rejected candidates stay in the dataset as documented negatives. Legendary material is labelled and excluded from analysis by default.</li>
+          <li>Uncertainty is drawn, not footnoted: dashed floruit bars, hatched single-source lives, an annotated void. A 2026 survey of 186 DH projects found none that visualized uncertainty, and this project treats it as a design element.</li>
+          <li>Known limits: the modern era is documented mainly through the press, Korean-language sources dominate, and no woman appears before 1990. The register records that absence; it cannot by itself explain it. All analysis is descriptive (n=43).</li>
+        </ul>
+        <p style="margin-bottom: 0;">
+          The frozen release (13 CSVs with a SHA-256 manifest) is rebuilt deterministically from
+          plain-text source modules. This page reads only a JSON export that verifies the
+          manifest before every build, so the site cannot silently change the data.
+        </p>
+        <div class="dlrow">
+          <a href={`${base}/data/people.json`} download>people.json</a>
+          <a href={`${base}/data/story.json`} download>story.json</a>
+          <a href={`${base}/data/timeline.json`} download>timeline.json</a>
+          <a href={`${base}/data/sources.json`} download>sources.json</a>
+          <span style="color: var(--faint);">CC-BY-4.0 · Zenodo DOI pending</span>
+        </div>
+      </div>
+      <h3 id="cite">Cite</h3>
+      <div class="cite">Khan, Mohd Bilal (2026). Five Bridges, One Silence: Documented Mediators of India–Korea
+Buddhist Exchange, 300–2026 (dataset V3.0). Digital humanities project. CC-BY-4.0.
+DOI: pending Zenodo deposit.</div>
+    </section>
+  </div>
+
+  <PersonCard />
+  <script>
+    document.querySelectorAll('.linklike[data-person]').forEach((b) =>
+      b.addEventListener('click', () => window.__bbShowPerson(b.dataset.person)));
+  </script>
+</Project>

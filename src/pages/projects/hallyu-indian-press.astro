@@ -1,0 +1,85 @@
+---
+import Project from '../../layouts/Project.astro';
+import HallyuGrowthChart from '../../components/HallyuGrowthChart.astro';
+import hallyu from '../../data/hallyu.json';
+---
+<Project title="Framing Hallyu in the Indian Press, 2000–2026"
+  description="A reproducible corpus study of how Indian English-language newspapers represented and framed Hallyu, 2000–2026. Pilot complete: the national press was nearly silent on Hallyu before 2011.">
+  <div class="wrap breakout-figs">
+    <div class="page-head">
+      <p class="eyebrow">Digital Humanities · Corpus Study</p>
+      <h1>Framing Hallyu in the Indian Press, 2000–2026</h1>
+      <p class="lede">
+        How did Indian English-language newspapers represent and frame Hallyu from 2000 to
+        2026, and how did those representations change as Korean popular culture became
+        increasingly visible in India?
+      </p>
+      <p style="margin-top: var(--s-3);"><span class="status-badge in-progress">Pilot complete · full corpus in progress</span></p>
+    </div>
+
+    <p>
+      The corpus and the historical scholarship establish the pattern; no Hallyu trajectory
+      is assumed in advance. The project treats the press not as a mirror of popularity but
+      as a framing machine — asking which vocabularies Indian newspapers reached for when
+      describing something unfamiliar, and when those vocabularies changed.
+    </p>
+
+    <HallyuGrowthChart />
+
+    <h2>What the pilot found</h2>
+    <p>
+      The 2000–2010 pilot produced a negative finding that is itself evidence: during the
+      decade in which Korean popular culture was spreading through Northeast India, the
+      English-language national press was nearly silent about it. Licensed full-text search
+      across the Times of India, Hindustan Times, and Indian Express finds
+      {hallyu.korea_baseline_2000_2010.toLocaleString('en-US')} Korea-related articles in
+      2000–2010, yet the words “Hallyu” or “Korean wave” appear exactly once in the entire
+      period — a single incidental wire-story use in 2007. Only 58 articles match the
+      project's broader Hallyu vocabulary before 2011, almost all in film-review contexts.
+      Coverage then grows to 211 articles in 2011–2016 and 4,422 in 2017–2026.
+    </p>
+    <p>
+      A parallel open-web harvest of The Hindu's daily section indexes (2000–2010, via the
+      Internet Archive's CDX API) recovered {hallyu.pilot.hindu_headline_matches} Korea-related
+      headlines and a {hallyu.pilot.corpus_docs}-document pilot corpus — and zero
+      culture-context Hallyu headlines, corroborating the licensed-search result from an
+      independent source.
+    </p>
+
+    <h2>Data</h2>
+    <dl class="factsheet">
+      <div><dt>Sources</dt><dd>The Hindu (Wayback Machine, 2000–2010), Times of India, Hindustan Times, Indian Express (licensed full text via ProQuest); GDELT planned for 2017–2026.</dd></div>
+      <div><dt>Pilot corpus</dt><dd>{hallyu.pilot.corpus_docs} full-text documents ({hallyu.pilot.hindu_years}), SQLite + FTS5, with cached raw responses and full provenance.</dd></div>
+      <div><dt>Ethics & licensing</dt><dd>Newspaper text is copyrighted: the repository publishes metadata, counts, and derived statistics only. Polite, identified, rate-limited harvesting; no paywall or robots bypasses. Code MIT, data CC-BY-4.0.</dd></div>
+      <div><dt>Known gaps</dt><dd>2000–2004 has no licensed full-text source at the host institution; the pre-2011 absence claim is validated against ProQuest but still awaits recall-validation against ProQuest Historical TOI / Factiva before strong publication.</dd></div>
+    </dl>
+
+    <h2>Method</h2>
+    <p>
+      A three-stage pipeline — discover, harvest, build — enumerates archive discovery pages,
+      fetches candidates cache-first at polite rates, and compiles a full-text-searchable
+      corpus. Every HTTP response is cached permanently, so re-running any stage never
+      re-touches the network. Vocabulary matching is deliberately two-tier: a broad Korea net
+      for recall, then the candidate Hallyu vocabulary for precision, evaluated against
+      licensed full-text counts. The full 2000–2026 corpus is deliberately not yet collected —
+      collection phases are gated on the pilot's validation conditions.
+    </p>
+
+    <h2>Status & next steps</h2>
+    <p>
+      The pilot go/no-go review returned <strong>go</strong>. In progress: a full-decade
+      harvest of The Hindu's supplement story pages, recall-validation of the 2000–2004
+      window, and the 2011–2016 and 2017–2026 collection phases with richer tooling. The
+      repository will be made public, with a citable release, when the first corpus phase
+      freezes.
+    </p>
+
+    <h2 id="cite">Cite</h2>
+    <p style="margin-bottom: var(--s-7);">
+      <code style="display: block; padding: 0.7rem 0.9rem; font-size: 0.78rem; line-height: 1.6;">
+        Bilal, Mohd. Framing Hallyu in the Indian Press, 2000–2026. Digital Humanities project,
+        pilot phase. The Academy of Korean Studies, 2026.
+      </code>
+    </p>
+  </div>
+</Project>

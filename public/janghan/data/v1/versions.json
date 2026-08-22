@@ -1,0 +1,12 @@
+{
+ "dataset_versions": {
+  "issue1": "v3.3-freeze + v3.3.1 metadata layer",
+  "issue2": "v3.4-issue2-reconciled",
+  "place_ontology": "v1.1 (33 places)",
+  "place_mentions": "dataset v1.2 (Issue 1 only)",
+  "voice": "Stage 4 Codebook A (Issue 1)"
+ },
+ "generated_by": "scripts/build_site.py",
+ "license_data": "CC-BY-4.0 (proposed)",
+ "rights_note": "Page images and full transcription are rights-gated; see /witnesses."
+}

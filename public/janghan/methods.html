@@ -1,0 +1,54 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Methods &amp; data · 長恨 Digital Edition</title>
+<link rel="stylesheet" href="./styles.css"></head><body>
+<div class="parentbar"><div class="wrap"><a href="/">Mohd Bilal</a> <span>·</span>
+<a href="/projects/">Projects</a> <span>·</span> <a href="/projects/janghan/">長恨 project page</a>
+<span class="pb-right">Research interface</span></div></div>
+<header class="site"><div class="wrap"><div class="mast">
+<a href="./index.html" class="logo" style="border:0" aria-label="Home"><span lang="ko" aria-hidden="true">長</span><span lang="ko" aria-hidden="true">恨</span></a>
+<p class="brand"><span lang="ko">長恨</span> Digital Edition<small>Janghan (1927) · gisaeng-edited magazine</small></p>
+<button class="navtoggle" aria-expanded="false" aria-controls="sitenav">Menu</button>
+<nav class="site" id="sitenav" aria-label="Main"><a href="./index.html">The Magazine</a><a href="./issue/jh01.html">Issue 1</a><a href="./issue/jh02.html">Issue 2</a><a href="./contents.html">Contents</a><a href="./architecture.html">Architecture</a><a href="./contributors.html">Contributors</a><a href="./places.html">Places</a><a href="./voices.html">Registers</a><a href="./witnesses.html">Witnesses</a><a href="./methods.html">Methods & Data</a></nav></div></div></header>
+<a class="skip" href="#main">Skip to content</a>
+<main id="main"><div class="wrap"><h1 class="page">Methods &amp; data</h1>
+<p class="lede narrow">The corpus is versioned and frozen in stages, so that every figure can be traced to the exact
+state of the evidence it was drawn from.</p>
+<h2 class="sec">Corpus construction</h2><div class="narrow">
+<p>The edition is built at three levels — <strong>bibliographic entry</strong> (an external catalogue record),
+<strong>editorial unit</strong> (a titled item as the magazine's apparatus presents it), and <strong>textual
+item</strong> (a continuous text with its own title or byline, and the primary coding unit). A symposium is one
+editorial unit with three nested responses; a poem printed inside an essay is a nested textual item.</p>
+<p>Counts are reported at the editorial-unit level and always name their level. The reconstructed counts are
+<strong>not</strong> claims about a historically true number: they converge with the other witnesses after
+reconciliation, and the residual disagreements are published above.</p></div>
+<h2 class="sec">Versions</h2><ul class="plain">
+<li><b>Issue 1 corpus, version 3.3 — frozen.</b> 52 textual items / 48 editorial units. Editorial-unit
+existence, boundaries and inclusion decisions are fixed; the poem layer stays amendable.</li>
+<li><b>Version 3.3.1</b> — a metadata-only amendment (one byline verified against the 1927 scan).</li>
+<li><b>Issue 2 corpus, version 3.4</b> — a working layer: 46 textual items / 41 editorial units, working layer.</li>
+<li><b>Place list v1.1</b> (33 places) · <b>coded place evidence v1.2</b> (Issue 1).</li></ul>
+<h2 class="sec">Coding</h2><div class="narrow">
+<p>Place mentions are coded per <em>episode</em> — a continuous stretch in which one place functions in one
+dominant way — under an eight-value function taxonomy, with explicit rules for relational anchors, rhetorical
+macro-geography, and tabular data (excluded, but preserved as evidence). Statuses distinguish counted mentions
+from gap-logged, logged-not-counted, excluded-evidence and false-positive records, so that decisions are
+reproducible rather than invisible.</p>
+<p>A 20% stratified audit of the Issue-1 coding measured recall at 82% before correction and precision at 100%;
+all misses traced to one mechanical defect (search-form coverage), which was then repaired and re-run.</p></div>
+<div class="exp"><strong>Status of analysis.</strong> Issue-1 descriptive coding is complete; Issue-2 place and
+voice coding has not begun. Competing explanations for the observed patterns — genre composition, text length,
+page register, observer convention, retrieval error, editorial mediation, script register, and genuine
+expressive difference — remain under test. None is presented here as settled.</div>
+<h2 class="sec">Datasets</h2><ul class="plain"><li><a href="data/v1/text_items.json"><code>text_items.json</code></a> — Every textual item in both issues with ids, pages, attribution, register</li><li><a href="data/v1/editorial_units.json"><code>editorial_units.json</code></a> — Editorial units and their member items</li><li><a href="data/v1/contributors.json"><code>contributors.json</code></a> — Bylines, items, cross-issue links</li><li><a href="data/v1/places.json"><code>places.json</code></a> — Place ontology v1.1 (33 places)</li><li><a href="data/v1/place_mentions.json"><code>place_mentions.json</code></a> — Issue-1 place coding, all statuses</li><li><a href="data/v1/bibliographic_entries.json"><code>bibliographic_entries.json</code></a> — Yonsei catalogue witnesses</li><li><a href="data/v1/speaker_turns.json"><code>speaker_turns.json</code></a> — Round-table speaker turns</li><li><a href="data/v1/versions.json"><code>versions.json</code></a> — Dataset versions and rights notes</li></ul>
+<p class="small muted">Proposed licence for coded data: CC-BY-4.0. Source-text rights are stated separately per
+tier on the <a href="witnesses.html">Witnesses</a> page.</p></div></main>
+<footer class="site"><div class="wrap">
+<p><strong>Provenance.</strong> Every datum on this site carries a corpus id and witness attestation.
+Issue 1 corpus <code>v3.3</code> · Issue 2 corpus <code>v3.4</code> · place list v1.1 · coded place evidence v1.2. These are the citable dataset versions;
+pages are generated from the frozen corpus, so the interface cannot drift from the data.</p>
+<p>Page images shown here are research reproductions under review; see <a href="./witnesses.html">Witnesses &amp; Rights</a>.
+Analytical findings are marked <em>exploratory</em> until Issue-2 coding and cross-issue testing are complete.</p>
+</div></footer>
+<script>(function(){var b=document.querySelector('.navtoggle'),n=document.getElementById('sitenav');
+if(b&&n)b.addEventListener('click',function(){var o=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!o));n.classList.toggle('open',!o);});})();</script>
+</body></html>
