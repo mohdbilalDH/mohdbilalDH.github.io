@@ -1,0 +1,131 @@
+---
+/* Three levels, one real object.
+   Research question: why do careful sources disagree about how many articles
+   the magazine holds? Answer, shown rather than argued: the same page counts
+   as 1, 1 or 3 depending on the level you count at. The example is located
+   from the corpus (the largest multi-member editorial unit), not named by
+   hand, so it stays correct if the corpus is re-frozen. */
+import j from '../data/janghan.json';
+
+const s = j.symposium;
+const LX = 196;                       // diagram left edge
+const BOXW = 540;
+const ROW3_X = LX + 44;
+const rowY = { entry: 26, unit: 116, items: 212 };
+const ITEMH = 50, ITEMGAP = 10;
+const items = s ? s.answers.map((a, i) => ({ ...a, y: rowY.items + i * (ITEMH + ITEMGAP) })) : [];
+const H = items.length ? items[items.length - 1].y + ITEMH + 16 : 320;
+
+const levels = [
+  { y: rowY.entry, h: 40, label: 'Bibliographic entry', badge: `${s?.bib_entries ?? 1} entry`,
+    note: 'what an external catalogue records' },
+  { y: rowY.unit, h: 48, label: 'Editorial unit', badge: '1 unit',
+    note: 'what the magazine itself presents' },
+  { y: rowY.items, h: ITEMH, label: 'Textual item', badge: `${s?.item_count ?? 3} items`,
+    note: 'each continuous signed text' },
+];
+---
+<figure id="fig-levels">
+  <div class="fig-head">
+    <span class="fig-no">Figure 2 · Three levels</span>
+    <p class="fig-title">
+      One page of 長恨, counted three ways — this is why the witnesses disagree
+    </p>
+  </div>
+
+  {s && (
+    <svg viewBox={`0 0 760 ${H}`} role="img"
+      aria-label={`Diagram. One bibliographic entry, ${s.bib_label}, corresponds to one editorial unit — the prompt ${s.prompt} — which contains ${s.item_count} separate signed textual items: ${s.answers.map((a) => `${a.title}, signed ${a.byline}`).join('; ')}. A catalogue counting the answers separately and a magazine presenting them as one feature both give an honest but different count.`}>
+
+      {levels.map((L) => (
+        <>
+          <text x="0" y={L.y + 17} font-family="var(--sans)" font-size="13.5" font-weight="600" fill="var(--ink)">
+            {L.label}
+          </text>
+          <text x="0" y={L.y + 34} font-family="var(--sans)" font-size="11.5" fill="var(--faint)">
+            {L.note}
+          </text>
+          <text x="0" y={L.y + 52} font-family="var(--mono)" font-size="11" letter-spacing="1"
+            fill="var(--b4)">{L.badge.toUpperCase()}</text>
+        </>
+      ))}
+
+      {/* entry → unit */}
+      <line x1={LX + 22} y1={rowY.entry + 40} x2={LX + 22} y2={rowY.unit}
+        stroke="var(--rule)" stroke-width="1.5" />
+      {/* unit → items: spine plus one stub per item */}
+      <line x1={LX + 22} y1={rowY.unit + 48} x2={LX + 22} y2={items[items.length - 1].y + ITEMH / 2}
+        stroke="var(--rule)" stroke-width="1.5" />
+      {items.map((it) => (
+        <line x1={LX + 22} y1={it.y + ITEMH / 2} x2={ROW3_X} y2={it.y + ITEMH / 2}
+          stroke="var(--rule)" stroke-width="1.5" />
+      ))}
+
+      {/* bibliographic entry */}
+      <rect x={LX} y={rowY.entry} width={BOXW} height="40" rx="4"
+        fill="var(--paper)" stroke="var(--b4)" stroke-width="1" stroke-dasharray="4 3" />
+      <text x={LX + 16} y={rowY.entry + 25} font-family="var(--mono)" font-size="12.5" fill="var(--b4)">
+        {s.bib_label}
+      </text>
+      <text x={LX + 86} y={rowY.entry + 25} font-family="var(--sans)" font-size="13" fill="var(--muted)">
+        one record in the Yonsei catalogue
+      </text>
+
+      {/* editorial unit */}
+      <rect x={LX} y={rowY.unit} width={BOXW} height="48" rx="4"
+        fill="var(--card)" stroke="var(--ink)" stroke-width="1.2" />
+      <text x={LX + 16} y={rowY.unit + 21} font-family="var(--sans)" font-size="13.5"
+        font-weight="600" fill="var(--ink)" lang="ko">
+        {s.prompt}
+      </text>
+      <text x={LX + 16} y={rowY.unit + 38} font-family="var(--sans)" font-size="11.5" fill="var(--faint)">
+        one editorial prompt, printed as a single feature
+      </text>
+
+      {/* textual items */}
+      {items.map((it) => (
+        <>
+          <rect x={ROW3_X} y={it.y} width={BOXW - 44} height={ITEMH} rx="4"
+            fill="var(--paper)" stroke="var(--rule)" stroke-width="1" />
+          <text x={ROW3_X + 14} y={it.y + 21} font-family="var(--sans)" font-size="13" fill="var(--ink)" lang="ko">
+            {it.title}
+          </text>
+          <text x={ROW3_X + 14} y={it.y + 38} font-family="var(--sans)" font-size="11.5" fill="var(--muted)" lang="ko">
+            signed {it.byline}
+          </text>
+        </>
+      ))}
+    </svg>
+  )}
+
+  <figcaption>
+    A real feature from 창간호: the prompt <span lang="ko">{s?.prompt}</span> (“if I were a customer”), which
+    the magazine prints as one item and three women answer over their own signatures. The Yonsei catalogue
+    records it as {s?.bib_entries} entry; this edition records {s?.item_count} textual items inside
+    1 editorial unit. Both counts are correct at their own level, and neither is wrong — which is precisely
+    why the totals in Figure 1 can never be reconciled into a single number. Across both issues
+    {j.nested_items} texts sit nested inside a parent unit this way, as prompt answers, poems printed within
+    other articles, or serial parts. A byline recorded with a queried reading is shown as recorded.
+  </figcaption>
+
+  {s && (
+    <details class="chart-table">
+      <summary>Data table</summary>
+      <div class="tablewrap">
+        <table>
+          <thead><tr>
+            <th scope="col">Level</th><th scope="col">Identifier</th>
+            <th scope="col">Title / byline</th><th scope="col">Count here</th>
+          </tr></thead>
+          <tbody>
+            <tr><td>Bibliographic entry</td><td>{s.bib_label}</td><td>Catalogued as one record</td><td class="num">{s.bib_entries}</td></tr>
+            <tr><td>Editorial unit</td><td>{s.unit_id}</td><td lang="ko">{s.prompt}</td><td class="num">1</td></tr>
+            {s.answers.map((a) => (
+              <tr><td>Textual item</td><td>—</td><td lang="ko">{a.title} · {a.byline}</td><td class="num">1</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </details>
+  )}
+</figure>

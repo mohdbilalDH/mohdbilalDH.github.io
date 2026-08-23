@@ -3,19 +3,100 @@
   "items": 52,
   "units": 48,
   "date": "10 January 1927",
-  "label": "창간호"
+  "label": "창간호",
+  "register": {
+   "upper": 17,
+   "strip": 6,
+   "unknown": 29
+  },
+  "attested": {
+   "W1": 22,
+   "W2": 52,
+   "W3": 50
+  }
  },
  "issue2": {
   "items": 46,
   "units": 41,
   "date": "February 1927",
-  "label": "2월호"
+  "label": "2월호",
+  "register": {
+   "upper": 0,
+   "strip": 0,
+   "unknown": 46
+  },
+  "attested": {
+   "W1": 0,
+   "W2": 46,
+   "W3": 43
+  }
  },
  "contributors": 44,
  "cross_issue_contributors": 5,
+ "cross_issue_threads": [
+  {
+   "name": "金蘭紅",
+   "certainty": "confirmed"
+  },
+  {
+   "name": "가운",
+   "certainty": "confirmed"
+  },
+  {
+   "name": "梅軒",
+   "certainty": "probable"
+  },
+  {
+   "name": "金南洙",
+   "certainty": "probable"
+  },
+  {
+   "name": "눈밝은쥐",
+   "certainty": "unresolved"
+  }
+ ],
+ "cross_issue_certainty": {
+  "confirmed": 2,
+  "probable": 2,
+  "unresolved": 1
+ },
+ "attribution": {
+  "editor": 8,
+  "gisaeng": 51,
+  "foreign": 8,
+  "unresolved": 31
+ },
+ "certainty": {
+  "probable": 17,
+  "confirmed": 8,
+  "unresolved": 35,
+  "carried_over_unchecked": 38
+ },
+ "symposium": {
+  "unit_id": "jh01.sym01",
+  "bib_entries": 1,
+  "bib_label": "Y1-40",
+  "item_count": 3,
+  "prompt": "내가 만일 손님이라면",
+  "answers": [
+   {
+    "title": "差別업시 하켓다",
+    "byline": "호도 (홍도?)"
+   },
+   {
+    "title": "普通人間으로 對하야 주엇스면",
+    "byline": "一妓生"
+   },
+   {
+    "title": "同情으로써 대하켓다",
+    "byline": "비취"
+   }
+  ]
+ },
  "places": 20,
  "place_mentions": 53,
  "place_mentions_unmappable": 33,
+ "places_listed": 33,
  "not_counted": 18,
  "witnesses": 4,
  "yonsei": {
@@ -26,7 +107,15 @@
   "issue1": 48,
   "issue2": 40
  },
+ "toc_1927_attested": 17,
  "nested_items": 10,
  "register_known": 23,
- "generated": "2026-08-20"
+ "dataset_versions": {
+  "issue1": "v3.3-freeze + v3.3.1 metadata layer",
+  "issue2": "v3.4-issue2-reconciled",
+  "place_ontology": "v1.1 (33 places)",
+  "place_mentions": "dataset v1.2 (Issue 1 only)",
+  "voice": "Stage 4 Codebook A (Issue 1)"
+ },
+ "generated": "2026-08-22"
 }
