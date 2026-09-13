@@ -5,3 +5,8 @@ dist/
 
 # local-only, not for the public repo
 _unpublished/
+
+# brainstorm mockups (visual companion)
+.superpowers/
+tests/.venv/
+tests/screenshots/

@@ -1,25 +1,45 @@
 ---
+import { site } from '../data/site';
+interface Props { current?: string }
 const { current = '' } = Astro.props;
-const nav = [
-  ['/projects/', 'Projects', 'projects'],
-  ['/publications/', 'Publications', 'publications'],
-  ['/visualizations/', 'Visualizations', 'visualizations'],
-  ['/cv/', 'CV', 'cv'],
-  ['/contact/', 'Contact', 'contact'],
-];
 ---
 <header class="site-header" id="site-header">
-  <div class="inner">
-    <a class="brand" href="/">Mohd Bilal</a>
-    <button class="btn nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+  <div class="wrap inner">
+    <a class="wordmark" href="/">{site.name}</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav class="site-nav" id="site-nav" aria-label="Main">
-      {nav.map(([href, label, key]) => (
-        <a href={href} aria-current={key === current ? 'page' : undefined}>{label}</a>
+      {site.nav.map((n, i) => (
+        <a href={n.href} aria-current={n.key === current ? 'page' : undefined}>
+          <span class="idx" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>{n.label}
+        </a>
       ))}
     </nav>
   </div>
 </header>
-
+<style>
+  .site-header { position: sticky; top: 0; z-index: 50; background: var(--paper); border-bottom: var(--rule-w) solid var(--rule); }
+  .inner { display: flex; align-items: center; gap: var(--s-4); padding-top: var(--s-2); padding-bottom: var(--s-2); flex-wrap: wrap; }
+  .wordmark { font: 400 1.25rem/1 var(--f-display); color: var(--ink); text-decoration: none; letter-spacing: -0.01em; transition: color var(--ease); }
+  .wordmark:hover { color: var(--accent); }
+  .site-nav { display: flex; gap: var(--s-3); margin-left: auto; }
+  .site-nav a { font: 400 var(--t-label)/1 var(--f-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: var(--s-1) 0; border-bottom: var(--rule-w) solid transparent; transition: color var(--ease), border-color var(--ease); }
+  .site-nav a .idx { color: var(--accent); margin-right: 0.45em; }
+  .site-nav a:hover { color: var(--ink); }
+  .site-nav a[aria-current='page'] { color: var(--ink); border-bottom-color: var(--accent); }
+  .nav-toggle { display: none; margin-left: auto; font: 400 var(--t-label)/1 var(--f-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); background: transparent; border: var(--rule-w) solid var(--ink); border-radius: var(--radius); padding: 0.7rem 0.9rem; min-height: 44px; cursor: pointer; transition: background var(--ease), color var(--ease); }
+  .nav-toggle:hover, .nav-toggle[aria-expanded='true'] { background: var(--ink); color: var(--paper); }
+  .site-header:not([data-js]) .nav-toggle { display: none !important; }
+  @media (max-width: 899px) {
+    .nav-toggle { display: inline-flex; }
+    .site-header[data-js] .site-nav { display: none; }
+    .site-header[data-js].is-open .site-nav { display: flex; }
+    .site-nav { flex-basis: 100%; flex-direction: column; gap: 0; margin: var(--s-1) 0 0; border-top: 1px solid var(--hairline); }
+    .site-nav a { display: flex; align-items: center; min-height: 48px; padding: 0; font-size: var(--t-meta); border-bottom: 1px solid var(--hairline); }
+    .site-nav a:last-child { border-bottom: 0; }
+    .site-nav a[aria-current='page'] { border-bottom: 1px solid var(--hairline); color: var(--accent); }
+    .site-nav a:last-child[aria-current='page'] { border-bottom: 0; }
+  }
+</style>
 <script>
   const header = document.getElementById('site-header');
   const toggle = header?.querySelector<HTMLButtonElement>('.nav-toggle');
@@ -33,14 +53,8 @@ const nav = [
       toggle.textContent = open ? 'Close' : 'Menu';
     };
     toggle.addEventListener('click', () => setOpen(!isOpen()));
-    nav.addEventListener('click', (e) => {
-      if ((e.target as HTMLElement).closest('a')) setOpen(false);
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && isOpen()) { setOpen(false); toggle.focus(); }
-    });
-    document.addEventListener('click', (e) => {
-      if (isOpen() && !header.contains(e.target as Node)) setOpen(false);
-    });
+    nav.addEventListener('click', (e) => { if ((e.target as HTMLElement).closest('a')) setOpen(false); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && isOpen()) { setOpen(false); toggle.focus(); } });
+    document.addEventListener('click', (e) => { if (isOpen() && !header.contains(e.target as Node)) setOpen(false); });
   }
 </script>

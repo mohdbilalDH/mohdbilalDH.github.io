@@ -1,0 +1,70 @@
+/* Register design system — the only file that declares colours, families, and scale. See ../../../DESIGN.md */
+:root {
+  color-scheme: light;
+
+  /* ground + ink */
+  --paper: #fdfcfa;
+  --surface: #f4f1ea;
+  --ink: #1c1a17;
+  --text: #2c2924;
+  --muted: #5a554c;
+  --hairline: #d9d4ca;
+  --rule: var(--ink);
+
+  /* the one accent */
+  --accent: #c8321f;
+  --accent-deep: #a3281a;
+  --accent-tint: #fbe9e6;
+  --on-accent: #ffffff;
+  --scrim: rgba(28, 26, 23, 0.5);
+
+  /* uncertainty grammar (evidence displays only) */
+  --negative: #8a1c1c;
+  --grade-high: #33684a;
+  --grade-medium: #8a5a00;
+
+  /* validated cohort palette — charts only */
+  --b1: #eda100;
+  --b2: #008878;
+  --b4: #2a78d6;
+  --b5: #a8509d;
+  --b6: #c2551c;
+  --void: #b5af9f;
+
+  /* type */
+  --f-display: 'Newsreader Variable', 'Noto Serif KR', Georgia, serif;
+  --f-body: 'Source Sans 3 Variable', 'Noto Sans KR', system-ui, sans-serif;
+  --f-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  --t-display: 4.5rem;
+  --t-h1: 3rem;
+  --t-h2: 1.75rem;
+  --t-h3: 1.25rem;
+  --t-lede: 1.5rem;
+  --t-body: 1.0625rem;
+  --t-small: 0.9375rem;
+  --t-label: 0.75rem;
+  --t-meta: 0.8125rem;
+  --t-button: 0.9375rem;
+
+  /* space + measure */
+  --s-1: 0.5rem;
+  --s-2: 1rem;
+  --s-3: 1.5rem;
+  --s-4: 2rem;
+  --s-5: 3rem;
+  --s-6: 4rem;
+  --s-7: 6rem;
+  --s-8: 8rem;
+  --w-page: 75rem;
+  --w-prose: 42rem;
+  --w-wide: 66rem;
+
+  /* shape + motion */
+  --radius: 2px;
+  --rule-w: 1.5px;
+  --ease: 150ms ease-out;
+}
+
+@media (max-width: 639px) {
+  :root { --t-display: 2.75rem; --t-h1: 2.25rem; --t-lede: 1.25rem; }
+}

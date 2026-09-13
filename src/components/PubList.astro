@@ -1,0 +1,19 @@
+---
+interface Props { items: { title: string; venue: string; meta?: string }[] }
+const { items } = Astro.props;
+---
+<ul class="pub-list">
+  {items.map((i) => (
+    <li>
+      <span class="title">“{i.title}.”</span> <span class="venue" set:html={i.venue} />
+      {i.meta && <span class="meta label">{i.meta}</span>}
+    </li>
+  ))}
+</ul>
+<style>
+  .pub-list { list-style: none; margin: 0 0 var(--s-4); padding: 0; }
+  .pub-list li { border-bottom: 1px solid var(--hairline); padding: var(--s-2) 0; margin: 0; max-width: var(--w-wide); }
+  .pub-list li:first-child { border-top: var(--rule-w) solid var(--rule); }
+  .title { font-weight: 600; }
+  .meta { display: block; margin-top: 0.35rem; }
+</style>

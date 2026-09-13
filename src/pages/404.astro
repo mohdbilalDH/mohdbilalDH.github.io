@@ -1,14 +1,15 @@
 ---
 import Base from '../layouts/Base.astro';
+import Eyebrow from '../components/Eyebrow.astro';
 ---
 <Base title="Page not found">
   <div class="wrap">
     <div class="page-head">
-      <p class="eyebrow">404</p>
+      <Eyebrow>404</Eyebrow>
       <h1>Page not found</h1>
-      <p class="lede">This page doesn't exist — or, like much of the archive, it once did and left no record.</p>
+      <p class="lede prose">This page doesn't exist — or, like much of the archive, it once did and left no record.</p>
     </div>
-    <p style="margin-bottom: var(--s-7);">
+    <p class="prose">
       Try the <a href="/">home page</a>, <a href="/projects/">projects</a>, or
       <a href="/publications/">publications</a>.
     </p>

@@ -1,0 +1,39 @@
+---
+import type { Project } from '../data/projects';
+import StatusMark from './StatusMark.astro';
+interface Props { projects: Project[]; detailed?: boolean }
+const { projects, detailed = false } = Astro.props;
+---
+<table class={`project-table ${detailed ? 'is-detailed' : ''}`}>
+  <thead><tr><th scope="col">Project</th><th scope="col">Method</th><th scope="col">State</th></tr></thead>
+  <tbody>
+    {projects.map((p) => (
+      <tr>
+        <td class="t">
+          <a href={p.href}><span class="title">{p.title}</span><span class="sub">{p.subtitle}</span></a>
+          {detailed && <p class="desc">{p.description}</p>}
+          {detailed && <p class="tags label">{p.tags.join(' · ')}</p>}
+        </td>
+        <td class="m mono muted">{p.method}</td>
+        <td class="s"><StatusMark state={p.state} label={p.stateLabel} /></td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+<style>
+  .project-table td { padding: var(--s-2) var(--s-2) var(--s-2) 0; }
+  .project-table td.t a { text-decoration: none; display: block; }
+  .project-table .title { display: block; font: 500 1.375rem/1.2 var(--f-display); letter-spacing: -0.01em; color: var(--ink); transition: color var(--ease); }
+  .project-table td.t a:hover .title { color: var(--accent); }
+  .project-table .sub { display: block; color: var(--muted); font-size: var(--t-small); margin-top: 0.2rem; }
+  .project-table .desc { margin: var(--s-1) 0 0; max-width: 40rem; font-size: var(--t-small); }
+  .project-table .tags { margin: var(--s-1) 0 0; text-transform: none; letter-spacing: 0.02em; }
+  .project-table td.m { padding-top: calc(var(--s-2) + 0.35rem); white-space: nowrap; }
+  .project-table td.s { padding-top: calc(var(--s-2) + 0.35rem); white-space: nowrap; }
+  @media (max-width: 639px) {
+    .project-table thead { display: none; }
+    .project-table tr { display: block; border-bottom: 1px solid var(--hairline); padding: var(--s-2) 0; }
+    .project-table td { display: block; border: 0; padding: 0; }
+    .project-table td.m, .project-table td.s { display: inline-block; padding-top: var(--s-1); margin-right: var(--s-2); white-space: normal; }
+  }
+</style>

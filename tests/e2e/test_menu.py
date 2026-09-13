@@ -1,0 +1,23 @@
+from _lib import Browser, BASE, check
+
+with Browser() as b:
+    p = b.page(375, 812)
+    p.goto(BASE + "/")
+    p.wait_for_load_state("networkidle")
+    t = p.locator("button.nav-toggle")
+    nav = p.locator("#site-nav")
+    check(t.is_visible(), "toggle visible on phone")
+    check(not nav.is_visible(), "nav hidden before toggle")
+    t.click()
+    check(t.get_attribute("aria-expanded") == "true" and nav.is_visible(), "opens")
+    check(nav.locator("a").first.bounding_box()["height"] >= 44, "44px tap targets")
+    p.keyboard.press("Escape")
+    check(t.get_attribute("aria-expanded") == "false" and not nav.is_visible(), "Escape closes")
+    check(p.evaluate("document.activeElement.classList.contains('nav-toggle')"), "focus returns to toggle")
+    t.click()
+    p.mouse.click(200, 700)
+    check(t.get_attribute("aria-expanded") == "false", "outside click closes")
+    d = b.page(1280, 900)
+    d.goto(BASE + "/")
+    check(not d.locator("button.nav-toggle").is_visible() and d.locator("#site-nav").is_visible(), "desktop nav inline")
+    check(b.errors == [], f"no console errors: {b.errors}")

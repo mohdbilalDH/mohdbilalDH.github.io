@@ -1,83 +1,79 @@
 ---
 import Base from '../layouts/Base.astro';
+import Eyebrow from '../components/Eyebrow.astro';
+import PubList from '../components/PubList.astro';
+import { articles, byStatus, venueLine } from '../data/publications';
 import presentations from '../data/presentations.json';
+
 const years = [...new Set(presentations.map((p) => p.year))].sort((a, b) => b - a);
-const jsonld = JSON.stringify({
+const published = byStatus('published')[0];
+const jsonld = {
   '@context': 'https://schema.org',
   '@type': 'ScholarlyArticle',
-  headline: 'Hybridizing Culture and Linguistics: A Case Study of K-Dramas’ Impact in India',
+  headline: published.title,
   author: [
     { '@type': 'Person', name: 'Mohd Bilal', sameAs: 'https://orcid.org/0009-0007-8367-4690' },
     { '@type': 'Person', name: 'Santosh Kumar Ranjan' },
   ],
-  datePublished: '2024',
-  isPartOf: { '@type': 'PublicationIssue', issueNumber: '1', isPartOf: { '@type': 'PublicationVolume', volumeNumber: '11', isPartOf: { '@type': 'Periodical', name: 'The Myanmar Journal' } } },
-  pagination: '165-188',
-});
+  datePublished: String(published.year),
+  isPartOf: {
+    '@type': 'PublicationIssue',
+    issueNumber: published.issue,
+    isPartOf: { '@type': 'PublicationVolume', volumeNumber: published.volume, isPartOf: { '@type': 'Periodical', name: published.venue } },
+  },
+  pagination: published.pages?.replace('–', '-'),
+};
 ---
 <Base title="Publications" current="publications"
   description="Publications and conference presentations by Mohd Bilal — Korean Studies, Hallyu, kisaeng studies, Buddhism, and India–Korea comparative research.">
   <Fragment slot="head">
-    <meta name="citation_title" content="Hybridizing Culture and Linguistics: A Case Study of K-Dramas' Impact in India" />
+    <meta name="citation_title" content={published.title.replace('’', "'")} />
     <meta name="citation_author" content="Bilal, Mohd" />
     <meta name="citation_author" content="Ranjan, Santosh Kumar" />
-    <meta name="citation_publication_date" content="2024" />
-    <meta name="citation_journal_title" content="The Myanmar Journal" />
-    <meta name="citation_volume" content="11" />
-    <meta name="citation_issue" content="1" />
+    <meta name="citation_publication_date" content={String(published.year)} />
+    <meta name="citation_journal_title" content={published.venue} />
+    <meta name="citation_volume" content={published.volume} />
+    <meta name="citation_issue" content={published.issue} />
     <meta name="citation_firstpage" content="165" />
     <meta name="citation_lastpage" content="188" />
-    <script type="application/ld+json" set:html={jsonld}></script>
+    <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />
   </Fragment>
 
   <div class="wrap">
     <div class="page-head">
-      <p class="eyebrow">Scholarship</p>
+      <Eyebrow>Scholarship</Eyebrow>
       <h1>Publications</h1>
     </div>
 
-    <h2 style="margin-top: 0;">Journal articles</h2>
-    <ul class="pub-list">
-      <li>
-        <span class="pub-title">“Hybridizing Culture and Linguistics: A Case Study of K-Dramas’ Impact in India.”</span>
-        <span class="pub-venue">With Santosh Kumar Ranjan. <em>The Myanmar Journal</em> 11, no. 1 (2024): 165–188.</span>
-      </li>
-    </ul>
+    <section class="section first">
+      <h2>Journal articles</h2>
+      <PubList items={byStatus('published').map((a) => ({ title: a.title, venue: venueLine(a) }))} />
+    </section>
 
-    <h2>Forthcoming</h2>
-    <ul class="pub-list">
-      <li>
-        <span class="pub-title">“Relic, Axis, and Adaptation: Selective Symbolic Preservation from the Indian Stūpa to the East Asian Pagoda.”</span>
-        <span class="pub-venue"><em>남아시아연구</em> (Journal of South Asian Studies) 32, no. 2 (2026).</span>
-        <p class="pub-meta">Accepted · in proofs</p>
-      </li>
-    </ul>
+    <section class="section">
+      <h2>Forthcoming</h2>
+      <PubList items={byStatus('forthcoming').map((a) => ({ title: a.title, venue: venueLine(a), meta: a.note }))} />
+    </section>
 
-    <h2>Under review</h2>
-    <ul class="pub-list">
-      <li>
-        <span class="pub-title">“The Role of Remakes and Adaptations in Activating Indian Agency.”</span>
-        <span class="pub-venue"><em>Asian Communication Research</em>, special issue “Circuits of K-content: Co-productions, Collaborations, and Connections.”</span>
-        <p class="pub-meta">Manuscript under review</p>
-      </li>
-    </ul>
+    <section class="section">
+      <h2>Under review</h2>
+      <PubList items={byStatus('under-review').map((a) => ({ title: a.title, venue: `<em>${a.venue}</em>, ${a.note}.` }))} />
+    </section>
 
-    <h2>Conference presentations</h2>
-    {years.map((y) => (
-      <>
-        <p class="year-kicker">{y}</p>
-        <ul class="pub-list">
-          {presentations.filter((p) => p.year === y).map((p) => (
-            <li>
-              <span class="pub-title">“{p.title}.”</span>
-              <span class="pub-venue">{p.venue}{p.place ? `, ${p.place}` : ''}, {p.when}.</span>
-            </li>
-          ))}
-        </ul>
-      </>
-    ))}
-    <p style="margin-bottom: var(--s-7); color: var(--muted); font-size: 0.9rem;">
-      A complete academic record, including training and awards, is on the <a href="/cv/">CV</a>.
-    </p>
+    <section class="section">
+      <h2>Conference presentations</h2>
+      {years.map((y) => (
+        <>
+          <p class="label year">{y}</p>
+          <PubList items={presentations.filter((p) => p.year === y).map((p) => ({ title: p.title, venue: `${p.venue}${p.place ? `, ${p.place}` : ''}, ${p.when}.` }))} />
+        </>
+      ))}
+    </section>
+
+    <p class="muted small">A complete academic record, including training and awards, is on the <a href="/cv/">CV</a>.</p>
   </div>
 </Base>
+<style>
+  .first { margin-top: 0; border-top: 0; padding-top: 0; }
+  .year { margin: var(--s-4) 0 var(--s-1); }
+</style>

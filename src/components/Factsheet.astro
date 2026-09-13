@@ -1,0 +1,14 @@
+---
+interface Props { rows: { term: string; html: string }[] }
+const { rows } = Astro.props;
+---
+<dl class="factsheet">
+  {rows.map((r) => <div><dt class="label">{r.term}</dt><dd set:html={r.html} /></div>)}
+</dl>
+<style>
+  .factsheet { margin: var(--s-3) 0; border-top: var(--rule-w) solid var(--rule); }
+  .factsheet > div { display: grid; grid-template-columns: 10rem 1fr; gap: 0 var(--s-2); border-bottom: 1px solid var(--hairline); padding: var(--s-2) 0; }
+  .factsheet dt { margin: 0; padding-top: 0.25rem; }
+  .factsheet dd { margin: 0; font-size: var(--t-small); }
+  @media (max-width: 639px) { .factsheet > div { grid-template-columns: 1fr; gap: 0.25rem; } }
+</style>
