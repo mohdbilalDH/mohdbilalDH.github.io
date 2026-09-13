@@ -51,9 +51,9 @@ const slim = people.people.map((p) => ({
     <g class="blk" data-era="B6" tabindex="0" role="button" aria-label="Open era: The institutional turn, 1990 to 2026"><rect x={x(1990)} y={Y} width={x(2027) - x(1990)} height={H} rx="2" fill="var(--b6)" /></g>
   </svg>
 
-  <div class="era-tabs" role="tablist" aria-label="Eras">
+  <div class="era-tabs" role="group" aria-label="Eras">
     {eras.map((e) => (
-      <button class="era-tab" role="tab" data-era={e.id} aria-selected="false">
+      <button class="era-tab" type="button" data-era={e.id} aria-pressed="false">
         <span class="dot" style={e.id === 'B3' ? 'background: transparent; border: 1.5px dashed var(--void);' : `background: var(--${e.id.toLowerCase()});`}></span>
         <span class="tname">{e.name}</span>
         <span class="tyears">{e.years}{e.id === 'B3' ? '' : ` · ${sizes[e.id]}`}</span>
@@ -86,7 +86,7 @@ const slim = people.people.map((p) => ({
     transition: border-color var(--ease), background var(--ease);
   }
   .era-tab:hover { border-color: var(--ink); }
-  .era-tab[aria-selected="true"] { background: var(--surface); border-color: var(--ink); }
+  .era-tab[aria-pressed="true"] { background: var(--surface); border-color: var(--ink); }
   .era-tab .dot { width: 11px; height: 11px; border-radius: var(--radius); flex: none; }
   .era-tab .tname { font-size: var(--t-small); font-weight: 600; }
   .era-tab .tyears { font: 400 var(--t-label)/1 var(--f-mono); color: var(--muted); }
@@ -115,7 +115,7 @@ const slim = people.people.map((p) => ({
 
   function openEra(id, scroll) {
     const era = eras.find((e) => e.id === id);
-    tabs.forEach((t) => t.setAttribute('aria-selected', String(t.dataset.era === id)));
+    tabs.forEach((t) => t.setAttribute('aria-pressed', String(t.dataset.era === id)));
     if (era.id === 'B3') { renderVoid(era); } else { renderEra(era); }
     panel.hidden = false;
     if (scroll) panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });

@@ -78,7 +78,7 @@ const columns = [
       <h2>The register</h2>
       <p class="small muted prose">All {people.people.length} carried mediators. Search by name, era, or mediation type; select a row for the full record.</p>
       <div class="search-row">
-        <input class="reg-search" id="reg-search" type="search" placeholder="Search the 43 mediators…" aria-label="Search register" autocomplete="off" />
+        <input class="reg-search" id="reg-search" type="search" placeholder="Search the 43 mediators…" aria-label="Search register" name="q" autocomplete="off" spellcheck="false" />
         <p class="mono muted" id="reg-count" aria-live="polite"></p>
       </div>
       <DataTable id="reg-table" columns={columns}>
@@ -134,7 +134,14 @@ const columns = [
         regEmptyMsg.textContent = `No mediators match “${raw}”. Try a name, an era code (B1–B5), or a mediation type such as pilgrim or student.`;
       }
     }
-    regInput.addEventListener('input', filterRegister);
+    function syncUrl(key, value) {
+      const u = new URL(location.href);
+      if (value) u.searchParams.set(key, value); else u.searchParams.delete(key);
+      history.replaceState(null, '', u);
+    }
+    regInput.addEventListener('input', () => { filterRegister(); syncUrl('q', regInput.value.trim()); });
+    const initialQ = new URLSearchParams(location.search).get('q');
+    if (initialQ) regInput.value = initialQ;
     document.getElementById('reg-clear').addEventListener('click', () => {
       regInput.value = '';
       filterRegister();
@@ -203,7 +210,9 @@ const columns = [
       document.querySelectorAll('.preset').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
       setZoomPressed(p.zoom);
       buildAdvancedLanes(); render();
+      syncUrl('view', state.preset === 'bridges' ? '' : state.preset);
     }));
+    { const v = new URLSearchParams(location.search).get('view'); if (v && PRESETS[v]) document.querySelector(`.preset[data-preset="${v}"]`)?.click(); }
     function clearPresetPressed() {
       document.querySelectorAll('.preset').forEach((x) => x.setAttribute('aria-pressed', 'false'));
     }
