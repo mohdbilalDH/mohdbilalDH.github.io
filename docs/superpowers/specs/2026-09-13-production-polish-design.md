@@ -54,8 +54,8 @@ Requirements:
   at least 44px tall.
 - Closes on Escape, on outside click, and on link activation. Focus returns to the
   toggle on Escape.
-- Works without JavaScript degrade: if the script has not run, the nav is visible
-  (progressive enhancement via a `js` class on `<html>`).
+- Works without JavaScript: if the script has not run, the nav is visible and the
+  toggle is hidden (the script sets `data-js` on the header; CSS keys off it).
 - Implemented once in `SiteHeader.astro`; no per-page scripts.
 
 **Buttons.** Two classes added to `global.css`, per DESIGN.md §4:
@@ -96,7 +96,7 @@ zoom buttons, dialog close button. Transitions 150ms, color/border/background on
   "3 of 43 mediators match 'hye'" while filtering, in `aria-live="polite"`.
 - Empty state when zero rows match: a single table row spanning all columns, text
   "No mediators match 'zzzz'. Try a name, an era code (B1–B5), or a mediation type
-  such as pilgrim or translator." plus a "Clear search" button that empties the input
+  such as pilgrim or student." plus a "Clear search" button that empties the input
   and refocuses it.
 - The native `type="search"` clear affordance is kept.
 
