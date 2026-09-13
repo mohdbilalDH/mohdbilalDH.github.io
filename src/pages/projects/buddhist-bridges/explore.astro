@@ -19,23 +19,32 @@ const life = (p) => {
 <Project title="Buddhist Bridges — Explore the Evidence" description="The full timeline instrument and prosopographical register behind Five Bridges, One Silence.">
   <style>
     .tl-controls { font-family: var(--sans); display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin: 1.2rem 0 0.6rem; }
-    .preset { font: 600 0.8rem/1.3 var(--sans); padding: 0.4rem 0.8rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--card); color: var(--ink); cursor: pointer; }
-    .preset[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+    .preset {
+      font: 500 0.8rem/1.2 var(--sans); min-height: 2.5rem; padding: 0.4rem 0.9rem;
+      border: 1px solid rgba(7, 7, 9, 0.22); border-radius: 9999px; background: transparent;
+      color: var(--ink); cursor: pointer;
+      transition: border-color 150ms ease, background-color 150ms ease, color 150ms ease;
+    }
+    .preset:hover { border-color: var(--ink); }
+    .preset[aria-pressed="true"] { background: var(--accent); color: var(--paper); border-color: var(--accent); }
     .zoombar { font-family: var(--sans); font-size: 0.76rem; color: var(--muted); display: flex; gap: 0.7rem; margin: 0.3rem 0 0.6rem; flex-wrap: wrap; }
-    .zoombar button { font: 0.76rem var(--sans); border: none; background: none; color: var(--link); cursor: pointer; padding: 0; text-decoration: underline; text-underline-offset: 2px; }
+    .zoombar button { font: 0.76rem var(--sans); min-height: 2rem; border: none; background: none; color: var(--link); cursor: pointer; padding: 0; text-decoration: underline; text-underline-offset: 2px; transition: color 150ms ease; }
     .zoombar button[aria-pressed="true"] { color: var(--ink); font-weight: 600; text-decoration: none; }
     #tl-chart { position: relative; }
     #tl-chart svg { display: block; width: 100%; height: auto; background: var(--paper); }
-    #tl-tip { position: absolute; pointer-events: none; display: none; z-index: 20; background: var(--card); border: 1px solid var(--rule); border-radius: 6px; box-shadow: 0 3px 14px rgba(0,0,0,0.18); padding: 0.55rem 0.7rem; max-width: 330px; font: 0.78rem/1.5 var(--sans); }
+    #tl-tip { position: absolute; pointer-events: none; display: none; z-index: 20; background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); padding: 0.55rem 0.7rem; max-width: 330px; font: 0.78rem/1.5 var(--sans); }
     #tl-tip h4 { margin: 0 0 0.15rem; font-size: 0.84rem; }
     #tl-tip .tt-sub { color: var(--muted); }
     details.adv { font-family: var(--sans); font-size: 0.8rem; margin: 0.4rem 0 1rem; }
     details.adv summary { color: var(--link); cursor: pointer; }
     details.adv .row { display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; padding: 0.6rem 0 0.2rem; color: var(--muted); }
     details.adv label { cursor: pointer; }
-    .reg-search { font: 0.9rem var(--sans); padding: 0.45rem 0.7rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); color: var(--ink); width: min(320px, 100%); }
+    .reg-search { font: 0.9rem var(--sans); min-height: 2.5rem; padding: 0.45rem 0.7rem; border: 1px solid var(--rule); border-radius: var(--radius); background: var(--paper); color: var(--ink); width: min(320px, 100%); transition: border-color 150ms ease; }
+    .reg-search:hover { border-color: var(--ink); }
     .reg-row { cursor: pointer; }
-    .reg-row:hover td { background: var(--card); }
+    .reg-row td { transition: background-color 150ms ease; }
+    .reg-row:hover td, .reg-row:focus-visible td { background: var(--card); }
+    @media (max-width: 767px) { .reg-row td { padding-top: 0.75rem; padding-bottom: 0.75rem; } }
   </style>
 
   <div class="wrap-wide" style="padding-top: 2.6rem;">
@@ -69,7 +78,10 @@ const life = (p) => {
         <label><input type="checkbox" id="adv-legendary"> show legendary material</label>
       </div>
     </details>
-    <div id="tl-chart" data-base={base}><div id="tl-tip" role="status"></div></div>
+    <div id="tl-chart" data-base={base}>
+      <div id="tl-status" class="chart-frame" role="status"><p>Loading the timeline…</p></div>
+      <div id="tl-tip" role="status"></div>
+    </div>
     <p class="small" id="tl-count" aria-live="polite"></p>
     <p class="small" style="max-width: 46rem;">
       Solid = explicitly dated · fuzzy/dashed = floruit or approximate · hatched = single source ·
@@ -81,6 +93,7 @@ const life = (p) => {
     <h2 style="font-size: 1.2rem; margin-top: 3rem;">The register</h2>
     <p class="small" style="max-width: 46rem;">All {people.people.length} carried mediators. Search by name, era, or mediation type; select a row for the full record.</p>
     <input class="reg-search" id="reg-search" type="search" placeholder="Search the 43 mediators…" aria-label="Search register" />
+    <p class="result-count" id="reg-count" aria-live="polite"></p>
     <div class="tablewrap">
       <table id="reg-table">
         <thead><tr><th>Name</th><th></th><th>Era</th><th>Dates</th><th>Mediation</th><th>Confidence</th></tr></thead>
@@ -95,6 +108,14 @@ const life = (p) => {
               <td><span class={`badge ${p.confidence.toLowerCase()}`}>{p.confidence}</span>{p.single_source && <span class="badge">1 src</span>}</td>
             </tr>
           ))}
+          <tr id="reg-empty" hidden>
+            <td colspan="6">
+              <div class="empty-state">
+                <p id="reg-empty-msg"></p>
+                <button type="button" class="btn" id="reg-clear">Clear search</button>
+              </div>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -109,12 +130,35 @@ const life = (p) => {
       r.addEventListener('click', open);
       r.addEventListener('keydown', (ev) => { if (ev.key === 'Enter') open(); });
     });
-    document.getElementById('reg-search').addEventListener('input', (ev) => {
-      const q = ev.target.value.trim().toLowerCase();
-      document.querySelectorAll('.reg-row').forEach((r) => {
-        r.style.display = !q || r.dataset.search.includes(q) ? '' : 'none';
+    const regInput = document.getElementById('reg-search');
+    const regRows = [...document.querySelectorAll('.reg-row')];
+    const regCount = document.getElementById('reg-count');
+    const regEmpty = document.getElementById('reg-empty');
+    const regEmptyMsg = document.getElementById('reg-empty-msg');
+    function filterRegister() {
+      const raw = regInput.value.trim();
+      const q = raw.toLowerCase();
+      let shown = 0;
+      regRows.forEach((r) => {
+        const hit = !q || r.dataset.search.includes(q);
+        r.hidden = !hit;
+        if (hit) shown++;
       });
+      regCount.textContent = q
+        ? `${shown} of ${regRows.length} mediators match “${raw}”`
+        : `${regRows.length} of ${regRows.length} mediators`;
+      regEmpty.hidden = shown > 0;
+      if (shown === 0) {
+        regEmptyMsg.textContent = `No mediators match “${raw}”. Try a name, an era code (B1–B5), or a mediation type such as pilgrim or student.`;
+      }
+    }
+    regInput.addEventListener('input', filterRegister);
+    document.getElementById('reg-clear').addEventListener('click', () => {
+      regInput.value = '';
+      filterRegister();
+      regInput.focus();
     });
+    filterRegister();
 
     // ——— timeline instrument (reads the validated timeline.json export) ———
     const root = document.getElementById('tl-chart');
@@ -138,23 +182,37 @@ const life = (p) => {
       corrob: false, context: false, legendary: false, preset: 'bridges',
     };
 
-    fetch(`${BASE}/data/timeline.json`).then((r) => r.json()).then((d) => {
-      data = d;
-      buildAdvancedLanes();
-      render();
-    });
+    const STATUS = document.getElementById('tl-status');
+    function loadTimeline() {
+      STATUS.hidden = false;
+      STATUS.innerHTML = '<p>Loading the timeline…</p>';
+      fetch(`${BASE}/data/timeline.json`)
+        .then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
+        .then((d) => {
+          data = d;
+          STATUS.hidden = true;
+          buildAdvancedLanes();
+          render();
+        })
+        .catch(() => {
+          STATUS.hidden = false;
+          STATUS.innerHTML = '<p>The timeline could not be loaded.</p><button type="button" class="btn" id="tl-retry">Try again</button>';
+          document.getElementById('tl-retry').addEventListener('click', loadTimeline);
+        });
+    }
+    loadTimeline();
 
     function buildAdvancedLanes() {
       const box = document.getElementById('adv-lanes');
       box.innerHTML = Object.entries(LANE_LABELS).map(([k, v]) =>
         `<label><input type="checkbox" data-lane="${k}" ${state.lanes.has(k) ? 'checked' : ''}> ${v}</label>`).join('');
-      box.addEventListener('change', (e) => {
-        const lane = e.target.dataset.lane;
-        if (!lane) return;
-        e.target.checked ? state.lanes.add(lane) : state.lanes.delete(lane);
-        clearPresetPressed(); render();
-      });
     }
+    document.getElementById('adv-lanes').addEventListener('change', (e) => {
+      const lane = e.target.dataset.lane;
+      if (!lane) return;
+      e.target.checked ? state.lanes.add(lane) : state.lanes.delete(lane);
+      clearPresetPressed(); render();
+    });
     document.querySelectorAll('.preset').forEach((b) => b.addEventListener('click', () => {
       state.preset = b.dataset.preset;
       const p = PRESETS[state.preset];
@@ -218,6 +276,7 @@ const life = (p) => {
     }
 
     function render() {
+      if (!data) return;
       const [t0, t1] = state.domain;
       const W = 1160, M = { l: 10, r: 10 };
       const x = (yr) => M.l + ((yr - t0) / (t1 - t0)) * (W - M.l - M.r);
