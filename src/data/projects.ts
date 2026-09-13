@@ -1,3 +1,5 @@
+export type Category = 'editions' | 'networks' | 'corpora';
+
 export type Project = {
   slug: string;
   href: string;
@@ -8,13 +10,22 @@ export type Project = {
   state: 'frozen' | 'in-progress';
   stateLabel: string;
   tags: string[];
+  category: Category;
+  yearLabel: string;
+  art: string;
+  overlay: 1 | 2 | 3 | 4;
 };
+
+export const categories: { key: Category; title: string }[] = [
+  { key: 'editions', title: 'Digital editions and datasets' },
+  { key: 'corpora', title: 'Press corpora' },
+];
 
 export const projects: Project[] = [
   {
     slug: 'janghan',
     href: '/projects/janghan/',
-    title: '長恨 (1927)',
+    title: '長恨 (1927): the magazine the gisaeng made',
     subtitle: 'The magazine the gisaeng made',
     method: 'digital edition',
     state: 'frozen',
@@ -22,11 +33,15 @@ export const projects: Project[] = [
     description:
       'For two issues in 1927, women registered as gisaeng edited and largely wrote their own magazine. A digital scholarly edition of both issues, reconstructed from four independent witnesses that disagree about what the magazine contained — with every item, contributor and place opening to the evidence behind it.',
     tags: ['Digital edition', 'structural encoding', 'spatial coding', 'Korean colonial print culture'],
+    category: 'editions',
+    yearLabel: '1927 · Issue 1 corpus frozen',
+    art: '/art/janghan.png',
+    overlay: 1,
   },
   {
     slug: 'buddhist-bridges',
     href: '/projects/buddhist-bridges/',
-    title: 'Buddhist Bridges',
+    title: 'Buddhist Bridges: five bridges, one silence',
     subtitle: 'Five bridges, one silence',
     method: 'prosopography',
     state: 'frozen',
@@ -34,6 +49,10 @@ export const projects: Project[] = [
     description:
       'Who actually mediated Buddhist exchange between India and Korea, 300–2026? A source-graded prosopography of 43 documented mediators, with a frozen, checksummed dataset and an interactive chronology.',
     tags: ['Prosopography', 'timeline', 'network', 'Python + Astro', 'data CC-BY-4.0'],
+    category: 'editions',
+    yearLabel: '300–2026 · Dataset V3.0 frozen',
+    art: '/art/buddhist-bridges.png',
+    overlay: 3,
   },
   {
     slug: 'hallyu-indian-press',
@@ -46,5 +65,9 @@ export const projects: Project[] = [
     description:
       'How did Indian English-language newspapers represent and frame Hallyu as Korean popular culture became visible in India? A reproducible corpus project; the 2000–2010 pilot is complete and has already produced a publishable-grade negative finding.',
     tags: ['Web archives', 'SQLite + FTS5', 'Python', 'metadata-only publishing'],
+    category: 'corpora',
+    yearLabel: '2000–2026 · Pilot complete',
+    art: '/art/hallyu.png',
+    overlay: 2,
   },
 ];

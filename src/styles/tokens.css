@@ -70,6 +70,25 @@
   --r-tile: 16px;
   --ease: 200ms ease-out;
   --fade: 600ms ease-out;
+
+  /* aliases used by the figure components and evidence displays (map onto the system) */
+  --paper: var(--white);
+  --surface: var(--ground);
+  --ink: var(--heading);
+  --accent: var(--navy);
+  --accent-tint: rgba(249, 195, 73, 0.35);
+  --on-accent: var(--white);
+  --rule: var(--navy);
+  --rule-w: 2px;
+  --radius: 8px;
+  --f-display: var(--f-title);
+  --t-label: 12px;
+  --t-meta: 13px;
+  --t-h3: 20px;
+  --t-lede: var(--t-intro);
+  --w-prose: var(--w-measure);
+  --w-wide: var(--w-page);
+  --s-1: 0.5rem; --s-2: 1rem; --s-3: 1.5rem; --s-4: 2rem; --s-5: 3rem; --s-6: 4rem; --s-7: 6rem; --s-8: 8rem;
 }
 
 @media (max-width: 768px) {

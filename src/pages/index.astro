@@ -1,62 +1,82 @@
 ---
 import Base from '../layouts/Base.astro';
 import Button from '../components/Button.astro';
-import Eyebrow from '../components/Eyebrow.astro';
-import ProjectTable from '../components/ProjectTable.astro';
-import PubList from '../components/PubList.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import CardRow from '../components/CardRow.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Tile from '../components/Tile.astro';
 import { site } from '../data/site';
 import { projects } from '../data/projects';
-import { articles, venueLine } from '../data/publications';
+import { byStatus } from '../data/publications';
 import presentations from '../data/presentations.json';
 
-const recent = [
-  ...articles
-    .filter((a) => a.status !== 'under-review')
-    .sort((a, b) => b.year - a.year)
-    .map((a) => ({ title: a.title, venue: venueLine(a), meta: a.status === 'forthcoming' ? 'Journal article · forthcoming' : 'Journal article' })),
-  ...presentations.slice(0, 2).map((p) => ({ title: p.title, venue: `${p.venue}${p.place ? `, ${p.place}` : ''}.`, meta: `Conference presentation · ${p.when}` })),
+const forthcoming = byStatus('forthcoming')[0];
+const latestTalk = presentations[0];
+const news = [
+  { href: '/publications/', date: 'Forthcoming · 2026', title: forthcoming.title, meta: `${forthcoming.venue} ${forthcoming.volume}, no. ${forthcoming.issue}` },
+  { href: '/publications/', date: latestTalk.when, title: latestTalk.title, meta: `${latestTalk.venue}${latestTalk.place ? `, ${latestTalk.place}` : ''}` },
+  { href: '/projects/buddhist-bridges/', date: 'Dataset · 17 August 2026', title: 'Buddhist Bridges dataset V3.0 frozen and checksummed', meta: '43 documented mediators, 187 graded sources, CC-BY-4.0' },
 ];
+const talks = presentations.slice(0, 6);
 ---
-<Base current="">
-  <div class="wrap">
-    <section class="hero">
-      <Eyebrow>{site.role}</Eyebrow>
-      <h1 class="display">{site.name}</h1>
-      <p class="mono muted role">{site.affiliation}</p>
-      <div class="hero-grid">
-        <div class="hero-main">
-          <p class="lede">{site.lede}</p>
-          <div class="btn-row no-print">
-            <Button href="/projects/" variant="primary">View projects</Button>
-            <Button href="/files/mohd-bilal-cv.pdf" download>Download CV (PDF)</Button>
-          </div>
-        </div>
-        <div class="hero-side">
-          <ProjectTable projects={projects} />
-        </div>
+<Base current="home">
+  <section class="band hero-band">
+    <div class="wrap hero">
+      <div class="hero-text">
+        <h1 class="page-title">{site.name}</h1>
+        <p class="intro">{site.lede}</p>
+        <Button href="/about/" variant="primary">More details »</Button>
       </div>
-    </section>
+      <figure class="hero-fig">
+        <img src="/janghan/assets/jh01-cover.png" width="900" height="1470" fetchpriority="high"
+             alt="Cover of 長恨 issue 1, January 1927: a woman seated inside a birdcage, with the title in two circular seals above." />
+        <figcaption class="caption"><span lang="ko">長恨 창간호</span>, 10 January 1927 — the magazine the gisaeng made. Yonsei University Library copy, from the 長恨 digital edition.</figcaption>
+      </figure>
+    </div>
+  </section>
 
-    <section class="prose bio">
-      {site.bio.map((p) => <p set:html={p} />)}
-    </section>
+  <section class="band band--white">
+    <div class="wrap">
+      <SectionHeading>What's New</SectionHeading>
+      <div class="tile-grid">
+        {news.map((n) => <Tile href={n.href} date={n.date} title={n.title} meta={n.meta} />)}
+      </div>
+    </div>
+  </section>
 
-    <section class="section">
-      <h2>Recent</h2>
-      <PubList items={recent} />
-      <p class="no-print"><a href="/publications/">All publications and presentations →</a></p>
-    </section>
-  </div>
+  <section class="band">
+    <div class="wrap">
+      <SectionHeading>Explore my Projects</SectionHeading>
+      <p class="intro band-intro">Digital Humanities projects built on documented sources, graded evidence, and reproducible pipelines.</p>
+      <CardRow cols={3}>
+        {projects.map((p) => <ProjectCard project={p} />)}
+      </CardRow>
+      <div class="btn-row"><Button href="/projects/" variant="primary">View all projects »</Button></div>
+    </div>
+  </section>
+
+  <section class="band band--white">
+    <div class="wrap">
+      <SectionHeading>Talks and Presentations</SectionHeading>
+      <div class="tile-grid">
+        {talks.map((t) => <Tile date={t.when} title={t.title} meta={`${t.venue}${t.place ? `, ${t.place}` : ''}`} />)}
+      </div>
+      <div class="btn-row"><Button href="/publications/" variant="primary">View all »</Button></div>
+    </div>
+  </section>
 </Base>
 <style>
-  .hero { padding: var(--s-6) 0 var(--s-5); border-bottom: var(--rule-w) solid var(--rule); }
-  .role { margin: var(--s-2) 0 var(--s-5); }
-  .hero-grid { display: grid; gap: var(--s-5); }
-  .hero-main .lede { max-width: 36rem; }
-  .side-label { margin: 0 0 var(--s-1); }
-  @media (min-width: 1200px) {
-    .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); align-items: start; gap: var(--s-7); }
+  .hero-band { padding: 100px 0 70px; }
+  .hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; }
+  .hero-text .page-title { line-height: 1.2; margin-bottom: 20px; }
+  .hero-text .intro { margin-bottom: 32px; }
+  .hero-fig { margin: 0; justify-self: end; max-width: 380px; }
+  .hero-fig img { display: block; width: 100%; height: auto; border-radius: var(--r-card); }
+  .hero-fig figcaption { margin-top: 12px; }
+  .band-intro { margin-bottom: 28px; }
+  @media (max-width: 900px) {
+    .hero-band { padding: 60px 0 50px; }
+    .hero { grid-template-columns: 1fr; gap: 36px; }
+    .hero-fig { justify-self: start; max-width: 320px; }
   }
-  .bio { padding-top: var(--s-5); }
-  @media (max-width: 639px) { .hero { padding-top: var(--s-5); } .role { margin-bottom: var(--s-4); } }
 </style>

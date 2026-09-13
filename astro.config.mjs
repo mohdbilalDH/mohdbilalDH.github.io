@@ -12,7 +12,6 @@ export default defineConfig({
   // Stubs for the briefly-live redesign URLs → their equivalents in the
   // restored structure (static meta-refresh; GitHub Pages has no server redirects).
   redirects: {
-    '/about': '/',
     '/notes': '/',
     '/projects/hallyu-press': '/projects/hallyu-indian-press',
   },

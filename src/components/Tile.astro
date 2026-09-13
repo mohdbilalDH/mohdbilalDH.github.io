@@ -1,0 +1,23 @@
+---
+// White rounded tile used in the "What's New" and "Talks and Presentations" bands.
+interface Props { href?: string; date: string; title: string; meta?: string }
+const { href, date, title, meta } = Astro.props;
+const Tag = href ? 'a' : 'div';
+---
+<Tag class="tile" href={href}>
+  <span class="tile-date">{date}</span>
+  <span class="tile-title">{title}</span>
+  {meta && <span class="tile-meta">{meta}</span>}
+</Tag>
+<style>
+  .tile { display: flex; flex-direction: column; gap: 8px; background: var(--white); border: 1px solid var(--hairline); border-radius: var(--r-tile); padding: 24px; text-decoration: none; color: inherit; min-height: 160px; transition: border-color var(--ease), transform var(--ease); }
+  a.tile:hover { border-color: var(--yellow); transform: translateY(-2px); text-decoration: none; color: inherit; }
+  .tile-date { font: 500 13px/1.4 var(--f-body); color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .tile-title { font: 700 18px/1.35 var(--f-title); color: var(--heading); text-wrap: balance; }
+  .tile-meta { font-size: 13px; line-height: 1.5; color: var(--muted); margin-top: auto; }
+</style>
+<style is:global>
+  .tile-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  @media (max-width: 1024px) { .tile-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 640px) { .tile-grid { grid-template-columns: 1fr; } }
+</style>

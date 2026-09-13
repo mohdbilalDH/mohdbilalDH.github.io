@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import PageTitle from '../components/PageTitle.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Factsheet from '../components/Factsheet.astro';
+import Button from '../components/Button.astro';
+import { site } from '../data/site';
+
+const rows = [
+  { term: 'Affiliation', html: 'M.A. student, Division of Global Korean Studies,<br />The Academy of Korean Studies, Seongnam, Republic of Korea' },
+  { term: 'Research areas', html: 'Hallyu and media reception · Korean cultural history (kisaeng and colonial-period print culture) · Digital humanities methods · India–Korea exchanges' },
+  { term: 'Email', html: `<a href="mailto:${site.email}">${site.email}</a>` },
+  { term: 'ORCID', html: `<a href="${site.orcid}">${site.orcidId}</a>` },
+  { term: 'Code & data', html: `<a href="${site.github}">${site.githubLabel}</a>` },
+];
+---
+<Base title="About" current="about" description={site.description}>
+  <PageTitle title="About" lede={site.lede} />
+  <section class="band band--flush">
+    <div class="wrap">
+      <div class="measure">
+        {site.bio.map((p) => <p class="intro" set:html={p} />)}
+      </div>
+      <SectionHeading>At a glance</SectionHeading>
+      <div class="measure"><Factsheet rows={rows} /></div>
+      <div class="btn-row no-print">
+        <Button href="/files/mohd-bilal-cv.pdf" variant="primary" download>Download CV (PDF)</Button>
+        <Button href="/projects/" variant="ghost">View projects</Button>
+      </div>
+    </div>
+  </section>
+</Base>
