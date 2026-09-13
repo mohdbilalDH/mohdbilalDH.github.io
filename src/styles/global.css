@@ -84,7 +84,7 @@ body {
 
 ::selection { background: color-mix(in srgb, var(--link) 18%, transparent); }
 
-a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 2.5px; }
+a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 2.5px; transition: color 150ms ease; }
 a:hover { color: var(--accent); }
 :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 2px; }
 
@@ -184,40 +184,98 @@ td { border-bottom: 1px solid var(--rule); padding: 0.5rem 0.7rem 0.5rem 0; vert
   text-decoration-thickness: 1px;
 }
 .linklike:hover { color: var(--accent); }
+.linklike { transition: color 150ms ease; }
 
 /* =========================================================
    Site chrome — personal academic site (extends the
    Buddhist Bridges design system site-wide; see DESIGN.md)
    ========================================================= */
 
-.site-header { border-bottom: 1px solid var(--rule); background: var(--paper); }
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  border-bottom: 1px solid var(--rule); background: var(--paper);
+}
 .site-header .inner {
-  max-width: 66rem; margin: 0 auto; padding: 0.85rem 1.25rem;
-  display: flex; align-items: baseline; gap: 1.6rem; flex-wrap: wrap;
+  max-width: 66rem; margin: 0 auto; padding: 0.75rem 1.25rem;
+  display: flex; align-items: center; gap: 1.6rem; flex-wrap: wrap;
 }
 .brand {
   font-family: var(--serif); font-size: 1.02rem; font-weight: 600;
   color: var(--ink); text-decoration: none; letter-spacing: -0.01em;
+  transition: color 150ms ease;
 }
 .brand:hover { color: var(--accent); }
 .site-nav { display: flex; gap: 1.15rem; flex-wrap: wrap; margin-left: auto; }
 .site-nav a {
   font: 500 var(--t-ui)/1.4 var(--sans); color: var(--muted); text-decoration: none;
+  padding: 0.35rem 0; transition: color 150ms ease;
 }
 .site-nav a:hover { color: var(--accent); }
 .site-nav a[aria-current='page'] {
   color: var(--ink);
-  border-bottom: 2px solid var(--accent); padding-bottom: 2px;
+  border-bottom: 2px solid var(--accent); padding-bottom: calc(0.35rem - 2px);
 }
-@media (max-width: 560px) {
+.nav-toggle { display: none; margin-left: auto; }
+.site-header:not([data-js]) .nav-toggle { display: none !important; }
+@media (max-width: 767px) {
   .site-header .inner { gap: 0.6rem 1rem; }
-  .site-nav { margin-left: 0; gap: 0.85rem 1rem; }
+  .nav-toggle { display: inline-flex; }
+  .site-header[data-js] .site-nav { display: none; }
+  .site-header[data-js].is-open .site-nav { display: flex; }
+  .site-nav {
+    flex-basis: 100%; flex-direction: column; gap: 0;
+    margin: 0.35rem 0 0.25rem; border-top: 1px solid var(--rule);
+  }
+  .site-nav a {
+    display: block; min-height: 2.75rem; line-height: 2.75rem; padding: 0;
+    font-size: 1rem; border-bottom: 1px solid var(--rule);
+  }
+  .site-nav a:last-child { border-bottom: none; }
+  .site-nav a[aria-current='page'] {
+    border-bottom: 1px solid var(--rule); padding-bottom: 0;
+    text-decoration: underline; text-decoration-color: var(--accent);
+    text-underline-offset: 6px; text-decoration-thickness: 2px;
+  }
+  .site-nav a:last-child[aria-current='page'] { border-bottom: none; }
 }
 
 .site-footer .inner { max-width: 66rem; margin: 0 auto; padding: 1.4rem 1.25rem 2.4rem; }
 .site-footer nav { display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.35rem 0 0.75rem; }
 .site-footer a { color: var(--muted); }
 .site-footer a:hover { color: var(--accent); }
+.site-footer a { transition: color 150ms ease; }
+.site-footer .who { margin: 0; color: var(--muted); }
+.site-footer .who strong { color: var(--ink); font-family: var(--serif); font-size: 0.95rem; font-weight: 600; }
+.site-footer .links { margin: 0; }
+
+/* ---- buttons (DESIGN.md §4: outline pill by default, one filled pill per page) ---- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
+  min-height: 2.5rem; padding: 0.5rem 1.05rem; border-radius: 9999px;
+  border: 1px solid rgba(7, 7, 9, 0.22); background: transparent; color: var(--ink);
+  font: 500 var(--t-ui)/1.2 var(--sans); text-decoration: none; cursor: pointer;
+  transition: border-color 150ms ease, background-color 150ms ease, color 150ms ease, opacity 150ms ease;
+}
+.btn:hover { border-color: var(--ink); color: var(--ink); }
+.btn:active { opacity: 0.85; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+.btn.primary:hover { background: color-mix(in srgb, var(--accent) 82%, var(--paper)); border-color: color-mix(in srgb, var(--accent) 82%, var(--paper)); color: var(--paper); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: var(--s-5) 0 0; }
+
+/* ---- empty, loading, and error frames ---- */
+.empty-state {
+  background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius);
+  padding: var(--s-5) var(--s-4); font: 0.92rem/1.55 var(--sans); color: var(--muted);
+  text-align: center;
+}
+.empty-state p { margin: 0 0 var(--s-3); }
+.chart-frame {
+  background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius);
+  min-height: 14rem; display: grid; place-content: center; gap: var(--s-3);
+  padding: var(--s-5); font: 0.9rem/1.5 var(--sans); color: var(--muted); text-align: center;
+}
+.chart-frame p { margin: 0; }
+.result-count { font: var(--t-caption)/1.6 var(--sans); color: var(--muted); margin: 0.5rem 0 0; }
 
 /* ---- page scaffolding ---- */
 .page-head { margin: var(--s-7) 0 var(--s-6); }
@@ -232,10 +290,11 @@ td { border-bottom: 1px solid var(--rule); padding: 0.5rem 0.7rem 0.5rem 0; vert
 .project-card .visual {
   aspect-ratio: 1; border: 1px solid var(--rule); border-radius: var(--radius);
   background: var(--card); overflow: hidden; display: block;
+  transition: border-color 150ms ease;
 }
 .project-card .visual svg { display: block; width: 100%; height: 100%; }
 .project-card:hover .visual { border-color: var(--accent); }
-.project-card h3 { margin: var(--s-3) 0 0.2rem; font-size: 1.05rem; }
+.project-card h3 { margin: var(--s-3) 0 0.2rem; font-size: 1.05rem; transition: color 150ms ease; }
 .project-card:hover h3 { color: var(--accent); }
 .project-card .desc { font-size: 0.92rem; color: var(--muted); margin: 0 0 0.35rem; }
 .project-card .meta { font: var(--t-caption)/1.6 var(--sans); color: var(--faint); }
