@@ -60,11 +60,23 @@ code { font: 0.85em var(--f-mono); background: var(--white); padding: 0.1em 0.35
 .capsule p { margin: 0; }
 .capsule .cap-kicker { margin-bottom: 6px; }
 .cite { font: 400 13px/1.65 var(--f-mono); background: var(--white); border-radius: var(--r-tile); padding: 20px 24px; overflow-x: auto; margin: 16px 0 40px; white-space: pre-wrap; }
-.linklike { border: 0; background: none; color: var(--link); font: inherit; cursor: pointer; padding: 0; transition: color var(--ease); }
+.linklike { display: inline; border: 0; background: none; color: var(--link); font: inherit; cursor: pointer; padding: 0; transition: color var(--ease); }
 .linklike:hover { color: var(--navy); text-decoration: underline; text-underline-offset: 3px; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .skip-link { position: absolute; left: -999px; top: 0; z-index: 100; background: var(--navy); color: var(--white); padding: 8px 16px; font-family: var(--f-body); }
 .skip-link:focus { left: 16px; }
+
+/* ---- page scaffolding used by content pages ---- */
+.page-head { padding: 100px 0 32px; border-bottom: 1px solid var(--hairline); margin-bottom: 40px; }
+.page-head h1 { font: 600 var(--t-page)/1.5 var(--f-title); color: var(--title); }
+.page-head .lede { margin-top: 12px; margin-bottom: 0; }
+.lede { font: 400 var(--t-intro)/30px var(--f-ui); color: var(--text); max-width: var(--w-measure); margin: 0 0 24px; }
+.prose { max-width: var(--w-measure); }
+.prose p { font-size: var(--t-intro); line-height: 1.75; }
+.section { margin-top: 55px; }
+.section > h2 { margin-top: 0; }
+.section h2 .mark { margin-bottom: 8px; }
+@media (max-width: 640px) { .page-head { padding: 60px 0 24px; margin-bottom: 28px; } }
 
 /* ---- tables ---- */
 .tablewrap { overflow-x: auto; margin: 16px 0 32px; }

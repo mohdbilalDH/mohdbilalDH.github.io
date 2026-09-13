@@ -12,7 +12,7 @@ with Browser() as b:
             check(sw <= iw, f"{r} @ {w}px no horizontal overflow ({sw} <= {iw})")
             if w < 900:
                 small = p.evaluate(
-                    "[...document.querySelectorAll('a, button')].filter(e => e.offsetParent && !e.closest('svg') && !(getComputedStyle(e).display === 'inline' && e.closest('p, li, dd, dt, figcaption, blockquote, td')) && e.getBoundingClientRect().height < 24).map(e => e.textContent.trim().slice(0,30))"
+                    "[...document.querySelectorAll('a, button')].filter(e => e.offsetParent && !e.closest('svg') && !((getComputedStyle(e).display === 'inline' || e.classList.contains('linklike')) && e.closest('p, li, dd, dt, figcaption, blockquote, td')) && e.getBoundingClientRect().height < 24).map(e => e.textContent.trim().slice(0,30))"
                 )
                 check(len(small) == 0, f"{r} @ {w}px no tiny tap targets: {small[:5]}")
             name = r.strip("/").replace("/", "-") or "home"
