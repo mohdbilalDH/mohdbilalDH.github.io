@@ -16,6 +16,12 @@ with Browser() as b:
                 )
                 check(len(small) == 0, f"{r} @ {w}px no tiny tap targets: {small[:5]}")
             name = r.strip("/").replace("/", "-") or "home"
+            # scroll through so scroll-triggered fade-ups have fired before the capture
+            for y in range(0, p.evaluate("document.body.scrollHeight"), 500):
+                p.evaluate(f"window.scrollTo(0, {y})")
+                p.wait_for_timeout(60)
+            p.evaluate("window.scrollTo(0, 0)")
+            p.wait_for_timeout(700)
             p.screenshot(path=f"tests/screenshots/{w}-{name}.png", full_page=True)
     errs = [e for e in b.errors if "no-such-page" not in e]
     check(errs == [], f"no console errors: {errs}")
