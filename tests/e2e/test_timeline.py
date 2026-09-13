@@ -1,0 +1,21 @@
+from _lib import Browser, BASE, check
+
+with Browser() as b:
+    p = b.page()
+    p.goto(BASE + "/projects/buddhist-bridges/explore/")
+    p.wait_for_load_state("networkidle")
+    check(p.locator("#tl-chart svg").count() == 1 and not p.locator("#tl-chart-status").is_visible(), "timeline renders")
+    p.locator("button.preset[data-preset='moved']").click()
+    check(p.locator("button.preset[data-preset='moved']").get_attribute("aria-pressed") == "true", "preset pressed")
+    p.locator(".zoombar button[data-zoom='B1']").click()
+    check("marks shown" in p.locator("#tl-count").inner_text(), "count line")
+    e = b.page()
+    e.route("**/data/timeline.json", lambda r: r.abort())
+    e.goto(BASE + "/projects/buddhist-bridges/explore/")
+    e.wait_for_timeout(800)
+    check(e.locator("#tl-chart-status").is_visible() and "could not be loaded" in e.locator("#tl-chart-status").inner_text(), "error state")
+    e.unroute("**/data/timeline.json")
+    e.locator("#tl-retry").click()
+    e.wait_for_selector("#tl-chart svg", timeout=5000)
+    check(e.locator("#tl-chart svg").count() == 1, "retry renders")
+    check(all(("timeline.json" in x) or ("ERR_FAILED" in x) for x in b.errors) and len(b.errors) <= 1, f"only the aborted fetch may log: {b.errors}")

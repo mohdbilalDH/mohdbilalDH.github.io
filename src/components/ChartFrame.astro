@@ -1,0 +1,21 @@
+---
+// Host for a chart that renders at runtime: a status region for loading / error / retry,
+// and a tooltip element. The page script hides the status once data arrives.
+interface Props { id: string; loading: string; error: string }
+const { id, loading, error } = Astro.props;
+---
+<div id={id} class="chart" data-error={error}>
+  <div id={`${id}-status`} class="status" role="status"><p>{loading}</p></div>
+  <div id={`${id}-tip`} class="tip" role="status"></div>
+</div>
+<style>
+  .chart { position: relative; }
+  .chart :global(> svg) { display: block; width: 100%; height: auto; background: var(--paper); }
+  .status { background: var(--surface); min-height: 14rem; display: grid; place-content: center; gap: var(--s-2); text-align: center; color: var(--muted); font-size: var(--t-small); padding: var(--s-3); }
+  .status[hidden] { display: none; }
+  .status p { margin: 0; }
+  .tip { position: absolute; display: none; pointer-events: none; z-index: 20; background: var(--paper); border: 1px solid var(--ink); padding: var(--s-1) var(--s-2); max-width: 330px; font: 400 var(--t-meta)/1.5 var(--f-body); }
+  .tip :global(h4) { margin: 0 0 0.15rem; font: 500 0.95rem/1.3 var(--f-display); }
+  .tip :global(.tt-sub) { color: var(--muted); }
+  @media (max-width: 700px) { .chart { overflow-x: auto; } .chart :global(> svg) { min-width: 620px; } }
+</style>

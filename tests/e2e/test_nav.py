@@ -17,5 +17,5 @@ with Browser() as b:
         check(p.locator("h1").count() == 1, f"{r} has one h1")
         check(p.locator("a.skip-link").count() == 1 and p.locator("main#main").count() == 1, f"{r} landmarks")
         if r in CURRENT:
-            check(p.locator("header nav a[aria-current='page']").inner_text().strip().endswith(CURRENT[r]), f"{r} current nav = {CURRENT[r]}")
+            check(p.locator("header nav a[aria-current='page']").text_content().strip().endswith(CURRENT[r]), f"{r} current nav = {CURRENT[r]}")
     check(b.errors == [], f"no console errors: {b.errors}")

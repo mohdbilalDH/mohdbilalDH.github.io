@@ -1,0 +1,12 @@
+---
+interface Props { id?: string }
+const { id } = Astro.props;
+---
+<div class="empty" id={id}>
+  <p class="msg"><slot /></p>
+  <slot name="action" />
+</div>
+<style>
+  .empty { background: var(--surface); padding: var(--s-4) var(--s-3); text-align: center; color: var(--muted); font-size: var(--t-small); }
+  .msg { margin: 0 0 var(--s-2); }
+</style>
