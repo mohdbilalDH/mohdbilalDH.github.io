@@ -1,0 +1,37 @@
+---
+// Every figure on the site: kicker, a takeaway title stating the finding, the chart,
+// a caption, and a data-table fallback. Charts are hand-built SVG passed in the default slot.
+interface Props { number?: string; title?: string; id?: string; wide?: boolean; labelledby?: string }
+const { number, title, id, wide = false, labelledby } = Astro.props;
+---
+<figure class:list={['fig', { 'fig--wide': wide }]} id={id} aria-labelledby={labelledby}>
+  {(number || title) && (
+    <div class="fig-head">
+      {number && <span class="label">Figure {number}</span>}
+      {title && <p class="fig-title">{title}</p>}
+    </div>
+  )}
+  <div class="fig-body"><slot /></div>
+  {Astro.slots.has('caption') && <figcaption class="small muted"><slot name="caption" /></figcaption>}
+  {Astro.slots.has('table') && (
+    <details class="fig-table">
+      <summary>Data table for this figure</summary>
+      <slot name="table" />
+    </details>
+  )}
+</figure>
+<style>
+  .fig { margin: var(--s-5) 0; border-top: 1px solid var(--hairline); padding-top: var(--s-2); }
+  .fig-head { margin-bottom: var(--s-2); }
+  .fig-title { font: 500 var(--t-h3)/1.3 var(--f-display); color: var(--ink); margin: 0.2rem 0 0; text-wrap: balance; max-width: var(--w-prose); }
+  .fig-body :global(> svg) { display: block; width: 100%; height: auto; }
+  figcaption { margin-top: var(--s-2); max-width: var(--w-prose); }
+  .fig-table { margin-top: var(--s-1); }
+  .fig-table summary { cursor: pointer; font-size: var(--t-small); color: var(--muted); min-height: 32px; display: flex; align-items: center; }
+  .fig-table summary:hover { color: var(--accent); }
+  .fig--wide { width: min(calc(100vw - 3rem), var(--w-wide)); margin-left: calc(50% - min(calc(100vw - 3rem), var(--w-wide)) / 2); }
+  @media (max-width: 700px) {
+    .fig-body { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .fig-body :global(> svg) { min-width: 620px; }
+  }
+</style>

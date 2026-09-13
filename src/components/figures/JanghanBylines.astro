@@ -1,0 +1,136 @@
+---
+import FigureFrame from '../FigureFrame.astro';
+/* Bylines: what is claimed, and how securely it is known.
+   Research question: who is credited in 長恨, and what can the byline evidence
+   actually support? The two bars are deliberately read together — the first
+   says most texts are gisaeng-attributed, the second says most identities are
+   not established. Neither bar is the finding; the gap between them is.
+   Attribution labels follow the edition's own display rule: a byline evidences
+   publication under a name, so "attributed" is never upgraded to "authored". */
+import j from '../../data/janghan.json';
+
+const TOTAL = j.issue1.items + j.issue2.items;
+const W = 740;
+const w = (n) => (n / TOTAL) * W;
+
+const attribution = [
+  { k: 'gisaeng', name: 'Gisaeng-attributed', fill: 'var(--b4)', op: 0.78, dark: true },
+  { k: 'unresolved', name: 'Unresolved / other', fill: 'var(--void)', op: 0.45 },
+  { k: 'editor', name: 'Editor-produced', fill: 'var(--b6)', op: 0.8, dark: true },
+  { k: 'foreign', name: 'Foreign-attributed', fill: 'var(--b5)', op: 0.75, dark: true },
+].map((s) => ({ ...s, n: j.attribution[s.k] || 0 }));
+
+const certainty = [
+  { k: 'confirmed', name: 'Confirmed', fill: 'var(--b2)', op: 0.85, dark: true },
+  { k: 'probable', name: 'Probable', fill: 'var(--b1)', op: 0.9 },
+  { k: 'carried_over_unchecked', name: 'Carried over, unchecked', fill: 'var(--void)', op: 0.45 },
+  { k: 'unresolved', name: 'Unresolved', fill: 'var(--negative)', op: 0.72, dark: true },
+].map((s) => ({ ...s, n: j.certainty[s.k] || 0 }));
+
+const CERT_FILL = {
+  confirmed: 'var(--b2)', probable: 'var(--b1)', unresolved: 'var(--negative)',
+};
+const rows = [
+  { title: 'How the ' + TOTAL + ' texts are attributed', segs: attribution, y: 30 },
+  { title: 'How secure the identification behind the byline is', segs: certainty, y: 150 },
+];
+---
+<FigureFrame number="4 · Bylines" title="Most texts in 長恨 are gisaeng-attributed — and most of those identities remain unestablished" id="fig-bylines" wide>
+
+  <svg viewBox="0 0 760 348" role="img"
+    aria-label={`Two stacked bars over ${TOTAL} textual items. Attribution: ${attribution.map((s) => `${s.name} ${s.n}`).join(', ')}. Identity certainty: ${certainty.map((s) => `${s.name} ${s.n}`).join(', ')}. Below, ${j.cross_issue_contributors} contributor threads recur across both issues: ${j.cross_issue_threads.map((t) => `${t.name}, ${t.certainty}`).join('; ')}.`}>
+
+    {rows.map((r) => {
+      let acc = 0;
+      return (
+        <>
+          <text x="0" y={r.y - 10} font-family="var(--f-body)" font-size="13.5" font-weight="600" fill="var(--ink)">
+            {r.title}
+          </text>
+          {r.segs.map((s) => {
+            const x0 = acc; acc += w(s.n);
+            return (
+              <>
+                <rect x={x0} y={r.y} width={w(s.n)} height="32" fill={s.fill} opacity={s.op} />
+                <text x={x0 + w(s.n) / 2} y={r.y + 21} text-anchor="middle" font-family="var(--f-body)"
+                  font-size="13" font-weight="600" fill={s.dark ? 'var(--paper)' : 'var(--ink)'}>{s.n}</text>
+              </>
+            );
+          })}
+          {r.segs.map((s, i) => {
+            const cols = 2, cw = 250;
+            const cx = (i % cols) * cw, cy = r.y + 50 + Math.floor(i / cols) * 19;
+            return (
+              <>
+                <rect x={cx} y={cy - 9} width="11" height="11" fill={s.fill} opacity={s.op} />
+                <text x={cx + 17} y={cy} font-family="var(--f-body)" font-size="11.5" fill="var(--muted)">
+                  {s.name} — {s.n}
+                </text>
+              </>
+            );
+          })}
+        </>
+      );
+    })}
+
+    {/* cross-issue threads */}
+    <line x1="0" y1="256" x2="740" y2="256" stroke="var(--hairline)" stroke-width="1" />
+    <text x="0" y="278" font-family="var(--f-body)" font-size="13.5" font-weight="600" fill="var(--ink)">
+      {j.cross_issue_contributors} threads run across both issues
+    </text>
+    <text x="0" y="295" font-family="var(--f-body)" font-size="11.5" fill="var(--muted)">
+      out of {j.contributors} bylines — each labelled with what the evidence supports
+    </text>
+    {j.cross_issue_threads.map((t, i) => (
+      <>
+        <rect x={i * 150} y="306" width="140" height="36" rx="3"
+          fill={CERT_FILL[t.certainty]} opacity="0.09" />
+        <rect x={i * 150} y="306" width="3.5" height="36" fill={CERT_FILL[t.certainty]} />
+        <text x={i * 150 + 12} y="320" font-family="var(--f-body)" font-size="12.5" fill="var(--ink)" lang="ko">
+          {t.name}
+        </text>
+        <text x={i * 150 + 12} y="335" font-family="var(--f-body)" font-size="10.5"
+          font-weight="600" letter-spacing="0.3" fill={CERT_FILL[t.certainty]}>
+          {t.certainty}
+        </text>
+      </>
+    ))}
+  </svg>
+
+  <div slot="caption">
+    Read the two bars together. {j.attribution.gisaeng} of {TOTAL} texts carry gisaeng attributions, but only
+    {j.certainty.confirmed} identities across the whole corpus are confirmed; {j.certainty.probable} are
+    probable, {j.certainty.carried_over_unchecked} are carried over from the inherited baseline without
+    independent check, and {j.certainty.unresolved} remain unresolved. A byline is evidence that a text was
+    published under a name — not that a particular person wrote it — so pen names are never silently merged
+    into people. Of the {j.cross_issue_contributors} threads recurring across both issues,
+    {j.cross_issue_certainty.confirmed} are confirmed by explicit serial numbering printed in the magazine,
+    {j.cross_issue_certainty.probable} are probable on byline evidence alone, and
+    {j.cross_issue_certainty.unresolved} is an unsigned recurring column whose narrating persona returns —
+    continuity of a voice, which is not evidence of a person.
+  </div>
+
+  <div slot="table">
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th scope="col">Measure</th><th scope="col">Category</th><th scope="col">Textual items</th></tr></thead>
+        <tbody>
+          {attribution.map((s) => (
+            <tr><td>Attribution</td><td>{s.name}</td><td class="num">{s.n}</td></tr>
+          ))}
+          {certainty.map((s) => (
+            <tr><td>Identity certainty</td><td>{s.name}</td><td class="num">{s.n}</td></tr>
+          ))}
+        </tbody>
+      </table>
+      <table>
+        <thead><tr><th scope="col">Cross-issue thread</th><th scope="col">Evidence</th></tr></thead>
+        <tbody>
+          {j.cross_issue_threads.map((t) => (
+            <tr><td lang="ko">{t.name}</td><td>{t.certainty}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</FigureFrame>

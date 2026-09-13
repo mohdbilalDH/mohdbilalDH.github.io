@@ -1,0 +1,91 @@
+---
+// Shared person-record dialog. Any element can call window.showPerson('P-0001').
+// All content comes verbatim from the frozen record via people.json.
+import people from '../data/people.json';
+const slim = people.people.map((p) => ({
+  id: p.id, name: p.name, hangul: p.hangul, band: p.band,
+  birth: p.birth, death: p.death, floruit: p.floruit,
+  role: p.role, typology: p.typology, movement: p.movement, direction: p.direction,
+  significance: p.significance, evidence: p.evidence,
+  india: p.india_connection, korea: p.korea_connection,
+  confidence: p.confidence, status: p.status, single_source: p.single_source,
+  sources: p.sources,
+}));
+---
+<dialog id="person-dialog" aria-labelledby="person-dialog-title">
+  <div id="person-dialog-body"></div>
+</dialog>
+
+<style is:global>
+  #person-dialog {
+    border: var(--rule-w) solid var(--ink); border-radius: 0; padding: 0;
+    width: min(680px, 92vw); max-height: 84vh; background: var(--paper); color: var(--text);
+  }
+  #person-dialog::backdrop { background: var(--scrim); }
+  #person-dialog .inner { padding: var(--s-3) var(--s-4) var(--s-4); }
+  #person-dialog .top { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--s-2); }
+  #person-dialog h3 { margin: 0.2rem 0 0.2rem; font-size: 1.5rem; }
+  #person-dialog h3 .hangul { font-weight: 400; color: var(--muted); font-size: 1.125rem; margin-left: 0.4rem; }
+  #person-dialog .badges { margin: 0.3rem 0 0.4rem; }
+  #person-dialog dt { font: 400 var(--t-label)/1.4 var(--f-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: var(--s-2); }
+  #person-dialog dd { margin: 0.15rem 0 0; font-size: var(--t-small); }
+  #person-dialog .srcline { font-size: var(--t-meta); line-height: 1.5; margin-top: 0.3rem; }
+  #person-dialog .srcrel { font: 400 0.6875rem/1.4 var(--f-mono); color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  #person-dialog .note { font: 400 var(--t-label)/1.5 var(--f-mono); color: var(--muted); margin: var(--s-3) 0 0; }
+  @media (max-width: 639px) { #person-dialog .inner { padding: var(--s-2) var(--s-2) var(--s-3); } }
+</style>
+
+<script define:vars={{ slim }}>
+  window.__people = Object.fromEntries(slim.map((p) => [p.id, p]));
+  const DIRL = { INDIA_TO_KOREA: 'India → Korea', KOREA_TO_INDIA: 'Korea → India', BIDIRECTIONAL: 'bidirectional ⇄', UNCERTAIN: 'uncertain' };
+  const escapeHtml = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const dlg = document.getElementById('person-dialog');
+  let opener = null;
+
+  window.showPerson = function (id) {
+    const p = window.__people[id];
+    if (!p) return;
+    if (dlg.open) dlg.close();
+    opener = document.activeElement;
+    const life = p.birth && p.death ? `${p.birth}–${p.death}`
+      : p.birth ? `b. ${p.birth}`
+      : p.floruit && p.floruit[0] ? `floruit c. ${p.floruit[0]}–${p.floruit[1]} (derived)` : 'no safe dates';
+    const srcs = (p.sources || []).map((s) => `
+      <div class="srcline">${s.url ? `<a href="${escapeHtml(s.url)}" rel="noopener">${escapeHtml(s.citation)}</a>` : escapeHtml(s.citation)}
+      <div class="srcrel">${escapeHtml(s.type)} · ${escapeHtml(s.reliability)} · ${escapeHtml(s.id)}</div></div>`).join('');
+    document.getElementById('person-dialog-body').innerHTML = `
+      <div class="inner">
+        <div class="top">
+          <p class="label" style="margin: 0.2rem 0 0; color: var(--${p.band.toLowerCase()});">${p.band} · ${p.id} · frozen V3.0</p>
+          <button class="btn btn--secondary close" type="button">Close</button>
+        </div>
+        <h3 id="person-dialog-title">${escapeHtml(p.name)}${p.hangul ? `<span class="hangul" lang="ko">${escapeHtml(p.hangul)}</span>` : ''}</h3>
+        <p class="badges">
+          <span class="badge ${p.confidence.toLowerCase()}">${p.confidence}</span>
+          <span class="badge">${escapeHtml(p.status)}</span>
+          ${p.single_source ? '<span class="badge" style="color: var(--negative);">single source</span>' : ''}
+        </p>
+        <dl>
+          <dt>Dates</dt><dd>${life}</dd>
+          <dt>Role</dt><dd>${escapeHtml(p.role)}</dd>
+          <dt>Mediation</dt><dd>${escapeHtml((p.typology || '').replace(/_/g, ' ').toLowerCase())} · movement: ${p.movement === '-' ? 'none documented' : escapeHtml(p.movement)} · direction: ${DIRL[p.direction] || escapeHtml(p.direction)}</dd>
+          ${p.significance ? `<dt>Significance</dt><dd>${escapeHtml(p.significance)}</dd>` : ''}
+          <dt>India connection</dt><dd>${escapeHtml(p.india)}</dd>
+          <dt>Korea connection</dt><dd>${escapeHtml(p.korea)}</dd>
+          <dt>Evidence</dt><dd>${escapeHtml(p.evidence)}</dd>
+          <dt>Sources (${(p.sources || []).length})</dt><dd>${srcs}</dd>
+        </dl>
+        <p class="note">Confidence grades the source basis, not historical importance. Fields are shown verbatim from the frozen record.</p>
+      </div>`;
+    dlg.querySelector('.close').addEventListener('click', () => dlg.close());
+    dlg.showModal();
+  };
+  dlg.addEventListener('click', (e) => { if (e.target === e.currentTarget) e.currentTarget.close(); });
+  dlg.addEventListener('close', () => {
+    if (opener && typeof opener.focus === 'function' && document.contains(opener)) opener.focus();
+    opener = null;
+  });
+  document.querySelectorAll('[data-person]').forEach((b) => {
+    b.addEventListener('click', (e) => { e.preventDefault(); window.showPerson(b.dataset.person); });
+  });
+</script>
