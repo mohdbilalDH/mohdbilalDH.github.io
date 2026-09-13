@@ -1,0 +1,138 @@
+---
+import Base from '../layouts/Base.astro';
+import Button from '../components/Button.astro';
+import Eyebrow from '../components/Eyebrow.astro';
+import { site } from '../data/site';
+import { cv, type Entry } from '../data/cv';
+import { articles, venueLine } from '../data/publications';
+import presentations from '../data/presentations.json';
+
+const years = [...new Set(presentations.map((p) => p.year))].sort((a, b) => b - a);
+const order = { forthcoming: 0, published: 1, 'under-review': 2 } as const;
+const pubs = [...articles].sort((a, b) => order[a.status] - order[b.status] || b.year - a.year);
+const pubWhen = (a: (typeof articles)[number]) => (a.status === 'forthcoming' ? 'Forthcoming' : a.status === 'under-review' ? 'Under review' : String(a.year));
+const pubOrg = (a: (typeof articles)[number]) => (a.status === 'under-review' ? `<em>${a.venue}</em>, ${a.note}.` : venueLine(a) + (a.note ? ` ${a.note}.` : ''));
+const sections: { title: string; entries: Entry[] }[] = [
+  { title: 'Education', entries: cv.education },
+  { title: 'Research & professional experience', entries: cv.experience },
+];
+---
+<Base title="CV" current="cv"
+  description="Curriculum vitae of Mohd Bilal — Korean Studies, modern Korean history, gender and cultural history, Digital Humanities. The Academy of Korean Studies.">
+  <div class="wrap">
+    <div class="page-head cv-head">
+      <Eyebrow>Curriculum vitae</Eyebrow>
+      <h1>{site.name}</h1>
+      <p class="lede prose">{cv.headline}</p>
+      <p class="mono muted contact">
+        {site.affiliation}<br />
+        <a href={`mailto:${site.email}`}>{site.email}</a> ·
+        <a href={site.github}>{site.githubLabel}</a> ·
+        <a href={site.orcid}>orcid.org/{site.orcidId}</a>
+      </p>
+      <div class="btn-row no-print">
+        <Button href="/files/mohd-bilal-cv.pdf" variant="primary" download>Download PDF</Button>
+      </div>
+    </div>
+
+    <section class="cv-section">
+      <h2>Research profile</h2>
+      <p class="prose">{cv.profile}</p>
+    </section>
+
+    {sections.map((s) => (
+      <section class="cv-section">
+        <h2>{s.title}</h2>
+        {s.entries.map((e) => (
+          <div class="cv-item">
+            <div class="cv-when mono muted">{e.when}</div>
+            <div class="cv-what">
+              <div class="role">{e.role}</div>
+              {e.org && <div class="org muted">{e.org}</div>}
+              {e.detail && <div class="detail small muted">{e.detail}</div>}
+            </div>
+          </div>
+        ))}
+      </section>
+    ))}
+
+    <section class="cv-section">
+      <h2>Publications</h2>
+      {pubs.map((a) => (
+        <div class="cv-item">
+          <div class="cv-when mono muted">{pubWhen(a)}</div>
+          <div class="cv-what">
+            <div class="role">“{a.title}.”</div>
+            <div class="org muted" set:html={pubOrg(a)} />
+          </div>
+        </div>
+      ))}
+    </section>
+
+    <section class="cv-section">
+      <h2>Conference presentations</h2>
+      {years.map((y) =>
+        presentations.filter((p) => p.year === y).map((p, i) => (
+          <div class="cv-item">
+            <div class="cv-when mono muted">{i === 0 ? y : ''}</div>
+            <div class="cv-what">
+              <div class="role">“{p.title}.”</div>
+              <div class="org muted">{p.venue}{p.place ? `, ${p.place}` : ''}, {p.when}.</div>
+            </div>
+          </div>
+        ))
+      )}
+    </section>
+
+    <section class="cv-section">
+      <h2>Academic training</h2>
+      {cv.training.map((e) => (
+        <div class="cv-item">
+          <div class="cv-when mono muted">{e.when}</div>
+          <div class="cv-what"><div class="role">{e.role}</div><div class="org muted">{e.org}</div></div>
+        </div>
+      ))}
+    </section>
+
+    <section class="cv-section">
+      <h2>Awards &amp; fellowships</h2>
+      {cv.awards.map((e) => (
+        <div class="cv-item">
+          <div class="cv-when mono muted">{e.when}</div>
+          <div class="cv-what"><div class="role">{e.role}</div><div class="detail small muted">{e.detail}</div></div>
+        </div>
+      ))}
+    </section>
+
+    <section class="cv-section">
+      <h2>Professional memberships</h2>
+      <p class="prose">{cv.memberships}</p>
+    </section>
+
+    <section class="cv-section last">
+      <h2>Languages</h2>
+      <p class="prose">{cv.languages}</p>
+    </section>
+  </div>
+</Base>
+<style>
+  .cv-head { border-bottom: 0; margin-bottom: 0; }
+  .contact { margin: var(--s-2) 0 0; }
+  .contact a { color: var(--muted); }
+  .contact a:hover { color: var(--accent); }
+  .cv-section { border-top: var(--rule-w) solid var(--rule); padding-top: var(--s-2); margin-top: var(--s-5); }
+  .cv-section h2 { margin-top: 0; font-size: 1.375rem; margin-bottom: var(--s-3); }
+  .cv-section.last { margin-bottom: var(--s-6); }
+  .cv-item { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 0 var(--s-3); margin-bottom: var(--s-3); max-width: var(--w-wide); }
+  .cv-when { padding-top: 0.2rem; }
+  .role { font-weight: 600; }
+  .detail { margin-top: 0.2rem; }
+  @media (max-width: 639px) {
+    .cv-item { grid-template-columns: 1fr; }
+    .cv-when { margin-bottom: 0.2rem; }
+  }
+  @media print {
+    .cv-section { break-inside: avoid-page; margin-top: 1.2rem; }
+    .cv-item { break-inside: avoid; }
+  }
+</style>
