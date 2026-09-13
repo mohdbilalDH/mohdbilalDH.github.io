@@ -1,6 +1,7 @@
 from _lib import Browser, BASE, ROUTES, check
 
 CURRENT = {
+    "/": "Home", "/about/": "About",
     "/projects/": "Projects", "/publications/": "Publications", "/visualizations/": "Visualizations",
     "/cv/": "CV", "/contact/": "Contact", "/projects/janghan/": "Projects",
     "/projects/buddhist-bridges/": "Projects", "/projects/buddhist-bridges/explore/": "Projects",

@@ -24,6 +24,8 @@ export const site = {
   contactNote:
     "For questions about a specific project's data or method, the project pages carry citation and licensing details; corrections to any dataset are welcome by email.",
   nav: [
+    { href: '/', label: 'Home', key: 'home' },
+    { href: '/about/', label: 'About', key: 'about' },
     { href: '/projects/', label: 'Projects', key: 'projects' },
     { href: '/publications/', label: 'Publications', key: 'publications' },
     { href: '/visualizations/', label: 'Visualizations', key: 'visualizations' },

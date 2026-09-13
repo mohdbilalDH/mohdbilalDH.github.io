@@ -1,22 +1,32 @@
-/* Register design system — the only file that declares colours, families, and scale. See ../../../DESIGN.md */
+/* HKUST-pattern design system — the only file that declares colours, families, and scale.
+   Values measured from the reference on 2026-09-14; see ../../../DESIGN.md */
 :root {
   color-scheme: light;
 
-  /* ground + ink */
-  --paper: #fdfcfa;
-  --surface: #f4f1ea;
-  --ink: #1c1a17;
-  --text: #2c2924;
-  --muted: #5a554c;
-  --hairline: #d9d4ca;
-  --rule: var(--ink);
+  /* ground + surfaces */
+  --ground: #f8f7f3;
+  --white: #ffffff;
+  --navy: #003366;
+  --navy-deep: #0a2a4d;
+  --yellow: #ffb100;
+  --button: #f9c349;
+  --button-hover: #f0b62e;
+  --on-button: #000000;
 
-  /* the one accent */
-  --accent: #c8321f;
-  --accent-deep: #a3281a;
-  --accent-tint: #fbe9e6;
-  --on-accent: #ffffff;
-  --scrim: rgba(28, 26, 23, 0.5);
+  /* text */
+  --text: #30383b;
+  --title: #54595f;
+  --heading: #4b4f58;
+  --muted: #6b7075;
+  --hairline: #e3e1db;
+  --link: #2a6ebb;
+
+  /* card overlays */
+  --card-overlay-1: rgba(179, 87, 67, 0.78);
+  --card-overlay-2: rgba(48, 40, 34, 0.78);
+  --card-overlay-3: rgba(0, 51, 102, 0.78);
+  --card-overlay-4: rgba(160, 151, 141, 0.85);
+  --scrim: rgba(10, 42, 77, 0.55);
 
   /* uncertainty grammar (evidence displays only) */
   --negative: #8a1c1c;
@@ -32,39 +42,39 @@
   --void: #b5af9f;
 
   /* type */
-  --f-display: 'Newsreader Variable', 'Noto Serif KR', Georgia, serif;
-  --f-body: 'Source Sans 3 Variable', 'Noto Sans KR', system-ui, sans-serif;
+  --f-title: 'Playfair Display Variable', 'Noto Serif KR', Georgia, serif;
+  --f-body: 'Mulish Variable', 'Noto Sans KR', system-ui, sans-serif;
+  --f-ui: 'Open Sans Variable', 'Noto Sans KR', Helvetica, Arial, sans-serif;
   --f-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
-  --t-display: 4.5rem;
-  --t-h1: 3rem;
-  --t-h2: 1.75rem;
-  --t-h3: 1.25rem;
-  --t-lede: 1.5rem;
-  --t-body: 1.0625rem;
-  --t-small: 0.9375rem;
-  --t-label: 0.75rem;
-  --t-meta: 0.8125rem;
-  --t-button: 0.9375rem;
+  --t-page: 55px;
+  --t-section: 32px;
+  --t-card: 32px;
+  --t-body: 15px;
+  --t-intro: 16px;
+  --t-small: 13px;
+  --t-nav: 15px;
+  --t-button: 14px;
 
-  /* space + measure */
-  --s-1: 0.5rem;
-  --s-2: 1rem;
-  --s-3: 1.5rem;
-  --s-4: 2rem;
-  --s-5: 3rem;
-  --s-6: 4rem;
-  --s-7: 6rem;
-  --s-8: 8rem;
-  --w-page: 75rem;
-  --w-prose: 42rem;
-  --w-wide: 66rem;
+  /* layout */
+  --header-h: 124px;
+  --strip-h: 8px;
+  --w-page: 1359px;
+  --pad: 20px;
+  --w-measure: 1060px;
+  --card-pad: 230px 30px 30px;
+  --card-h: 650px;
 
   /* shape + motion */
-  --radius: 2px;
-  --rule-w: 1.5px;
-  --ease: 150ms ease-out;
+  --r-card: 24px;
+  --r-pill: 56px;
+  --r-tile: 16px;
+  --ease: 200ms ease-out;
+  --fade: 600ms ease-out;
 }
 
-@media (max-width: 639px) {
-  :root { --t-display: 2.75rem; --t-h1: 2.25rem; --t-lede: 1.25rem; }
+@media (max-width: 768px) {
+  :root { --t-page: 45px; --t-section: 25px; --t-card: 25px; --card-h: 685px; }
+}
+@media (max-width: 640px) {
+  :root { --t-section: 20px; --t-card: 20px; --card-pad: 190px 20px 20px; --card-h: 420px; --header-h: 73px; }
 }

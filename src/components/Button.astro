@@ -1,14 +1,14 @@
 ---
 interface Props {
   href?: string;
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'ghost';
   download?: boolean;
   type?: 'button' | 'submit';
   id?: string;
   class?: string;
   disabled?: boolean;
 }
-const { href, variant = 'secondary', download = false, type = 'button', id, class: cls = '', disabled = false } = Astro.props;
+const { href, variant = 'primary', download = false, type = 'button', id, class: cls = '', disabled = false } = Astro.props;
 const classes = `btn btn--${variant} ${cls}`.trim();
 ---
 {href
@@ -16,17 +16,18 @@ const classes = `btn btn--${variant} ${cls}`.trim();
   : <button class={classes} type={type} id={id} disabled={disabled}><slot /></button>}
 <style is:global>
   .btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 0.5em;
-    min-height: 44px; padding: 0.6rem 1.1rem; border-radius: var(--radius);
-    border: var(--rule-w) solid var(--ink); background: transparent; color: var(--ink);
-    font: 600 var(--t-button)/1.2 var(--f-body); letter-spacing: 0.01em; text-decoration: none; cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.4em;
+    min-height: 46px; padding: 16px 30px; border-radius: var(--r-pill); border: 0;
+    font: 500 var(--t-button)/1 var(--f-body); letter-spacing: 0.5px; text-decoration: none; cursor: pointer;
     transition: background var(--ease), color var(--ease), border-color var(--ease), transform 120ms ease-out;
   }
-  .btn:hover { background: var(--ink); color: var(--paper); }
+  .btn:hover { text-decoration: none; }
   .btn:active { transform: scale(0.98); }
-  .btn--primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
-  .btn--primary:hover { background: var(--accent-deep); border-color: var(--accent-deep); color: var(--on-accent); }
+  .btn--primary { background: var(--button); color: var(--on-button); }
+  .btn--primary:hover { background: var(--button-hover); color: var(--on-button); }
+  .btn--ghost { background: transparent; border: 1.5px solid var(--navy); color: var(--navy); padding: 14.5px 28.5px; }
+  .btn--ghost:hover { background: var(--navy); color: var(--white); }
+  .btn--ghost[aria-pressed='true'] { background: var(--navy); color: var(--white); }
   .btn[disabled], .btn[aria-disabled='true'] { opacity: 0.5; pointer-events: none; }
-  .btn-row { display: flex; flex-wrap: wrap; gap: var(--s-1); margin: var(--s-3) 0 0; }
-  @media (max-width: 639px) { .btn-row .btn { flex: 1 1 100%; } }
+  .btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 28px 0 0; }
 </style>

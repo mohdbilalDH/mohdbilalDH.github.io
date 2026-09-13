@@ -3,23 +3,45 @@ import { site } from '../data/site';
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
-  <div class="wrap inner">
-    <p class="who"><span class="name">{site.name}</span><span class="aff">{site.affiliation}</span></p>
-    <nav aria-label="Footer" class="links">{site.nav.map((n) => <a href={n.href}>{n.label}</a>)}</nav>
-    <p class="meta mono">
-      <a href={`mailto:${site.email}`}>{site.email}</a> · <a href={site.github}>GitHub</a> · <a href={site.orcid}>ORCID</a>
-      · © {year} {site.name}. Data CC-BY-4.0 and code MIT where projects state so.
+  <div class="wrap">
+    <p class="contact intro">
+      If you work on adjacent questions — Korean Studies, digital humanities, or comparative colonial history —
+      write to <a href={`mailto:${site.email}`}>{site.email}</a> or find the code and data on
+      <a href={site.github}>GitHub</a>.
     </p>
+    <hr class="hairline" />
+    <p class="note">
+      This site and its research outputs are published openly: data is CC-BY-4.0 and code MIT where each project
+      states so. Source texts remain with their rights holders.
+    </p>
+  </div>
+  <div class="wrap copy">
+    <span>Copyright © {year} {site.name}</span>
+    <span>{site.affiliation}</span>
+  </div>
+  <div class="bar">
+    <div class="wrap bar-inner">
+      <span class="bar-mark">Mohd Bilal</span>
+      <span class="bar-links">
+        <span class="bar-label">Find me on</span>
+        <a class="icon" href={site.github} aria-label="GitHub">GH</a>
+        <a class="icon" href={site.orcid} aria-label="ORCID">iD</a>
+        <a class="icon" href={`mailto:${site.email}`} aria-label="Email">@</a>
+      </span>
+    </div>
   </div>
 </footer>
 <style>
-  .site-footer { margin-top: var(--s-8); border-top: var(--rule-w) solid var(--rule); }
-  .inner { padding-top: var(--s-4); padding-bottom: var(--s-6); display: grid; gap: var(--s-2); }
-  .who { margin: 0; display: flex; flex-wrap: wrap; gap: 0 var(--s-2); align-items: baseline; }
-  .name { font: 400 1.125rem/1.3 var(--f-display); color: var(--ink); }
-  .aff { color: var(--muted); font-size: var(--t-small); }
-  .links { display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-3); }
-  .links a, .meta a { color: var(--muted); text-decoration: none; min-height: 24px; display: inline-block; }
-  .links a:hover, .meta a:hover { color: var(--accent); }
-  .meta { margin: 0; color: var(--muted); }
+  .site-footer { margin-top: 60px; padding-top: 50px; }
+  .contact { text-align: center; margin: 0 auto 24px; }
+  .note { font-style: italic; font-size: var(--t-small); color: var(--muted); text-align: center; max-width: 900px; margin: 0 auto 40px; }
+  .copy { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px; font-size: var(--t-small); color: var(--muted); padding-top: 24px; padding-bottom: 24px; border-top: 1px solid var(--hairline); }
+  .bar { background: var(--navy); color: var(--white); }
+  .bar-inner { min-height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 12px; padding-bottom: 12px; }
+  .bar-mark { font: 600 20px/1 var(--f-title); color: var(--white); }
+  .bar-links { display: inline-flex; align-items: center; gap: 12px; }
+  .bar-label { font-size: 12px; color: var(--white); opacity: 0.85; margin-right: 4px; }
+  .icon { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid var(--white); color: var(--white); font: 700 11px/1 var(--f-body); text-decoration: none; transition: background var(--ease), color var(--ease); }
+  .icon:hover { background: var(--white); color: var(--navy); text-decoration: none; }
+  @media (max-width: 640px) { .copy { flex-direction: column; } .contact { text-align: left; } .note { text-align: left; } }
 </style>
