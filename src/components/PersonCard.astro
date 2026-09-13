@@ -18,17 +18,14 @@ const slim = people.people.map((p) => ({
 
 <style is:global>
   #bb-person {
-    border: 1px solid var(--rule); border-radius: 10px; padding: 0;
+    border: 1px solid var(--rule); border-radius: var(--radius); padding: 0;
     width: min(680px, 92vw); max-height: 84vh;
     background: var(--paper); color: var(--ink);
   }
   #bb-person::backdrop { background: rgba(10, 10, 12, 0.45); }
   #bb-person .inner { padding: 1.4rem 1.6rem 1.6rem; }
   #bb-person h3 { margin: 0.2rem 0 0.2rem; font-size: 1.35rem; }
-  #bb-person .close {
-    float: right; font: 1rem var(--sans); border: none; background: none;
-    color: var(--muted); cursor: pointer; padding: 0.2rem 0.4rem;
-  }
+  #bb-person .close { float: right; margin: 0 0 0.6rem 0.8rem; }
   #bb-person dt { font: 600 0.66rem/1.4 var(--sans); letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); margin-top: 0.85rem; }
   #bb-person dd { margin: 0.1rem 0 0; font-size: 0.92rem; }
   #bb-person .srcline { font: 0.8rem/1.5 var(--sans); margin-top: 0.3rem; }
@@ -39,10 +36,12 @@ const slim = people.people.map((p) => ({
   window.__bbPeople = Object.fromEntries(slim.map((p) => [p.id, p]));
   const DIRL = { INDIA_TO_KOREA: 'India → Korea', KOREA_TO_INDIA: 'Korea → India', BIDIRECTIONAL: 'bidirectional ⇄', UNCERTAIN: 'uncertain' };
   const escapeHtml = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  let opener = null;
 
   window.__bbShowPerson = function (id) {
     const p = window.__bbPeople[id];
     if (!p) return;
+    opener = document.activeElement;
     const dlg = document.getElementById('bb-person');
     const life = p.birth && p.death ? `${p.birth}–${p.death}`
       : p.birth ? `b. ${p.birth}`
@@ -52,7 +51,7 @@ const slim = people.people.map((p) => ({
       <div class="srcrel">${escapeHtml(s.type)} · ${escapeHtml(s.reliability)} · ${escapeHtml(s.id)}</div></div>`).join('');
     document.getElementById('bb-person-body').innerHTML = `
       <div class="inner">
-        <button class="close" aria-label="Close">✕ close</button>
+        <button class="btn close" type="button">Close</button>
         <p class="eyebrow" style="color: var(--${p.band.toLowerCase()}); margin-bottom: 0.1rem;">${p.band} · ${p.id} · frozen V3.0</p>
         <h3>${escapeHtml(p.name)} ${p.hangul ? `<span style="font-weight: 400; color: var(--muted);">${escapeHtml(p.hangul)}</span>` : ''}</h3>
         <p style="margin: 0.3rem 0 0.4rem;">
@@ -77,5 +76,9 @@ const slim = people.people.map((p) => ({
   };
   document.getElementById('bb-person').addEventListener('click', (e) => {
     if (e.target === e.currentTarget) e.currentTarget.close();
+  });
+  document.getElementById('bb-person').addEventListener('close', () => {
+    if (opener && typeof opener.focus === 'function' && document.contains(opener)) opener.focus();
+    opener = null;
   });
 </script>
