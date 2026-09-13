@@ -28,8 +28,10 @@ const { projects, detailed = false } = Astro.props;
   .project-table .sub { display: block; color: var(--muted); font-size: var(--t-small); margin-top: 0.2rem; }
   .project-table .desc { margin: var(--s-1) 0 0; max-width: 40rem; font-size: var(--t-small); }
   .project-table .tags { margin: var(--s-1) 0 0; text-transform: none; letter-spacing: 0.02em; }
-  .project-table td.m { padding-top: calc(var(--s-2) + 0.35rem); white-space: nowrap; }
-  .project-table td.s { padding-top: calc(var(--s-2) + 0.35rem); white-space: nowrap; }
+  .project-table td.t { width: 100%; }
+  .project-table td.m { padding-top: calc(var(--s-2) + 0.35rem); white-space: nowrap; width: 1%; }
+  .project-table td.s { padding-top: calc(var(--s-2) + 0.35rem); white-space: nowrap; width: 1%; padding-right: 0; }
+  .project-table th:last-child { padding-right: 0; }
   @media (max-width: 639px) {
     .project-table thead { display: none; }
     .project-table tr { display: block; border-bottom: 1px solid var(--hairline); padding: var(--s-2) 0; }
