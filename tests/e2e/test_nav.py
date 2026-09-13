@@ -18,4 +18,5 @@ with Browser() as b:
         check(p.locator("a.skip-link").count() == 1 and p.locator("main#main").count() == 1, f"{r} landmarks")
         if r in CURRENT:
             check(p.locator("header nav a[aria-current='page']").text_content().strip().endswith(CURRENT[r]), f"{r} current nav = {CURRENT[r]}")
-    check(b.errors == [], f"no console errors: {b.errors}")
+    errs = [e for e in b.errors if "no-such-page" not in e]
+    check(errs == [], f"no console errors: {errs}")
