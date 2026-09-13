@@ -8,13 +8,39 @@ const nav = [
   ['/contact/', 'Contact', 'contact'],
 ];
 ---
-<header class="site-header">
+<header class="site-header" id="site-header">
   <div class="inner">
     <a class="brand" href="/">Mohd Bilal</a>
-    <nav class="site-nav" aria-label="Main">
+    <button class="btn nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
       {nav.map(([href, label, key]) => (
         <a href={href} aria-current={key === current ? 'page' : undefined}>{label}</a>
       ))}
     </nav>
   </div>
 </header>
+
+<script>
+  const header = document.getElementById('site-header');
+  const toggle = header?.querySelector<HTMLButtonElement>('.nav-toggle');
+  const nav = document.getElementById('site-nav');
+  if (header && toggle && nav) {
+    header.dataset.js = '';
+    const isOpen = () => header.classList.contains('is-open');
+    const setOpen = (open: boolean) => {
+      header.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.textContent = open ? 'Close' : 'Menu';
+    };
+    toggle.addEventListener('click', () => setOpen(!isOpen()));
+    nav.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('a')) setOpen(false);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isOpen()) { setOpen(false); toggle.focus(); }
+    });
+    document.addEventListener('click', (e) => {
+      if (isOpen() && !header.contains(e.target as Node)) setOpen(false);
+    });
+  }
+</script>
