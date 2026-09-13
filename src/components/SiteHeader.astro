@@ -19,7 +19,7 @@ const { current = '' } = Astro.props;
 <style>
   .site-header { position: sticky; top: 0; z-index: 50; background: var(--paper); border-bottom: var(--rule-w) solid var(--rule); }
   .inner { display: flex; align-items: center; gap: var(--s-4); padding-top: var(--s-2); padding-bottom: var(--s-2); flex-wrap: wrap; }
-  .wordmark { font: 400 1.25rem/1 var(--f-display); color: var(--ink); text-decoration: none; letter-spacing: -0.01em; transition: color var(--ease); }
+  .wordmark { display: inline-flex; align-items: center; min-height: 44px; font: 400 1.25rem/1 var(--f-display); color: var(--ink); text-decoration: none; letter-spacing: -0.01em; transition: color var(--ease); }
   .wordmark:hover { color: var(--accent); }
   .site-nav { display: flex; gap: var(--s-3); margin-left: auto; }
   .site-nav a { font: 400 var(--t-label)/1 var(--f-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: var(--s-1) 0; border-bottom: var(--rule-w) solid transparent; transition: color var(--ease), border-color var(--ease); }

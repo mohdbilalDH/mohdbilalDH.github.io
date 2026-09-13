@@ -178,6 +178,9 @@ DOI: pending Zenodo deposit.</div>
   .method { background: var(--surface); padding: var(--s-3) var(--s-4); max-width: var(--w-wide); font-size: var(--t-small); }
   .method p:last-child { margin-bottom: 0; }
   .method ul { padding-left: 1.2rem; }
-  .dlrow { display: flex; flex-wrap: wrap; gap: 0.4rem var(--s-3); margin: var(--s-2) 0 0; }
+  .dlrow { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-1); margin: var(--s-2) 0 0; }
+  .dlrow a { display: inline-flex; align-items: center; min-height: 40px; padding: 0 0.7rem; border: 1px solid var(--hairline); border-radius: var(--radius); text-decoration: none; color: var(--ink); background: var(--paper); transition: border-color var(--ease), color var(--ease); }
+  .dlrow a:hover { border-color: var(--accent); color: var(--accent); }
+  .dlrow .muted { margin-left: var(--s-1); }
   @media (max-width: 639px) { .method { padding: var(--s-2) var(--s-3); } }
 </style>
