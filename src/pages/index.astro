@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import presentations from '../data/presentations.json';
-const recent = presentations.slice(0, 3);
+const recent = presentations.slice(0, 2);
 const jsonld = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -23,6 +23,10 @@ const jsonld = JSON.stringify({
         M.A. student in Korean Studies at The Academy of Korean Studies, working on modern
         Korean history and its cultural afterlives — between the colonial period and the
         contemporary moment, and between archival and computational methods.
+      </p>
+      <p class="btn-row no-print">
+        <a class="btn primary" href="/projects/">View projects</a>
+        <a class="btn" href="/files/mohd-bilal-cv.pdf" download>Download CV (PDF)</a>
       </p>
     </div>
 
@@ -105,6 +109,11 @@ const jsonld = JSON.stringify({
 
     <h2>Recent</h2>
     <ul class="pub-list">
+      <li>
+        <span class="pub-title">“Relic, Axis, and Adaptation: Selective Symbolic Preservation from the Indian Stūpa to the East Asian Pagoda.”</span>
+        <span class="pub-venue"><em>남아시아연구</em> (Journal of South Asian Studies) 32, no. 2 (2026).</span>
+        <p class="pub-meta">Journal article · forthcoming</p>
+      </li>
       <li>
         <span class="pub-title">“Hybridizing Culture and Linguistics: A Case Study of K-Dramas’ Impact in India.”</span>
         <span class="pub-venue"><em>The Myanmar Journal</em> 11, no. 1 (2024): 165–188. With Santosh Kumar Ranjan.</span>
