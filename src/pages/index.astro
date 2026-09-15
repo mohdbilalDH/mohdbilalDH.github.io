@@ -1,82 +1,99 @@
 ---
 import Base from '../layouts/Base.astro';
-import Button from '../components/Button.astro';
-import SectionHeading from '../components/SectionHeading.astro';
-import CardRow from '../components/CardRow.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-import Tile from '../components/Tile.astro';
+import ProjectIndex from '../components/ProjectIndex.astro';
 import { site } from '../data/site';
-import { projects } from '../data/projects';
+import { projects, kindLabel } from '../data/projects';
 import { byStatus } from '../data/publications';
-import presentations from '../data/presentations.json';
 
+const featured = projects.find((p) => p.slug === 'janghan')!;
 const forthcoming = byStatus('forthcoming')[0];
-const latestTalk = presentations[0];
-const news = [
-  { href: '/publications/', date: 'Forthcoming · 2026', title: forthcoming.title, meta: `${forthcoming.venue} ${forthcoming.volume}, no. ${forthcoming.issue}` },
-  { href: '/publications/', date: latestTalk.when, title: latestTalk.title, meta: `${latestTalk.venue}${latestTalk.place ? `, ${latestTalk.place}` : ''}` },
-  { href: '/projects/buddhist-bridges/', date: 'Dataset · 17 August 2026', title: 'Buddhist Bridges dataset V3.0 frozen and checksummed', meta: '43 documented mediators, 187 graded sources, CC-BY-4.0' },
-];
-const talks = presentations.slice(0, 6);
 ---
 <Base current="home">
-  <section class="band hero-band">
-    <div class="wrap hero">
-      <div class="hero-text">
-        <h1 class="page-title">{site.name}</h1>
-        <p class="intro">{site.lede}</p>
-        <Button href="/about/" variant="primary">More details »</Button>
-      </div>
-      <figure class="hero-fig">
-        <img src="/janghan/assets/jh01-cover.png" width="900" height="1470" fetchpriority="high"
-             alt="Cover of 長恨 issue 1, January 1927: a woman seated inside a birdcage, with the title in two circular seals above." />
-        <figcaption class="caption"><span lang="ko">長恨 창간호</span>, 10 January 1927 — the magazine the gisaeng made. Yonsei University Library copy, from the 長恨 digital edition.</figcaption>
-      </figure>
+  <section class="band band--title thesis-band">
+    <div class="wrap">
+      <p class="label">{site.role}</p>
+      <h1 class="page-title">{site.thesis}</h1>
+      <p class="whoami">
+        <strong>{site.name}</strong> · M.A. student, {site.affiliation}
+      </p>
     </div>
   </section>
 
   <section class="band band--white">
     <div class="wrap">
-      <SectionHeading>What's New</SectionHeading>
-      <div class="tile-grid">
-        {news.map((n) => <Tile href={n.href} date={n.date} title={n.title} meta={n.meta} />)}
+      <p class="label">Featured project</p>
+      <div class="feature">
+        <div class="feature-text">
+          <p class="feature-head">
+            <span class="chip chip--kind">{kindLabel[featured.kind]}</span>
+            <span class="mono feature-dates">{featured.dates}</span>
+          </p>
+          <h2 class="feature-title"><a href={featured.href}>{featured.title}</a></h2>
+          <p class="feature-finding">{featured.finding}</p>
+          <p><a class="more" href={featured.href}>Read the project →</a></p>
+        </div>
+        <figure class="feature-fig">
+          <img src="/janghan/assets/jh01-cover.png" width="900" height="1470" fetchpriority="high"
+               alt="Cover of 長恨 issue 1, January 1927: a woman seated inside a birdcage, with the title in two circular seals above." />
+          <figcaption class="caption"><span lang="ko">長恨 창간호</span>, 10 January 1927. Yonsei University Library copy.</figcaption>
+        </figure>
       </div>
     </div>
   </section>
 
   <section class="band">
     <div class="wrap">
-      <SectionHeading>Explore my Projects</SectionHeading>
-      <p class="intro band-intro">Digital Humanities projects built on documented sources, graded evidence, and reproducible pipelines.</p>
-      <CardRow cols={3}>
-        {projects.map((p) => <ProjectCard project={p} />)}
-      </CardRow>
-      <div class="btn-row"><Button href="/projects/" variant="primary">View all projects »</Button></div>
+      <p class="label">The other projects</p>
+      <ProjectIndex exclude="janghan" />
+      <p class="closing small muted">
+        Each project publishes its question, its evidence, and its method and data separately, and states
+        what it cannot show. How that works is on the <a href="/method/">method page</a>.
+      </p>
     </div>
   </section>
 
   <section class="band band--white">
-    <div class="wrap">
-      <SectionHeading>Talks and Presentations</SectionHeading>
-      <div class="tile-grid">
-        {talks.map((t) => <Tile date={t.when} title={t.title} meta={`${t.venue}${t.place ? `, ${t.place}` : ''}`} />)}
-      </div>
-      <div class="btn-row"><Button href="/publications/" variant="primary">View all »</Button></div>
+    <div class="wrap recent-row">
+      <p class="recent">
+        <span class="label">Recent</span>
+        “{forthcoming.title}” forthcoming in <em>{forthcoming.venue}</em> {forthcoming.volume}, no. {forthcoming.issue}
+        · Buddhist Bridges dataset frozen at v3.0, 43 mediators and 187 graded sources
+      </p>
+      <p class="paths small">
+        <a href="/about/">About</a> · <a href="/files/mohd-bilal-cv.pdf">CV (PDF)</a> · <a href="/writing/">Writing</a>
+      </p>
     </div>
   </section>
 </Base>
 <style>
-  .hero-band { padding: 100px 0 70px; }
-  .hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; }
-  .hero-text .page-title { line-height: 1.2; margin-bottom: 20px; }
-  .hero-text .intro { margin-bottom: 32px; }
-  .hero-fig { margin: 0; justify-self: end; max-width: 380px; }
-  .hero-fig img { display: block; width: auto; max-width: 100%; max-height: 460px; margin-left: auto; height: auto; border-radius: var(--r-card); }
-  .hero-fig figcaption { margin-top: 12px; }
-  .band-intro { margin-bottom: 28px; }
+  .thesis-band { padding: 90px 0 60px; }
+  .thesis-band .page-title { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.24; max-width: 26ch; margin: 12px 0 24px; color: var(--title); }
+  .whoami { font: 400 var(--t-intro)/1.7 var(--f-ui); color: var(--text); max-width: 58ch; margin: 0; }
+  .whoami strong { color: var(--heading); font-weight: 600; }
+
+  .feature { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 48px; align-items: start; margin-top: 20px; }
+  .feature-head { display: flex; align-items: center; gap: 14px; margin: 0 0 14px; }
+  .chip--kind { font: 500 11.5px/1.4 var(--f-ui); letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; border: 1px solid var(--navy); color: var(--navy); }
+  .feature-dates { color: var(--muted); font-size: 13px; }
+  .feature-title { font: 700 30px/1.28 var(--f-title); margin: 0 0 14px; max-width: 22ch; }
+  .feature-title a { color: var(--heading); text-decoration: none; }
+  .feature-title a:hover { color: var(--navy); text-decoration: underline; text-underline-offset: 4px; }
+  .feature-finding { font: 400 var(--t-intro)/1.75 var(--f-ui); color: var(--text); max-width: 60ch; margin: 0 0 18px; }
+  .more { font: 500 15px/1.5 var(--f-ui); }
+  .feature-fig { margin: 0; }
+  .feature-fig img { display: block; width: 100%; height: auto; max-height: 420px; object-fit: contain; object-position: top left; }
+  .feature-fig figcaption { margin-top: 10px; }
+
+  .closing { margin-top: 28px; max-width: var(--w-measure); }
+  .recent-row { display: flex; flex-wrap: wrap; gap: 16px 40px; justify-content: space-between; align-items: baseline; }
+  .recent { font: 400 14px/1.7 var(--f-ui); color: var(--text); max-width: 72ch; margin: 0; }
+  .recent .label { display: block; margin-bottom: 4px; }
+  .paths { margin: 0; }
+
   @media (max-width: 900px) {
-    .hero-band { padding: 60px 0 50px; }
-    .hero { grid-template-columns: 1fr; gap: 36px; }
-    .hero-fig { justify-self: start; max-width: 320px; }
+    .thesis-band { padding: 60px 0 44px; }
+    .feature { grid-template-columns: 1fr; gap: 28px; }
+    .feature-fig { max-width: 300px; }
+    .feature-title { font-size: 24px; }
   }
 </style>

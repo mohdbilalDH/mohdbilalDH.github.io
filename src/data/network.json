@@ -42,7 +42,7 @@
     },
     {
      "id": "P-0024",
-     "label": "Naong Hyegeun",
+     "label": "Naong Hyegŭn",
      "type": "PEOPLE",
      "band": "B2",
      "confidence": "MEDIUM",
@@ -58,7 +58,7 @@
     },
     {
      "id": "P-0075",
-     "label": "Baegun Gyeonghan",
+     "label": "Paegun Kyŏnghan",
      "type": "PEOPLE",
      "band": "B2",
      "confidence": "MEDIUM",
@@ -546,7 +546,7 @@
     },
     {
      "id": "P-0055",
-     "label": "U Myeong-ju",
+     "label": "U Myŏng-ju",
      "type": "PEOPLE",
      "band": "B6",
      "confidence": "HIGH",
@@ -562,7 +562,7 @@
     },
     {
      "id": "P-0063",
-     "label": "Hyoseok (Ven.)",
+     "label": "Hyosŏk (Ven.)",
      "type": "PEOPLE",
      "band": "B6",
      "confidence": "HIGH",
@@ -570,7 +570,7 @@
     },
     {
      "id": "P-0064",
-     "label": "Wookwan (Ven.)",
+     "label": "Ukwan (Ven.)",
      "type": "PEOPLE",
      "band": "B6",
      "confidence": "HIGH",
@@ -618,7 +618,7 @@
     },
     {
      "id": "TX-0019",
-     "label": "Wookwan's Korean Temple Food",
+     "label": "Ukwan's Korean Temple Food",
      "type": "TEXTS",
      "band": "B6",
      "confidence": "HIGH",
@@ -712,7 +712,7 @@
      "subtype": "INSTITUTION_MAPPING",
      "direction": "PERSON_TO_INSTITUTION",
      "confidence": "HIGH",
-     "evidence": "Dongguk University Gyeongju campus -> I-0010 (note: campus)"
+     "evidence": "Dongguk University Kyŏngju campus -> I-0010 (note: campus)"
     },
     {
      "id": "E-0030",

@@ -11,8 +11,13 @@ export default defineConfig({
   integrations: [sitemap()],
   // Stubs for the briefly-live redesign URLs → their equivalents in the
   // restored structure (static meta-refresh; GitHub Pages has no server redirects).
+  // Stubs for routes retired in the 2026-09-15 restructure (static meta-refresh;
+  // GitHub Pages has no server redirects).
   redirects: {
     '/notes': '/',
     '/projects/hallyu-press': '/projects/hallyu-indian-press',
+    '/publications': '/writing',
+    '/contact': '/about#contact',
+    '/visualizations': '/method',
   },
 });

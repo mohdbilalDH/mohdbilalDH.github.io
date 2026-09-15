@@ -1,13 +1,14 @@
 ---
 import { site } from '../data/site';
+import { buildDate, buildISO } from '../data/build';
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
   <div class="wrap">
     <p class="contact intro">
       If you work on adjacent questions — Korean Studies, digital humanities, or comparative colonial history —
-      write to <a href={`mailto:${site.email}`}>{site.email}</a> or find the code and data on
-      <a href={site.github}>GitHub</a>.
+      write to <a href={`mailto:${site.email}`}>{site.email}</a>. Each project's
+      <a href="/projects/">data page</a> carries its version, licence and citation.
     </p>
     <hr class="hairline" />
     <p class="note">
@@ -18,6 +19,10 @@ const year = new Date().getFullYear();
   <div class="wrap copy">
     <span>Copyright © {year} {site.name}</span>
     <span>{site.affiliation}</span>
+  </div>
+  <div class="wrap stamp">
+    <span>Static build, no server dependencies. Built <time datetime={buildISO}>{buildDate}</time>.</span>
+    <span>Dataset versions are stated on each project's data page.</span>
   </div>
   <div class="bar">
     <div class="wrap bar-inner">
@@ -35,7 +40,9 @@ const year = new Date().getFullYear();
   .site-footer { margin-top: 60px; padding-top: 50px; }
   .contact { text-align: center; margin: 0 auto 24px; }
   .note { font-style: italic; font-size: var(--t-small); color: var(--muted); text-align: center; max-width: 900px; margin: 0 auto 40px; }
-  .copy { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px; font-size: var(--t-small); color: var(--muted); padding-top: 24px; padding-bottom: 24px; border-top: 1px solid var(--hairline); }
+  .copy { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px; font-size: var(--t-small); color: var(--muted); padding-top: 24px; padding-bottom: 12px; border-top: 1px solid var(--hairline); }
+  /* Endings Principles: a build date on every page, so a reader can tell how current it is. */
+  .stamp { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px 24px; font-size: 12px; color: var(--muted); padding-bottom: 24px; }
   .bar { background: var(--navy); color: var(--white); }
   .bar-inner { min-height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 12px; padding-bottom: 12px; }
   .bar-mark { font: 600 20px/1 var(--f-title); color: var(--white); }
@@ -43,5 +50,5 @@ const year = new Date().getFullYear();
   .bar-label { font-size: 12px; color: var(--white); opacity: 0.85; margin-right: 4px; }
   .icon { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid var(--white); color: var(--white); font: 700 11px/1 var(--f-body); text-decoration: none; transition: background var(--ease), color var(--ease); }
   .icon:hover { background: var(--white); color: var(--navy); text-decoration: none; }
-  @media (max-width: 640px) { .copy { flex-direction: column; } .contact { text-align: left; } .note { text-align: left; } }
+  @media (max-width: 640px) { .copy, .stamp { flex-direction: column; } .contact { text-align: left; } .note { text-align: left; } }
 </style>

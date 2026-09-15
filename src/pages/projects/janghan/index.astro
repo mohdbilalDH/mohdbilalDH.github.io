@@ -1,398 +1,159 @@
 ---
+// Slot order: Claim · Evidence · Explore · Limits · Cite. Budget: ~850 words, 3 figures.
 import Project from '../../../layouts/Project.astro';
-import Eyebrow from '../../../components/Eyebrow.astro';
+import Claim from '../../../components/Claim.astro';
+import Apparatus from '../../../components/Apparatus.astro';
+import ExploreDoor from '../../../components/ExploreDoor.astro';
 import JanghanWitnesses from '../../../components/figures/JanghanWitnesses.astro';
 import JanghanLevels from '../../../components/figures/JanghanLevels.astro';
-import JanghanRegisters from '../../../components/figures/JanghanRegisters.astro';
 import JanghanBylines from '../../../components/figures/JanghanBylines.astro';
 import j from '../../../data/janghan.json';
+import { projects } from '../../../data/projects';
 
-const E = '/janghan'; // the research interface (static, generated from the frozen corpus)
+const p = projects.find((x) => x.slug === 'janghan')!;
 const items = j.issue1.items + j.issue2.items;
 const units = j.issue1.units + j.issue2.units;
 const jsonld = {
   '@context': 'https://schema.org',
   '@type': 'Dataset',
-  name: 'Janghan (長恨, 1927): A Digital Scholarly Edition of a Gisaeng-Edited Magazine',
-  description: 'Reconstructed corpus, structural encoding and coded spatial evidence for the two 1927 issues of the Korean magazine 長恨, built from four independent witnesses.',
+  name: 'Changhan (長恨, 1927): a reconstruction of the contents and a register of the attributions',
+  description:
+    'Reconstructed corpus, structural encoding and coded spatial evidence for the two 1927 issues of the Korean magazine 長恨, built from four independent witnesses that disagree about the contents.',
   creator: { '@type': 'Person', name: 'Mohd Bilal' },
   temporalCoverage: '1927',
   inLanguage: 'ko',
   license: 'https://creativecommons.org/licenses/by/4.0/',
 };
-const editionLinks = [
-  { href: `${E}/contents.html`, label: 'Contents, three ways', desc: 'The same magazine as the 1927 list, the catalogue, and this reconstruction give it — switch between them.' },
-  { href: `${E}/witnesses.html`, label: 'Witnesses', desc: 'What each of the four sources attests, item by item, and where they disagree.' },
-  { href: `${E}/issue/jh01.html`, label: `${j.issue1.label} · Issue 1`, desc: 'Every item of the first issue, with page position and witness status.' },
-  { href: `${E}/issue/jh02.html`, label: `${j.issue2.label} · Issue 2`, desc: 'The second issue as reconciled from the 2009 reprint and the catalogue.' },
-  { href: `${E}/architecture.html`, label: 'Editorial architecture', desc: 'Columns, symposia, serials and prompts: how the magazine organised its texts.' },
-  { href: `${E}/contributors.html`, label: 'Contributors', desc: 'Every byline, its attribution status, and its threads across the two issues.' },
-  { href: `${E}/places.html`, label: 'Places', desc: 'Coded place mentions for Issue 1, with the excluded records listed in full.' },
-  { href: `${E}/methods.html`, label: 'Methods & data', desc: 'Versioned JSON datasets, coding scheme, audit, and licence.' },
-];
 ---
-<Project title="長恨 (1927) — A Gisaeng-Edited Magazine"
-  description="A digital scholarly edition of 長恨 (Janghan, 1927), a Korean magazine published by gisaeng, reconstructed from four independent witnesses that do not agree on what it contained."
+<Project title="長恨 (1927) — Contents and Attributions"
+  description="A reconstruction of the contents of 長恨 (Changhan, 1927), a Korean magazine published by and largely written by kisaeng, from four independent witnesses that do not agree, with a register of its attributions."
   jsonld={jsonld}>
   <div class="wrap">
-    <div class="page-head">
-      <Eyebrow>Digital humanities · Colonial Korean print culture</Eyebrow>
-      <h1><span lang="ko">長恨</span> (1927): the magazine the gisaeng made</h1>
-      <p class="lede prose">
-        For two issues in 1927, a magazine was published in colonial Seoul by and for gisaeng — women of a
-        registered, stigmatised profession — who wrote in it under their own names. This is a digital scholarly
-        edition of both issues, reconstructed from four independent witnesses that do not agree on what the
-        magazine contained.
-      </p>
-    </div>
 
-    <aside class="capsule gloss">
-      <p><b>Gisaeng (<span lang="ko">기생</span>)</b> — professional women entertainers, trained in music, dance and poetry, registered and
-      licensed under colonial administration, and socially stigmatised for the work they did. 長恨 is a magazine
-      in which women of that profession write, rather than one in which they are written about.</p>
-    </aside>
+    <Claim project={p}
+      meta={`${items} textual items in ${units} editorial units · 2 issues · ${j.contributors} bylines · ${j.witnesses} witnesses reconciled`} />
 
-    <div class="covers">
-      <figure class="cover">
-        <img src={`${E}/assets/jh01-cover.png`} width="900" height="1470" loading="lazy"
-             alt="Cover of 長恨 issue 1, January 1927: a woman seated inside a birdcage, with the title in two circular seals above." />
-        <figcaption class="small muted"><b><span lang="ko">창간호</span></b> · 10 January 1927 — <span lang="ko">동무여 생각하라 조롱 속에 이 몸을</span><br />
-          “Comrades, think of me here inside the cage.” From the 1927 original.</figcaption>
-      </figure>
-      <figure class="cover">
-        <img src={`${E}/assets/jh02-cover.png`} width="411" height="606" loading="lazy"
-             alt="Cover of 長恨 issue 2, February 1927: two women, one in hanbok and one in Western dress, holding hands beneath a rising sun." />
-        <figcaption class="small muted"><b><span lang="ko">2월호</span></b> · February 1927 — a woman in hanbok and a woman in Western dress,
-          hands joined beneath a rising sun. Reproduced in the 2009 edition.</figcaption>
-      </figure>
-    </div>
+    <figure class="covers">
+      <img src="/janghan/assets/jh01-cover.png" width="900" height="1470" loading="eager"
+           alt="Cover of 長恨 issue 1, January 1927: a woman seated inside a birdcage, with the title in two circular seals above." />
+      <img src="/janghan/assets/jh02-cover.png" width="411" height="606" loading="lazy"
+           alt="Cover of 長恨 issue 2, February 1927: two women, one in hanbok and one in Western dress, holding hands beneath a rising sun." />
+      <figcaption class="caption">
+        <b><span lang="ko">창간호</span></b> · 10 January 1927, <span lang="ko">동무여 생각하라 조롱 속에 이 몸을</span>
+        (“Comrades, think of me here inside the cage”), from the 1927 original.
+        <b><span lang="ko">2월호</span></b> · February 1927, reproduced in the 2009 edition.
+      </figcaption>
+    </figure>
 
     <section class="section">
-      <h2><span class="mark">Why it matters</span>Gisaeng as writers, not as subject matter</h2>
+      <h2><span class="mark">Evidence</span>No two sources agree on what is in it</h2>
       <div class="prose">
         <p>
-          長恨 was published by 長恨社 in Kyŏngsŏng (colonial Seoul) in January and February 1927, with a gisaeng
-          named as its publisher. Of the {items} texts this edition records across both issues,
-          {j.attribution.gisaeng} are gisaeng-attributed: they appear under the names, pen names or
-          self-descriptions of women from the profession the magazine was about. Alongside them are essays by
-          outside contributors, editorial columns, fiction, poems and reader correspondence — a commercial
-          magazine, not a private album.
+          <span lang="ko">長恨</span> was published by <span lang="ko">長恨社</span> in Kyŏngsŏng in January and
+          February 1927, with a kisaeng named as its publisher. Almost everything about its contents is
+          contested. The published bibliography records {j.literature.issue1} and {j.literature.issue2}
+          articles for the two issues; the Yonsei catalogue lists {j.yonsei.issue1} and {j.yonsei.issue2}
+          entries; the 1927 table of contents lists a curated selection; a 2009 reprint numbers its own
+          sequence.
         </p>
         <p>
-          A complication this edition keeps in view rather than smoothing over: while a gisaeng is named as
-          publisher and most contributions are gisaeng-attributed, the editorial work was done in practice by
-          <span lang="ko">최학송</span>, a male writer associated with proletarian literature. 長恨 is therefore neither straightforwardly
-          “written by gisaeng” nor simply a magazine speaking for them, and the question is not one this edition
-          settles by choosing a phrase. It records what a byline actually evidences — publication under a name —
-          and marks how secure each identification is, so that the question stays open to study.
-        </p>
-        <p>
-          None of that can be studied, however, until a prior question is answered: what was actually in the
-          magazine?
-        </p>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2><span class="mark">The problem</span>No two sources agree on what is in it</h2>
-      <div class="prose">
-        <p>
-          Almost everything about 長恨’s contents is contested. The published bibliography records
-          {j.literature.issue1} and {j.literature.issue2} articles for the two issues; the Yonsei catalogue lists
-          {j.yonsei.issue1} and {j.yonsei.issue2} entries; the 1927 table of contents lists a curated selection;
-          and a 2009 reprint numbers its own sequence.
-        </p>
-        <aside class="capsule gloss">
-          <p><b>Witness</b> — in textual scholarship, any surviving source that testifies to what a text contained:
-          here a scan, a reprint, a library catalogue and a published bibliography. Witnesses can disagree, and
-          none of them is the magazine itself.</p>
-        </aside>
-        <p>
-          Those figures are not rival claims about the same thing. They count different units — chiefly poems
-          printed inside other people’s articles, and prompts that carry several signed answers. This edition
-          holds the disagreement open instead of resolving it silently, and shows how each witness divides the
-          magazine.
+          Those are not rival claims about the same thing. They count different units, chiefly poems printed
+          inside other people's articles and prompts that carry several signed answers. This project holds the
+          disagreement open instead of resolving it silently.
         </p>
       </div>
       <JanghanWitnesses />
-    </section>
 
-    <section class="section">
-      <h2><span class="mark">The question</span>What the reconstruction is for</h2>
       <div class="prose">
         <p>
-          The reconstruction is not an end in itself. It exists to make a historical question answerable — the
-          question that guides the wider project:
+          Counting the magazine depends entirely on what you agree to count, so the reconstruction records it
+          at three levels: a <b>bibliographic entry</b> is a record in an external catalogue, a witness to the
+          contents and never this project's own unit; an <b>editorial unit</b> is an item as the magazine
+          presents it, one article, one column, or one prompt with its answers, and there are {units} across
+          both issues; a <b>textual item</b> is a single continuous text with its own title or byline, and
+          there are {items}, of which {j.nested_items} sit nested inside a parent unit. Keeping the levels
+          apart is what makes the witnesses comparable at all.
         </p>
       </div>
-      <div class="rq">
-        <blockquote>
-          How are places distributed and differentiated across the authors, genres and textual voices of
-          <span lang="ko">『장한』</span> (1927), and what does this spatial organisation reveal about the social
-          world constructed by the magazine?
-        </blockquote>
-        <p class="rq-status small muted">
-          <b>Status: evidence stage, no answer offered.</b> Place evidence has been coded for Issue 1 only —
-          {j.place_mentions} counted mentions across {j.places} places — and Issue 2 has not been coded at all.
-          Competing explanations for the patterns in that evidence (genre, text length, page position, coding
-          convention, editorial mediation) remain confounded and under test. Everything published here is the
-          evidence and the apparatus; the answer waits on Issue-2 coding and cross-issue testing.
-        </p>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2><span class="mark">What I did</span>Three levels, then a reconstruction</h2>
-      <div class="prose">
-        <p>
-          Counting the magazine depends entirely on what you agree to count. The edition therefore records it at
-          three levels, and keeping them apart is what makes the witnesses comparable at all.
-        </p>
-      </div>
-      <dl class="ontology">
-        <div class="ont-row"><dt>Bibliographic entry</dt>
-          <dd>A record in an external catalogue. A witness to the contents — never this edition’s own unit.</dd></div>
-        <div class="ont-row"><dt>Editorial unit</dt>
-          <dd>An item as the magazine presents it: one article, one column, or one prompt with its answers.
-            Counts are reported at this level. There are {units} across both issues.</dd></div>
-        <div class="ont-row"><dt>Textual item</dt>
-          <dd>A single continuous text with its own title or byline. Each answer to a prompt, and each poem
-            printed inside another article, is one. There are {items}, of which {j.nested_items} sit nested
-            inside a parent unit.</dd></div>
-      </dl>
-
       <JanghanLevels />
 
       <div class="prose">
-        <p>On that footing, the contents were rebuilt in five steps:</p>
-        <ol class="steps">
-          <li><b>An inherited baseline</b>
-            <p>58 records across both issues, with approximate page ranges and no external check.</p></li>
-          <li><b>Reading every candidate at source</b>
-            <p>Three earlier passes had disagreed on how many articles were recoverable. Re-reading each at the
-              page settled it — and turned up a two-part serialised novel that no inventory had recorded.</p></li>
-          <li><b>Adding an independent witness</b>
-            <p>The Yonsei catalogue was reconciled against the text. One inherited record proved to be a phantom;
-              another was re-identified as a poem.</p></li>
-          <li><b>Recovering the page itself</b>
-            <p>The 1927 scan showed that Issue 1 is set in two registers — a main upper block and a running
-              bottom strip of short items, marked in the magazine’s own table of contents.</p></li>
-          <li><b>Freezing Issue 1, then reconciling Issue 2</b>
-            <p>Issue 1 is frozen at {j.issue1.units} editorial units — version-fixed, so every figure on this site
-              can be checked against the exact state of the evidence it came from. Issue 2 is reconciled to
-              {j.issue2.units} but remains a working layer: no 1927 scan of it is known to survive.</p></li>
-        </ol>
+        <p>
+          On that footing the attribution question becomes answerable, and the answer is the finding this
+          project carries. Of the {items} texts, {j.attribution.gisaeng} are kisaeng-attributed: they appear
+          under the names, pen names or self-descriptions of women from the profession the magazine was about.
+          But a byline is evidence that a text was published under a name, not that a particular person wrote
+          it. Only {j.certainty.confirmed} identities across the whole corpus are confirmed;
+          {j.certainty.probable} are probable, {j.certainty.carried_over_unchecked} are carried over from an inherited
+          baseline without independent check, and {j.certainty.unresolved} remain unresolved.
+        </p>
       </div>
+      <JanghanBylines />
+
+      <Apparatus label="A complication kept in view">
+        <p>
+          A kisaeng is named as publisher and most contributions are kisaeng-attributed, but the editorial work
+          was done in practice by Ch'oe Hak-song (<span lang="ko">최학송, 崔鶴松</span>), a male writer
+          associated with proletarian literature. <span lang="ko">長恨</span> is therefore neither
+          straightforwardly written by kisaeng nor simply a magazine speaking for them. This project does not
+          settle that by choosing a phrase: it records what a byline evidences and how secure each
+          identification is, so the question stays open to study.
+        </p>
+      </Apparatus>
     </section>
 
     <section class="section">
-      <h2><span class="mark">What it revealed</span>Five things the reconstruction found</h2>
+      <h2><span class="mark">Explore</span>The evidence itself</h2>
       <div class="prose">
         <p>
-          These are results of the reconstruction itself, not of the spatial analysis, which is still at the
-          evidence stage.
+          The research interface is generated directly from the frozen corpus, so it cannot drift from the
+          data. Every item, contributor and place opens to the evidence behind it, and each carries its corpus
+          id and which of the four witnesses attests it.
         </p>
       </div>
-      <ol class="finds">
-        <li>
-          <div class="prose">
-            <b>Issue 1 was printed in two registers</b>
-            <p>
-              The 1927 scan shows a main upper block and a running bottom strip of short items — a layout the
-              magazine’s own table of contents marks, and which no prior inventory had recorded. Page position is
-              established for {j.issue1.register.upper + j.issue1.register.strip} of {j.issue1.items} Issue-1
-              items ({j.issue1.register.upper} upper, {j.issue1.register.strip} strip) and is left explicitly
-              unknown for the rest, because it is not inferred from genre or content.
-            </p>
-          </div>
-          <JanghanRegisters />
-        </li>
-        <li>
-          <div class="prose">
-            <b>A serialised novel that no inventory recorded</b>
-            <p>
-              Reading each candidate at the page — rather than trusting the inherited list — recovered a two-part
-              serial running across both issues that none of the existing inventories carried.
-            </p>
-          </div>
-        </li>
-        <li>
-          <div class="prose">
-            <b>A phantom record, and a poem filed as an article</b>
-            <p>
-              Reconciling the Yonsei catalogue against the text removed one inherited record that turns out never
-              to have existed, and re-identified another as a poem rather than an article.
-            </p>
-          </div>
-        </li>
-        <li>
-          <div class="prose">
-            <b>The witnesses disagree for a reason, and the reason is countable</b>
-            <p>
-              The sources are not careless. They divide the magazine differently: {j.nested_items} texts sit
-              inside a parent unit — poems printed within other articles, and answers to editorial prompts — so a
-              catalogue that lists them separately and a magazine that presents them as one item both give an
-              honest count of different things.
-            </p>
-          </div>
-        </li>
-        <li>
-          <div class="prose">
-            <b>Contributors return across the two issues — with unequal certainty</b>
-            <p>
-              {j.cross_issue_contributors} threads run across both issues out of {j.contributors} bylines.
-              {j.cross_issue_certainty.confirmed} are confirmed by explicit serial numbering in the magazine
-              itself, {j.cross_issue_certainty.probable} are probable on byline evidence, and
-              {j.cross_issue_certainty.unresolved} is an unsigned recurring column whose narrating persona
-              returns — which is continuity of a voice, not evidence of a person.
-            </p>
-          </div>
-          <JanghanBylines />
-        </li>
-      </ol>
-      <p class="small muted prose">
-        Together: {items} textual items in {units} editorial units across 2 issues,
-        {j.contributors} bylines, {j.witnesses} witnesses reconciled, {j.place_mentions} coded place mentions
-        in Issue 1.
-      </p>
+      <ExploreDoor href={p.explore!.href} label={p.explore!.label} blurb={p.explore!.blurb} />
     </section>
 
     <section class="section">
-      <h2><span class="mark">Explore</span>The edition itself</h2>
+      <h2><span class="mark">Limits</span>What this project does not claim</h2>
       <div class="prose">
-        <p>
-          The research interface is generated directly from the frozen corpus, so it cannot drift from the data.
-          Every item, contributor and place opens to the evidence behind it.
+        <ul class="limits">
+          <li>
+            <b>No text and no page images are published.</b> The 2009 edition is in copyright
+            (<span lang="ko">보고사</span>) and the 1927 scan's terms are unrecorded. What is published is
+            metadata, structure, attribution and coded evidence.
+          </li>
+          <li>
+            <b>Two layers of transmission.</b> All machine-readable text comes from an optical reading of the
+            2009 reprint, which itself modernised spacing. Claims depending on the 1927 text's spacing,
+            lineation or exact word counts are not made.
+          </li>
+          <li>
+            <b>Issue 2 is a working layer.</b> No 1927 scan of it is known to survive, so page register is
+            unknown throughout and the 2009 edition is its only text witness.
+          </li>
+          <li>
+            <b>The spatial question is at evidence stage, and is a separate study.</b> The reconstruction was
+            built to make one answerable: how places are distributed across the authors, genres and textual
+            voices of <span lang="ko">『장한』</span>. {j.place_mentions} mentions across {j.places} places have
+            been coded for Issue 1 only, 33 of them unmappable, and competing explanations remain confounded.
+            No answer is offered here, and nothing in this project depends on it.
+          </li>
+        </ul>
+        <p class="small muted">
+          Full method, coding scheme, versions, datasets and licence are on the
+          <a href="/projects/janghan/data/">data page</a>.
         </p>
       </div>
-      <a class="enter" href={`${E}/`}>
-        <span class="label enter-kick">Start here</span>
-        <span class="enter-title">Enter the edition →</span>
-        <span class="enter-desc small muted">The magazine itself: both issues, the covers, and the full scholarly apparatus.</span>
-      </a>
-      <ul class="edition-links">
-        {editionLinks.map((l) => (
-          <li><a href={l.href}><span class="el-title">{l.label}</span><span class="el-desc small muted">{l.desc}</span></a></li>
-        ))}
-      </ul>
     </section>
 
-    <section class="section">
-      <h2><span class="mark">Limits</span>What this edition does not claim</h2>
-      <div class="method">
-        <p>
-          <b>Four witnesses, none of them ground truth.</b> A 1927 scan of Issue 1; a 2009 scholarly reprint
-          that is the only text witness for Issue 2; the Yonsei serial-article catalogue; and the published
-          bibliography. Every item records which of them attests it.
-        </p>
-        <p>
-          <b>Two layers of transmission.</b> All machine-readable text comes from an optical reading of the
-          2009 reprint, which itself modernised spacing and marked what its editors could not read. Claims that
-          depend on the 1927 text’s spacing, lineation or exact word counts are therefore not made.
-        </p>
-        <p>
-          <b>Attribution, not authorship.</b> A byline is evidence that a text was published under a name.
-          Every identity carries a status — confirmed, probable, unresolved, or carried over unchecked — and a
-          shared pen name is never silently treated as a shared person.
-        </p>
-        <p>
-          <b>Coding.</b> Place mentions are coded per episode under an eight-function scheme, by one coder,
-          with a stratified audit of a fifth of the evidence. Decisions to exclude are published alongside the
-          evidence they exclude: {j.not_counted} such records are listed in full.
-        </p>
-      </div>
-      <aside class="caveat">
-        <p class="label cap-kicker">Open, and stated as open</p>
-        <p>
-          Spatial coding covers Issue 1 only; Issue 2 is not yet coded, so nothing here describes the magazine
-          as a whole. Explanations for the patterns in the coded evidence remain under test and are marked
-          exploratory throughout — none is presented as established. Of {j.place_mentions} counted place
-          mentions, {j.place_mentions_unmappable} cannot be placed on a map at all, because they name countries,
-          regions or a homeland rather than points; no map is published for that reason.
-        </p>
-        <p>
-          Page images and full transcription are rights-gated: the 2009 edition is in copyright, and the terms
-          of the 1927 scan are not yet established. What is published here is this edition’s own scholarship —
-          structure, metadata, coded evidence, and short scholarly quotation.
-        </p>
-      </aside>
-    </section>
-
-    <section class="section">
-      <h2><span class="mark">Methods, data &amp; citation</span>How to check and reuse this</h2>
-      <div class="prose refs small">
-        <p>
-          <b>Sources.</b> <span lang="ko">손종흠·박경우·유춘동 편, <i>근대 기생의 문화와 예술: 자료편</i> (보고사, 2009)</span>, reproducing the
-          Yonsei University Library copies; and a 2005 digitisation of the 1927 original of Issue 1.
-        </p>
-        <p>
-          <b>Datasets.</b> The corpus is published as versioned JSON — text items, editorial units, contributors,
-          places, coded place mentions, catalogue witnesses and round-table speaker turns — on the
-          <a href={`${E}/methods.html`}>Methods &amp; data</a> page. Issue 1 corpus
-          <code>{j.dataset_versions.issue1}</code> · Issue 2 <code>{j.dataset_versions.issue2}</code> ·
-          <code>{j.dataset_versions.place_mentions}</code>. Both this page and the edition are generated from
-          those files, so the figures here cannot drift from the evidence.
-        </p>
-        <p>
-          <b>How to cite.</b> Cite the edition with the dataset version a figure came from —
-          Mohd Bilal, <i>長恨 (Janghan, 1927): A Digital Scholarly Edition</i>, Issue 1 corpus
-          <code>{j.dataset_versions.issue1}</code>, Issue 2 corpus <code>{j.dataset_versions.issue2}</code>,
-          place evidence <code>{j.dataset_versions.place_mentions}</code>, <a href={`${E}/`}>mohdbilaldh.github.io/janghan/</a>.
-        </p>
-        <p>
-          <b>Rights.</b> The coded data and this edition’s own scholarship are licensed
-          <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a>. Source texts remain with their
-          rights holders. Data last generated {j.generated}.
-        </p>
-      </div>
-    </section>
   </div>
 </Project>
 <style>
-  .gloss { font-size: var(--t-small); color: var(--muted); }
-  .gloss b { color: var(--ink); }
-  .covers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-3); margin: var(--s-5) 0; max-width: var(--w-wide); }
-  .cover { margin: 0; }
-  .cover img { width: 100%; height: auto; display: block; border: 1px solid var(--hairline); background: var(--surface); }
-  .cover figcaption { margin-top: var(--s-1); }
-  .rq { background: var(--surface); padding: var(--s-3) var(--s-4); margin: var(--s-3) 0; max-width: var(--w-wide); }
-  .rq blockquote { margin: 0; font: 400 1.25rem/1.45 var(--f-display); color: var(--ink); }
-  .rq-status { margin: var(--s-3) 0 0; padding-top: var(--s-2); border-top: 1px solid var(--hairline); }
-  .ontology { margin: var(--s-3) 0; border-top: var(--rule-w) solid var(--rule); max-width: var(--w-wide); }
-  .ont-row { display: grid; grid-template-columns: 11rem 1fr; gap: 0.25rem var(--s-3); padding: var(--s-2) 0; border-bottom: 1px solid var(--hairline); }
-  .ont-row dt { font-weight: 600; }
-  .ont-row dd { margin: 0; color: var(--muted); font-size: var(--t-small); }
-  .steps { padding-left: 1.4rem; margin: var(--s-2) 0 0; }
-  .steps li { padding: 0 0 var(--s-2) var(--s-1); }
-  .steps li::marker { font: 400 var(--t-label)/1 var(--f-mono); color: var(--accent); }
-  .steps b { font-weight: 600; }
-  .steps p { margin: 0.2rem 0 0; color: var(--muted); font-size: var(--t-small); }
-  .finds { list-style: none; margin: var(--s-3) 0; padding: 0; counter-reset: find; }
-  .finds > li { border-top: 1px solid var(--hairline); padding: var(--s-3) 0; counter-increment: find; }
-  .finds > li::before { content: counter(find, decimal-leading-zero); font: 400 var(--t-label)/1 var(--f-mono); color: var(--accent); letter-spacing: 0.1em; display: block; margin-bottom: var(--s-1); }
-  .finds b { font-family: var(--f-display); font-size: 1.25rem; font-weight: 500; display: block; margin-bottom: var(--s-1); color: var(--ink); }
-  .finds p { margin: 0; }
-  .enter { display: block; border: var(--rule-w) solid var(--ink); padding: var(--s-3) var(--s-4); margin: var(--s-3) 0 var(--s-2); text-decoration: none; max-width: var(--w-wide); transition: background var(--ease), color var(--ease); }
-  .enter:hover { background: var(--ink); color: var(--paper); }
-  .enter:hover .enter-desc, .enter:hover .enter-kick { color: var(--paper); }
-  .enter-kick { display: block; color: var(--accent); margin-bottom: 0.4rem; }
-  .enter-title { display: block; font: 500 1.375rem/1.2 var(--f-display); }
-  .enter-desc { display: block; margin-top: 0.3rem; }
-  .edition-links { list-style: none; margin: 0; padding: 0; max-width: var(--w-wide); border-top: var(--rule-w) solid var(--rule); }
-  .edition-links li { margin: 0; border-bottom: 1px solid var(--hairline); }
-  .edition-links a { display: grid; grid-template-columns: 16rem 1fr; gap: var(--s-2); padding: var(--s-2) 0; text-decoration: none; min-height: 44px; }
-  .edition-links a:hover .el-title { color: var(--accent); }
-  .el-title { font-weight: 600; color: var(--ink); transition: color var(--ease); }
-  .method { background: var(--surface); padding: var(--s-3) var(--s-4); max-width: var(--w-wide); font-size: var(--t-small); }
-  .method p:last-child { margin-bottom: 0; }
-  .caveat { border-left: var(--rule-w) solid var(--negative); padding: 0.2rem 0 0.2rem var(--s-3); margin: var(--s-3) 0; max-width: var(--w-prose); font-size: var(--t-small); }
-  .caveat .cap-kicker { color: var(--negative); margin: 0 0 0.35rem; }
-  .caveat p { margin: 0 0 var(--s-1); }
-  .refs { color: var(--muted); }
-  .refs b { color: var(--ink); }
-  @media (max-width: 639px) {
-    .covers { grid-template-columns: 1fr; }
-    .ont-row { grid-template-columns: 1fr; }
-    .edition-links a { grid-template-columns: 1fr; gap: 0.2rem; }
-  }
+  .covers { margin: 0 0 40px; display: flex; gap: 28px; align-items: flex-start; flex-wrap: wrap; }
+  .covers img { display: block; height: auto; max-height: 340px; width: auto; max-width: 46%; }
+  .covers figcaption { flex-basis: 100%; max-width: var(--w-measure); }
+  .limits { max-width: var(--w-measure); }
+  .limits li { margin-bottom: 12px; }
+  @media (max-width: 640px) { .covers img { max-width: 100%; max-height: 260px; } }
 </style>

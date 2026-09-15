@@ -3,11 +3,30 @@
 Academic website and Digital Humanities research portfolio of Mohd Bilal —
 Korean Studies, The Academy of Korean Studies.
 
-Built with [Astro](https://astro.build) as a fully static site. The design system reproduces the
-structure, layout, typography, and interaction patterns of the HKUST Digital Humanities
-Initiative site (measured, not copied: no reference assets or copy are used) with this site's
-own content, data, and images; it is documented in `../DESIGN.md`. Tokens live in
-`src/styles/tokens.css`; nothing else declares a colour or a typeface.
+Built with [Astro](https://astro.build) as a fully static site. Tokens live in
+`src/styles/tokens.css`; nothing else declares a colour or a typeface. The design system and every
+structural decision are documented in `../DESIGN.md`, which is binding.
+
+## The project contract
+
+Every project resolves to exactly three routes, in the same order, with the same slots. A new
+project is one entry in `src/data/projects.ts` plus three files.
+
+| Route | Job | Budget |
+|---|---|---|
+| `/projects/<slug>/` | The argument. Five slots: Claim · Evidence · Explore · Limits · Cite. | 700–900 words, at most 3 evidence figures |
+| `/projects/<slug>/explore/` | The evidence layer: an edition, an instrument or a register. | one instrument |
+| `/projects/<slug>/data/` | Method, coding, versions, limits, licence, downloads, citation. | no limit |
+| `/projects/<slug>/<entity>/<id>/` | One citable page per entity, generated, never hand-written. | as many as the data has |
+
+Each project declares a **kind** (`edition` · `argument` · `investigation`) and a **state**
+(`in-progress` · `frozen` · `released`). Nothing goes on the site until it has a question written
+as a question, a versioned dataset, one figure whose takeaway title is a sentence with a verb, and
+one stated limit.
+
+Site navigation is four items: Projects · Method · Writing · About. `/method/` states the shared
+uncertainty grammar, the reproducibility discipline and the romanisation policy, and every project
+page points at it.
 
 ## Develop
 
@@ -29,22 +48,28 @@ tests/run.sh                 # build + every script in tests/e2e/
 tests/run.sh test_cards.py   # one script
 ```
 
-Scripts cover navigation and landmarks, the collapsing menu (below 1024px), the home bands, the
-project cards (columns at 1440 / 768 / 375, labels, links, fade-up, art), the CV and PDF, the
-person dialog, the register (search, empty state, sorting), the timeline (load, error, retry),
-responsive overflow and tap targets with full-page screenshots in `tests/screenshots/`, and
-console errors on every route.
+Scripts cover: the four-item navigation, landmarks and the redirect stubs for retired routes; the
+collapsing menu below 1024px; the home page as a router (thesis, featured project, word budget);
+the projects index as a list; the project contract on all three projects and their data pages; the
+method page and its grammar; the 43 person pages, their citations and the links into them; the
+edition's five-item nav, inherited typefaces, per-record citations and sitemap; the register
+(search, empty state, sorting, navigation); the timeline (load, error, retry); the CV and its PDF;
+responsive overflow and tap targets with full-page screenshots in `tests/screenshots/`; and console
+errors on every route.
 
-## Assets
+## Maintenance scripts
 
 ```bash
-npm run build && npm run art                        # public/art/*.png card backgrounds from the site's own figures
+npm run edition     # post-process public/janghan/: five-item nav, per-record citations, sitemap
+npm run romanise    # apply the McCune-Reischauer display layer to the JSON copies in src/data and public/data
+npm run og          # public/og.png
 npm run build && npm run cv:pdf && npm run build    # public/files/mohd-bilal-cv.pdf
-npm run og                                          # public/og.png
 ```
 
-All three use headless Chrome. Card art is rendered from the 1927 長恨 cover and the site's own
-SVG figures; run `art` after any change to those figures.
+`edition` and `romanise` are idempotent and must be re-run after any regeneration or re-export
+from a project repository. Neither ever writes to frozen research data: `romanise` rewrites only
+the display copies, never the frozen CSVs, and never touches source citations or URLs. Person-name
+mappings are listed explicitly in `scripts/romanise.mjs` so every change is reviewable.
 
 ## Data
 
@@ -56,6 +81,7 @@ SVG figures; run `art` after any change to those figures.
 - `src/data/presentations.json` — conference presentations.
 - `src/data/{site,projects,publications,cv}.ts` — typed site content (identity and nav, project
   cards with category, year label, art and overlay, articles with status, CV entries).
-- `public/janghan/` — the static 長恨 digital edition, generated from the frozen corpus.
+- `public/janghan/` — the static 長恨 edition, generated from the frozen corpus by
+  `build_site.py` in the 장한 repository, then finished by `npm run edition`.
 
 Deployment: GitHub Actions builds `master` and publishes to GitHub Pages.

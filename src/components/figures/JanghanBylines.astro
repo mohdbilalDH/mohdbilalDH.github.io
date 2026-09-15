@@ -3,7 +3,7 @@ import FigureFrame from '../FigureFrame.astro';
 /* Bylines: what is claimed, and how securely it is known.
    Research question: who is credited in 長恨, and what can the byline evidence
    actually support? The two bars are deliberately read together — the first
-   says most texts are gisaeng-attributed, the second says most identities are
+   says most texts are kisaeng-attributed, the second says most identities are
    not established. Neither bar is the finding; the gap between them is.
    Attribution labels follow the edition's own display rule: a byline evidences
    publication under a name, so "attributed" is never upgraded to "authored". */
@@ -14,7 +14,7 @@ const W = 740;
 const w = (n) => (n / TOTAL) * W;
 
 const attribution = [
-  { k: 'gisaeng', name: 'Gisaeng-attributed', fill: 'var(--b4)', op: 0.78, dark: true },
+  { k: 'gisaeng', name: 'Kisaeng-attributed', fill: 'var(--b4)', op: 0.78, dark: true },
   { k: 'unresolved', name: 'Unresolved / other', fill: 'var(--void)', op: 0.45 },
   { k: 'editor', name: 'Editor-produced', fill: 'var(--b6)', op: 0.8, dark: true },
   { k: 'foreign', name: 'Foreign-attributed', fill: 'var(--b5)', op: 0.75, dark: true },
@@ -35,7 +35,7 @@ const rows = [
   { title: 'How secure the identification behind the byline is', segs: certainty, y: 150 },
 ];
 ---
-<FigureFrame number="4 · Bylines" title="Most texts in 長恨 are gisaeng-attributed — and most of those identities remain unestablished" id="fig-bylines" wide>
+<FigureFrame number="4 · Bylines" title="Most texts in 長恨 are kisaeng-attributed — and most of those identities remain unestablished" id="fig-bylines" wide>
 
   <svg viewBox="0 0 760 348" role="img"
     aria-label={`Two stacked bars over ${TOTAL} textual items. Attribution: ${attribution.map((s) => `${s.name} ${s.n}`).join(', ')}. Identity certainty: ${certainty.map((s) => `${s.name} ${s.n}`).join(', ')}. Below, ${j.cross_issue_contributors} contributor threads recur across both issues: ${j.cross_issue_threads.map((t) => `${t.name}, ${t.certainty}`).join('; ')}.`}>
@@ -98,7 +98,7 @@ const rows = [
   </svg>
 
   <div slot="caption">
-    Read the two bars together. {j.attribution.gisaeng} of {TOTAL} texts carry gisaeng attributions, but only
+    Read the two bars together. {j.attribution.gisaeng} of {TOTAL} texts carry kisaeng attributions, but only
     {j.certainty.confirmed} identities across the whole corpus are confirmed; {j.certainty.probable} are
     probable, {j.certainty.carried_over_unchecked} are carried over from the inherited baseline without
     independent check, and {j.certainty.unresolved} remain unresolved. A byline is evidence that a text was

@@ -1,0 +1,124 @@
+---
+// Slot order: Claim · Evidence · Explore (none yet) · Limits · Cite.
+// This project is an Investigation: the finished work is the source audit, not a framing analysis.
+import Project from '../../../layouts/Project.astro';
+import Claim from '../../../components/Claim.astro';
+import Apparatus from '../../../components/Apparatus.astro';
+import HallyuCoverage from '../../../components/figures/HallyuCoverage.astro';
+import hallyu from '../../../data/hallyu.json';
+import { projects } from '../../../data/projects';
+
+const p = projects.find((x) => x.slug === 'hallyu-indian-press')!;
+---
+<Project title="Looking for Hallyu in the Indian press"
+  description="A source audit and corpus-development project on Indian English-language newspaper coverage of Korean popular culture, 2000–2026. The national press was nearly silent on Hallyu before 2011, and later counts are confounded by database coverage.">
+  <div class="wrap">
+
+    <Claim project={p}
+      meta={`${hallyu.korea_baseline_2000_2010.toLocaleString('en-US')} Korea-related articles in licensed full text, 2000–2010 · ${hallyu.hallyu_term_uses_2000_2010} use of “Hallyu” or “Korean wave” in that period · pilot corpus ${hallyu.pilot.corpus_docs} documents`} />
+
+    <section class="section">
+      <h2><span class="mark">Evidence I</span>An absence, corroborated twice</h2>
+      <div class="prose">
+        <p>
+          During the decade in which Korean popular culture was spreading through Northeast India, the
+          English-language national press was nearly silent about it. Licensed full-text search across the
+          Times of India, Hindustan Times and Indian Express finds
+          {hallyu.korea_baseline_2000_2010.toLocaleString('en-US')} Korea-related articles in 2000–2010, and
+          the words “Hallyu” or “Korean wave” appear exactly {hallyu.hallyu_term_uses_2000_2010} time in the
+          whole period: a single incidental wire-story use in 2007. Only 58 articles match the project's
+          broader candidate vocabulary before 2011, almost all in film-review contexts.
+        </p>
+        <p>
+          A parallel open-web harvest of The Hindu's daily section indexes for the same decade, enumerated
+          through the Internet Archive, recovered {hallyu.pilot.hindu_headline_matches} Korea-related headlines
+          and a {hallyu.pilot.corpus_docs}-document pilot corpus, and zero culture-context Hallyu headlines.
+          Two independent routes to the same decade return the same absence.
+        </p>
+      </div>
+      <Apparatus label="Why this is a finding and not a gap">
+        <p>
+          The sources were searched, the criteria are stated, and the retrieval was validated against licensed
+          full text. A documented near-zero under stated criteria is evidence about what the press was doing.
+          It is distinct from the 2000–2004 window below, where no licensed source exists at all and the
+          correct description is unvalidated.
+        </p>
+      </Apparatus>
+    </section>
+
+    <section class="section">
+      <h2><span class="mark">Evidence II</span>The curve cannot be read as popularity</h2>
+      <div class="prose">
+        <p>
+          Counts of Korean-culture articles do rise steeply after 2011. They cannot yet be interpreted,
+          because the thing being counted changes underneath them. Each database begins its full text in a
+          different year, between 2005 and 2015, and from 2017 all of them start indexing online-only editions
+          alongside print. A count that mixes those objects will rise whether or not any newspaper published
+          more.
+        </p>
+      </div>
+      <HallyuCoverage />
+      <Apparatus label="A rule this project holds itself to">
+        <p>
+          The phrase “Hallyu coverage increased” is not used in this project, and variables are named so that
+          Korean-popular-culture counts and Hallyu-vocabulary counts can never be silently conflated. Print
+          objects are separated from online objects before any comparison, and counts are reported per
+          newspaper per year rather than as a single national curve.
+        </p>
+      </Apparatus>
+    </section>
+
+    <section class="section">
+      <h2><span class="mark">Method</span>How the corpus is being built</h2>
+      <div class="prose">
+        <p>
+          A three-stage pipeline — discover, harvest, build — enumerates archive discovery pages, fetches
+          candidates cache-first at polite rates, and compiles a full-text-searchable corpus. Every HTTP
+          response is cached permanently, so re-running any stage never re-touches the network. Vocabulary
+          matching is deliberately two-tier: a broad Korea net for recall, then the candidate Hallyu vocabulary
+          for precision, evaluated against licensed full-text counts.
+        </p>
+        <p>
+          The full 2000–2026 corpus is deliberately not yet collected. Collection phases are gated on the
+          validation conditions the audit set, and the framing analysis, with its codebook and two-coder
+          reliability test, is the stage after that.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2><span class="mark">Limits</span>What this project does not claim, and what it will publish</h2>
+      <div class="prose">
+        <ul class="limits">
+          <li>
+            <b>No framing analysis exists yet.</b> Everything on this page is a count or a statement about
+            source availability. No frame, topic or evaluation coding has been applied to a validated sample.
+          </li>
+          <li>
+            <b>2000–2004 is unvalidated.</b> No licensed full-text source at the host institution covers it,
+            and web-archive coverage of that window is thinnest.
+          </li>
+          <li>
+            <b>The pre-2011 absence still awaits recall validation</b> against a historical database before it
+            can be published as a strong claim.
+          </li>
+          <li>
+            <b>Newspaper text is copyrighted and will never be republished here.</b> What will be published:
+            counts by newspaper and year with print and online separated; the candidate vocabulary and the
+            relevance decision tree; the source-coverage audit; and the staff, wire and unknown provenance
+            shares, which are a core variable of the design.
+          </li>
+        </ul>
+        <p class="small muted">
+          Sources, ethics, pipeline and citation are on the
+          <a href="/projects/hallyu-indian-press/data/">data page</a>.
+        </p>
+      </div>
+    </section>
+
+  </div>
+</Project>
+<style>
+  .limits { max-width: var(--w-measure); }
+  .limits li { margin-bottom: 12px; }
+</style>

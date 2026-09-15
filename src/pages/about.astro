@@ -8,7 +8,7 @@ import { site } from '../data/site';
 
 const rows = [
   { term: 'Affiliation', html: 'M.A. student, Division of Global Korean Studies,<br />The Academy of Korean Studies, Seongnam, Republic of Korea' },
-  { term: 'Research areas', html: 'Hallyu and media reception · Korean cultural history (kisaeng and colonial-period print culture) · Digital humanities methods · India–Korea exchanges' },
+  { term: 'Research areas', html: 'Gender and colonial-period print culture (kisaeng studies) · Hallyu and media reception · India–Korea exchange · Digital humanities methods' },
   { term: 'Email', html: `<a href="mailto:${site.email}">${site.email}</a>` },
   { term: 'ORCID', html: `<a href="${site.orcid}">${site.orcidId}</a>` },
   { term: 'Code & data', html: `<a href="${site.github}">${site.githubLabel}</a>` },
@@ -21,12 +21,30 @@ const rows = [
       <div class="measure">
         {site.bio.map((p) => <p class="intro" set:html={p} />)}
       </div>
+
       <SectionHeading>At a glance</SectionHeading>
       <div class="measure"><Factsheet rows={rows} /></div>
       <div class="btn-row no-print">
         <Button href="/files/mohd-bilal-cv.pdf" variant="primary" download>Download CV (PDF)</Button>
-        <Button href="/projects/" variant="ghost">View projects</Button>
+        <Button href="/cv/" variant="ghost">Read the CV</Button>
+      </div>
+
+      <SectionHeading id="korean"><span lang="ko">소개</span></SectionHeading>
+      <div class="measure">
+        <p class="intro ko" lang="ko">{site.bioKo}</p>
+      </div>
+
+      <SectionHeading id="contact">Contact</SectionHeading>
+      <div class="measure">
+        <p class="intro">{site.contactLede}</p>
+        <p class="intro">
+          Write to <a href={`mailto:${site.email}`}>{site.email}</a>.
+        </p>
+        <p class="muted small">{site.contactNote}</p>
       </div>
     </div>
   </section>
 </Base>
+<style>
+  .ko { line-height: 2; }
+</style>

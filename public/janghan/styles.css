@@ -1,37 +1,39 @@
 /* 長恨 Digital Edition — research interface.
-   Uses the design system of mohdbilaldh.github.io (../DESIGN.md): Letters light
-   palette, Inter + Geist Mono, hairline rules, no shadows, light only. The
-   edition keeps its archival character in layout, imagery and apparatus — not
-   in a separate colour system. Data colours below are the semantic encodings
-   for witnesses and certainty, and live only inside evidence displays. */
-@font-face{font-family:'Inter';src:url('fonts/inter-latin-400-normal.woff2') format('woff2');font-weight:400;font-display:swap}
-@font-face{font-family:'Inter';src:url('fonts/inter-latin-500-normal.woff2') format('woff2');font-weight:500;font-display:swap}
-@font-face{font-family:'Inter';src:url('fonts/inter-latin-600-normal.woff2') format('woff2');font-weight:600;font-display:swap}
-@font-face{font-family:'Geist Mono';src:url('fonts/geist-mono-latin-400-normal.woff2') format('woff2');font-weight:400;font-display:swap}
+   Inherits the site design system of mohdbilaldh.github.io (../DESIGN.md): the same
+   tokens, the same typefaces, the same hairline rules and absence of shadows, so that
+   entering the edition is not crossing a visual border in the middle of a project.
+   Data colours below are the semantic encodings for witnesses and certainty, and live
+   only inside evidence displays. Updated 2026-09-15. */
+@font-face{font-family:'Playfair Display Variable';src:url('fonts/playfair-display-latin-wght-normal.woff2') format('woff2-variations');font-weight:400 700;font-display:swap}
+@font-face{font-family:'Mulish Variable';src:url('fonts/mulish-latin-wght-normal.woff2') format('woff2-variations');font-weight:200 1000;font-display:swap}
+@font-face{font-family:'Open Sans Variable';src:url('fonts/open-sans-latin-wght-normal.woff2') format('woff2-variations');font-weight:300 800;font-display:swap}
+@font-face{font-family:'IBM Plex Mono';src:url('fonts/ibm-plex-mono-latin-400-normal.woff2') format('woff2');font-weight:400;font-display:swap}
 @font-face{font-family:'Noto Sans KR';src:url('fonts/noto-sans-kr-korean-400-normal.woff2') format('woff2');font-weight:400;font-display:swap}
 :root{
   color-scheme:light;
-  /* surfaces + ink — Letters light palette */
-  --paper:#ffffff; --paper-2:#f5f5f5; --ink:#151515; --ink-soft:#60606c;
-  --rule:#e7e7e9;
-  /* chrome accent is near-black; the one functional blue is for links and figures */
-  --accent:#070709; --link:#2597d0;
-  /* semantic data encodings — validated cohort palette, evidence displays only */
+  /* surfaces + ink — site tokens (tokens.css) */
+  --paper:#ffffff; --paper-2:#f8f7f3; --ink:#4b4f58; --ink-soft:#6b7075;
+  --rule:#e3e1db;
+  /* chrome accent and links — site navy and link blue */
+  --accent:#003366; --link:#2a6ebb; --yellow:#ffb100;
+  /* semantic data encodings — validated, evidence displays only */
   --seal:#A03B33; --gold:#eda100;
   --w1:#2a78d6; --w2:#eda100; --w3:#008878; --w4:#B5AF9F;
   --confirmed:#008878; --probable:#8A5A00; --unresolved:#A03B33;
   /* text-safe green: #008878 is a fill colour and is only 3.9:1 on white,
      below AA for the 10.5px chip labels (matches the site's .badge.high) */
   --confirmed-text:#33684A;
-  /* type — Inter carries both roles sitewide; Geist Mono for apparatus */
-  --serif:'Inter',-apple-system,'Segoe UI','Apple SD Gothic Neo','Noto Sans KR',sans-serif;
-  --sans:'Inter',-apple-system,'Segoe UI','Apple SD Gothic Neo','Noto Sans KR',sans-serif;
-  --mono:'Geist Mono',ui-monospace,'SF Mono',Menlo,'Noto Sans KR',monospace;
+  /* type — the site register rule: Playfair for titles, Mulish for body,
+     Open Sans for interface and intro text, IBM Plex Mono for apparatus */
+  --serif:'Playfair Display Variable','Noto Sans KR',Georgia,serif;
+  --sans:'Mulish Variable','Noto Sans KR',system-ui,sans-serif;
+  --ui:'Open Sans Variable','Noto Sans KR',Helvetica,Arial,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,monospace;
 }
 /* Dark mode removed: the site is light-only (DESIGN.md decision #18). */
 *{box-sizing:border-box}
 body{margin:0;background:var(--paper);color:var(--ink);
-  font-family:var(--serif);
+  font-family:var(--sans);
   font-feature-settings:"kern" 1;text-rendering:optimizeLegibility;
   line-height:1.7;font-size:17px}
 a{color:var(--link);text-decoration:none;border-bottom:1px solid rgba(37,151,208,.32)}
@@ -358,3 +360,22 @@ details.grpfold[open]>summary::before{content:"▾ "}
 details.grpfold[open]>summary{margin-bottom:8px}
 /* certainty word carries the same encoding as the thread's line style (V3 review) */
 .tc-c{fill:var(--confirmed-text)} .tc-p{fill:var(--probable)} .tc-u{fill:var(--unresolved)}
+
+
+/* ---- 2026-09-15: register rule applied. Titles in the display face, apparatus in the
+   interface face, so that a finding and a note about a finding never look alike. ---- */
+h1,h2,h3,.hero h2,.mast .brand,.sec{font-family:var(--serif);letter-spacing:-0.005em}
+.mast .brand small,nav.site,.parentbar,.crumb,.label,.chip,.small,figcaption,caption,th{font-family:var(--ui)}
+nav.site a.on{border-bottom:2px solid var(--yellow)}
+.mono,.corpusid,.provenance{font-family:var(--mono)}
+
+/* ---- Per-record citation. Every item, contributor and place page carries one, so the
+   edition can be cited at the level a reader actually used. ---- */
+.recordcite{margin:28px 0 0;padding:16px 18px;background:var(--paper-2);border:1px solid var(--rule);
+  font-family:var(--mono);font-size:12.5px;line-height:1.65;color:var(--ink);overflow-x:auto}
+.recordcite b{display:block;font-family:var(--ui);font-size:11px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;font-weight:600}
+
+/* ---- Related views, linked from Contents now that the nav is five items. ---- */
+.relviews{margin:0 0 24px;font-family:var(--ui);font-size:13.5px;color:var(--ink-soft)}
+.relviews a{margin-right:14px}

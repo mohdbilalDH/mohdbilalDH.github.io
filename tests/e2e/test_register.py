@@ -21,8 +21,12 @@ with Browser() as b:
     check(asc != desc and p.locator("#reg-table th[aria-sort='descending']").count() == 1, "name sort toggles with aria-sort")
     p.locator("#reg-table th button[data-sort='start']").click()
     check(p.locator("#reg-table th[aria-sort='ascending']").count() == 1, "date sort ascending")
-    p.locator("#reg-table tbody tr[data-row]:not([hidden])").first.click()
-    check(p.evaluate("document.getElementById('person-dialog').open"), "row opens record")
-    p.keyboard.press("Escape")
-    check(p.evaluate("document.activeElement.matches('tr[data-row]')"), "focus returns to the row")
+    # Records are pages now, not dialogs: the row and its name cell go to the same URL.
+    row = p.locator("#reg-table tbody tr[data-row]:not([hidden])").first
+    href = row.locator("td.name a").get_attribute("href")
+    check(href.startswith("/projects/buddhist-bridges/people/P-"), "name cell links to a person page")
+    row.click()
+    p.wait_for_url("**/people/**", timeout=5000)
+    check(p.url.endswith(href), "row click lands on that person page")
+    check(p.locator(".recordcite, .cite").count() >= 1, "the person page carries a citation")
     check(b.errors == [], f"no console errors: {b.errors}")

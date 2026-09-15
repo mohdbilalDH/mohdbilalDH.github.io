@@ -1,36 +1,38 @@
 ---
 import Base from '../../layouts/Base.astro';
 import PageTitle from '../../components/PageTitle.astro';
-import SectionHeading from '../../components/SectionHeading.astro';
-import CardRow from '../../components/CardRow.astro';
-import ProjectCard from '../../components/ProjectCard.astro';
-import { projects, categories } from '../../data/projects';
+import ProjectIndex from '../../components/ProjectIndex.astro';
+import { kindLabel, kindGloss } from '../../data/projects';
+const kinds = (Object.keys(kindLabel) as (keyof typeof kindLabel)[]);
 ---
 <Base title="Projects" current="projects"
-  description="Digital Humanities research projects by Mohd Bilal: a digital scholarly edition of the 1927 gisaeng magazine 長恨, the Buddhist Bridges prosopography of India–Korea exchange, and a corpus study of Hallyu in the Indian press.">
-  <PageTitle title="Explore My Projects"
-    lede="Digital Humanities projects built on documented sources, graded evidence, and reproducible pipelines. Each project publishes its data, its method, and its limits." />
+  description="Digital Humanities research projects by Mohd Bilal: a reconstruction of the 1927 kisaeng-edited magazine 長恨, the Buddhist Bridges prosopography of India–Korea exchange, and a source audit of Hallyu in the Indian press.">
+  <PageTitle title="Projects"
+    lede="Each project is independent: its own question, its own corpus, its own method. They share one structure — an argument, the evidence behind it, and a data page carrying the method, the limits and the citation — and one commitment, which is to show what the sources cannot support as clearly as what they can." />
   <section class="band band--flush">
     <div class="wrap">
-      {categories.map((c) => {
-        const items = projects.filter((p) => p.category === c.key);
-        return (
-          <>
-            <SectionHeading>{c.title}</SectionHeading>
-            <CardRow cols={items.length === 1 ? 1 : items.length === 2 ? 2 : 3}>
-              {items.map((p) => <ProjectCard project={p} />)}
-            </CardRow>
-          </>
-        );
-      })}
-      <p class="intro closing muted">
-        All three projects follow the same discipline: raw sources cached with provenance, analysis
-        separated from presentation, and only claims the sources can carry. Code and data are
-        released under open licences as each project reaches a citable state.
+      <dl class="kinds">
+        {kinds.map((k) => (
+          <div class="kind-row">
+            <dt>{kindLabel[k]}</dt>
+            <dd>{kindGloss[k]}</dd>
+          </div>
+        ))}
+      </dl>
+      <ProjectIndex />
+      <p class="closing small muted">
+        Work that does not yet have a question written as a question, a versioned dataset, a figure stating a
+        finding, and a stated limit stays in the repository rather than appearing here.
       </p>
     </div>
   </section>
 </Base>
 <style>
-  .closing { margin-top: 40px; font-size: 14px; line-height: 1.6; }
+  .kinds { margin: 0 0 40px; max-width: var(--w-measure); }
+  .kind-row { display: grid; grid-template-columns: 150px 1fr; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--hairline); }
+  .kind-row:last-child { border-bottom: 0; }
+  .kind-row dt { font: 500 12px/1.5 var(--f-ui); letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy); }
+  .kind-row dd { margin: 0; font: 400 14px/1.6 var(--f-ui); color: var(--text); }
+  .closing { margin-top: 32px; max-width: var(--w-measure); }
+  @media (max-width: 640px) { .kind-row { grid-template-columns: 1fr; gap: 2px; } }
 </style>

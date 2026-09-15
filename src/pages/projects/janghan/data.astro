@@ -1,0 +1,107 @@
+---
+import Project from '../../../layouts/Project.astro';
+import PageTitle from '../../../components/PageTitle.astro';
+import Apparatus from '../../../components/Apparatus.astro';
+import CiteBlock from '../../../components/CiteBlock.astro';
+import Factsheet from '../../../components/Factsheet.astro';
+import JanghanRegisters from '../../../components/figures/JanghanRegisters.astro';
+import j from '../../../data/janghan.json';
+import { projects } from '../../../data/projects';
+import { buildDate } from '../../../data/build';
+
+const p = projects.find((x) => x.slug === 'janghan')!;
+const rows = [
+  { term: 'Sources', html: 'Four witnesses: the 1927 original scan (2005 digitisation); <span lang="ko">손종흠 외 편, 근대 기생의 문화와 예술 자료편</span> (<span lang="ko">보고사</span>, 2009); the Yonsei University serial-article catalogue; and the published bibliography.' },
+  { term: 'Versions', html: 'Issue 1 corpus v3.3, frozen (v3.3.1 metadata-only amendment) · Issue 2 corpus v3.4, working layer · place list v1.1 · coded place evidence v1.2.' },
+  { term: 'Datasets', html: 'Versioned JSON is published from the edition’s <a href="/janghan/methods.html">methods and data</a> page: textual items, editorial units, contributors, witnesses and coded place evidence.' },
+  { term: 'Licensing', html: 'Project data and metadata CC BY 4.0. Source texts and page images remain with their rights holders and are not published here.' },
+  { term: 'Build', html: `Generated from the frozen corpus; site built ${buildDate}.` },
+];
+---
+<Project title="長恨 (1927) — Method and data"
+  description="Method, coding scheme, dataset versions, limits, licence and citation for the reconstruction of 長恨 (Changhan, 1927).">
+  <PageTitle title="Method and data"
+    lede="How the reconstruction was made, what is versioned, what the coding does and does not establish, and how to cite it." />
+  <section class="band band--flush">
+    <div class="wrap">
+      <p class="small muted breadcrumb"><a href={p.href}>← {p.shortTitle}</a></p>
+
+      <section class="section first">
+        <h2>How the contents were rebuilt</h2>
+        <div class="prose">
+          <ol class="steps">
+            <li><b>An inherited baseline.</b> 58 records across both issues, with approximate page ranges and no external check.</li>
+            <li><b>Reading every candidate at source.</b> Three earlier passes had disagreed on how many articles were recoverable. Re-reading each at the page settled it, and turned up a two-part serialised novel that no inventory had recorded.</li>
+            <li><b>Adding an independent witness.</b> The Yonsei catalogue was reconciled against the text. One inherited record proved to be a phantom; another was re-identified as a poem rather than an article.</li>
+            <li><b>Recovering the page itself.</b> The 1927 scan showed that Issue 1 is set in two registers, a main upper block and a running bottom strip of short items, which the magazine's own table of contents marks and no prior inventory had recorded. Position is established for {j.issue1.register.upper + j.issue1.register.strip} of {j.issue1.items} Issue-1 items and left explicitly unknown for the rest, because it is not inferred from genre or content.</li>
+            <li><b>Freezing Issue 1, then reconciling Issue 2.</b> Issue 1 is frozen at {j.issue1.units} editorial units, so every figure can be checked against the exact state of the evidence it came from. Issue 2 is reconciled to {j.issue2.units} but remains a working layer.</li>
+          </ol>
+        </div>
+        <JanghanRegisters />
+      </section>
+
+      <section class="section">
+        <h2>Coding</h2>
+        <div class="prose">
+          <p>
+            Place mentions are coded per episode, a continuous stretch in which one place functions in one
+            dominant way, under an eight-value function taxonomy, with explicit rules for relational anchors,
+            rhetorical macro-geography and tabular data. Statuses distinguish counted mentions from gap-logged,
+            logged-not-counted, excluded-evidence and false-positive records, so that decisions are
+            reproducible rather than invisible. A 20% stratified audit of the Issue-1 coding measured recall at
+            82% before correction and precision at 100%; all misses traced to one mechanical defect in search
+            coverage, which was repaired and re-run.
+          </p>
+          <p>
+            Issue-1 descriptive coding is complete. Issue-2 place and voice coding has not begun. Competing
+            explanations for the observed patterns — genre composition, text length, page register, coding
+            convention, retrieval error, editorial mediation, script register, and genuine expressive
+            difference — remain under test, and none is presented as settled.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>A negative result worth recording</h2>
+        <div class="prose">
+          <p>
+            Text-level measures of script density and politeness were computed for both issues and are retained
+            in the dataset, but they are not published as an interface. Profiles of the same pen name proved
+            unstable across the two issues: one moves from wholly plain to wholly polite, and an unsigned
+            recurring column shifts just as far within the same genre. They therefore cannot serve as authorial
+            fingerprints, and the reading mode is machine-assisted, agreeing with a human reading in nine of
+            twelve checks. The instability is the result; publishing the table alongside a warning not to
+            interpret it would invite exactly the reading the evidence does not support.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>At a glance</h2>
+        <div class="measure"><Factsheet rows={rows} /></div>
+        <Apparatus label="Counting conventions">
+          <p>
+            Counts are reported at the editorial-unit level and always name their level. The reconstructed
+            counts are not claims about a historically true number: they converge with the other witnesses
+            after reconciliation, and the residual disagreements are published rather than resolved.
+          </p>
+        </Apparatus>
+      </section>
+
+      <section class="section">
+        <h2 id="cite">Cite</h2>
+        <CiteBlock
+          citation={`Bilal, Mohd. “長恨 (Changhan, 1927): A Reconstruction of the Contents and a Register of the Attributions.” Digital humanities project, ${p.version}. The Academy of Korean Studies, 2026.`}
+          licence="Project data and metadata are CC BY 4.0. Source texts remain with their rights holders."
+          url="https://mohdbilaldh.github.io/projects/janghan/"
+          buildDate={buildDate} />
+      </section>
+    </div>
+  </section>
+</Project>
+<style>
+  .breadcrumb { margin: 0 0 24px; }
+  .first { margin-top: 0; }
+  .steps { max-width: var(--w-measure); }
+  .steps li { margin-bottom: 12px; }
+</style>

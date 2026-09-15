@@ -1,0 +1,126 @@
+---
+import Project from '../../../layouts/Project.astro';
+import PageTitle from '../../../components/PageTitle.astro';
+import Apparatus from '../../../components/Apparatus.astro';
+import CiteBlock from '../../../components/CiteBlock.astro';
+import Factsheet from '../../../components/Factsheet.astro';
+import core from '../../../data/core.json';
+import { projects } from '../../../data/projects';
+import { buildDate } from '../../../data/build';
+
+const c = core.counts;
+const p = projects.find((x) => x.slug === 'buddhist-bridges')!;
+const rows = [
+  { term: 'Contents', html: `${c.people_total} people examined, of which ${c.people_carried} are carried after Buddhist-relevance classification · ${c.travels} travels · ${c.texts} texts · ${c.institutions} institutions · ${c.events} events · ${c.sources} graded sources.` },
+  { term: 'Release', html: 'v3.0, frozen 17 August 2026. 13 CSVs under a SHA-256 manifest (<span class="mono">769b00c67fdd1a6e</span>), rebuilt deterministically from plain-text source modules.' },
+  { term: 'Downloads', html: '<a href="/data/people.json" download>people.json</a> · <a href="/data/story.json" download>story.json</a> · <a href="/data/timeline.json" download>timeline.json</a> · <a href="/data/sources.json" download>sources.json</a>' },
+  { term: 'Licensing', html: 'Dataset CC BY 4.0 · code MIT.' },
+  { term: 'Build', html: `Site built ${buildDate} from the v3.0 export.` },
+];
+---
+<Project title="Buddhist Bridges — Method and data"
+  description="Inclusion criteria, confidence grading, reproducibility, limits, licence and citation for the Buddhist Bridges dataset v3.0.">
+  <PageTitle title="Method and data"
+    lede="What counts as a record, how confidence is graded, how the release is verified, and how to cite it." />
+  <section class="band band--flush">
+    <div class="wrap">
+      <p class="small muted breadcrumb"><a href={p.href}>← {p.shortTitle}</a></p>
+
+      <section class="section first">
+        <h2>The rule of collection</h2>
+        <div class="prose">
+          <p class="rule-line">
+            No relationship is recorded as influential without documentary evidence; association with both
+            countries is not influence.
+          </p>
+          <p>
+            Every record carries a confidence grade, a completeness status and a date-precision field. Records
+            without a safe date are never placed on the timeline axis; they are listed in the register as
+            undated. Rejected candidates stay in the dataset as documented negatives rather than being deleted,
+            so the boundary of a claim can be inspected. Legendary material is labelled and excluded from
+            analysis by default.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Confidence grading</h2>
+        <div class="prose">
+          <dl class="grades">
+            <div><dt><span class="badge high">HIGH</span></dt><dd>Corroborated by two or more independent sources of academic or archival standing.</dd></div>
+            <div><dt><span class="badge medium">MEDIUM</span></dt><dd>Documented, but resting on fewer or weaker sources.</dd></div>
+            <div><dt><span class="badge low">single source</span></dt><dd>The record is in the dataset and is not corroborated. Shown hatched wherever it is drawn.</dd></div>
+          </dl>
+          <p class="small muted">
+            Confidence grades the source basis, not historical importance. A well-known figure with thin
+            documentation grades lower than an obscure one with two archival attestations, and that is the
+            intended behaviour.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Reproducibility</h2>
+        <div class="prose">
+          <p>
+            The frozen release is rebuilt deterministically from plain-text source modules. This site reads
+            only a JSON export that verifies the manifest before every build, so the site cannot silently
+            change the data: a checksum mismatch aborts the export rather than publishing a changed figure.
+          </p>
+          <p>
+            Uncertainty is drawn rather than footnoted, using the grammar shared across this site: dashed
+            floruit bars, hatched single-source lives, an annotated void where the evidence bar admits nothing.
+            The shared grammar is set out on the <a href="/method/">method page</a>. The gap it addresses is
+            documented: a 2024 survey of 186 web-based Digital Humanities projects found that 122 use maps, 12
+            critically adapt them, and none visualises uncertainty. See Tommaso Battisti, <i>Classification of
+            web-based Digital Humanities projects leveraging information visualisation techniques</i> (Zenodo,
+            2024), <a href="https://doi.org/10.5281/zenodo.14192758">doi:10.5281/zenodo.14192758</a>.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>At a glance</h2>
+        <div class="measure"><Factsheet rows={rows} /></div>
+        <Apparatus label="Repository and deposit">
+          <p>
+            The dataset is prepared for deposit: the release is frozen, checksummed and documented. The
+            repository and a Zenodo DOI follow, and this page will carry the DOI when it is minted. Until then
+            the version string above, with its manifest checksum, identifies the exact state of the evidence.
+          </p>
+        </Apparatus>
+      </section>
+
+      <section class="section">
+        <h2>Limits</h2>
+        <div class="prose">
+          <ul>
+            <li>All analysis is descriptive (n = {c.people_carried}).</li>
+            <li>The modern era is documented mainly through the press, a different evidentiary regime from the premodern chapters.</li>
+            <li>Korean-language sources dominate; an Indian-source corroboration round has not been carried out.</li>
+            <li>No woman appears in the record before 1990. The register records that absence; it cannot by itself explain it.</li>
+            <li>Only {c.journeys_routed} of {c.travels} travels have routes documented well enough to map, which is why no map is published.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 id="cite">Cite</h2>
+        <CiteBlock
+          citation="Bilal, Mohd. Five Bridges, One Silence: Documented Mediators of India–Korea Buddhist Exchange, 300–2026. Dataset v3.0, frozen 17 August 2026."
+          licence="Dataset CC BY 4.0 · code MIT"
+          url="https://mohdbilaldh.github.io/projects/buddhist-bridges/"
+          buildDate={buildDate} />
+      </section>
+    </div>
+  </section>
+</Project>
+<style>
+  .breadcrumb { margin: 0 0 24px; }
+  .first { margin-top: 0; }
+  .rule-line { font-style: italic; border-left: 3px solid var(--yellow); padding-left: 20px; }
+  .grades > div { display: grid; grid-template-columns: 150px 1fr; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--hairline); }
+  .grades dt { margin: 0; }
+  .grades dd { margin: 0; font-size: 15px; line-height: 1.6; }
+  @media (max-width: 640px) { .grades > div { grid-template-columns: 1fr; gap: 4px; } }
+</style>

@@ -1,0 +1,37 @@
+---
+// The scannable index. A list, not a card wall: it reads like a bibliography of the
+// work and stays legible from three projects to eight.
+import { projects, kindLabel } from '../data/projects';
+interface Props { limit?: number; exclude?: string }
+const { limit, exclude } = Astro.props;
+const items = projects.filter((p) => p.slug !== exclude).slice(0, limit ?? projects.length);
+---
+<ol class="pindex">
+  {items.map((p) => (
+    <li class="pitem">
+      <div class="pitem-head">
+        <span class="chip chip--kind">{kindLabel[p.kind]}</span>
+        <span class="pitem-dates mono">{p.dates}</span>
+        <span class={`pitem-state pitem-state--${p.state}`}>{p.stateLabel}</span>
+      </div>
+      <h3 class="pitem-title"><a href={p.href}>{p.title}</a></h3>
+      <p class="pitem-finding">{p.finding}</p>
+    </li>
+  ))}
+</ol>
+<style>
+  .pindex { list-style: none; margin: 0; padding: 0; max-width: var(--w-measure); counter-reset: none; }
+  .pitem { border-top: 1px solid var(--hairline); padding: 28px 0; margin: 0; }
+  .pitem:last-child { border-bottom: 1px solid var(--hairline); }
+  .pitem-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-bottom: 12px; }
+  .chip--kind { font: 500 11.5px/1.4 var(--f-ui); letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; border: 1px solid var(--navy); color: var(--navy); }
+  .pitem-dates { color: var(--muted); font-size: 13px; }
+  .pitem-state { font: 400 12px/1.4 var(--f-ui); letter-spacing: 0.04em; color: var(--muted); }
+  .pitem-state--frozen, .pitem-state--released { color: var(--grade-high); }
+  .pitem-state--in-progress { color: var(--grade-medium); }
+  .pitem-title { font: 700 24px/1.3 var(--f-title); margin: 0 0 10px; max-width: 34ch; }
+  .pitem-title a { color: var(--heading); text-decoration: none; }
+  .pitem-title a:hover { color: var(--navy); text-decoration: underline; text-underline-offset: 4px; }
+  .pitem-finding { font: 400 15px/1.7 var(--f-ui); color: var(--text); margin: 0; max-width: 68ch; }
+  @media (max-width: 640px) { .pitem-title { font-size: 20px; } }
+</style>
