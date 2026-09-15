@@ -10,3 +10,7 @@ _unpublished/
 .superpowers/
 tests/.venv/
 tests/screenshots/
+
+# Python bytecode from the test harness
+__pycache__/
+*.pyc
