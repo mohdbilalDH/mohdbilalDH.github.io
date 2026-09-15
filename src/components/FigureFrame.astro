@@ -1,13 +1,14 @@
 ---
 // Every figure on the site: kicker, a takeaway title stating the finding, the chart,
 // a caption, and a data-table fallback. Charts are hand-built SVG passed in the default slot.
-interface Props { number?: string; title?: string; id?: string; wide?: boolean; labelledby?: string }
-const { number, title, id, wide = false, labelledby } = Astro.props;
+interface Props { number?: string; title?: string; id?: string; wide?: boolean; labelledby?: string; interactive?: boolean }
+const { number, title, id, wide = false, labelledby, interactive = false } = Astro.props;
 ---
-<figure class:list={['fig', { 'fig--wide': wide }]} id={id} aria-labelledby={labelledby}>
+<figure class:list={['fig', { 'fig--wide': wide, 'fig--live': interactive }]} id={id} aria-labelledby={labelledby}>
   {(number || title) && (
     <div class="fig-head">
       {number && <span class="label">Figure {number}</span>}
+      {interactive && <span class="fig-live">Interactive</span>}
       {title && <p class="fig-title">{title}</p>}
     </div>
   )}
@@ -22,6 +23,9 @@ const { number, title, id, wide = false, labelledby } = Astro.props;
 </figure>
 <style>
   .fig { margin: 40px 0; background: var(--white); border-radius: var(--r-card); padding: 30px; }
+  /* An instrument is marked so a reader can tell, before scrolling, what they can act on. */
+  .fig--live { border-top: 3px solid var(--navy); border-top-left-radius: 0; border-top-right-radius: 0; }
+  .fig-live { display: inline-block; margin-left: 10px; font: 500 10.5px/1.4 var(--f-ui); letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); border: 1px solid var(--navy); border-radius: 2px; padding: 2px 7px; vertical-align: 1px; }
   .fig-head { margin-bottom: 16px; }
   .fig-title { font: 700 var(--t-h3)/1.35 var(--f-title); color: var(--heading); margin: 0.2rem 0 0; text-wrap: balance; max-width: var(--w-prose); }
   .fig-body :global(> svg) { display: block; width: 100%; height: auto; }

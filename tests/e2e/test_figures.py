@@ -15,8 +15,12 @@ with Browser() as b:
     p.locator(".cg-mode[data-mode='witnesses']").click()
     check(bg() != a, "recolouring by witnesses changes the cells")
     check(p.locator("#cg-legend span").count() >= 4, "legend follows the mode")
+    # the instrument opens on a real record rather than an empty panel
+    primed = p.locator("#cg-detail .d-title").inner_text().strip()
+    check(primed != "", "the grid opens showing a record")
+    p.locator(".cg-cell").nth(6).focus()
+    check(p.locator("#cg-detail .d-title").inner_text().strip() != primed, "focusing another cell changes the record")
     first.focus()
-    check(p.locator("#cg-detail .d-title").count() == 1, "focusing a cell shows its record")
     href = p.locator("#cg-detail a").get_attribute("href")
     check(href.startswith("/janghan/item/"), "the record links into the edition")
     check(p.request.get(BASE + href).status == 200, f"that edition page exists ({href})")

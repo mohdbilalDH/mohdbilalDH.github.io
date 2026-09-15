@@ -21,7 +21,7 @@ const ticks = [2000, 2005, 2010, 2015, 2020, 2026];
 const markerX = x(marker.year);
 ---
 <FigureFrame number="· Source coverage"
-  title="Every rise in the curve coincides with a change in what the databases hold" wide>
+  title="Every rise in the curve coincides with a change in what the databases hold" id="coverage" wide>
   <svg viewBox={`0 0 ${W} ${H}`} role="img"
     aria-label={`Coverage chart, 2000 to 2026. ${rows.map((r) => `${r.source}: ${r.start} to ${r.end}${r.kind === 'uneven' ? ', uneven' : ''}`).join('; ')}. A marker at ${marker.year} shows where online editions enter the index.`}>
 

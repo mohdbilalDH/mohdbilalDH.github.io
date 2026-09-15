@@ -76,20 +76,32 @@ const jsonld = {
 
     <ProjectHeader project={p} scale={scale} />
 
-    <figure class="covers">
-      <div class="covers-imgs">
-        <img src={`${E}/assets/jh01-cover.png`} width="900" height="1470" loading="eager"
-             alt="Cover of 長恨 issue 1, January 1927: a woman seated inside a birdcage, with the title in two circular seals above." />
-        <img src={`${E}/assets/jh02-cover.png`} width="411" height="606" loading="lazy"
-             alt="Cover of 長恨 issue 2, February 1927: two women, one in hanbok and one in Western dress, holding hands beneath a rising sun." />
+    <figure class="plate">
+      <div class="plate-grid">
+        <div class="plate-cell">
+          <img src={`${E}/assets/jh01-cover.png`} width="900" height="1470" loading="eager"
+               alt="Cover of 長恨 issue 1, January 1927: a woman seated inside a birdcage, with the title in two circular seals above." />
+          <figcaption>
+            <b><span lang="ko">창간호</span> · 10 January 1927</b>
+            <span lang="ko">동무여 생각하라 조롱 속에 이 몸을</span>
+            <span>“Comrades, think of me here inside the cage.” From the 1927 original scan, the only witness that survives for this issue.</span>
+          </figcaption>
+        </div>
+        <div class="plate-cell">
+          <img src={`${E}/assets/jh02-cover.png`} width="411" height="606" loading="lazy"
+               alt="Cover of 長恨 issue 2, February 1927: two women, one in hanbok and one in Western dress, holding hands beneath a rising sun." />
+          <figcaption>
+            <b><span lang="ko">2월호</span> · February 1927</b>
+            <span>A woman in hanbok and a woman in Western dress, hands joined beneath a rising sun.</span>
+            <span>Reproduced in the 2009 edition; no 1927 scan of this issue is known to survive.</span>
+          </figcaption>
+        </div>
       </div>
-      <figcaption class="caption">
-        <b><span lang="ko">창간호</span></b>, 10 January 1927: <span lang="ko">동무여 생각하라 조롱 속에 이 몸을</span>,
-        “Comrades, think of me here inside the cage,” from the 1927 original.
-        <b><span lang="ko">2월호</span></b>, February 1927: a woman in hanbok and a woman in Western dress,
-        hands joined beneath a rising sun, reproduced in the 2009 edition. These two covers are the only
-        images this project is able to publish.
-      </figcaption>
+      <p class="plate-note">
+        These two covers are the only images this project is able to publish. Everything else it
+        offers is description: what each text is, who signed it, where it sits on the page, and which
+        of the four witnesses attests it.
+      </p>
     </figure>
   </div>
 
@@ -103,10 +115,13 @@ const jsonld = {
         <span lang="ko">『장한』</span> (1927), and what does that spatial organisation reveal about the
         social world the magazine constructs?
       </p>
-      <p class="rq-prior">
-        None of which can be asked until a prior question is settled: <b>what was actually in the
-        magazine?</b> Four surviving sources disagree, and this project is the answer to that.
-      </p>
+      <Fragment slot="prior">
+        <p>
+          None of which can be asked until a prior question is settled: <b>what was actually in the
+          magazine?</b> Four surviving sources disagree about it, and this project is the answer to
+          that: a reconstruction of the contents, and a register of who each text was published under.
+        </p>
+      </Fragment>
     </ResearchQuestion>
 
     <section class="section flush" id="explore" aria-labelledby="explore-h">
@@ -317,13 +332,16 @@ const jsonld = {
   </div>
 </Project>
 <style>
-  .covers { margin: 0 0 8px; }
-  .covers-imgs { display: flex; gap: 28px; align-items: flex-start; flex-wrap: wrap; }
-  .covers-imgs img { display: block; height: auto; max-height: 340px; width: auto; max-width: 46%; background: var(--white); }
-  .covers figcaption { max-width: var(--w-measure); margin-top: 14px; }
+  .plate { margin: 0 0 8px; background: var(--white); border: 1px solid var(--hairline); border-radius: var(--r-card); padding: 30px; max-width: var(--w-measure); }
+  .plate-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+  .plate-cell { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 20px; align-items: start; }
+  .plate-cell img { display: block; width: auto; height: 210px; background: var(--white); }
+  .plate-cell figcaption { display: flex; flex-direction: column; gap: 7px; font: 400 13px/1.6 var(--f-ui); color: var(--muted); }
+  .plate-cell figcaption b { font: 600 13.5px/1.4 var(--f-ui); color: var(--heading); letter-spacing: 0.01em; }
+  .plate-note { font: 400 13.5px/1.7 var(--f-ui); color: var(--text); margin: 26px 0 0; padding-top: 18px; border-top: 1px solid var(--hairline); max-width: 78ch; }
   .flush { margin-top: 0; }
   .limits { max-width: var(--w-measure); }
   .limits li { margin-bottom: 10px; }
-  :global(.rq-prior) { font-size: 0.72em !important; line-height: 1.55 !important; color: var(--text) !important; font-family: var(--f-ui) !important; margin-top: 18px !important; }
-  @media (max-width: 640px) { .covers-imgs img { max-width: 100%; max-height: 260px; } }
+  @media (max-width: 900px) { .plate-grid { grid-template-columns: 1fr; gap: 24px; } }
+  @media (max-width: 640px) { .plate { padding: 20px; } .plate-cell { grid-template-columns: 1fr; gap: 12px; } .plate-cell img { height: auto; max-height: 260px; } }
 </style>

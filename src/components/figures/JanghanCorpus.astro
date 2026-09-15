@@ -48,7 +48,7 @@ const count = (fn: (i: typeof items[number]) => boolean) => items.filter(fn).len
 const wcount = (n: number) => count((i) => i.witnesses.length === n);
 ---
 <FigureFrame number="2 · The corpus"
-  title="Ninety-eight texts, and no single source attests all of them" id="corpus-grid" wide>
+  title="Ninety-eight texts, and no single source attests all of them" id="corpus-grid" wide interactive>
 
   <div class="cg">
     <div class="cg-modes" role="group" aria-label="Recolour the corpus">
@@ -92,9 +92,8 @@ const wcount = (n: number) => count((i) => i.witnesses.length === n);
 
     <p class="cg-legend" id="cg-legend"></p>
 
-    <div class="cg-detail" id="cg-detail" role="status" aria-live="polite">
-      <p class="cg-hint">Select an item to see its record, or open it in the edition.</p>
-    </div>
+    <p class="cg-detail-kicker">The selected item</p>
+    <div class="cg-detail" id="cg-detail" role="status" aria-live="polite"></div>
   </div>
 
   <div slot="caption">
@@ -142,6 +141,7 @@ const wcount = (n: number) => count((i) => i.witnesses.length === n);
   .cg-issue-sub { color: var(--muted); }
   .cg-issue-n { color: var(--muted); margin-left: auto; }
 
+  .cg-detail-kicker { font: 500 11px/1.4 var(--f-ui); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 4px 0 10px; padding-top: 16px; border-top: 1px solid var(--hairline); }
   .cg-grid { display: flex; flex-wrap: wrap; gap: 5px; }
   .cg-cell { width: 26px; height: 26px; min-height: 26px; padding: 0; border: 1px solid transparent; border-radius: 2px; cursor: pointer; background: var(--hairline); transition: transform 120ms ease-out, outline-color var(--ease); }
   .cg-cell[data-nested='1'] { border-style: dashed; border-color: var(--white); }
@@ -153,7 +153,7 @@ const wcount = (n: number) => count((i) => i.witnesses.length === n);
 <style is:global>
   #corpus-grid .cg-legend { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 4px 0 20px; font: 400 13px/1.5 var(--f-ui); color: var(--text); }
   #corpus-grid .cg-legend .sw { display: inline-block; width: 13px; height: 13px; border-radius: 2px; margin-right: 7px; vertical-align: -2px; }
-  #corpus-grid .cg-detail { border-top: 1px solid var(--hairline); padding-top: 14px; min-height: 96px; }
+  #corpus-grid .cg-detail { min-height: 92px; }
   #corpus-grid .cg-hint { font: 400 13px/1.6 var(--f-ui); color: var(--muted); margin: 0; }
   #corpus-grid .cg-detail .d-title { font: 700 17px/1.4 var(--f-title); color: var(--heading); margin: 0 0 4px; }
   #corpus-grid .cg-detail .d-meta { font: 400 13px/1.7 var(--f-ui); color: var(--text); margin: 0 0 6px; }
@@ -213,4 +213,5 @@ const wcount = (n: number) => count((i) => i.witnesses.length === n);
     c.addEventListener('mouseenter', () => show(c));
   });
   paint('attribution');
+  if (cells.length) show(cells[0]);
 </script>
