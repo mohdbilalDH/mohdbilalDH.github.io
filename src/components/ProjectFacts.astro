@@ -47,7 +47,18 @@ const { project: p, duration, resources, licence, citation, url, credits } = Ast
     <div class="row">
       <dt>Persistent identifier</dt>
       <dd>{p.doi
-        ? <span class="mono">doi:{p.doi}</span>
+        ? (
+          <>
+            <a class="mono" href={`https://doi.org/${p.doi}`}>doi:{p.doi}</a>
+            <span class="doinote">this release, {p.version.split('·')[0].trim()}</span>
+            {p.doiConcept && (
+              <>
+                <a class="mono" href={`https://doi.org/${p.doiConcept}`}>doi:{p.doiConcept}</a>
+                <span class="doinote">all versions; always resolves to the latest</span>
+              </>
+            )}
+          </>
+        )
         : <>No DOI has been minted for this release. Cite the version string above, which identifies the exact state of the evidence.</>}</dd>
     </div>
   </dl>
@@ -71,6 +82,8 @@ const { project: p, duration, resources, licence, citation, url, credits } = Ast
   .reslist li { margin-bottom: 6px; }
   .reslist li:last-child { margin-bottom: 0; }
   .resnote { color: var(--muted); font-size: 13.5px; margin-left: 8px; }
+  .doinote { display: block; color: var(--muted); font-size: 13px; margin: 2px 0 10px; }
+  .doinote:last-child { margin-bottom: 0; }
   .citenote { margin-top: 10px; max-width: 68ch; }
   @media (max-width: 700px) { .row { grid-template-columns: 1fr; gap: 4px; } }
 </style>

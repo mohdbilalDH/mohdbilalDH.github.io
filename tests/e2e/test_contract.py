@@ -74,6 +74,18 @@ with Browser() as b:
             check(phrase not in low, f"{slug}: no placeholder text — {phrase!r}")
         check(p.locator(f"a[href='/projects/{slug}/data/']").count() >= 1, f"{slug}: links to its data page")
 
+        # A minted DOI must be a resolvable link everywhere the project cites itself, and a
+        # project without one must say so rather than leaving the row blank.
+        facts_html = facts.inner_html()
+        if slug == "buddhist-bridges":
+            check("10.5281/zenodo.22770860" in facts_html, f"{slug}: version DOI in the facts block")
+            check("10.5281/zenodo.22770859" in facts_html, f"{slug}: concept DOI in the facts block")
+            check('href="https://doi.org/10.5281/zenodo.22770860"' in facts_html, f"{slug}: version DOI is a link")
+            check("zenodo.22770860" in cite, f"{slug}: the citation carries the DOI")
+            check("v3.0.0" in cite, f"{slug}: the citation names the released version")
+        else:
+            check("No DOI has been minted" in facts.inner_text(), f"{slug}: states plainly that it has no DOI yet")
+
         # --- the data page still resolves and cites ---
         p.goto(f"{BASE}/projects/{slug}/data/")
         p.wait_for_load_state("networkidle")

@@ -12,6 +12,8 @@ with Browser() as b:
     check(p.locator(".ap b").inner_text().strip().lower().startswith("reading the grades"), "confidence legend beside the grades")
     cite = p.locator(".cite").inner_text()
     check("P-0001" in cite and "accessed" in cite, "citation string with accessed date")
+    check("10.5281/zenodo.22770860" in cite, "the record citation carries the dataset DOI")
+    check("v3.0.0" in cite, "the record citation names the released version")
     check(p.locator(".sideways a").count() >= 2, "sideways links into the rest of the record")
     check(p.evaluate("document.querySelectorAll('dialog#person-dialog').length") == 0, "no person dialog anywhere")
 

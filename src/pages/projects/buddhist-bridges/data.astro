@@ -85,9 +85,14 @@ const rows = [
         <div class="measure"><Factsheet rows={rows} /></div>
         <Apparatus label="Repository and deposit">
           <p>
-            The dataset is prepared for deposit: the release is frozen, checksummed and documented. The
-            repository and a Zenodo DOI follow, and this page will carry the DOI when it is minted. Until then
-            the version string above, with its manifest checksum, identifies the exact state of the evidence.
+            The repository is public at
+            <a href="https://github.com/mohdbilalDH/buddhist-bridges">github.com/mohdbilalDH/buddhist-bridges</a>,
+            and release v3.0.0 is deposited at Zenodo under
+            <a href="https://doi.org/10.5281/zenodo.22770860">doi:10.5281/zenodo.22770860</a>. That version
+            DOI cites this exact frozen state; the concept DOI
+            <a href="https://doi.org/10.5281/zenodo.22770859">10.5281/zenodo.22770859</a> always resolves to
+            the latest version. The deposit carries the SHA-256 manifest, so a reader can check that the
+            files they downloaded are the files these figures were drawn from.
           </p>
         </Apparatus>
       </section>
@@ -113,8 +118,9 @@ const rows = [
       <section class="section">
         <h2 id="cite">Cite</h2>
         <CiteBlock
-          citation="Bilal, Mohd. Five Bridges, One Silence: Documented Mediators of India–Korea Buddhist Exchange, 300–2026. Dataset v3.0, frozen 17 August 2026."
-          licence="Dataset CC BY 4.0 · code MIT"
+          citation="Bilal, Mohd. Five Bridges, One Silence: Documented Mediators of India–Korea Buddhist Exchange, 300–2026. Dataset v3.0.0, frozen 17 August 2026."
+          licence="Dataset CC BY 4.0 · code MIT. The version DOI above cites this exact release; doi:10.5281/zenodo.22770859 always resolves to the latest version."
+          doi={p.doi}
           url="https://mohdbilaldh.github.io/projects/buddhist-bridges/"
           buildDate={buildDate} />
       </section>

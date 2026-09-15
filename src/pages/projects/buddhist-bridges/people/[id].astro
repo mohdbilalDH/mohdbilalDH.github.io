@@ -6,6 +6,9 @@ import Apparatus from '../../../../components/Apparatus.astro';
 import CiteBlock from '../../../../components/CiteBlock.astro';
 import { carried, life, TYPO, DIRECTION, bandLabel, bandSpan, personHref, CONFIDENCE_LEGEND } from '../../../../data/bb';
 import { buildDate } from '../../../../data/build';
+import { projects } from '../../../../data/projects';
+
+const bb = projects.find((x) => x.slug === 'buddhist-bridges')!;
 
 export async function getStaticPaths() {
   const { carried } = await import('../../../../data/bb');
@@ -93,8 +96,9 @@ const jsonld = {
     <section class="section">
       <h2 id="cite">Cite this record</h2>
       <CiteBlock
-        citation={`Bilal, Mohd. “${p.name} (${p.hangul}).” Buddhist Bridges: Documented Mediators of India–Korea Buddhist Exchange, 300–2026, dataset v3.0, no. ${p.id}.`}
+        citation={`Bilal, Mohd. “${p.name} (${p.hangul}).” Buddhist Bridges: Documented Mediators of India–Korea Buddhist Exchange, 300–2026, dataset v3.0.0, no. ${p.id}.`}
         licence="Dataset CC BY 4.0 · code MIT"
+        doi={bb.doi}
         url={url}
         buildDate={buildDate} />
       <p class="small muted">

@@ -38,8 +38,11 @@ export type Project = {
   finding: string;
   /** Dataset version, shown on the project page and its data page. */
   version: string;
-  /** Present only once minted; the site never prints "DOI pending". */
+  /** The version DOI: cites this exact release. Present only once minted; the site never
+   *  prints "DOI pending". */
   doi?: string;
+  /** The concept DOI, which always resolves to the latest version. */
+  doiConcept?: string;
   /** 150–250 words. The whole Korean layer for this project. */
   summaryKo: string;
   /** One line for the card: scope, span and size, in that order. Not the finding. */
@@ -121,7 +124,9 @@ export const projects: Project[] = [
       'Was there ever a continuous Buddhist bridge between India and Korea, and if not, what does the documented record show instead?',
     finding:
       'The documented record shows no continuous bridge. It shows five short-lived bridges built by different kinds of people in different directions, and one interruption five centuries long in which no person, journey, text or institution meets the evidence bar.',
-    version: 'v3.0, frozen 17 August 2026 · SHA-256 manifest 769b00c67fdd1a6e',
+    version: 'v3.0.0, frozen 17 August 2026 · SHA-256 manifest 769b00c67fdd1a6e',
+    doi: '10.5281/zenodo.22770860',
+    doiConcept: '10.5281/zenodo.22770859',
     tags: ['Prosopography', 'timeline', 'network', 'Python + Astro', 'data CC-BY-4.0'],
     category: 'editions',
     yearLabel: '300–2026 · Dataset v3.0 frozen',
