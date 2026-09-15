@@ -1,24 +1,64 @@
 ---
-// Slot order: Claim · Evidence · Explore (none yet) · Limits · Cite.
-// This project is an Investigation: the finished work is the source audit, not a framing analysis.
 import Project from '../../../layouts/Project.astro';
-import Claim from '../../../components/Claim.astro';
+import ProjectHeader from '../../../components/ProjectHeader.astro';
+import ProjectFacts from '../../../components/ProjectFacts.astro';
 import Apparatus from '../../../components/Apparatus.astro';
 import HallyuCoverage from '../../../components/figures/HallyuCoverage.astro';
+import HallyuSeries from '../../../components/figures/HallyuSeries.astro';
 import hallyu from '../../../data/hallyu.json';
 import { projects } from '../../../data/projects';
 
 const p = projects.find((x) => x.slug === 'hallyu-indian-press')!;
+const S = hallyu.print_series;
+const blocks = hallyu.periodisation.blocks;
+
+const scale = [
+  { n: hallyu.korea_baseline_2000_2010.toLocaleString('en-US'), unit: 'Korea-related articles, 2000–2010' },
+  { n: String(hallyu.hallyu_term_uses_2000_2010), unit: 'use of “Hallyu” in that decade' },
+  { n: S.total.toLocaleString('en-US'), unit: 'print articles, 2006–2026' },
+  { n: '6', unit: 'archives audited' },
+  { n: String(hallyu.pilot.corpus_docs), unit: 'documents in the pilot corpus' },
+];
+
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: 'Looking for Hallyu in the Indian Press, 2000–2026: source audit and counts',
+  description:
+    'Counts and source-coverage metadata for Indian English-language newspaper reporting on Korean popular culture, 2000–2026. Newspaper text is copyrighted and is not redistributed; the dataset publishes counts, coverage windows and derived statistics only.',
+  creator: { '@type': 'Person', name: 'Mohd Bilal', affiliation: { '@type': 'CollegeOrUniversity', name: 'The Academy of Korean Studies' } },
+  temporalCoverage: '2000/2026',
+  spatialCoverage: 'India',
+  inLanguage: 'en',
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+  version: 'Source audit v1, 18 August 2026',
+  isAccessibleForFree: true,
+  variableMeasured: [
+    'Korea-related article count', 'Hallyu-vocabulary article count',
+    'licensed full-text coverage start year', 'print versus online edition objects',
+  ],
+};
 ---
-<Project title="Looking for Hallyu in the Indian press"
-  description="A source audit and corpus-development project on Indian English-language newspaper coverage of Korean popular culture, 2000–2026. The national press was nearly silent on Hallyu before 2011, and later counts are confounded by database coverage.">
+<Project title="Looking for Hallyu in the Indian Press"
+  description="A source audit and corpus-development project on Indian English-language newspaper reporting of Korean popular culture, 2000–2026. The national press was nearly silent on Hallyu before 2011, and the visibility curve turns in 2018–19."
+  citationTitle="Looking for Hallyu in the Indian Press, 2000–2026: A Source Audit"
+  jsonld={jsonld}>
   <div class="wrap">
 
-    <Claim project={p}
-      meta={`${hallyu.korea_baseline_2000_2010.toLocaleString('en-US')} Korea-related articles in licensed full text, 2000–2010 · ${hallyu.hallyu_term_uses_2000_2010} use of “Hallyu” or “Korean wave” in that period · pilot corpus ${hallyu.pilot.corpus_docs} documents`} />
+    <ProjectHeader project={p} scale={scale} />
+
+    <div class="prose lead">
+      <p>
+        This project is building a corpus of Indian English-language newspaper reporting on Korean popular
+        culture, in order to ask how that press framed something it had no vocabulary for. What is finished is
+        the stage before the framing analysis: an audit of what the archives actually hold. That audit is
+        reported here as a result rather than as preparation, because two of its findings are substantive, and
+        because the constraints it documents apply to anyone who tries to build this corpus.
+      </p>
+    </div>
 
     <section class="section">
-      <h2><span class="mark">Evidence I</span>An absence, corroborated twice</h2>
+      <h2><span class="mark">Finding I</span>An absence, corroborated from two directions</h2>
       <div class="prose">
         <p>
           During the decade in which Korean popular culture was spreading through Northeast India, the
@@ -31,19 +71,16 @@ const p = projects.find((x) => x.slug === 'hallyu-indian-press')!;
         </p>
         <p>
           A parallel open-web harvest of The Hindu's daily section indexes for the same decade, enumerated
-          through the Internet Archive, recovered {hallyu.pilot.hindu_headline_matches} Korea-related headlines
-          and a {hallyu.pilot.corpus_docs}-document pilot corpus, and zero culture-context Hallyu headlines.
-          Two independent routes to the same decade return the same absence.
+          through the Internet Archive, recovered {hallyu.pilot.hindu_headline_matches} Korea-related
+          headlines and a {hallyu.pilot.corpus_docs}-document pilot corpus, and zero culture-context Hallyu
+          headlines. Two independent routes into the same decade return the same absence.
         </p>
-      </div>
-      <div class="prose">
         <p>
-          The silence is national, not total. Korean popular culture was circulating in Northeast
-          India through this decade, and the project records that circulation in a lightweight
-          evidence register rather than treating it as a corpus, because the material behind it is
-          not comparable with national newspaper text and would not survive being counted alongside
-          it. Keeping the two apart is what allows the absence in the national press to be read as
-          a fact about the national press.
+          The silence is national, not total. Korean popular culture was circulating regionally through these
+          years, and the project records that circulation in a lightweight evidence register rather than
+          treating it as a corpus, because the material behind it is not comparable with national newspaper
+          text and would not survive being counted alongside it. Keeping the two apart is what allows the
+          absence in the national press to be read as a fact about the national press.
         </p>
       </div>
       <Apparatus label="Why this is a finding and not a gap">
@@ -57,14 +94,13 @@ const p = projects.find((x) => x.slug === 'hallyu-indian-press')!;
     </section>
 
     <section class="section">
-      <h2><span class="mark">Evidence II</span>The curve cannot be read as popularity</h2>
+      <h2><span class="mark">Finding II</span>The archives change underneath the curve</h2>
       <div class="prose">
         <p>
-          Counts of Korean-culture articles do rise steeply after 2011. They cannot yet be interpreted,
-          because the thing being counted changes underneath them. Each database begins its full text in a
-          different year, between 2005 and 2015, and from 2017 all of them start indexing online-only editions
-          alongside print. A count that mixes those objects will rise whether or not any newspaper published
-          more.
+          Counts of Korean-culture articles do rise steeply after 2011, and they cannot be read as popularity
+          until the thing being counted holds still. Each database begins its full text in a different year,
+          between 2005 and 2015, and from 2017 all of them start indexing online-only editions alongside
+          print. A count that mixes those objects will rise whether or not any newspaper published more.
         </p>
       </div>
       <HallyuCoverage />
@@ -79,56 +115,117 @@ const p = projects.find((x) => x.slug === 'hallyu-indian-press')!;
     </section>
 
     <section class="section">
+      <h2><span class="mark">Finding III</span>Once the denominator is held constant, the curve turns in 2018–19</h2>
+      <div class="prose">
+        <p>
+          Restricting the series to print-edition objects removes the 2017 indexing artefact and leaves a
+          curve that can be interpreted. It does not turn where an earlier working hypothesis expected. That
+          hypothesis put the break at 2017, on the strength of a global BTS breakout; the evidence makes 2017
+          a local trough at {S.rows.find((r) => r.year === 2017)?.total} articles, 0.61 times the previous
+          year, with the step change arriving in two stages afterwards.
+        </p>
+      </div>
+      <HallyuSeries />
+      <div class="prose">
+        <p>
+          The periodisation below is therefore derived from the series rather than assumed, which is the
+          methodological point of the whole exercise: a periodisation taken from the history of the
+          phenomenon would have put the boundary in the wrong place, and a periodisation taken from the raw
+          database counts would have put it in the same wrong place for a different reason.
+        </p>
+      </div>
+      <div class="tablewrap">
+        <table>
+          <caption class="small muted">Mean print articles per year, by block. The final partial year is excluded from every rate.</caption>
+          <thead><tr><th scope="col">Block</th><th scope="col" class="num">Articles per year</th><th scope="col">Character</th></tr></thead>
+          <tbody>
+            {blocks.map((b) => (
+              <tr><td class="mono">{b.span}</td><td class="num">{b.per_year}</td><td>{b.character}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <Apparatus label="Which paper carries the story">
+        <p>
+          The Hindustan Times share of print coverage swings widely and is worth explaining rather than
+          smoothing: 80% in 2006 on very small numbers, down to 13.6% in 2013, and back to 80.3% in 2024. It
+          is both the earliest substantial carrier and the dominant one in the saturation period, which is why
+          provenance — staff, wire or unknown — is a core variable of the design rather than a nuisance field.
+          A wire story is not evidence of a newspaper's framing choices.
+        </p>
+      </Apparatus>
+    </section>
+
+    <section class="section">
       <h2><span class="mark">Method</span>How the corpus is being built</h2>
       <div class="prose">
         <p>
-          A three-stage pipeline — discover, harvest, build — enumerates archive discovery pages, fetches
-          candidates cache-first at polite rates, and compiles a full-text-searchable corpus. Every HTTP
-          response is cached permanently, so re-running any stage never re-touches the network. Vocabulary
-          matching is deliberately two-tier: a broad Korea net for recall, then the candidate Hallyu vocabulary
-          for precision, evaluated against licensed full-text counts.
+          A three-stage pipeline. <b>Discover</b> enumerates archive discovery pages. <b>Harvest</b> fetches
+          candidates cache-first at polite, identified, rate-limited speeds, with every HTTP response cached
+          permanently so that re-running a stage never re-touches the network. <b>Build</b> compiles a
+          full-text-searchable corpus in SQLite with FTS5, carrying provenance for every document.
         </p>
         <p>
-          The full 2000–2026 corpus is deliberately not yet collected. Collection phases are gated on the
-          validation conditions the audit set, and the framing analysis, with its codebook and two-coder
-          reliability test, is the stage after that.
+          Vocabulary matching is deliberately two-tier: a broad Korea net for recall, then the candidate
+          Hallyu vocabulary for precision, evaluated against licensed full-text counts rather than assumed.
+          The vocabulary is version 0.9 and is not frozen: it will be fixed only after a retrieval test
+          measures its recall and precision on a stratified sample. No paywall and no robots directive is
+          bypassed at any stage; where an archive is bot-gated, the licensed copy is the only route used.
         </p>
       </div>
     </section>
 
     <section class="section">
-      <h2><span class="mark">Limits</span>What this project does not claim, and what it will publish</h2>
+      <h2><span class="mark">Rights</span>What will be published, and what never will</h2>
+      <div class="prose">
+        <p>
+          Newspaper text is copyrighted, and this project will not republish it. That is a constraint on the
+          shape of the output rather than on its substance: what makes the corpus useful to another researcher
+          is the description of it, not the articles themselves.
+        </p>
+        <ul class="willpublish">
+          <li><b>Counts by newspaper and year,</b> print objects separated from online objects, as a citable table with a deposited version.</li>
+          <li><b>The source-coverage audit:</b> database windows, the GDELT floor, and web-archive capture rates by year.</li>
+          <li><b>The candidate Hallyu vocabulary</b> (v0.9) and the relevance decision tree with its boundary rulings.</li>
+          <li><b>Provenance shares</b> — staff, wire, unknown — per newspaper per period.</li>
+          <li><b>No article text, ever,</b> and no derived text long enough to substitute for it.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2><span class="mark">Limits</span>What this project does not claim</h2>
       <div class="prose">
         <ul class="limits">
-          <li>
-            <b>No framing analysis exists yet.</b> Everything on this page is a count or a statement about
-            source availability. No frame, topic or evaluation coding has been applied to a validated sample.
-          </li>
-          <li>
-            <b>2000–2004 is unvalidated.</b> No licensed full-text source at the host institution covers it,
-            and web-archive coverage of that window is thinnest.
-          </li>
-          <li>
-            <b>The pre-2011 absence still awaits recall validation</b> against a historical database before it
-            can be published as a strong claim.
-          </li>
-          <li>
-            <b>Newspaper text is copyrighted and will never be republished here.</b> What will be published:
-            counts by newspaper and year with print and online separated; the candidate vocabulary and the
-            relevance decision tree; the source-coverage audit; and the staff, wire and unknown provenance
-            shares, which are a core variable of the design.
-          </li>
+          <li><b>No framing analysis exists yet.</b> Everything here is a count or a statement about source availability. No frame, topic or evaluation coding has been applied to a validated sample.</li>
+          <li><b>2000–2004 is unvalidated.</b> No licensed full-text source at the host institution covers it, and web-archive coverage of that window is thinnest.</li>
+          <li><b>The pre-2011 absence still awaits recall validation</b> against a historical database before it can be published as a strong claim.</li>
+          <li><b>Discovery in the web-archive strand is headline-level,</b> which is a known recall limitation.</li>
+          <li><b>One annual figure is treated as suspect:</b> the Times of India count for {S.anomaly.year} falls to {S.anomaly.value} between neighbours of 207 and 128, which is more likely a database gap than an editorial decision.</li>
+          <li><b>The final year is partial</b> ({S.partial_note}) and is never used in a rate.</li>
         </ul>
         <p class="small muted">
-          Sources, ethics, pipeline and citation are on the
+          The full source audit, pipeline description and citation are on the
           <a href="/projects/hallyu-indian-press/data/">data page</a>.
         </p>
       </div>
     </section>
 
+    <ProjectFacts
+      project={p}
+      duration="Source feasibility work from August 2026; pilot corpus and licensed validation completed 18 August 2026; collection phases gated and in progress."
+      resources={[
+        { href: '/projects/hallyu-indian-press/data/', label: 'Method and data', note: 'sources, pipeline, ethics' },
+        { href: '/visualizations/#how-to-read', label: 'How to read the figures' },
+      ]}
+      licence="Counts, coverage metadata and derived statistics: CC BY 4.0. Pipeline code: MIT. Newspaper text is copyrighted, is held locally under licence, and is not redistributed in any form."
+      citation="Bilal, Mohd. Looking for Hallyu in the Indian Press, 2000–2026: A Source Audit. Source audit v1. The Academy of Korean Studies, 2026."
+      url="https://mohdbilaldh.github.io/projects/hallyu-indian-press/"
+      credits="Research, data, code and design: Mohd Bilal (The Academy of Korean Studies). Licensed database access through Yonsei University. No external funding." />
   </div>
 </Project>
 <style>
-  .limits { max-width: var(--w-measure); }
-  .limits li { margin-bottom: 12px; }
+  .lead { margin-bottom: 8px; }
+  .limits, .willpublish { max-width: var(--w-measure); }
+  .limits li, .willpublish li { margin-bottom: 10px; }
 </style>

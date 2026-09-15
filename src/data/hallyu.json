@@ -78,5 +78,206 @@
     "from": 2000,
     "to": 2004,
     "note": "No licensed full-text source at the host institution covers 2000-2004. That window is unvalidated, not empty."
+  },
+  "print_series": {
+    "source": "ProQuest TDM Studio, dataset \"Hallyu Indian Press 2006-2026\" (5,412 records); print-edition objects only. Online and Blogs objects are excluded because they enter the database in 2017 and would fake a jump exactly where the real one occurs.",
+    "papers": [
+      "HT",
+      "TOI",
+      "IE"
+    ],
+    "paper_names": {
+      "HT": "Hindustan Times",
+      "TOI": "Times of India",
+      "IE": "Indian Express"
+    },
+    "total": 4796,
+    "partial_year": 2026,
+    "partial_note": "to 21 August 2026",
+    "anomaly": {
+      "year": 2022,
+      "paper": "TOI",
+      "value": 41,
+      "note": "Down from 207 in 2021 and back to 128 in 2023. A fivefold single-year collapse in one paper while the other two rise is more likely a database coverage gap than an editorial decision, and is treated as suspect rather than as evidence."
+    },
+    "rows": [
+      {
+        "year": 2006,
+        "HT": 4,
+        "TOI": 1,
+        "IE": 0,
+        "total": 5
+      },
+      {
+        "year": 2007,
+        "HT": 12,
+        "TOI": 6,
+        "IE": 0,
+        "total": 18
+      },
+      {
+        "year": 2008,
+        "HT": 8,
+        "TOI": 2,
+        "IE": 0,
+        "total": 10
+      },
+      {
+        "year": 2009,
+        "HT": 10,
+        "TOI": 5,
+        "IE": 2,
+        "total": 17
+      },
+      {
+        "year": 2010,
+        "HT": 5,
+        "TOI": 2,
+        "IE": 6,
+        "total": 13
+      },
+      {
+        "year": 2011,
+        "HT": 6,
+        "TOI": 11,
+        "IE": 6,
+        "total": 23
+      },
+      {
+        "year": 2012,
+        "HT": 6,
+        "TOI": 13,
+        "IE": 13,
+        "total": 32
+      },
+      {
+        "year": 2013,
+        "HT": 6,
+        "TOI": 25,
+        "IE": 13,
+        "total": 44
+      },
+      {
+        "year": 2014,
+        "HT": 20,
+        "TOI": 17,
+        "IE": 22,
+        "total": 59
+      },
+      {
+        "year": 2015,
+        "HT": 17,
+        "TOI": 12,
+        "IE": 9,
+        "total": 38
+      },
+      {
+        "year": 2016,
+        "HT": 12,
+        "TOI": 27,
+        "IE": 17,
+        "total": 56
+      },
+      {
+        "year": 2017,
+        "HT": 14,
+        "TOI": 12,
+        "IE": 8,
+        "total": 34
+      },
+      {
+        "year": 2018,
+        "HT": 29,
+        "TOI": 31,
+        "IE": 33,
+        "total": 93
+      },
+      {
+        "year": 2019,
+        "HT": 80,
+        "TOI": 152,
+        "IE": 53,
+        "total": 285
+      },
+      {
+        "year": 2020,
+        "HT": 61,
+        "TOI": 113,
+        "IE": 57,
+        "total": 231
+      },
+      {
+        "year": 2021,
+        "HT": 224,
+        "TOI": 207,
+        "IE": 116,
+        "total": 547
+      },
+      {
+        "year": 2022,
+        "HT": 234,
+        "TOI": 41,
+        "IE": 165,
+        "total": 440
+      },
+      {
+        "year": 2023,
+        "HT": 543,
+        "TOI": 128,
+        "IE": 110,
+        "total": 781
+      },
+      {
+        "year": 2024,
+        "HT": 748,
+        "TOI": 135,
+        "IE": 49,
+        "total": 932
+      },
+      {
+        "year": 2025,
+        "HT": 424,
+        "TOI": 74,
+        "IE": 291,
+        "total": 789
+      },
+      {
+        "year": 2026,
+        "HT": 191,
+        "TOI": 89,
+        "IE": 69,
+        "total": 349
+      }
+    ]
+  },
+  "periodisation": {
+    "note": "Mean print articles per year by block. The inflection is 2018–19, not 2017: 2017 is a local trough at 0.61x the previous year, and the step change comes in two stages, 2018 at 2.74x and 2019 at 3.06x.",
+    "blocks": [
+      {
+        "span": "2006–2011",
+        "per_year": 14.3,
+        "character": "near-absence"
+      },
+      {
+        "span": "2012–2016",
+        "per_year": 45.8,
+        "character": "slow emergence"
+      },
+      {
+        "span": "2017–2018",
+        "per_year": 63.5,
+        "character": "hinge"
+      },
+      {
+        "span": "2019–2022",
+        "per_year": 375.8,
+        "character": "breakout"
+      },
+      {
+        "span": "2023–2025",
+        "per_year": 834.0,
+        "character": "saturation"
+      }
+    ]
   }
 }

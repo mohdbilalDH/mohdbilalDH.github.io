@@ -1,0 +1,1692 @@
+{
+ "_meta": {
+  "source": "public/janghan/data/v1/text_items.json",
+  "note": "One row per textual item. Attribution groups folded to four labels; authored is never distinguished from attributed in the interface.",
+  "versions": "Issue 1 corpus v3.3 (frozen) · Issue 2 corpus v3.4 (working layer)"
+ },
+ "items": [
+  {
+   "id": "jh01.a01",
+   "issue": "jh01",
+   "unit": "jh01.a01",
+   "nested": false,
+   "attribution": "editor",
+   "certainty": "PROBABLE",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "editorial_manifesto",
+   "title": "卷頭言 \"기생도 사람이어니\"",
+   "byline": "unsigned",
+   "pages": "3"
+  },
+  {
+   "id": "jh01.a02",
+   "issue": "jh01",
+   "unit": "jh01.a02",
+   "nested": false,
+   "attribution": "editor",
+   "certainty": "PROBABLE",
+   "register": "upper",
+   "witnesses": [
+    "W1",
+    "W2",
+    "W3"
+   ],
+   "genre": "editorial_frontmatter",
+   "title": "迎春購",
+   "byline": "編輯 人",
+   "pages": "4–6"
+  },
+  {
+   "id": "jh01.a03",
+   "issue": "jh01",
+   "unit": "jh01.a03",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "CONFIRMED",
+   "register": "upper",
+   "witnesses": [
+    "W1",
+    "W2",
+    "W3"
+   ],
+   "genre": "gisaeng_essay",
+   "title": "創刊에 際하야",
+   "byline": "金月仙",
+   "pages": "7"
+  },
+  {
+   "id": "jh01.a04",
+   "issue": "jh01",
+   "unit": "jh01.a04",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "UNRESOLVED",
+   "register": "upper",
+   "witnesses": [
+    "W1",
+    "W2",
+    "W3"
+   ],
+   "genre": "gisaeng_essay",
+   "title": "우름이라두 맘것 울어보자",
+   "byline": "梅훌구",
+   "pages": "8–9"
+  },
+  {
+   "id": "jh01.a05",
+   "issue": "jh01",
+   "unit": "jh01.a05",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "CONFIRMED",
+   "register": "upper",
+   "witnesses": [
+    "W1",
+    "W2",
+    "W3"
+   ],
+   "genre": "gisaeng_essay",
+   "title": "溫突夜話",
+   "byline": "金南洙",
+   "pages": "17–20"
+  },
+  {
+   "id": "jh01.a06",
+   "issue": "jh01",
+   "unit": "jh01.a06",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "CONFIRMED",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "gisaeng_essay",
+   "title": "눈물겨운 나의 哀話",
+   "byline": "李月香",
+   "pages": "12–15"
+  },
+  {
+   "id": "jh01.a07",
+   "issue": "jh01",
+   "unit": "jh01.a07",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "PROBABLE",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "gisaeng_poem",
+   "title": "시조 3편 (기생 창작, unsigned)",
+   "byline": "기생 (unspecified)",
+   "pages": "14–15"
+  },
+  {
+   "id": "jh01.a08",
+   "issue": "jh01",
+   "unit": "jh01.a08",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "CONFIRMED",
+   "register": "upper",
+   "witnesses": [
+    "W1",
+    "W2",
+    "W3"
+   ],
+   "genre": "gisaeng_essay",
+   "title": "歲末感想",
+   "byline": "尹玉香",
+   "pages": "21"
+  },
+  {
+   "id": "jh01.a09",
+   "issue": "jh01",
+   "unit": "jh01.a09",
+   "nested": false,
+   "attribution": "foreign",
+   "certainty": "UNRESOLVED",
+   "register": "upper",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "satire_or_essay",
+   "title": "木村-郞 (unspecified)",
+   "byline": "木村 (foreign pen name)",
+   "pages": "25–27"
+  },
+  {
+   "id": "jh01.a11",
+   "issue": "jh01",
+   "unit": "jh01.a11",
+   "nested": false,
+   "attribution": "foreign",
+   "certainty": "CONFIRMED",
+   "register": "unknown",
+   "witnesses": [
+    "W2"
+   ],
+   "genre": "foreign_essay",
+   "title": "高尙한 品格을 가지라",
+   "byline": "米國 씌·와이·번쓰",
+   "pages": "28–29"
+  },
+  {
+   "id": "jh01.a12",
+   "issue": "jh01",
+   "unit": "jh01.a12",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "CONFIRMED",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "gisaeng_essay",
+   "title": "사랑하는 동무여",
+   "byline": "金綠珠",
+   "pages": "32–39"
+  },
+  {
+   "id": "jh01.a13",
+   "issue": "jh01",
+   "unit": "jh01.a13",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "PROBABLE",
+   "register": "upper",
+   "witnesses": [
+    "W1",
+    "W2",
+    "W3"
+   ],
+   "genre": "gisaeng_poem",
+   "title": "長恨을 마지며",
+   "byline": "배瓊淑(瓚淑?) — final char verify",
+   "pages": "37–38"
+  },
+  {
+   "id": "jh01.a14",
+   "issue": "jh01",
+   "unit": "jh01.a14",
+   "nested": false,
+   "attribution": "foreign",
+   "certainty": "CONFIRMED",
+   "register": "unknown",
+   "witnesses": [
+    "W2"
+   ],
+   "genre": "foreign_essay",
+   "title": "藝術的 妹生이 되라",
+   "byline": "中華民國 王大名",
+   "pages": "30–31"
+  },
+  {
+   "id": "jh01.a15",
+   "issue": "jh01",
+   "unit": "jh01.a15",
+   "nested": false,
+   "attribution": "unresolved",
+   "certainty": "UNRESOLVED",
+   "register": "strip",
+   "witnesses": [
+    "W1",
+    "W2",
+    "W3"
+   ],
+   "genre": "satire_or_essay",
+   "title": "女優와 城生",
+   "byline": "KO 生",
+   "pages": "50–52"
+  },
+  {
+   "id": "jh01.a16",
+   "issue": "jh01",
+   "unit": "jh01.a16",
+   "nested": false,
+   "attribution": "unresolved",
+   "certainty": "UNRESOLVED",
+   "register": "strip",
+   "witnesses": [
+    "W1",
+    "W2",
+    "W3"
+   ],
+   "genre": "satire_or_essay",
+   "title": "城生과 斷髮",
+   "byline": "오므브",
+   "pages": "51–52"
+  },
+  {
+   "id": "jh01.a17",
+   "issue": "jh01",
+   "unit": "jh01.a17",
+   "nested": false,
+   "attribution": "unresolved",
+   "certainty": "UNRESOLVED",
+   "register": "strip",
+   "witnesses": [
+    "W1",
+    "W2",
+    "W3"
+   ],
+   "genre": "satire_or_essay",
+   "title": "笑話集",
+   "byline": "mixed (여러 작가)",
+   "pages": "53–54"
+  },
+  {
+   "id": "jh01.a18",
+   "issue": "jh01",
+   "unit": "jh01.a18",
+   "nested": false,
+   "attribution": "foreign",
+   "certainty": "PROBABLE",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "foreign_essay",
+   "title": "폭쓰映畵 (외국 영화 번역/소개)",
+   "byline": "multiple",
+   "pages": "58–64"
+  },
+  {
+   "id": "jh01.a19",
+   "issue": "jh01",
+   "unit": "jh01.a19",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "PROBABLE",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "gisaeng_essay",
+   "title": "A 命在天",
+   "byline": "김도심",
+   "pages": "61–62"
+  },
+  {
+   "id": "jh01.a20",
+   "issue": "jh01",
+   "unit": "jh01.a20",
+   "nested": false,
+   "attribution": "unresolved",
+   "certainty": "UNRESOLVED",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "gisaeng_poem",
+   "title": "가신님이여 (시)",
+   "byline": "unsigned",
+   "pages": "63–64"
+  },
+  {
+   "id": "jh01.a21",
+   "issue": "jh01",
+   "unit": "jh01.a21",
+   "nested": false,
+   "attribution": "unresolved",
+   "certainty": "UNRESOLVED",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "satire_or_essay",
+   "title": "珍奇한 離婚議判",
+   "byline": "-記者",
+   "pages": "65–66"
+  },
+  {
+   "id": "jh01.a22",
+   "issue": "jh01",
+   "unit": "jh01.a22",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "UNRESOLVED",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "gisaeng_essay",
+   "title": "城生과 擺姓",
+   "byline": "桂山月",
+   "pages": "75–78"
+  },
+  {
+   "id": "jh01.a23",
+   "issue": "jh01",
+   "unit": "jh01.a23",
+   "nested": false,
+   "attribution": "foreign",
+   "certainty": "PROBABLE",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "foreign_essay",
+   "title": "世界名作 紹介 (其一) 爛氣",
+   "byline": "튜루게네푸 作",
+   "pages": "79–80"
+  },
+  {
+   "id": "jh01.a24",
+   "issue": "jh01",
+   "unit": "jh01.a24",
+   "nested": false,
+   "attribution": "unresolved",
+   "certainty": "UNRESOLVED",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "gisaeng_poem",
+   "title": "몰내 갓다올제 / 大同江 맑은물에",
+   "byline": "unsigned",
+   "pages": "83–84"
+  },
+  {
+   "id": "jh01.a25",
+   "issue": "jh01",
+   "unit": "jh01.a25",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "UNRESOLVED",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "gisaeng_essay",
+   "title": "斷髮과 自殺",
+   "byline": "嚴山月",
+   "pages": "99–100"
+  },
+  {
+   "id": "jh01.a26",
+   "issue": "jh01",
+   "unit": "jh01.a26",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "PROBABLE",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "gisaeng_essay",
+   "title": "城生 生活의 훌훌面 (一)",
+   "byline": "金蘭紅",
+   "pages": "103–110"
+  },
+  {
+   "id": "jh01.a27",
+   "issue": "jh01",
+   "unit": "jh01.a27",
+   "nested": false,
+   "attribution": "unresolved",
+   "certainty": "UNRESOLVED",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "gisaeng_essay",
+   "title": "데이아보로 이야기 (歌蘭)",
+   "byline": "톨톨l 綠觀",
+   "pages": "108–110"
+  },
+  {
+   "id": "jh01.a28",
+   "issue": "jh01",
+   "unit": "jh01.a28",
+   "nested": false,
+   "attribution": "unresolved",
+   "certainty": "UNRESOLVED",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "medical",
+   "title": "月經과 齒痛 (구강위생 연작의 일부)",
+   "byline": "B 연구생",
+   "pages": "117–118"
+  },
+  {
+   "id": "jh01.a29",
+   "issue": "jh01",
+   "unit": "jh01.a29",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "CONFIRMED",
+   "register": "upper",
+   "witnesses": [
+    "W1",
+    "W2",
+    "W3"
+   ],
+   "genre": "gisaeng_essay",
+   "title": "童話 「놀부」와 「흥부」",
+   "byline": "金桂花",
+   "pages": "121–129"
+  },
+  {
+   "id": "jh01.a30",
+   "issue": "jh01",
+   "unit": "jh01.a30",
+   "nested": false,
+   "attribution": "foreign",
+   "certainty": "UNRESOLVED",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "medical",
+   "title": "부인의 구강위생",
+   "byline": "大版醫科 醫學士 趙東款",
+   "pages": "153–160"
+  },
+  {
+   "id": "jh01.a31",
+   "issue": "jh01",
+   "unit": "jh01.a31",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "UNRESOLVED",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "gisaeng_essay",
+   "title": "『기생』 노릇은 생의 命運! 어서 버서나야 하겟다! (OCR: 『城生』노룻은 i生의 m運)",
+   "byline": "金-運 (OCR garbled — verify against PDF)",
+   "pages": "10–11"
+  },
+  {
+   "id": "jh01.a32",
+   "issue": "jh01",
+   "unit": "jh01.a32",
+   "nested": false,
+   "attribution": "editor",
+   "certainty": "UNRESOLVED",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "fiction_editor",
+   "title": "明皇과 楊貴妃 (소설) (一)",
+   "byline": "unsigned",
+   "pages": "130–142"
+  },
+  {
+   "id": "jh01.a33",
+   "issue": "jh01",
+   "unit": "jh01.a33",
+   "nested": false,
+   "attribution": "unresolved",
+   "certainty": "UNRESOLVED",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "satire_or_essay",
+   "title": "□境의 아비로부터 (OCR: 3훨境의 아비로부터)",
+   "byline": "패부자 (pen name)",
+   "pages": "143–152"
+  },
+  {
+   "id": "jh01.a34",
+   "issue": "jh01",
+   "unit": "jh01.a34",
+   "nested": false,
+   "attribution": "unresolved",
+   "certainty": "UNRESOLVED",
+   "register": "strip",
+   "witnesses": [
+    "W1",
+    "W2",
+    "W3"
+   ],
+   "genre": "satire_or_essay",
+   "title": "女子의 斷髮",
+   "byline": "unsigned (verify)",
+   "pages": "23–24"
+  },
+  {
+   "id": "jh01.a35",
+   "issue": "jh01",
+   "unit": "jh01.a35",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "PROBABLE",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "gisaeng_essay",
+   "title": "草露가튼 人生",
+   "byline": "전산옥",
+   "pages": "55–56"
+  },
+  {
+   "id": "jh01.a36",
+   "issue": "jh01",
+   "unit": "jh01.a36",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "PROBABLE",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "gisaeng_essay",
+   "title": "석왕사에셔",
+   "byline": "박점홍",
+   "pages": "57"
+  },
+  {
+   "id": "jh01.a37",
+   "issue": "jh01",
+   "unit": "jh01.a37",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "PROBABLE",
+   "register": "upper",
+   "witnesses": [
+    "W1",
+    "W2",
+    "W3"
+   ],
+   "genre": "satire_or_essay",
+   "title": "長恨에 대하야",
+   "byline": "朴綠珠 (TOC-confirmed)",
+   "pages": "70"
+  },
+  {
+   "id": "jh01.a38",
+   "issue": "jh01",
+   "unit": "jh01.a38",
+   "nested": false,
+   "attribution": "editor",
+   "certainty": "UNRESOLVED",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "editorial_other",
+   "title": "無線電話",
+   "byline": "unsigned",
+   "pages": "71–72"
+  },
+  {
+   "id": "jh01.a39",
+   "issue": "jh01",
+   "unit": "jh01.a39",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "PROBABLE",
+   "register": "upper",
+   "witnesses": [
+    "W1",
+    "W2",
+    "W3"
+   ],
+   "genre": "gisaeng_essay",
+   "title": "장한이라는 말이 마음에 백혀요",
+   "byline": "朴点紅 (TOC-confirmed)",
+   "pages": "73–74"
+  },
+  {
+   "id": "jh01.a40",
+   "issue": "jh01",
+   "unit": "jh01.a40",
+   "nested": false,
+   "attribution": "unresolved",
+   "certainty": "UNRESOLVED",
+   "register": "upper",
+   "witnesses": [
+    "W1",
+    "W2",
+    "W3"
+   ],
+   "genre": "satire_or_essay",
+   "title": "눈밝은 쥐",
+   "byline": "unsigned",
+   "pages": "85–87"
+  },
+  {
+   "id": "jh01.a41",
+   "issue": "jh01",
+   "unit": "jh01.a41",
+   "nested": false,
+   "attribution": "unresolved",
+   "certainty": "UNRESOLVED",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "satire_or_essay",
+   "title": "내가 바라는 女性",
+   "byline": "저근로 (OCR garble — verify)",
+   "pages": "90–92"
+  },
+  {
+   "id": "jh01.a42",
+   "issue": "jh01",
+   "unit": "jh01.sym01",
+   "nested": true,
+   "attribution": "kisaeng",
+   "certainty": "UNRESOLVED",
+   "register": "upper",
+   "witnesses": [
+    "W1",
+    "W2",
+    "W3"
+   ],
+   "genre": "gisaeng_essay",
+   "title": "내가 만일 손님이라면 — 差別업시 하켓다",
+   "byline": "호도 (홍도?)",
+   "pages": "93–94"
+  },
+  {
+   "id": "jh01.a43",
+   "issue": "jh01",
+   "unit": "jh01.sym01",
+   "nested": true,
+   "attribution": "kisaeng",
+   "certainty": "UNRESOLVED",
+   "register": "upper",
+   "witnesses": [
+    "W1",
+    "W2",
+    "W3"
+   ],
+   "genre": "gisaeng_essay",
+   "title": "내가 만일 손님이라면 — 普通人間으로 對하야 주엇스면",
+   "byline": "一妓生",
+   "pages": "95–96"
+  },
+  {
+   "id": "jh01.a44",
+   "issue": "jh01",
+   "unit": "jh01.sym01",
+   "nested": true,
+   "attribution": "kisaeng",
+   "certainty": "UNRESOLVED",
+   "register": "upper",
+   "witnesses": [
+    "W1",
+    "W2",
+    "W3"
+   ],
+   "genre": "gisaeng_essay",
+   "title": "내가 만일 손님이라면 — 同情으로써 대하켓다",
+   "byline": "비취",
+   "pages": "97–98"
+  },
+  {
+   "id": "jh01.a45",
+   "issue": "jh01",
+   "unit": "jh01.a45",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "PROBABLE",
+   "register": "upper",
+   "witnesses": [
+    "W1",
+    "W2",
+    "W3"
+   ],
+   "genre": "gisaeng_essay",
+   "title": "첫소리",
+   "byline": "김채봉 (金彩鳳)",
+   "pages": "16"
+  },
+  {
+   "id": "jh01.a46",
+   "issue": "jh01",
+   "unit": "jh01.a46",
+   "nested": false,
+   "attribution": "unresolved",
+   "certainty": "PROBABLE",
+   "register": "upper",
+   "witnesses": [
+    "W1",
+    "W2",
+    "W3"
+   ],
+   "genre": "gisaeng_essay",
+   "title": "지금부터 다시 살자",
+   "byline": "김계현",
+   "pages": "40–42"
+  },
+  {
+   "id": "jh01.a47",
+   "issue": "jh01",
+   "unit": "jh01.a47",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "UNRESOLVED",
+   "register": "upper",
+   "witnesses": [
+    "W1",
+    "W2",
+    "W3"
+   ],
+   "genre": "gisaeng_essay",
+   "title": "波瀾重疊한 나의 前半生 : 어[떤]이의 告白",
+   "byline": "白紅黃",
+   "pages": "43–48"
+  },
+  {
+   "id": "jh01.a48",
+   "issue": "jh01",
+   "unit": "jh01.a48",
+   "nested": false,
+   "attribution": "unresolved",
+   "certainty": "UNRESOLVED",
+   "register": "strip",
+   "witnesses": [
+    "W1",
+    "W2",
+    "W3"
+   ],
+   "genre": "satire_or_essay",
+   "title": "世界의 一美男子 「빠렌티노」의 死",
+   "byline": "ㅍ·ㅋ·드(?) — initials, verify",
+   "pages": "49"
+  },
+  {
+   "id": "jh01.a49",
+   "issue": "jh01",
+   "unit": "jh01.a49",
+   "nested": false,
+   "attribution": "unresolved",
+   "certainty": "UNRESOLVED",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "gisaeng_poem",
+   "title": "녯설음",
+   "byline": "(verify)",
+   "pages": "81–82"
+  },
+  {
+   "id": "jh01.a50",
+   "issue": "jh01",
+   "unit": "jh01.a50",
+   "nested": false,
+   "attribution": "unresolved",
+   "certainty": "UNRESOLVED",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "gisaeng_essay",
+   "title": "기생 노릇을 할바에는 [옛]기생을 본 밧자",
+   "byline": "(verify)",
+   "pages": "88–89"
+  },
+  {
+   "id": "jh01.a04.t2",
+   "issue": "jh01",
+   "unit": "jh01.a04",
+   "nested": true,
+   "attribution": "unresolved",
+   "certainty": "UNRESOLVED",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "gisaeng_poem",
+   "title": "古調 (sijo inset, p.9)",
+   "byline": "(embedded, verify)",
+   "pages": "9"
+  },
+  {
+   "id": "jh01.a41.t2",
+   "issue": "jh01",
+   "unit": "jh01.a41",
+   "nested": true,
+   "attribution": "unresolved",
+   "certainty": "UNRESOLVED",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "gisaeng_poem",
+   "title": "古調/시 (poem inset, pp.91-92)",
+   "byline": "(embedded, verify)",
+   "pages": "91–92"
+  },
+  {
+   "id": "jh01.a51",
+   "issue": "jh01",
+   "unit": "jh01.a51",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "PROBABLE",
+   "register": "strip",
+   "witnesses": [
+    "W1",
+    "W2",
+    "W3"
+   ],
+   "genre": "gisaeng_poem",
+   "title": "눈오는 밤에",
+   "byline": "김채봉",
+   "pages": ""
+  },
+  {
+   "id": "jh02.b01",
+   "issue": "jh02",
+   "unit": "jh02.b01",
+   "nested": false,
+   "attribution": "unresolved",
+   "certainty": "UNRESOLVED",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "스러지는 靑春 (채봉·남수 death narrative)",
+   "byline": "unsigned",
+   "pages": "163–175"
+  },
+  {
+   "id": "jh02.b02",
+   "issue": "jh02",
+   "unit": "jh02.b02",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "萬紫千紅 — 기생도 사람다운 생활",
+   "byline": "金季鉉 (OCR; PROBABLE)",
+   "pages": "176–180"
+  },
+  {
+   "id": "jh02.b03",
+   "issue": "jh02",
+   "unit": "jh02.b03",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "PROBABLE",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "가신 님에게",
+   "byline": "梅軒 (OCR 梅훌구)",
+   "pages": "181"
+  },
+  {
+   "id": "jh02.b04",
+   "issue": "jh02",
+   "unit": "jh02.b03",
+   "nested": true,
+   "attribution": "unresolved",
+   "certainty": "UNRESOLVED",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "시됴 (OCR @시묘)",
+   "byline": "(inset)",
+   "pages": "182"
+  },
+  {
+   "id": "jh02.b05",
+   "issue": "jh02",
+   "unit": "jh02.b05",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "PROBABLE",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "눈물은 타고난 팔자",
+   "byline": "매헌 (hangul)",
+   "pages": "183"
+  },
+  {
+   "id": "jh02.b06",
+   "issue": "jh02",
+   "unit": "jh02.b06",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "나의 生涯에 비초여 同志諸妹의게 訴함",
+   "byline": "(garbled)",
+   "pages": "184–186"
+  },
+  {
+   "id": "jh02.b07",
+   "issue": "jh02",
+   "unit": "jh02.b07",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "妓生도 勞動者다-ㄹ가?",
+   "byline": "田蘭紅 (v3)",
+   "pages": "187"
+  },
+  {
+   "id": "jh02.b08",
+   "issue": "jh02",
+   "unit": "jh02.b08",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "밤중",
+   "byline": "(inset)",
+   "pages": "188"
+  },
+  {
+   "id": "jh02.b09",
+   "issue": "jh02",
+   "unit": "jh02.b09",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "人의 一生은 苦痛의 歷史",
+   "byline": "(garbled)",
+   "pages": "189–190"
+  },
+  {
+   "id": "jh02.b10",
+   "issue": "jh02",
+   "unit": "jh02.b09",
+   "nested": true,
+   "attribution": "kisaeng",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2"
+   ],
+   "genre": "unrecorded",
+   "title": "人生의 終幕",
+   "byline": "(garbled)",
+   "pages": "191"
+  },
+  {
+   "id": "jh02.b11",
+   "issue": "jh02",
+   "unit": "jh02.b11",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "나는 긔생",
+   "byline": "(garbled)",
+   "pages": "192–193"
+  },
+  {
+   "id": "jh02.b12",
+   "issue": "jh02",
+   "unit": "jh02.b12",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "긔구한 몸",
+   "byline": "(garbled)",
+   "pages": "194–195"
+  },
+  {
+   "id": "jh02.b13",
+   "issue": "jh02",
+   "unit": "jh02.b13",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "신생활경영에 대한 우리의 자각과 결심",
+   "byline": "吳虹月",
+   "pages": "196–198"
+  },
+  {
+   "id": "jh02.b14",
+   "issue": "jh02",
+   "unit": "jh02.b14",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "우숨거리",
+   "byline": "(unsigned)",
+   "pages": "199–200"
+  },
+  {
+   "id": "jh02.b15",
+   "issue": "jh02",
+   "unit": "jh02.b15",
+   "nested": false,
+   "attribution": "unresolved",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "女子界예 曙光인 長恨雜誌創刊에 對하야",
+   "byline": "(garbled)",
+   "pages": "201–202"
+  },
+  {
+   "id": "jh02.b16",
+   "issue": "jh02",
+   "unit": "jh02.b16",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "妓生 生活 裏面 (二)",
+   "byline": "金蘭紅",
+   "pages": "203–206"
+  },
+  {
+   "id": "jh02.b17",
+   "issue": "jh02",
+   "unit": "jh02.b17",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "구천에 사모치는 우리의 한",
+   "byline": "金南洙",
+   "pages": "207–209"
+  },
+  {
+   "id": "jh02.b18",
+   "issue": "jh02",
+   "unit": "jh02.b18",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "화류계에 다니는 모든 남성들에게 원함",
+   "byline": "裵花月",
+   "pages": "210–212"
+  },
+  {
+   "id": "jh02.b19",
+   "issue": "jh02",
+   "unit": "jh02.b19",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "앵도",
+   "byline": "(inset)",
+   "pages": "213"
+  },
+  {
+   "id": "jh02.b20",
+   "issue": "jh02",
+   "unit": "jh02.b20",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "멀리 게신 어머님에게",
+   "byline": "(garbled)",
+   "pages": "214–215"
+  },
+  {
+   "id": "jh02.b21",
+   "issue": "jh02",
+   "unit": "jh02.b21",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "우수운 이얘기",
+   "byline": "(unsigned)",
+   "pages": "216"
+  },
+  {
+   "id": "jh02.b22",
+   "issue": "jh02",
+   "unit": "jh02.b22",
+   "nested": false,
+   "attribution": "unresolved",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "慘憺한 압길",
+   "byline": "玉",
+   "pages": "217–218"
+  },
+  {
+   "id": "jh02.b22.t2",
+   "issue": "jh02",
+   "unit": "jh02.b22",
+   "nested": true,
+   "attribution": "unresolved",
+   "certainty": "UNRESOLVED",
+   "register": "unknown",
+   "witnesses": [
+    "W2"
+   ],
+   "genre": "unrecorded",
+   "title": "片片이된 한쪼각 편장에 (poem)",
+   "byline": "(inset, unsigned)",
+   "pages": "218"
+  },
+  {
+   "id": "jh02.b23",
+   "issue": "jh02",
+   "unit": "jh02.b23",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "예기의 립장과 자각",
+   "byline": "(garbled)",
+   "pages": "219–220"
+  },
+  {
+   "id": "jh02.b24",
+   "issue": "jh02",
+   "unit": "jh02.b24",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "저주바든 이몸",
+   "byline": "(garbled)",
+   "pages": "221–222"
+  },
+  {
+   "id": "jh02.b25",
+   "issue": "jh02",
+   "unit": "jh02.b25",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "감동과 친애",
+   "byline": "(garbled)",
+   "pages": "223"
+  },
+  {
+   "id": "jh02.b26",
+   "issue": "jh02",
+   "unit": "jh02.b26",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "여러 형님께",
+   "byline": "(garbled)",
+   "pages": "224"
+  },
+  {
+   "id": "jh02.b27",
+   "issue": "jh02",
+   "unit": "jh02.b27",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "우지마라요 / 그대가 그리워",
+   "byline": "(inset)",
+   "pages": "225"
+  },
+  {
+   "id": "jh02.b28",
+   "issue": "jh02",
+   "unit": "jh02.b28",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "創刊號를 본 나의 늦김",
+   "byline": "(garbled)",
+   "pages": "226–228"
+  },
+  {
+   "id": "jh02.b29",
+   "issue": "jh02",
+   "unit": "jh02.b29",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "月光",
+   "byline": "(inset)",
+   "pages": "229"
+  },
+  {
+   "id": "jh02.b30",
+   "issue": "jh02",
+   "unit": "jh02.b30",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "사랑으로 죄악에",
+   "byline": "(garbled)",
+   "pages": "230–233"
+  },
+  {
+   "id": "jh02.b31",
+   "issue": "jh02",
+   "unit": "jh02.b31",
+   "nested": false,
+   "attribution": "editor",
+   "certainty": "UNRESOLVED",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "笑話片片 (Yonsei: 笑談片片)",
+   "byline": "(unsigned)",
+   "pages": "234–235"
+  },
+  {
+   "id": "jh02.b32",
+   "issue": "jh02",
+   "unit": "jh02.b32",
+   "nested": false,
+   "attribution": "unresolved",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "나의 서름",
+   "byline": "(garbled)",
+   "pages": "236"
+  },
+  {
+   "id": "jh02.b33",
+   "issue": "jh02",
+   "unit": "jh02.b33",
+   "nested": false,
+   "attribution": "unresolved",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "님이여! 오라",
+   "byline": "朴瓚花 (v3)",
+   "pages": "237"
+  },
+  {
+   "id": "jh02.b34",
+   "issue": "jh02",
+   "unit": "jh02.b34",
+   "nested": false,
+   "attribution": "unresolved",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "隨想片言 [三十三句]",
+   "byline": "패부자",
+   "pages": "238–239"
+  },
+  {
+   "id": "jh02.b35",
+   "issue": "jh02",
+   "unit": "jh02.b35",
+   "nested": false,
+   "attribution": "unresolved",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "눈 밝은 쥐",
+   "byline": "(unsigned)",
+   "pages": "240–242"
+  },
+  {
+   "id": "jh02.b36",
+   "issue": "jh02",
+   "unit": "jh02.b36",
+   "nested": false,
+   "attribution": "editor",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "唐明皇과 楊貴妃 (二)",
+   "byline": "가운",
+   "pages": "243–255"
+  },
+  {
+   "id": "jh02.b37",
+   "issue": "jh02",
+   "unit": "jh02.b37",
+   "nested": false,
+   "attribution": "foreign",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "琵琶行",
+   "byline": "(classical, 白居易)",
+   "pages": "256–261"
+  },
+  {
+   "id": "jh02.b38",
+   "issue": "jh02",
+   "unit": "jh02.b38",
+   "nested": false,
+   "attribution": "editor",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "映畵小說 매암이의 노래 (禁無斷撮映)",
+   "byline": "(garbled)",
+   "pages": "262–278"
+  },
+  {
+   "id": "jh02.b39",
+   "issue": "jh02",
+   "unit": "jh02.b39",
+   "nested": false,
+   "attribution": "editor",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "가난한 夫妻",
+   "byline": "(garbled)",
+   "pages": "279–283"
+  },
+  {
+   "id": "jh02.b40",
+   "issue": "jh02",
+   "unit": "jh02.b39",
+   "nested": true,
+   "attribution": "unresolved",
+   "certainty": "UNRESOLVED",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "古調",
+   "byline": "(inset)",
+   "pages": "283"
+  },
+  {
+   "id": "jh02.b41",
+   "issue": "jh02",
+   "unit": "jh02.b41",
+   "nested": false,
+   "attribution": "foreign",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "閑窓漫談",
+   "byline": "王白波",
+   "pages": "284–286"
+  },
+  {
+   "id": "jh02.b41.t2",
+   "issue": "jh02",
+   "unit": "jh02.b41",
+   "nested": true,
+   "attribution": "unresolved",
+   "certainty": "UNRESOLVED",
+   "register": "unknown",
+   "witnesses": [
+    "W2"
+   ],
+   "genre": "unrecorded",
+   "title": "淸心人과 토끼똥",
+   "byline": "(王白波 column)",
+   "pages": "286"
+  },
+  {
+   "id": "jh02.b42",
+   "issue": "jh02",
+   "unit": "jh02.b42",
+   "nested": false,
+   "attribution": "unresolved",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "尹心悳의 情死",
+   "byline": "(garbled)",
+   "pages": "287–290"
+  },
+  {
+   "id": "jh02.b43",
+   "issue": "jh02",
+   "unit": "jh02.b43",
+   "nested": false,
+   "attribution": "kisaeng",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "가을비",
+   "byline": "(inset)",
+   "pages": "291"
+  },
+  {
+   "id": "jh02.b44",
+   "issue": "jh02",
+   "unit": "jh02.b44",
+   "nested": false,
+   "attribution": "unresolved",
+   "certainty": "INHERITED_v3",
+   "register": "unknown",
+   "witnesses": [
+    "W2",
+    "W3"
+   ],
+   "genre": "unrecorded",
+   "title": "女子의 健康과 月經",
+   "byline": "(medical)",
+   "pages": "292–296"
+  }
+ ]
+}

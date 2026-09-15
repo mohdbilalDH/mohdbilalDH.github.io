@@ -7,26 +7,30 @@ Built with [Astro](https://astro.build) as a fully static site. Tokens live in
 `src/styles/tokens.css`; nothing else declares a colour or a typeface. The design system and every
 structural decision are documented in `../DESIGN.md`, which is binding.
 
-## The project contract
+## Project pages
 
-Every project resolves to exactly three routes, in the same order, with the same slots. A new
-project is one entry in `src/data/projects.ts` plus three files.
+The site shell (seven-item navigation, home, projects index, publications, CV, contact) is the
+one documented in `../DESIGN.md`. The three project pages follow a shared pattern, benchmarked
+from the DHI, Northwestern and Kentucky DH project directories:
 
-| Route | Job | Budget |
-|---|---|---|
-| `/projects/<slug>/` | The argument. Five slots: Claim · Evidence · Explore · Limits · Cite. | 700–1,000 words of prose, at most 4 figures |
-| `/projects/<slug>/explore/` | The evidence layer: an edition, an instrument or a register. | one instrument |
-| `/projects/<slug>/data/` | Method, coding, versions, limits, licence, downloads, citation. | no limit |
-| `/projects/<slug>/<entity>/<id>/` | One citable page per entity, generated, never hand-written. | as many as the data has |
+1. **Identity** — `ProjectHeader.astro`: kind and date span, title, a subtitle naming the resource
+   and its extent, a **scale line** counting the corpus in its own units, status, dataset version,
+   build date, and a Korean summary.
+2. **Significance**, then **evidence figures**. Every figure carries a kicker, a title stating the
+   finding as a sentence, a caption explaining its encoding and its reach, and its data as a table
+   inside the frame.
+3. **Method**, **limits**, and an **explore door** into the evidence layer.
+4. **Project facts** — `ProjectFacts.astro`: resources beside the page including data downloads,
+   duration, status, version, people and roles, split licensing, persistent identifier, and a
+   citation that fills in the reader's own access date.
 
-Each project declares a **kind** (`edition` · `argument` · `investigation`) and a **state**
-(`in-progress` · `frozen` · `released`). Nothing goes on the site until it has a question written
-as a question, a versioned dataset, one figure whose takeaway title is a sentence with a verb, and
-one stated limit.
+Each project also has `/projects/<slug>/data/` for method, coding, versions, limits and citation,
+and Buddhist Bridges generates one page per mediator at
+`/projects/buddhist-bridges/people/<id>/`.
 
-Site navigation is four items: Projects · Method · Writing · About. `/method/` states the shared
-uncertainty grammar, the reproducibility discipline and the romanisation policy, and every project
-page points at it.
+`tests/e2e/test_contract.py` asserts that apparatus exists and is populated on all three pages;
+`tests/e2e/test_figures.py` exercises the interactive figures. There is no word ceiling: these are
+project pages, not articles.
 
 ## Develop
 
@@ -60,8 +64,10 @@ errors on every route.
 ## Maintenance scripts
 
 ```bash
-npm run edition     # post-process public/janghan/: five-item nav, per-record citations, sitemap
-npm run romanise    # apply the McCune-Reischauer display layer to the JSON copies in src/data and public/data
+npm run edition        # post-process public/janghan/: five-item nav, per-record citations, sitemap
+npm run romanise       # apply the McCune-Reischauer display layer to the JSON copies in src/data and public/data
+npm run janghan:views  # derive src/data/janghan-{corpus,places}.json from the edition's published JSON
+npm run art            # public/art/*.png card backgrounds, rendered from the site's own figures
 npm run og          # public/og.png
 npm run build && npm run cv:pdf && npm run build    # public/files/mohd-bilal-cv.pdf
 ```

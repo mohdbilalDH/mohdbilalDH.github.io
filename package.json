@@ -11,7 +11,8 @@
     "og": "node scripts/make-og.mjs",
     "art": "node scripts/make-card-art.mjs",
     "edition": "node scripts/edition-finish.mjs",
-    "romanise": "node scripts/romanise.mjs"
+    "romanise": "node scripts/romanise.mjs",
+    "janghan:views": "node scripts/janghan-views.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

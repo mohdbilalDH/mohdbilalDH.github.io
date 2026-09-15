@@ -1,13 +1,11 @@
-# Every project resolves to the same three routes and the same five slots.
+# Every project page carries the same identity, evidence and facts apparatus. The test asserts
+# that apparatus exists and is populated — not that the prose is short. These are project pages,
+# not articles, so there is a floor on substance and no ceiling.
 from _lib import Browser, BASE, check
 
 SLUGS = ["janghan", "buddhist-bridges", "hallyu-indian-press"]
+MIN_PROSE = 900
 
-# The contract's budget, enforced rather than aspirational: prose only, excluding figure
-# captions and the data tables underneath them, which belong to the figures.
-PROSE_MIN, PROSE_MAX = 700, 1000
-# Measured on the live DOM, not a clone: innerText on a detached node ignores rendering and
-# would count collapsed data tables and hidden instrument panels as prose.
 PROSE_JS = """
 (() => {
   const words = (t) => (t && t.trim()) ? t.trim().split(/\\s+/).length : 0;
@@ -23,26 +21,49 @@ with Browser() as b:
     for slug in SLUGS:
         p.goto(f"{BASE}/projects/{slug}/")
         p.wait_for_load_state("networkidle")
-        check(p.locator(".claim .chip--kind").count() == 1, f"{slug}: declares a kind")
-        check(p.locator(".claim .chip--state").count() == 1, f"{slug}: declares a state")
-        check(len(p.locator(".claim-q").inner_text().strip()) > 40, f"{slug}: states a question")
-        check(p.locator(".claim-q").inner_text().strip().endswith("?"), f"{slug}: the question is a question")
-        check(len(p.locator(".claim-f").inner_text().strip()) > 80, f"{slug}: states a finding")
-        check(p.locator(".ko-summary summary").count() == 1, f"{slug}: has a Korean summary")
-        # inner_text applies the CSS uppercase on .mark kickers; compare case-insensitively
+
+        # --- identity ---
+        check(p.locator(".phead-kind").count() == 1, f"{slug}: declares its kind and date span")
+        check(p.locator("h1").count() == 1, f"{slug}: one h1")
+        check(len(p.locator(".phead-sub").inner_text().strip()) > 20, f"{slug}: subtitle names the resource")
+        cells = p.locator(".phead .scale-cell")
+        check(cells.count() >= 5, f"{slug}: scale line has at least five counts ({cells.count()})")
+        check(p.locator(".phead-status b").inner_text().strip() != "", f"{slug}: status stated")
+        check("built" in p.locator(".phead-status").inner_text(), f"{slug}: build date in the header")
+        check(p.locator(".ko-summary summary").count() == 1, f"{slug}: Korean summary present")
+
+        # --- evidence ---
+        figs = p.locator("main figure.fig")
+        check(figs.count() >= 2, f"{slug}: at least two figures ({figs.count()})")
+        titles = p.locator("main figure.fig .fig-title").count()
+        check(titles == figs.count(), f"{slug}: every figure states its finding as a title")
+        tables = p.locator("main figure.fig details.fig-table").count()
+        check(tables == figs.count(), f"{slug}: every figure exposes its data as a table")
+        words = p.evaluate(PROSE_JS)
+        check(words >= MIN_PROSE, f"{slug}: substantive prose ({words} words, floor {MIN_PROSE})")
+
+        # --- limits, always present, always before the facts block ---
         heads = [h.lower() for h in p.locator("section.section h2").all_inner_texts()]
         check(any("limits" in h for h in heads), f"{slug}: has a limits section")
-        check(p.locator(f"a[href='/projects/{slug}/data/']").count() >= 1, f"{slug}: links to its data page")
-        # argument pages carry at most one door onward
-        check(p.locator("a.door").count() <= 1, f"{slug}: at most one explore door")
-        words = p.evaluate(PROSE_JS)
-        check(PROSE_MIN <= words <= PROSE_MAX, f"{slug}: prose within budget ({words} words, {PROSE_MIN}-{PROSE_MAX})")
-        check(p.locator("main figure").count() <= 4, f"{slug}: at most four figures")
 
+        # --- facts block ---
+        facts = p.locator("section.facts")
+        check(facts.count() == 1, f"{slug}: project facts block")
+        ftext = facts.inner_text().lower()
+        for field in ["resources", "duration", "status", "version", "people", "licensing"]:
+            check(field in ftext, f"{slug}: facts block states {field}")
+        check(facts.locator(".reslist a").count() >= 2, f"{slug}: resources listed beside the page")
+        cite = facts.locator(".cite").inner_text()
+        check("accessed" in cite and "Bilal" in cite, f"{slug}: citation with accessed date")
+        low = p.locator("main").inner_text().lower()
+        for phrase in ["doi: pending", "doi pending", "pending zenodo", "will be made public", "returned go"]:
+            check(phrase not in low, f"{slug}: no placeholder text — {phrase!r}")
+        check(p.locator(f"a[href='/projects/{slug}/data/']").count() >= 1, f"{slug}: links to its data page")
+
+        # --- the data page still resolves and cites ---
         p.goto(f"{BASE}/projects/{slug}/data/")
         p.wait_for_load_state("networkidle")
         check(p.locator("h1").inner_text().strip() == "Method and data", f"{slug}: data page")
-        cite = p.locator(".cite").inner_text()
-        check("accessed" in cite, f"{slug}: data page carries a citation with an accessed date")
-        check("pending" not in p.locator("main").inner_text().lower(), f"{slug}: no pending-DOI placeholder")
+        check("accessed" in p.locator(".cite").inner_text(), f"{slug}: data page citation")
     check(b.errors == [], f"no console errors: {b.errors}")
+    check(b.bad_requests() == [], f"no failed resource loads: {b.bad_requests()[:5]}")

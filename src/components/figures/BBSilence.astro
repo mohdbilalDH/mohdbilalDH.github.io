@@ -1,0 +1,120 @@
+---
+import FigureFrame from '../FigureFrame.astro';
+// The Chosŏn interruption, drawn with its denominator. An empty stretch of axis says only that
+// nobody looked; this figure shows what was looked at. Every mark is a record the project
+// examined and excluded under its stated criteria, placed at the date the record itself carries,
+// so a reader can see the bar being applied rather than take the zero on trust.
+import timeline from '../../data/timeline.json';
+
+type Mark = { id: string; label: string; start: number; end: number; scope: string; kind: string; lane: string; confidence: string };
+const marks = timeline.marks as Mark[];
+
+// Documented negatives whose dates fall wholly inside the window. Candidates without a safe date
+// are never placed on an axis, here or anywhere else on this site; they are listed in the register.
+const A = 1392, B = 1900;
+const excluded = marks
+  .filter((m) => m.scope === 'EXCLUDE' && m.start >= A && (m.end ?? m.start) <= B)
+  .sort((a, b) => a.start - b.start);
+
+const LAST_BEFORE = { year: 1370, label: "Dhyānabhadra's relics enshrined at Hoeamsa" };
+const FIRST_AFTER = { year: 1981, label: 'A Korean Buddhist delegation to India' };
+const GAP = FIRST_AFTER.year - LAST_BEFORE.year;
+
+const Y0 = 1300, Y1 = 1990, X0 = 76, X1 = 926, AX = 150;
+const x = (y: number) => X0 + ((y - Y0) / (Y1 - Y0)) * (X1 - X0);
+const ticks = [1300, 1400, 1500, 1600, 1700, 1800, 1900];
+const KIND = { lifeline: 'person', text: 'text', travel: 'journey', institution: 'institution', event: 'event' } as Record<string, string>;
+---
+<FigureFrame number="3 · The silence"
+  title={`Five centuries in which every candidate examined failed the evidence bar`} id="silence" wide>
+
+  <svg viewBox="0 0 1000 360" role="img"
+    aria-label={`Timeline from 1300 to 1990. A hatched band covers 1392 to 1900, labelled zero carried records. ${excluded.length} excluded candidates are marked inside it: ${excluded.map((m) => `${m.label}, ${m.start}`).join('; ')}. The last carried record before the band is ${LAST_BEFORE.year} and the first after it is ${FIRST_AFTER.year}.`}>
+
+    <defs>
+      <pattern id="voidhatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <rect width="8" height="8" fill="var(--ground)" />
+        <rect width="1.5" height="8" fill="var(--void)" />
+      </pattern>
+    </defs>
+
+    <rect x={x(A)} y={AX - 34} width={x(B) - x(A)} height="68" fill="url(#voidhatch)" stroke="var(--void)" stroke-width="1" />
+    <line x1={X0} y1={AX} x2={x(A)} y2={AX} stroke="var(--heading)" stroke-width="2" />
+    <line x1={x(B)} y1={AX} x2={X1} y2={AX} stroke="var(--heading)" stroke-width="2" />
+    <line x1={x(A)} y1={AX} x2={x(B)} y2={AX} stroke="var(--void)" stroke-width="2" stroke-dasharray="2 6" />
+
+    <text x={(x(A) + x(B)) / 2} y={AX - 48} text-anchor="middle" font-family="var(--f-title)" font-size="19" font-weight="700" fill="var(--heading)">
+      0 carried records, 1392–1900
+    </text>
+    <text x={(x(A) + x(B)) / 2} y={AX - 70} text-anchor="middle" font-family="var(--f-ui)" font-size="12.5" fill="var(--muted)">
+      CHOSŎN
+    </text>
+
+    <circle cx={x(LAST_BEFORE.year)} cy={AX} r="6" fill="var(--b2)" />
+    <text x={X0} y={AX - 58} font-family="var(--f-ui)" font-size="12" fill="var(--ink)">{LAST_BEFORE.year} · last carried record</text>
+    <text x={X0} y={AX - 44} font-family="var(--f-ui)" font-size="11" fill="var(--muted)">{LAST_BEFORE.label}</text>
+
+    <circle cx={x(FIRST_AFTER.year)} cy={AX} r="6" fill="var(--b6)" />
+    <text x={X1} y={AX - 58} text-anchor="end" font-family="var(--f-ui)" font-size="12" fill="var(--ink)">{FIRST_AFTER.year} · the next one</text>
+    <text x={X1} y={AX - 44} text-anchor="end" font-family="var(--f-ui)" font-size="11" fill="var(--muted)">{FIRST_AFTER.label}</text>
+
+    {excluded.map((m, i) => {
+      const cx = x(m.start);
+      // Labels sit in evenly spaced slots joined by leaders, so six marks clustered in one
+      // century cannot collide however the dates fall.
+      const sx = X0 + (i + 0.5) * ((X1 - X0) / excluded.length);
+      const ty = AX + 92;
+      return (
+        <>
+          <path d={`M ${cx} ${AX + 14} L ${cx} ${AX + 46} L ${sx} ${ty - 34} L ${sx} ${ty - 22}`}
+            fill="none" stroke="var(--muted)" stroke-width="0.9" />
+          <g stroke="var(--negative)" stroke-width="2">
+            <line x1={cx - 5} y1={AX - 5} x2={cx + 5} y2={AX + 5} />
+            <line x1={cx - 5} y1={AX + 5} x2={cx + 5} y2={AX - 5} />
+          </g>
+          <text x={sx} y={ty - 8} text-anchor="middle" font-family="var(--f-body)" font-size="12.5" fill="var(--ink)">{m.label}</text>
+          <text x={sx} y={ty + 8} text-anchor="middle" font-family="var(--f-mono)" font-size="10.5" fill="var(--muted)">
+            {m.start} · {KIND[m.kind] ?? m.kind}
+          </text>
+          <text x={sx} y={ty + 22} text-anchor="middle" font-family="var(--f-ui)" font-size="10.5" fill="var(--negative)">
+            examined, excluded
+          </text>
+        </>
+      );
+    })}
+
+    <line x1={X0} y1="300" x2={X1} y2="300" stroke="var(--hairline)" />
+    {ticks.map((t) => (
+      <text x={x(t)} y="318" text-anchor="middle" font-family="var(--f-mono)" font-size="11" fill="var(--muted)">{t}</text>
+    ))}
+    <text x={X0} y="344" font-family="var(--f-ui)" font-size="12.5" fill="var(--muted)">
+      {GAP} years between the last carried record and the next one
+    </text>
+  </svg>
+
+  <div slot="caption">
+    The most important number in this dataset is zero, and a zero is only worth anything if the
+    search behind it is visible. The hatched band is the window; the crosses are records that were
+    examined and did not meet the inclusion criteria, each at the date its own source gives. Chosŏn
+    scholars who wrote about India from Chinese sources appear here rather than in the register:
+    describing a place is not mediating an exchange with it, and the rule of collection is that no
+    relationship is recorded as influential without documentary evidence. Candidates with no safe
+    date are not placed on this axis at all; they are listed in the register as undated. The zero is
+    a finding under stated criteria, not a claim that no contact ever occurred.
+  </div>
+
+  <div slot="table">
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th scope="col">Record</th><th scope="col">Type</th><th scope="col" class="num">Date</th><th scope="col">Outcome</th></tr></thead>
+        <tbody>
+          <tr><td>{LAST_BEFORE.label}</td><td>event</td><td class="num">{LAST_BEFORE.year}</td><td>carried</td></tr>
+          {excluded.map((m) => (
+            <tr><td>{m.label}</td><td>{KIND[m.kind] ?? m.kind}</td><td class="num">{m.start}{m.end !== m.start ? `–${m.end}` : ''}</td><td>examined, excluded</td></tr>
+          ))}
+          <tr><td>{FIRST_AFTER.label}</td><td>event</td><td class="num">{FIRST_AFTER.year}</td><td>carried</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</FigureFrame>

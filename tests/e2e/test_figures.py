@@ -1,0 +1,67 @@
+# The interactive figures added to the project pages must work, and must work from the keyboard.
+from _lib import Browser, BASE, check
+
+with Browser() as b:
+    # --- 長恨: the corpus grid recolours and opens records ---
+    p = b.page()
+    p.goto(BASE + "/projects/janghan/")
+    p.wait_for_load_state("networkidle")
+    cells = p.locator(".cg-cell")
+    check(cells.count() == 98, f"corpus grid has one cell per textual item ({cells.count()})")
+    check(p.locator(".cg-mode").count() == 3, "three readings of the corpus")
+    first = p.locator(".cg-cell").first
+    bg = lambda: p.evaluate("getComputedStyle(document.querySelector('.cg-cell')).backgroundColor")
+    a = bg()
+    p.locator(".cg-mode[data-mode='witnesses']").click()
+    check(bg() != a, "recolouring by witnesses changes the cells")
+    check(p.locator("#cg-legend span").count() >= 4, "legend follows the mode")
+    first.focus()
+    check(p.locator("#cg-detail .d-title").count() == 1, "focusing a cell shows its record")
+    href = p.locator("#cg-detail a").get_attribute("href")
+    check(href.startswith("/janghan/item/"), "the record links into the edition")
+    check(p.request.get(BASE + href).status == 200, f"that edition page exists ({href})")
+
+    # the place locator is drawn from the coded evidence
+    check(p.locator("#places svg").count() == 1, "place locator rendered")
+    check(p.locator("#places details.fig-table tbody tr").count() >= 15, "every counted place is in the table")
+
+    # --- Buddhist Bridges: the network slices switch and light ---
+    n = b.page()
+    n.goto(BASE + "/projects/buddhist-bridges/")
+    n.wait_for_load_state("networkidle")
+    check(n.locator(".nw-mode").count() == 2, "two period slices")
+    check(n.locator("[data-panel='b2'] circle").count() == 9, "Koryŏ circle has nine records")
+    check(n.locator("[data-panel='b6']").is_hidden(), "the modern web starts hidden")
+    n.locator(".nw-mode[data-slice='b6']").click()
+    check(n.locator("[data-panel='b6']").is_visible(), "switching shows the modern web")
+    node = n.locator("[data-panel='b6'] .nw-node").first
+    node.hover()
+    check(n.locator(".nw-edge.lit").count() >= 1, "hovering a record lights its ties")
+    check(n.locator("#silence svg").count() == 1, "the silence is drawn with its excluded candidates")
+    check(n.locator("#silence details.fig-table tbody tr").count() >= 5, "excluded candidates are tabulated")
+
+    # --- Hallyu: the print series and its annotations ---
+    h = b.page()
+    h.goto(BASE + "/projects/hallyu-indian-press/")
+    h.wait_for_load_state("networkidle")
+    txt = h.locator("#series").inner_text()
+    for phrase in ["2018", "2017", "partial"]:
+        check(phrase in txt, f"series figure annotates {phrase}")
+    rows = h.locator("#series details.fig-table tbody tr")
+    check(rows.count() == 22, f"series table has one row per year plus a total ({rows.count()})")
+    check("4,796" in h.locator("main").inner_text() or "4796" in h.locator("main").inner_text(), "print total stated")
+    check(b.errors == [], f"no console errors: {b.errors}")
+
+# Runtime-injected parts of the figures must actually be styled: Astro's scoped attribute never
+# reaches elements written by a client script, so their rules have to be global.
+with Browser() as b:
+    p = b.page()
+    p.goto(BASE + "/projects/janghan/")
+    p.wait_for_load_state("networkidle")
+    sw = p.locator("#cg-legend .sw").first
+    box = sw.bounding_box()
+    check(box and box["width"] >= 10 and box["height"] >= 10, f"legend swatches are rendered, not collapsed ({box})")
+    p.locator(".cg-cell").first.focus()
+    size = p.evaluate("getComputedStyle(document.querySelector('#cg-detail .d-title')).fontSize")
+    check(float(size.replace("px", "")) >= 15, f"the record panel is styled ({size})")
+    check(b.errors == [], f"no console errors: {b.errors}")

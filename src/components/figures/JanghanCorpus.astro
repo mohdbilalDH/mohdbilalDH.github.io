@@ -1,0 +1,216 @@
+---
+import FigureFrame from '../FigureFrame.astro';
+// The corpus item by item: one cell per textual item, both issues, recolourable by attribution,
+// by how secure the identification behind the byline is, and by how many witnesses attest the
+// item. Selecting a cell opens its record in the edition, so the figure is also the way in.
+// Nothing is computed here that the edition does not already publish.
+import corpus from '../../data/janghan-corpus.json';
+
+const items = corpus.items;
+const issues = [
+  { id: 'jh01', label: '창간호', sub: 'Issue 1 · January 1927 · corpus v3.3, frozen' },
+  { id: 'jh02', label: '2월호', sub: 'Issue 2 · February 1927 · corpus v3.4, working layer' },
+];
+
+const MODES = [
+  {
+    key: 'attribution',
+    label: 'Attribution',
+    legend: [
+      { k: 'kisaeng', label: 'Kisaeng-attributed' },
+      { k: 'editor', label: 'Editor-produced' },
+      { k: 'foreign', label: 'Foreign-attributed' },
+      { k: 'unresolved', label: 'Unresolved or other' },
+    ],
+  },
+  {
+    key: 'certainty',
+    label: 'Identity certainty',
+    legend: [
+      { k: 'CONFIRMED', label: 'Confirmed' },
+      { k: 'PROBABLE', label: 'Probable' },
+      { k: 'INHERITED_v3', label: 'Carried over, unchecked' },
+      { k: 'UNRESOLVED', label: 'Unresolved' },
+    ],
+  },
+  {
+    key: 'witnesses',
+    label: 'Witnesses attesting',
+    legend: [
+      { k: '3', label: 'Three witnesses' },
+      { k: '2', label: 'Two witnesses' },
+      { k: '1', label: 'One witness only' },
+    ],
+  },
+];
+
+const count = (fn: (i: typeof items[number]) => boolean) => items.filter(fn).length;
+const wcount = (n: number) => count((i) => i.witnesses.length === n);
+---
+<FigureFrame number="2 · The corpus"
+  title="Ninety-eight texts, and no single source attests all of them" id="corpus-grid" wide>
+
+  <div class="cg">
+    <div class="cg-modes" role="group" aria-label="Recolour the corpus">
+      {MODES.map((m, i) => (
+        <button class="cg-mode" type="button" data-mode={m.key} aria-pressed={i === 0 ? 'true' : 'false'}>{m.label}</button>
+      ))}
+    </div>
+
+    {issues.map((iss) => {
+      const rows = items.filter((i) => i.issue === iss.id);
+      return (
+        <div class="cg-issue">
+          <p class="cg-issue-head">
+            <b lang="ko">{iss.label}</b>
+            <span class="cg-issue-sub">{iss.sub}</span>
+            <span class="cg-issue-n mono">{rows.length} items</span>
+          </p>
+          <div class="cg-grid">
+            {rows.map((it) => (
+              <button
+                class="cg-cell"
+                type="button"
+                data-attribution={it.attribution}
+                data-certainty={it.certainty}
+                data-witnesses={String(it.witnesses.length)}
+                data-nested={it.nested ? '1' : '0'}
+                data-id={it.id}
+                data-title={it.title}
+                data-byline={it.byline || 'unsigned'}
+                data-pages={it.pages}
+                data-register={it.register}
+                data-genre={it.genre}
+                data-wlist={it.witnesses.join(' ')}
+                aria-label={`${it.title}, ${it.byline || 'unsigned'}, attested by ${it.witnesses.length} witness${it.witnesses.length === 1 ? '' : 'es'}`}
+              ></button>
+            ))}
+          </div>
+        </div>
+      );
+    })}
+
+    <p class="cg-legend" id="cg-legend"></p>
+
+    <div class="cg-detail" id="cg-detail" role="status" aria-live="polite">
+      <p class="cg-hint">Select an item to see its record, or open it in the edition.</p>
+    </div>
+  </div>
+
+  <div slot="caption">
+    One cell per textual item, in the order the reconstruction gives them. Cells recolour between
+    three readings of the same 98 items. <b>Witnesses attesting</b> is the one that carries the
+    project's problem: {wcount(3)} items are attested by three witnesses, {wcount(2)} by two, and
+    {wcount(1)} by one alone. The published bibliography counts at issue level only and therefore
+    never lights on an individual item, which is why the maximum here is three and not four. A
+    single-witness item is in the corpus and is not corroborated; for Issue 2 no 1927 scan is known
+    to survive, so nothing in that block can reach three.
+  </div>
+
+  <div slot="table">
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th scope="col">Reading</th><th scope="col">Value</th><th scope="col" class="num">Items</th></tr></thead>
+        <tbody>
+          {MODES[0].legend.map((l) => (
+            <tr><td>Attribution</td><td>{l.label}</td><td class="num">{count((i) => i.attribution === l.k)}</td></tr>
+          ))}
+          {MODES[1].legend.map((l) => (
+            <tr><td>Identity certainty</td><td>{l.label}</td><td class="num">{count((i) => i.certainty === l.k)}</td></tr>
+          ))}
+          <tr><td>Witnesses attesting</td><td>Three</td><td class="num">{wcount(3)}</td></tr>
+          <tr><td>Witnesses attesting</td><td>Two</td><td class="num">{wcount(2)}</td></tr>
+          <tr><td>Witnesses attesting</td><td>One only</td><td class="num">{wcount(1)}</td></tr>
+          <tr><td>Structure</td><td>Nested inside a parent editorial unit</td><td class="num">{count((i) => i.nested)}</td></tr>
+          <tr><td>Page register</td><td>Established (upper or strip)</td><td class="num">{count((i) => i.register !== 'unknown')}</td></tr>
+          <tr><td>Page register</td><td>Not established</td><td class="num">{count((i) => i.register === 'unknown')}</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</FigureFrame>
+
+<style>
+  .cg-modes { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 24px; }
+  .cg-mode { font: 500 13px/1.2 var(--f-ui); min-height: 38px; padding: 0.5rem 0.9rem; border: 1px solid var(--hairline); background: var(--ground); color: var(--heading); cursor: pointer; border-radius: var(--r-tile); transition: background var(--ease), border-color var(--ease), color var(--ease); }
+  .cg-mode:hover { border-color: var(--navy); }
+  .cg-mode[aria-pressed='true'] { background: var(--navy); border-color: var(--navy); color: var(--white); }
+
+  .cg-issue { margin-bottom: 26px; }
+  .cg-issue-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin: 0 0 10px; font: 400 13px/1.5 var(--f-ui); }
+  .cg-issue-head b { font: 700 17px/1.3 var(--f-title); color: var(--heading); }
+  .cg-issue-sub { color: var(--muted); }
+  .cg-issue-n { color: var(--muted); margin-left: auto; }
+
+  .cg-grid { display: flex; flex-wrap: wrap; gap: 5px; }
+  .cg-cell { width: 26px; height: 26px; min-height: 26px; padding: 0; border: 1px solid transparent; border-radius: 2px; cursor: pointer; background: var(--hairline); transition: transform 120ms ease-out, outline-color var(--ease); }
+  .cg-cell[data-nested='1'] { border-style: dashed; border-color: var(--white); }
+  .cg-cell:hover, .cg-cell:focus-visible { transform: translateY(-2px); outline: 2px solid var(--navy); outline-offset: 1px; }
+  .cg-cell[aria-current='true'] { outline: 2px solid var(--navy); outline-offset: 1px; }
+
+  @media (max-width: 640px) { .cg-cell { width: 24px; height: 24px; min-height: 24px; } }
+</style>
+<style is:global>
+  #corpus-grid .cg-legend { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 4px 0 20px; font: 400 13px/1.5 var(--f-ui); color: var(--text); }
+  #corpus-grid .cg-legend .sw { display: inline-block; width: 13px; height: 13px; border-radius: 2px; margin-right: 7px; vertical-align: -2px; }
+  #corpus-grid .cg-detail { border-top: 1px solid var(--hairline); padding-top: 14px; min-height: 96px; }
+  #corpus-grid .cg-hint { font: 400 13px/1.6 var(--f-ui); color: var(--muted); margin: 0; }
+  #corpus-grid .cg-detail .d-title { font: 700 17px/1.4 var(--f-title); color: var(--heading); margin: 0 0 4px; }
+  #corpus-grid .cg-detail .d-meta { font: 400 13px/1.7 var(--f-ui); color: var(--text); margin: 0 0 6px; }
+  #corpus-grid .cg-detail .d-meta b { color: var(--muted); font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; font-size: 11.5px; margin-right: 5px; }
+  #corpus-grid .cg-detail .d-id { font: 400 12px/1.5 var(--f-mono); color: var(--muted); }
+</style>
+
+<script>
+  const PAL = {
+    attribution: { kisaeng: 'var(--b4)', editor: 'var(--b2)', foreign: 'var(--b6)', unresolved: 'var(--b5)' },
+    certainty: { CONFIRMED: 'var(--grade-high)', PROBABLE: 'var(--grade-medium)', INHERITED_v3: 'var(--void)', UNRESOLVED: 'var(--negative)' },
+    // Witness count is an evidential measure, so it is shown as one hue at three densities
+    // rather than as three colours.
+    witnesses: { '3': 'var(--navy)', '2': 'rgba(0, 51, 102, 0.55)', '1': 'rgba(0, 51, 102, 0.22)' },
+  };
+  const LEGENDS = {
+    attribution: [['kisaeng', 'Kisaeng-attributed'], ['editor', 'Editor-produced'], ['foreign', 'Foreign-attributed'], ['unresolved', 'Unresolved or other']],
+    certainty: [['CONFIRMED', 'Confirmed'], ['PROBABLE', 'Probable'], ['INHERITED_v3', 'Carried over, unchecked'], ['UNRESOLVED', 'Unresolved']],
+    witnesses: [['3', 'Three witnesses'], ['2', 'Two witnesses'], ['1', 'One witness only']],
+  };
+  const WNAME = { W1: 'the 1927 scan', W2: 'the 2009 edition', W3: 'the Yonsei catalogue' };
+  const REG = { upper: 'upper block', strip: 'running strip', unknown: 'not established' };
+
+  const cells = Array.from(document.querySelectorAll('.cg-cell'));
+  const legend = document.getElementById('cg-legend');
+  const detail = document.getElementById('cg-detail');
+  const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  function paint(mode) {
+    cells.forEach((c) => { c.style.background = PAL[mode][c.dataset[mode]] || 'var(--hairline)'; });
+    legend.innerHTML = LEGENDS[mode]
+      .map(([k, label]) => `<span><i class="sw" style="background:${PAL[mode][k]}"></i>${label}</span>`)
+      .join('') + '<span><i class="sw" style="background:transparent;border:1px dashed var(--muted)"></i>Nested inside a parent unit</span>';
+  }
+
+  function show(cell) {
+    cells.forEach((c) => c.removeAttribute('aria-current'));
+    cell.setAttribute('aria-current', 'true');
+    const d = cell.dataset;
+    const ws = d.wlist.split(' ').filter(Boolean);
+    detail.innerHTML = `
+      <p class="d-title">${esc(d.title)}</p>
+      <p class="d-meta"><b>Byline</b>${esc(d.byline)} <b>Pages</b>${esc(d.pages)} <b>Register</b>${REG[d.register] || esc(d.register)}</p>
+      <p class="d-meta"><b>Attested by</b>${ws.map((w) => WNAME[w] || w).join(', ') || 'no witness recorded'}${d.nested === '1' ? ' · nested inside a parent editorial unit' : ''}</p>
+      <p class="d-id">${esc(d.id)} · <a href="/janghan/item/${encodeURIComponent(d.id)}.html">open the full record in the edition →</a></p>`;
+  }
+
+  document.querySelectorAll('.cg-mode').forEach((b) => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('.cg-mode').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      paint(b.dataset.mode);
+    });
+  });
+  cells.forEach((c) => {
+    c.addEventListener('click', () => show(c));
+    c.addEventListener('focus', () => show(c));
+    c.addEventListener('mouseenter', () => show(c));
+  });
+  paint('attribution');
+</script>

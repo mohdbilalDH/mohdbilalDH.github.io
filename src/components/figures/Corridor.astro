@@ -26,7 +26,9 @@ const Y0 = 78, ROW = 46;
 const H = Y0 + routed.length * ROW + 16;
 // each journey implicitly starts from Korea (all travellers are Korean monks except Dhyānabhadra, India→Korea)
 ---
-<FigureFrame wide><svg viewBox={`0 0 1000 ${H}`} role="img" aria-label="Eight documented journey routes between Korea, China, Central Asia, Tibet, India and Persia, drawn as station-to-station ribbons. Six are Silla-era monks travelling west; one is Dhyanabhadra travelling east to Korea in the fourteenth century; one is the archaeologist Hwang Su-yong in 1962.">
+<FigureFrame number="2 · Routes"
+  title={`Only ${routed.length} of ${story.journeys.length} carried journeys have a route the sources can reconstruct`}
+  id="routes" wide><svg viewBox={`0 0 1000 ${H}`} role="img" aria-label="Eight documented journey routes between Korea, China, Central Asia, Tibet, India and Persia, drawn as station-to-station ribbons. Six are Silla-era monks travelling west; one is Dhyanabhadra travelling east to Korea in the fourteenth century; one is the archaeologist Hwang Su-yong in 1962.">
     <style>
       .cor-station { font: 600 11.5px var(--f-body); fill: var(--muted); }
       .cor-name { font: 600 13px var(--f-body); fill: var(--ink); }

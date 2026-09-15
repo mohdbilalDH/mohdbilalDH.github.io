@@ -41,22 +41,24 @@ const x = (yr: number) => X0 + ((yr - T0) / (T1 - T0)) * (X1 - X0);
     The carried record contains exactly four, and none between Dhyānabhadra's death in 1363 and
     the present generation.
   </div>
+  <div slot="table">
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Resident</th><th>When</th><th>What the record shows</th><th>Confidence</th></tr></thead>
+        <tbody>
+          {marks.map((mk) => {
+            const p = people[mk.id];
+            return (
+              <tr>
+                <td><a href={`/projects/buddhist-bridges/people/${mk.id}/`} style="font-weight: 600;">{p ? p.name : mk.id}</a>{p && p.hangul ? ` (${p.hangul})` : ''}</td>
+                <td>{mk.span}</td>
+                <td>{mk.line}</td>
+                <td><span class={`badge ${p ? p.confidence.toLowerCase() : ''}`}>{p ? p.confidence : ''}</span>{p && p.single_source ? ' · single source' : ''}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  </div>
 </FigureFrame>
-<div class="tablewrap">
-  <table>
-    <thead><tr><th>Resident</th><th>When</th><th>What the record shows</th><th>Confidence</th></tr></thead>
-    <tbody>
-      {marks.map((mk) => {
-        const p = people[mk.id];
-        return (
-          <tr>
-            <td><a href={`/projects/buddhist-bridges/people/${mk.id}/`} style="font-weight: 600;">{p ? p.name : mk.id}</a>{p && p.hangul ? ` (${p.hangul})` : ''}</td>
-            <td>{mk.span}</td>
-            <td>{mk.line}</td>
-            <td><span class={`badge ${p ? p.confidence.toLowerCase() : ''}`}>{p ? p.confidence : ''}</span>{p && p.single_source ? ' · single source' : ''}</td>
-          </tr>
-        );
-      })}
-    </tbody>
-  </table>
-</div>

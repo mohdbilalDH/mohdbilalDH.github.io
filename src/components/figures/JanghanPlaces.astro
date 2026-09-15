@@ -1,0 +1,142 @@
+---
+import FigureFrame from '../FigureFrame.astro';
+// Locator for the coded place evidence. The edition has always said a map could carry only the
+// mappable minority of the counted mentions; this is that map, drawn so the proportion it leaves
+// out is visible on its face. No basemap and no tiles: points sit on a labelled coordinate
+// graticule, because a borrowed coastline would imply a precision the coding does not have.
+import data from '../../data/janghan-places.json';
+
+const places = data.places;
+const mappable = places.filter((p) => p.mappable);
+const unmappable = places.filter((p) => !p.mappable);
+const unmappableMentions = unmappable.reduce((s, p) => s + p.n, 0);
+
+// Los Angeles sits ten time zones outside the frame; it is marked off-frame rather than
+// squeezing the East Asian cluster into illegibility.
+const OFF = 'P07';
+const main = mappable.filter((p) => p.id !== OFF && !['P01', 'P20', 'P32', 'P33'].includes(p.id));
+const inset = mappable.filter((p) => ['P01', 'P20', 'P32', 'P33'].includes(p.id));
+const off = mappable.find((p) => p.id === OFF)!;
+
+const LNG0 = 124, LNG1 = 137, LAT0 = 34, LAT1 = 45;
+const MX0 = 70, MX1 = 600, MY0 = 60, MY1 = 420;
+const mx = (lng: number) => MX0 + ((lng - LNG0) / (LNG1 - LNG0)) * (MX1 - MX0);
+const my = (lat: number) => MY0 + ((LAT1 - lat) / (LAT1 - LAT0)) * (MY1 - MY0);
+
+const ILNG0 = 126.965, ILNG1 = 126.995, ILAT0 = 37.555, ILAT1 = 37.58;
+const IX0 = 665, IX1 = 930, IY0 = 120, IY1 = 330;
+const ix = (lng: number) => IX0 + ((lng - ILNG0) / (ILNG1 - ILNG0)) * (IX1 - IX0);
+const iy = (lat: number) => IY0 + ((ILAT1 - lat) / (ILAT1 - ILAT0)) * (IY1 - IY0);
+
+const r = (n: number) => 4 + n * 1.6;
+
+// Label placement is typography, not data: positions come from the coordinates above.
+const LAB: Record<string, { dx: number; dy: number; anchor: 'start' | 'end' | 'middle' }> = {
+  P09: { dx: 13, dy: 4, anchor: 'start' },
+  P02: { dx: -11, dy: -8, anchor: 'end' },
+  P01: { dx: -12, dy: 5, anchor: 'end' },
+  P31: { dx: 0, dy: -12, anchor: 'middle' },
+  P05: { dx: 13, dy: 5, anchor: 'start' },
+  P25: { dx: -12, dy: -8, anchor: 'end' },
+  P20: { dx: 12, dy: -6, anchor: 'start' },
+  P32: { dx: 12, dy: 11, anchor: 'start' },
+  P33: { dx: -11, dy: 5, anchor: 'end' },
+};
+const short: Record<string, string> = {
+  P09: 'Changchun', P02: "P'yŏngyang", P01: 'Kyŏngsŏng', P31: 'Sŏkwangsa',
+  P05: 'Taegu', P25: 'Osaka', P20: 'Chongno', P32: 'Chŏn-dong', P33: "T'aep'yŏng-t'ong",
+};
+const lngTicks = [125, 128, 131, 134, 137];
+const latTicks = [44, 41, 38, 35];
+---
+<FigureFrame number="4 · Places"
+  title={`A map can carry ${data.mappable_mentions} of the ${data.counted_mentions} counted mentions, and that is the finding`}
+  id="places" wide>
+
+  <svg viewBox="0 0 960 560" role="img"
+    aria-label={`Coordinate plot of the ${data.mappable_places} mappable places named in 長恨 issue 1. A main panel covers 124 to 137 degrees east and 34 to 45 degrees north and holds ${main.map((p) => short[p.id]).join(', ')}. An inset covers central Kyŏngsŏng and holds ${inset.map((p) => short[p.id]).join(', ')}. Los Angeles is marked off-frame. Circle area is the number of counted mentions.`}>
+
+    <rect x={MX0} y={MY0} width={MX1 - MX0} height={MY1 - MY0} fill="var(--ground)" stroke="var(--hairline)" />
+    {lngTicks.map((t) => (
+      <>
+        <line x1={mx(t)} y1={MY0} x2={mx(t)} y2={MY1} stroke="var(--hairline)" stroke-dasharray="2 5" />
+        <text x={mx(t)} y={MY1 + 18} text-anchor="middle" font-family="var(--f-mono)" font-size="11" fill="var(--muted)">{t}°E</text>
+      </>
+    ))}
+    {latTicks.map((t) => (
+      <>
+        <line x1={MX0} y1={my(t)} x2={MX1} y2={my(t)} stroke="var(--hairline)" stroke-dasharray="2 5" />
+        <text x={MX0 - 8} y={my(t) + 4} text-anchor="end" font-family="var(--f-mono)" font-size="11" fill="var(--muted)">{t}°N</text>
+      </>
+    ))}
+
+    {main.map((p) => (
+      <>
+        <circle cx={mx(p.lng!)} cy={my(p.lat!)} r={r(p.n)} fill="var(--b4)" opacity="0.55" stroke="var(--b4)" />
+        <text x={mx(p.lng!) + LAB[p.id].dx} y={my(p.lat!) + LAB[p.id].dy} text-anchor={LAB[p.id].anchor}
+          font-family="var(--f-body)" font-size="13" fill="var(--ink)">{short[p.id]}<tspan font-family="var(--f-mono)" font-size="11" fill="var(--muted)"> {p.n}</tspan></text>
+      </>
+    ))}
+
+    <circle cx={mx(126.978)} cy={my(37.5665)} r="4" fill="var(--b4)" opacity="0.55" stroke="var(--b4)" />
+    <rect x={mx(126.80)} y={my(37.80)} width={mx(127.16) - mx(126.80)} height={my(37.34) - my(37.80)}
+      fill="none" stroke="var(--navy)" stroke-width="1.2" />
+    <text x={mx(126.98)} y={my(37.34) + 16} text-anchor="middle" font-family="var(--f-ui)" font-size="11.5" fill="var(--navy)">Kyŏngsŏng — see inset</text>
+    <line x1={mx(127.16)} y1={my(37.80)} x2={IX0} y2={IY0} stroke="var(--navy)" stroke-width="0.8" stroke-dasharray="3 3" />
+    <line x1={mx(127.16)} y1={my(37.34)} x2={IX0} y2={IY1} stroke="var(--navy)" stroke-width="0.8" stroke-dasharray="3 3" />
+
+    <rect x={IX0} y={IY0} width={IX1 - IX0} height={IY1 - IY0} fill="var(--ground)" stroke="var(--navy)" stroke-width="1.2" />
+    <text x={IX0} y={IY0 - 10} font-family="var(--f-ui)" font-size="12" fill="var(--muted)">CENTRAL KYŎNGSŎNG · c. 2.6 km across</text>
+    {inset.map((p) => (
+      <>
+        <circle cx={ix(p.lng!)} cy={iy(p.lat!)} r={r(p.n)} fill="var(--b4)" opacity="0.55" stroke="var(--b4)" />
+        <text x={ix(p.lng!) + LAB[p.id].dx} y={iy(p.lat!) + LAB[p.id].dy} text-anchor={LAB[p.id].anchor}
+          font-family="var(--f-body)" font-size="13" fill="var(--ink)">{short[p.id]}<tspan font-family="var(--f-mono)" font-size="11" fill="var(--muted)"> {p.n}</tspan></text>
+      </>
+    ))}
+
+    <circle cx={MX0 + 14} cy="470" r={r(off.n)} fill="var(--b4)" opacity="0.55" stroke="var(--b4)" />
+    <text x={MX0 + 34} y="474" font-family="var(--f-body)" font-size="13" fill="var(--ink)">
+      Los Angeles <tspan font-family="var(--f-mono)" font-size="11" fill="var(--muted)">{off.n} · off-frame at 118.24°W</tspan>
+    </text>
+
+    <line x1={MX0} y1="500" x2="930" y2="500" stroke="var(--hairline)" />
+    <text x={MX0} y="524" font-family="var(--f-body)" font-size="14" fill="var(--heading)">
+      {unmappableMentions} of {data.counted_mentions} counted mentions name something that is not a point on a map
+    </text>
+    <text x={MX0} y="544" font-family="var(--f-ui)" font-size="12.5" fill="var(--muted)">
+      {unmappable.slice(0, 6).map((p) => p.name.replace(/\s*\(.*\)$/, '')).join(' · ')} and {unmappable.length - 6} more
+    </text>
+  </svg>
+
+  <div slot="caption">
+    Circle area is the number of counted mentions; positions are modern coordinates for historical
+    places, on a plain graticule with no basemap. The point of the figure is the line at its foot.
+    Of {data.counted_places} places carrying {data.counted_mentions} counted mentions in Issue 1,
+    only {data.mappable_places} are locatable points, and they carry {data.mappable_mentions}
+    mentions between them. The most-mentioned place in the whole corpus,
+    <span lang="ko">조선</span> at {places.find((p) => p.id === 'P30')?.n} mentions, is not a
+    location at all in most of its uses: it appears as a homeland frame, as a term of comparison,
+    and as a standard someone is told to meet. Being unmappable is a property of the referent, not
+    a measure of how much a place matters, which is why this project publishes the register and
+    treats the map as the lesser of the two.
+  </div>
+
+  <div slot="table">
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th scope="col">Place</th><th scope="col" class="num">Mentions</th><th scope="col">On the map</th><th scope="col">Dominant functions</th></tr></thead>
+        <tbody>
+          {places.map((p) => (
+            <tr>
+              <td>{p.name}</td>
+              <td class="num">{p.n}</td>
+              <td>{p.mappable ? 'yes' : 'not a point'}</td>
+              <td>{p.functions.map((f) => `${f.k.replace(/_/g, ' ')} ${f.v}`).join(' · ')}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</FigureFrame>

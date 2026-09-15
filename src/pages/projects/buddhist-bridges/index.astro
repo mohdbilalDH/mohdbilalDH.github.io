@@ -1,52 +1,102 @@
 ---
-// Slot order: Claim · Evidence · Explore · Limits · Cite. Method and data live on /data/.
 import Project from '../../../layouts/Project.astro';
-import Claim from '../../../components/Claim.astro';
+import ProjectHeader from '../../../components/ProjectHeader.astro';
+import ProjectFacts from '../../../components/ProjectFacts.astro';
 import Apparatus from '../../../components/Apparatus.astro';
 import ExploreDoor from '../../../components/ExploreDoor.astro';
 import Chronology from '../../../components/figures/Chronology.astro';
 import DirectionChart from '../../../components/figures/DirectionChart.astro';
+import Corridor from '../../../components/figures/Corridor.astro';
+import BBSilence from '../../../components/figures/BBSilence.astro';
 import MechanismChart from '../../../components/figures/MechanismChart.astro';
 import Residents from '../../../components/figures/Residents.astro';
+import BBNetwork from '../../../components/figures/BBNetwork.astro';
 import core from '../../../data/core.json';
 import { projects } from '../../../data/projects';
-import { personHref } from '../../../data/bb';
+import { personHref, CONFIDENCE_LEGEND } from '../../../data/bb';
 
 const c = core.counts;
 const p = projects.find((x) => x.slug === 'buddhist-bridges')!;
+
+const scale = [
+  { n: String(c.people_carried), unit: 'documented mediators' },
+  { n: '6', unit: 'cohorts, 300–2026' },
+  { n: String(c.sources), unit: 'graded sources' },
+  { n: String(c.travels), unit: 'travels' },
+  { n: String(c.texts), unit: 'texts' },
+  { n: String(c.institutions), unit: 'institutions' },
+  { n: String(c.events), unit: 'events' },
+];
+
 const jsonld = {
   '@context': 'https://schema.org',
   '@type': 'Dataset',
   name: 'Buddhist Bridges: India–Korea Buddhist Mediators Dataset (v3.0)',
-  description: 'Source-graded dataset of documented mediators of India–Korea Buddhist exchange, 300–2026 CE.',
-  creator: { '@type': 'Person', name: 'Mohd Bilal' },
+  description:
+    'Source-graded prosopography of documented mediators of India–Korea Buddhist exchange, 300–2026 CE. 43 carried people, 41 travels, 30 texts, 31 institutions and 19 events on 187 graded sources, with documented negatives retained.',
+  creator: { '@type': 'Person', name: 'Mohd Bilal', affiliation: { '@type': 'CollegeOrUniversity', name: 'The Academy of Korean Studies' } },
   license: 'https://creativecommons.org/licenses/by/4.0/',
   version: '3.0',
   datePublished: '2026-08-17',
+  temporalCoverage: '0300/2026',
+  isAccessibleForFree: true,
+  distribution: [
+    { '@type': 'DataDownload', encodingFormat: 'application/json', contentUrl: 'https://mohdbilaldh.github.io/data/people.json' },
+    { '@type': 'DataDownload', encodingFormat: 'application/json', contentUrl: 'https://mohdbilaldh.github.io/data/timeline.json' },
+  ],
 };
 ---
-<Project title="Five bridges, one silence"
-  description="Who mediated Buddhist exchange between India and Korea, 300–2026? A source-graded prosopography of 43 documented mediators: five short-lived bridges and one five-hundred-year silence."
+<Project title="Buddhist Bridges: five bridges, one silence"
+  description="Who mediated Buddhist exchange between India and Korea, 300–2026? A source-graded prosopography of 43 documented mediators: five short-lived bridges and one five-hundred-year silence, with a page for every person."
   citationTitle="Five Bridges, One Silence: Documented Mediators of India–Korea Buddhist Exchange, 300–2026"
   jsonld={jsonld}>
   <div class="wrap">
 
-    <Claim project={p}
-      meta={`${c.people_carried} documented mediators · ${c.events} events · ${c.sources} graded sources · every claim opens to its record and its sources`} />
+    <ProjectHeader project={p} scale={scale} />
+
+    <div class="prose lead">
+      <p>
+        Was there ever a continuous Buddhist bridge between India and Korea? The documented record says no.
+        It shows five short-lived bridges, built by different kinds of people moving in different directions,
+        and one interruption five centuries long. This project is the record itself: every person, journey,
+        text and institution that meets a stated evidence bar, each with a confidence grade, a date-precision
+        field and its sources, and every candidate that was examined and did not meet the bar, kept in the
+        dataset rather than deleted.
+      </p>
+    </div>
 
     <Chronology />
 
+    <Apparatus label="Reading the grades on every figure below">
+      <p>{CONFIDENCE_LEGEND}</p>
+      <p>
+        Solid marks are explicitly dated records; dashed marks are floruit-derived windows; hatching means the
+        record rests on a single source. A record without a safe date is listed in the register and never
+        placed on an axis.
+      </p>
+    </Apparatus>
+
     <section class="section">
-      <h2><span class="mark">Evidence I</span>The direction inverts</h2>
+      <h2><span class="mark">Part I</span>The direction inverts, once, and never again</h2>
       <div class="prose">
         <p>
-          Before 900 the bridge was made of journeys, and it ran both ways. Of eighteen carried mediators,
-          eight moved toward India and eight carried Buddhism toward Korea. No later era is balanced. From
-          Koryŏ onward India comes to Korea: first in one person, the monk Dhyānabhadra, then in texts, then
-          in institutions. Two-way movement does not return until the 1990s.
+          Before 900 the bridge was made of journeys, and it ran both ways. Of eighteen carried mediators in
+          the first cohort, eight moved toward India and eight carried Buddhism toward Korea. No later era is
+          balanced. From Koryŏ onward India comes to Korea: first in one person, the monk Dhyānabhadra, then
+          in texts, then in institutions. Two-way movement does not return until the 1990s.
         </p>
       </div>
       <DirectionChart />
+      <div class="prose">
+        <p>
+          Journeys are only drawn where the record names the stations along the way. Of {c.travels} travels in
+          the dataset, {c.journeys_routed} have a route that can be reconstructed from the sources; the rest
+          are known to have happened without a recoverable path, and nothing is interpolated to fill them in.
+          That is also why this project publishes no map: eight routed journeys across sixteen centuries would
+          make a map that looked far more certain than the evidence behind it.
+        </p>
+      </div>
+      <Corridor />
       <Apparatus label="The evidence, close up">
         <p>
           The best documented life of the balanced era is Hyech'o (<span lang="ko">혜초, 慧超</span>, 704–787),
@@ -59,37 +109,37 @@ const jsonld = {
     </section>
 
     <section class="section">
-      <h2><span class="mark">Evidence II</span>Five hundred years of silence</h2>
+      <h2><span class="mark">Part II</span>Five hundred years in which nothing meets the bar</h2>
       <div class="prose">
         <p>
-          The most important number in the dataset is zero. For the whole of Chosŏn (1392–1900) no person,
-          journey, text or institution meets the evidence bar. Eleven candidates were examined and all were
-          excluded, as the Neo-Confucian state closed the channels Buddhism had used. Between the enshrinement
-          of Dhyānabhadra's relics in 1370 and the next documented event, a delegation of 1981, lie 611 years.
-          A narrative of unbroken transmission has to pass over these five centuries in silence; the record
-          does not support it. What survived travelled by lineage and by print until a later generation could
-          rebuild the crossing.
+          For the whole of Chosŏn, 1392 to 1900, no person, journey, text or institution meets the evidence
+          bar. Eleven candidates were examined and all were excluded, as the Neo-Confucian state closed the
+          channels Buddhism had used. Between the enshrinement of Dhyānabhadra's relics in 1370 and the next
+          documented event, a delegation of 1981, lie 611 years. A narrative of unbroken transmission has to
+          pass over these five centuries in silence; the record does not support it. What survived travelled
+          by lineage and by print until a later generation could rebuild the crossing.
         </p>
       </div>
+      <BBSilence />
       <Apparatus label="What a zero does and does not mean">
         <p>
-          The zero is a finding under stated inclusion criteria, and it is documented: the eleven excluded
-          candidates remain in the dataset for inspection. It is not a claim that no contact ever occurred.
-          Following the practice of the Prosopography of the Byzantine World, it should never be assumed that
-          what this dataset does not contain does not exist.
+          Following the practice of the Prosopography of the Byzantine World: it should never be assumed that
+          what a dataset does not contain does not exist. This zero is a finding under stated inclusion
+          criteria, and it is documented rather than asserted, which is why the excluded candidates stay in
+          the dataset and are drawn above.
         </p>
       </Apparatus>
     </section>
 
     <section class="section">
-      <h2><span class="mark">Evidence III</span>The bridge changes material</h2>
+      <h2><span class="mark">Part III</span>Each rebuilt bridge is made of a different material</h2>
       <div class="prose">
         <p>
-          Each rebuilding used a different substance. The ancient bridge was made of people who travelled. The
-          colonial-era bridge was made of paper: four of its six mediators were not Buddhists, both attempted
-          pilgrimages went unrealised, and what crossed was text, above all Tagore in Korean translation. The
-          present bridge is institutional, carried by orders, universities and pilgrimage programmes; movement
-          has returned, and the record includes its first women.
+          The ancient bridge was made of people who travelled. The colonial-era bridge was made of paper: four
+          of its six mediators were not Buddhists, both attempted pilgrimages went unrealised, and what
+          crossed was text, above all Tagore in Korean translation. The present bridge is institutional,
+          carried by orders, universities and pilgrimage programmes; movement has returned, and the record
+          includes its first women.
         </p>
       </div>
       <MechanismChart />
@@ -109,14 +159,28 @@ const jsonld = {
     </section>
 
     <section class="section">
+      <h2><span class="mark">Part IV</span>Where the record supports a network, and where it does not</h2>
+      <div class="prose">
+        <p>
+          Two periods in sixteen centuries leave enough connected records to draw as a network, and they are
+          shaped differently. The Koryŏ circle is one hub with spokes: everything runs through Dhyānabhadra,
+          because the era does. The modern web has no single hub at all, and forty-two of its forty-seven ties
+          are institutional, which is the finding rather than a by-product of the drawing.
+        </p>
+      </div>
+      <BBNetwork />
+    </section>
+
+    <section class="section">
       <h2><span class="mark">Why it matters</span>A periodisation, and a case for small datasets</h2>
       <div class="prose">
         <p>
           The relationship is usually told either as myth or as modern diplomacy, and the documented record
-          supports neither. A connection built five times out of changing materials, and interrupted for half a
-          millennium, periodises the relationship, gives the Chosŏn interruption evidential weight, and shows
-          transmission surviving without contact. It is also a case for small, carefully graded datasets:
-          {c.people_carried} people with full sourcing can carry an argument a large scraped corpus cannot.
+          supports neither. A connection built five times out of changing materials, and interrupted for half
+          a millennium, periodises the relationship, gives the Chosŏn interruption evidential weight, and
+          shows transmission surviving without contact. It is also a case for small, carefully graded
+          datasets: {c.people_carried} people with full sourcing can carry an argument a large scraped corpus
+          cannot.
         </p>
       </div>
     </section>
@@ -131,20 +195,37 @@ const jsonld = {
       <div class="prose">
         <ul class="limits">
           <li><b>All analysis is descriptive.</b> n = {c.people_carried}; no inferential claim is made from these counts.</li>
-          <li><b>The modern era is documented mainly through the press,</b> which is a different evidentiary regime from the premodern chapters and is not directly comparable to them.</li>
+          <li><b>The modern era is documented mainly through the press,</b> a different evidentiary regime from the premodern chapters and not directly comparable to them.</li>
           <li><b>Korean-language sources dominate.</b> An Indian-source corroboration round has not been carried out.</li>
           <li><b>No woman appears in the record before 1990.</b> The register records that absence; it cannot by itself explain it.</li>
+          <li><b>Only {c.journeys_routed} of {c.travels} travels have a recoverable route,</b> which is why no map is published.</li>
         </ul>
         <p class="small muted">
-          Inclusion criteria, confidence grading, downloads, licence and citation are on the
+          Inclusion criteria, the confidence scheme, downloads, licence and citation are on the
           <a href="/projects/buddhist-bridges/data/">data page</a>.
         </p>
       </div>
     </section>
 
+    <ProjectFacts
+      project={p}
+      duration="Data collection and classification from July 2026; dataset frozen at v3.0 on 17 August 2026; the argument and explore interfaces first published August 2026."
+      resources={[
+        { href: '/projects/buddhist-bridges/explore/', label: 'Explore the evidence', note: 'timeline, networks and the register' },
+        { href: '/projects/buddhist-bridges/data/', label: 'Method and data' },
+        { href: '/data/people.json', label: 'people.json', note: '43 carried mediators with sources', download: true },
+        { href: '/data/timeline.json', label: 'timeline.json', note: '182 dated marks, carried and excluded', download: true },
+        { href: '/data/story.json', label: 'story.json', download: true },
+        { href: '/data/sources.json', label: 'sources.json', note: '187 graded sources', download: true },
+        { href: '/data/network.json', label: 'network.json', note: 'the two period slices', download: true },
+      ]}
+      licence="Dataset CC BY 4.0 · code MIT. Third-party source texts quoted in the evidence fields remain with their rights holders."
+      citation="Bilal, Mohd. Five Bridges, One Silence: Documented Mediators of India–Korea Buddhist Exchange, 300–2026. Dataset v3.0, frozen 17 August 2026."
+      url="https://mohdbilaldh.github.io/projects/buddhist-bridges/" />
   </div>
 </Project>
 <style>
+  .lead { margin-bottom: 8px; }
   .limits { max-width: var(--w-measure); }
   .limits li { margin-bottom: 10px; }
 </style>

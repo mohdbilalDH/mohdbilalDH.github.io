@@ -1,0 +1,81 @@
+---
+// The facts block every DHI project page ends with: resources beside the website, exact
+// duration, the people and their roles, licensing split between metadata and sources, and a
+// citation a reader can paste. Nothing here is decorative; each row is a thing a reviewer
+// checks for and most personal DH sites omit.
+import type { Project } from '../data/projects';
+import { buildDate } from '../data/build';
+
+interface Resource { href: string; label: string; note?: string; download?: boolean }
+interface Props {
+  project: Project;
+  duration: string;
+  resources: Resource[];
+  licence: string;
+  citation: string;
+  url: string;
+  credits?: string;
+}
+const { project: p, duration, resources, licence, citation, url, credits } = Astro.props;
+---
+<section class="facts" aria-labelledby="facts-h">
+  <h2 id="facts-h">Project facts</h2>
+
+  <dl class="factgrid">
+    <div class="row">
+      <dt>Resources</dt>
+      <dd>
+        <ul class="reslist">
+          {resources.map((r) => (
+            <li>
+              <a href={r.href} download={r.download ? true : undefined}>{r.label}</a>
+              {r.note && <span class="resnote">{r.note}</span>}
+            </li>
+          ))}
+        </ul>
+      </dd>
+    </div>
+    <div class="row"><dt>Duration</dt><dd>{duration}</dd></div>
+    <div class="row"><dt>Status</dt><dd>{p.stateLabel}</dd></div>
+    <div class="row"><dt>Version</dt><dd class="mono">{p.version}</dd></div>
+    <div class="row"><dt>Page built</dt><dd class="mono">{buildDate}</dd></div>
+    <div class="row">
+      <dt>People</dt>
+      <dd>{credits ?? 'Research, data, encoding, code and design: Mohd Bilal (The Academy of Korean Studies). The project has no other personnel and no external funding.'}</dd>
+    </div>
+    <div class="row"><dt>Licensing</dt><dd>{licence}</dd></div>
+    <div class="row">
+      <dt>Persistent identifier</dt>
+      <dd>{p.doi
+        ? <span class="mono">doi:{p.doi}</span>
+        : <>No DOI has been minted for this release. Cite the version string above, which identifies the exact state of the evidence.</>}</dd>
+    </div>
+  </dl>
+
+  <h3 id="cite">How to cite</h3>
+  <p class="cite">{citation} {url} (accessed <span class="accessed">{buildDate}</span>).{p.doi ? ` doi:${p.doi}` : ''}</p>
+  <p class="small muted citenote">
+    Cite the component you used, not the site: a single record, a figure's dataset, or the project
+    as a whole. Records and datasets are versioned, and a citation that names its version and its
+    consulted date stays checkable after the next release.
+  </p>
+</section>
+<style>
+  .facts { margin-top: 55px; padding-top: 28px; border-top: 2px solid var(--navy); max-width: var(--w-measure); }
+  .facts h2 { margin-top: 0; }
+  .factgrid { margin: 20px 0 32px; }
+  .row { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 20px; padding: 12px 0; border-bottom: 1px solid var(--hairline); }
+  .row dt { font: 500 12px/1.6 var(--f-ui); letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); }
+  .row dd { margin: 0; font: 400 15px/1.7 var(--f-ui); color: var(--text); }
+  .reslist { list-style: none; margin: 0; padding: 0; }
+  .reslist li { margin-bottom: 6px; }
+  .reslist li:last-child { margin-bottom: 0; }
+  .resnote { color: var(--muted); font-size: 13.5px; margin-left: 8px; }
+  .citenote { margin-top: 10px; max-width: 68ch; }
+  @media (max-width: 700px) { .row { grid-template-columns: 1fr; gap: 4px; } }
+</style>
+<script>
+  // The accessed date belongs to the reader's visit, not to the build.
+  const fmt = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+  document.querySelectorAll<HTMLElement>('.accessed').forEach((el) => { el.textContent = fmt.format(new Date()); });
+</script>

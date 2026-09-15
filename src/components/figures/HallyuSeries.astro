@@ -1,0 +1,163 @@
+---
+import FigureFrame from '../FigureFrame.astro';
+// The visibility curve, print editions only. Online and Blogs objects are excluded because they
+// enter the database in 2017 and would fake a jump exactly where the real one occurs — which is
+// the whole reason this figure can be read at all. Two records are marked rather than smoothed:
+// a single-paper collapse that is probably a database gap, and a partial final year.
+import hallyu from '../../data/hallyu.json';
+
+const S = hallyu.print_series;
+const rows = S.rows;
+const papers = S.papers as ('HT' | 'TOI' | 'IE')[];
+const FILL: Record<string, string> = { HT: 'var(--b4)', TOI: 'var(--b1)', IE: 'var(--b2)' };
+
+const X0 = 74, X1 = 962, Y0 = 70, Y1 = 372, YMAX = 1000;
+const slot = (X1 - X0) / rows.length;
+const barW = slot - 9;
+const bx = (i: number) => X0 + i * slot + 4.5;
+const y = (v: number) => Y1 - (v / YMAX) * (Y1 - Y0);
+const gridlines = [0, 250, 500, 750, 1000];
+
+const idx = (year: number) => rows.findIndex((r) => r.year === year);
+const anomaly = S.anomaly;
+const trough = rows[idx(2017)];
+const peak = rows.reduce((a, b) => (b.year === S.partial_year ? a : b.total > a.total ? b : a));
+const blocks = hallyu.periodisation.blocks;
+const BLOCK_SPANS: [number, number][] = [[2006, 2011], [2012, 2016], [2017, 2018], [2019, 2022], [2023, 2025]];
+---
+<FigureFrame number="2 · The curve"
+  title="The visibility curve turns in 2018–19, and 2017 is a trough rather than the hinge" id="series" wide>
+
+  <svg viewBox="0 0 1000 492" role="img"
+    aria-label={`Stacked bar chart of Indian print newspaper articles matching the project's Hallyu vocabulary, ${rows[0].year} to ${rows[rows.length - 1].year}, by newspaper. Totals rise from ${rows[0].total} in ${rows[0].year} to a peak of ${peak.total} in ${peak.year}. 2017 is a local trough at ${trough.total}. The final year is partial.`}>
+
+    {BLOCK_SPANS.map(([a, b], k) => {
+      const x = X0 + idx(a) * slot;
+      const w = (idx(b) - idx(a) + 1) * slot;
+      return (
+        <>
+          <rect x={x} y={Y0 - 26} width={w} height={Y1 - Y0 + 26} fill={k % 2 ? 'var(--ground)' : 'transparent'} opacity="0.7" />
+          <text x={x + w / 2} y={Y0 - 32} text-anchor="middle" font-family="var(--f-ui)" font-size="11" fill="var(--muted)">
+            {blocks[k].per_year}/yr
+          </text>
+        </>
+      );
+    })}
+
+    {gridlines.map((g) => (
+      <>
+        <line x1={X0} y1={y(g)} x2={X1} y2={y(g)} stroke="var(--hairline)" stroke-width="1" />
+        <text x={X0 - 10} y={y(g) + 4} text-anchor="end" font-family="var(--f-mono)" font-size="11" fill="var(--muted)">{g}</text>
+      </>
+    ))}
+
+    <defs>
+      <pattern id="suspect" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <rect width="6" height="6" fill="var(--ground)" />
+        <rect width="2.5" height="6" fill="var(--b1)" />
+      </pattern>
+      <pattern id="partial" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <rect width="6" height="6" fill="var(--ground)" />
+        <rect width="2.5" height="6" fill="var(--muted)" />
+      </pattern>
+    </defs>
+
+    {rows.map((r, i) => {
+      let acc = 0;
+      const isPartial = r.year === S.partial_year;
+      return (
+        <>
+          {papers.map((p) => {
+            const v = r[p] as number;
+            const top = y(acc + v), h = y(acc) - y(acc + v);
+            acc += v;
+            const suspect = r.year === anomaly.year && p === anomaly.paper;
+            return v === 0 ? null : (
+              <rect x={bx(i)} y={top} width={barW} height={Math.max(h, 0.8)}
+                fill={isPartial ? 'url(#partial)' : suspect ? 'url(#suspect)' : FILL[p]}
+                stroke={isPartial || suspect ? FILL[p] : 'none'} stroke-width={isPartial || suspect ? 1 : 0}>
+                <title>{`${r.year} · ${S.paper_names[p]} · ${v}${suspect ? ' · suspected database gap' : ''}${isPartial ? ' · partial year' : ''}`}</title>
+              </rect>
+            );
+          })}
+          {(r.year % 2 === 0 || r.year === 2017) && (
+            <text x={bx(i) + barW / 2} y={Y1 + 18} text-anchor="middle" font-family="var(--f-mono)" font-size="10.5"
+              fill={r.year === 2017 ? 'var(--heading)' : 'var(--muted)'}>{r.year}</text>
+          )}
+        </>
+      );
+    })}
+
+    <line x1={X0} y1={Y1} x2={X1} y2={Y1} stroke="var(--heading)" stroke-width="1.2" />
+
+    <g>
+      <line x1={bx(idx(2018))} y1={Y0 - 4} x2={bx(idx(2018))} y2={Y1} stroke="var(--heading)" stroke-width="1.4" stroke-dasharray="5 4" />
+      <text x={bx(idx(2018)) + 8} y={Y0 + 10} font-family="var(--f-body)" font-size="13.5" font-weight="600" fill="var(--heading)">
+        2018–19 · the inflection
+      </text>
+      <text x={bx(idx(2018)) + 8} y={Y0 + 27} font-family="var(--f-ui)" font-size="11.5" fill="var(--muted)">
+        2.74× then 3.06×, taking the year from 34 to 285
+      </text>
+    </g>
+
+    <g>
+      <line x1={bx(idx(2017)) + barW / 2} y1={y(trough.total) - 8} x2={bx(idx(2017)) + barW / 2} y2={y(trough.total) - 48} stroke="var(--muted)" stroke-width="1" />
+      <text x={bx(idx(2017)) + barW / 2} y={y(trough.total) - 54} text-anchor="middle" font-family="var(--f-ui)" font-size="11.5" fill="var(--muted)">
+        2017: {trough.total}, a local trough
+      </text>
+    </g>
+
+    <g>
+      <line x1={bx(idx(anomaly.year)) + barW / 2} y1={y(rows[idx(anomaly.year)].HT + 20)} x2={X1 - 250} y2={y(820)} stroke="var(--muted)" stroke-width="1" stroke-dasharray="2 3" />
+      <text x={X1 - 246} y={y(820)} font-family="var(--f-ui)" font-size="11.5" fill="var(--muted)">
+        2022 Times of India: {anomaly.value}, treated as a database gap
+      </text>
+    </g>
+
+    <text x={bx(rows.length - 1) + barW / 2} y={y(rows[rows.length - 1].total) - 12} text-anchor="end"
+      font-family="var(--f-ui)" font-size="11.5" fill="var(--muted)">{S.partial_year} partial</text>
+
+    <g font-family="var(--f-ui)" font-size="12.5">
+      {papers.map((p, i) => (
+        <>
+          <rect x={X0 + i * 190} y={Y1 + 42} width="13" height="13" fill={FILL[p]} />
+          <text x={X0 + i * 190 + 20} y={Y1 + 53} fill="var(--ink)">{S.paper_names[p]}</text>
+        </>
+      ))}
+      <rect x={X0 + 570} y={Y1 + 42} width="13" height="13" fill="url(#suspect)" stroke="var(--b1)" />
+      <text x={X0 + 590} y={Y1 + 53} fill="var(--muted)">suspected gap</text>
+      <rect x={X0 + 710} y={Y1 + 42} width="13" height="13" fill="url(#partial)" stroke="var(--muted)" />
+      <text x={X0 + 730} y={Y1 + 53} fill="var(--muted)">partial year</text>
+    </g>
+    <text x={X0} y={Y1 + 80} font-family="var(--f-ui)" font-size="12" fill="var(--muted)">
+      Print editions only · {S.total.toLocaleString('en-US')} articles · figures above the bands are mean articles per year for that block
+    </text>
+  </svg>
+
+  <div slot="caption">
+    Counts of articles matching the project's candidate Hallyu vocabulary in the licensed
+    full-text workbench, restricted to print-edition objects. {S.source} The periodisation under
+    the bars is derived from the series rather than assumed: an earlier working hypothesis put the
+    break at 2017 on the strength of a BTS breakout, and the evidence contradicts it.
+    {anomaly.note} The final year runs {S.partial_note} and is never used in a rate.
+  </div>
+
+  <div slot="table">
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th scope="col">Year</th>{papers.map((p) => <th scope="col" class="num">{S.paper_names[p]}</th>)}<th scope="col" class="num">Print total</th><th scope="col">Note</th></tr></thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr>
+              <td class="num">{r.year}</td>
+              {papers.map((p) => <td class="num">{r[p]}</td>)}
+              <td class="num"><b>{r.total}</b></td>
+              <td>{r.year === anomaly.year ? 'Times of India figure treated as a suspected database gap' : r.year === S.partial_year ? `partial, ${S.partial_note}` : ''}</td>
+            </tr>
+          ))}
+          <tr><td class="num"><b>Total</b></td>{papers.map((p) => <td class="num"><b>{rows.reduce((s, r) => s + (r[p] as number), 0)}</b></td>)}<td class="num"><b>{S.total}</b></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</FigureFrame>
