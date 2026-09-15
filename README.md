@@ -9,20 +9,29 @@ structural decision are documented in `../DESIGN.md`, which is binding.
 
 ## Project pages
 
-The site shell (seven-item navigation, home, projects index, publications, CV, contact) is the
-one documented in `../DESIGN.md`. The three project pages follow a shared pattern, benchmarked
-from the DHI, Northwestern and Kentucky DH project directories:
+The site shell (six-item navigation, home, projects index, publications, CV, contact) is the one
+documented in `../DESIGN.md`. The three project pages follow the page anatomy from the
+`dh-site-publish` skill, benchmarked against the DHI, Northwestern and Kentucky DH project
+directories. **The interactive object goes high, not at the bottom.**
 
 1. **Identity** — `ProjectHeader.astro`: kind and date span, title, a subtitle naming the resource
    and its extent, a **scale line** counting the corpus in its own units, status, dataset version,
    build date, and a Korean summary.
-2. **Significance**, then **evidence figures**. Every figure carries a kicker, a title stating the
-   finding as a sentence, a caption explaining its encoding and its reach, and its data as a table
-   inside the frame.
-3. **Method**, **limits**, and an **explore door** into the evidence layer.
-4. **Project facts** — `ProjectFacts.astro`: resources beside the page including data downloads,
-   duration, status, version, people and roles, split licensing, persistent identifier, and a
-   citation that fills in the reader's own access date.
+2. **`ProjectNav.astro`** — a sticky in-page section nav with scroll-spy. Long project pages are
+   browsed, not read top to bottom.
+3. **`ResearchQuestion.astro`** — the question, plainly stated, with the stage it is at, before
+   any evidence.
+4. **The interactive object**, then **`WaysIn.astro`**: several parallel entry points onto the
+   same records rather than one link onward.
+5. **Evidence**, then **findings**. Every figure carries a kicker, a title stating the finding as a
+   sentence, a caption explaining its encoding and its reach, and its data as a table inside the
+   frame.
+6. **Limits**, then **project facts** — `ProjectFacts.astro`: resources beside the page including
+   data downloads, duration, status, version, people and roles, split licensing, persistent
+   identifier, and a citation that fills in the reader's own access date.
+
+`FigureGrammar.astro` renders the shared reading grammar on each project's data page, beside the
+method it belongs to.
 
 Each project also has `/projects/<slug>/data/` for method, coding, versions, limits and citation,
 and Buddhist Bridges generates one page per mediator at

@@ -1,0 +1,70 @@
+---
+// The reading grammar shared by every figure in every project on this site. It lives with each
+// project's method rather than on a page of its own, so a reader meeting a dashed bar has the
+// legend in the same document as the data it describes.
+---
+<section class="grammar-block" aria-labelledby="grammar-h">
+  <h3 id="grammar-h">How to read the figures</h3>
+  <p class="prose">
+    Colonial-era and premodern sources are fragmentary, contested and often hostile to the people
+    they describe. Most computational work smooths that away; these projects draw it. Four marks
+    carry evidential status across every figure on this site.
+  </p>
+  <dl class="grammar">
+    <div class="g-row">
+      <dt><svg viewBox="0 0 120 22" role="img" aria-label="A solid bar."><rect x="2" y="5" width="116" height="12" fill="var(--b2)"></rect></svg></dt>
+      <dd><b>Solid</b><span>An explicitly dated record. The dates are attested in a source, not inferred.</span></dd>
+    </div>
+    <div class="g-row">
+      <dt><svg viewBox="0 0 120 22" role="img" aria-label="A dashed outlined bar."><rect x="2" y="5" width="116" height="12" fill="none" stroke="var(--b2)" stroke-width="2" stroke-dasharray="5 4"></rect></svg></dt>
+      <dd><b>Dashed</b><span>A window derived from a floruit, an approximate date or a reign. It shows a range of possibility, not a life.</span></dd>
+    </div>
+    <div class="g-row">
+      <dt><svg viewBox="0 0 120 22" role="img" aria-label="A hatched bar.">
+        <defs><pattern id="hatch-legend" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="3" height="6" fill="var(--b5)"></rect></pattern></defs>
+        <rect x="2" y="5" width="116" height="12" fill="url(#hatch-legend)"></rect>
+      </svg></dt>
+      <dd><b>Hatched</b><span>The record rests on a single source, or the figure is marking a value it treats as suspect. It is in the dataset and it is not corroborated.</span></dd>
+    </div>
+    <div class="g-row">
+      <dt><svg viewBox="0 0 120 22" role="img" aria-label="A dotted horizontal line."><line x1="2" y1="11" x2="118" y2="11" stroke="var(--void)" stroke-width="2" stroke-dasharray="2 5"></line></svg></dt>
+      <dd><b>Dotted, annotated</b><span>An absence shown in place. Where the evidence bar admits nothing, the figure says so on the axis rather than closing the gap.</span></dd>
+    </div>
+  </dl>
+  <div class="prose">
+    <p>
+      Three rules follow. <b>Precision is recorded, never invented:</b> a date a source does not give
+      is not supplied, so records read <span class="mono">704–787</span>,
+      <span class="mono">fl. 671–695 ?</span> or <span class="mono">undated</span>, and an undated
+      record is listed in a register but never placed on an axis. <b>A zero under stated criteria is
+      a finding; an unsearched gap is not,</b> and the two are labelled differently wherever they
+      appear. <b>Candidates examined and rejected stay in the dataset</b> as documented negatives, so
+      the boundary of a claim can be inspected.
+    </p>
+    <p>
+      Pattern, not hue, carries the evidential meaning, so every figure stays legible in greyscale,
+      in print, and to readers with colour-vision deficiency. Colour separates only categories that
+      have no evidential ordering, and those palettes are machine-checked for colour-vision safety
+      before use. Every figure states its finding as its title, explains its encoding in a caption,
+      and exposes its underlying numbers as a table.
+    </p>
+    <p class="small muted">
+      The gap this addresses is documented: a 2024 survey of 186 web-based Digital Humanities
+      projects found that 122 use maps, 12 critically adapt them, and none visualises uncertainty.
+      See Tommaso Battisti, <i>Classification of web-based Digital Humanities projects leveraging
+      information visualisation techniques</i> (Zenodo, 2024),
+      <a href="https://doi.org/10.5281/zenodo.14192758">doi:10.5281/zenodo.14192758</a>.
+    </p>
+  </div>
+</section>
+<style>
+  .grammar-block { margin: 0 0 8px; max-width: var(--w-measure); }
+  .grammar { margin: 20px 0 24px; border-top: 1px solid var(--hairline); }
+  .g-row { display: grid; grid-template-columns: 130px 1fr; gap: 24px; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--hairline); }
+  .g-row dt { margin: 0; }
+  .g-row dt svg { width: 120px; height: 22px; display: block; }
+  .g-row dd { margin: 0; }
+  .g-row b { display: block; font: 600 14px/1.4 var(--f-ui); color: var(--heading); margin-bottom: 3px; }
+  .g-row span { font: 400 14px/1.6 var(--f-ui); color: var(--text); }
+  @media (max-width: 640px) { .g-row { grid-template-columns: 1fr; gap: 10px; } }
+</style>

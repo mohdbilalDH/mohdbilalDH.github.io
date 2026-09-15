@@ -23,7 +23,7 @@ const svgFrom = (file, labelStart) => {
 };
 const pages = {
   janghan: `<img src="/public/janghan/assets/jh01-cover.png" style="width:100%;height:100%;object-fit:cover;display:block">`,
-  'buddhist-bridges': `<div class="chart">${svgFrom('dist/visualizations/index.html', 'Timeline of India–Korea')}</div>`,
+  'buddhist-bridges': `<div class="chart">${svgFrom('dist/projects/buddhist-bridges/index.html', 'Eight documented journey routes')}</div>`,
   hallyu: `<div class="chart">${svgFrom('dist/projects/hallyu-indian-press/index.html', 'Coverage chart, 2000 to 2026')}</div>`,
 };
 const shell = (body) => `<!doctype html><html><head><meta charset="utf-8">

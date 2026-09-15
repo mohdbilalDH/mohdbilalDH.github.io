@@ -28,7 +28,6 @@ export const site = {
     { href: '/about/', label: 'About', key: 'about' },
     { href: '/projects/', label: 'Projects', key: 'projects' },
     { href: '/publications/', label: 'Publications', key: 'publications' },
-    { href: '/visualizations/', label: 'Visualizations', key: 'visualizations' },
     { href: '/cv/', label: 'CV', key: 'cv' },
     { href: '/contact/', label: 'Contact', key: 'contact' },
   ],

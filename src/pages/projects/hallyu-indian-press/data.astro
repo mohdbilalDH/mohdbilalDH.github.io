@@ -3,6 +3,7 @@ import Project from '../../../layouts/Project.astro';
 import PageTitle from '../../../components/PageTitle.astro';
 import Apparatus from '../../../components/Apparatus.astro';
 import CiteBlock from '../../../components/CiteBlock.astro';
+import FigureGrammar from '../../../components/FigureGrammar.astro';
 import Factsheet from '../../../components/Factsheet.astro';
 import hallyu from '../../../data/hallyu.json';
 import { projects } from '../../../data/projects';
@@ -85,6 +86,11 @@ const rows = [
             <li>One annual count (Times of India, 2022) is anomalously low against its neighbours and is treated as a suspected database gap rather than as evidence.</li>
           </ul>
         </div>
+      </section>
+
+      <section class="section">
+        <h2>Reading the figures</h2>
+        <FigureGrammar />
       </section>
 
       <section class="section">

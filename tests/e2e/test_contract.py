@@ -32,6 +32,20 @@ with Browser() as b:
         check("built" in p.locator(".phead-status").inner_text(), f"{slug}: build date in the header")
         check(p.locator(".ko-summary summary").count() == 1, f"{slug}: Korean summary present")
 
+        # --- the exploration arc: question, then the interactive object, then evidence ---
+        check(p.locator("nav.pnav a").count() >= 5, f"{slug}: in-page section navigation")
+        rq = p.locator("section.rq .rq-body").inner_text().strip()
+        check(rq.endswith("?") or "?" in rq, f"{slug}: the research question is a question")
+        check(len(rq) > 60, f"{slug}: the question is stated in full")
+        check(p.locator("section.rq .rq-status").count() == 1, f"{slug}: the question carries its status")
+        order = p.evaluate("[...document.querySelectorAll('section[id]')].map(s => s.id).filter(id => ['question','explore','evidence','findings','limits','data'].includes(id))")
+        check(order.index("question") < order.index("explore") < order.index("evidence"),
+              f"{slug}: question precedes the interactive object, which precedes the evidence ({order})")
+        check(order.index("evidence") < order.index("findings") < order.index("data"),
+              f"{slug}: evidence precedes findings, which precede data ({order})")
+        first_fig = p.evaluate("(() => { const f = document.querySelector('main figure.fig'); const e = document.getElementById('explore'); return !!(f && e && e.contains(f)); })()")
+        check(first_fig, f"{slug}: the first figure sits inside the explore section, not at the bottom")
+
         # --- evidence ---
         figs = p.locator("main figure.fig")
         check(figs.count() >= 2, f"{slug}: at least two figures ({figs.count()})")

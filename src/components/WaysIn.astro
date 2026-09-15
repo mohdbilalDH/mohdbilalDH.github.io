@@ -1,0 +1,33 @@
+---
+// Parallel entry points onto the same records. Every strong edition and database in the
+// benchmark offers several doors — by item, by person, by place, by period — rather than one
+// search box, because a reader arrives with a question already shaped.
+interface Door { href: string; q: string; label: string; n?: string }
+interface Props { doors: Door[]; note?: string }
+const { doors, note } = Astro.props;
+---
+<section class="ways" aria-labelledby="ways-h">
+  <p class="ways-kicker" id="ways-h">Ways in</p>
+  <ul class="ways-grid">
+    {doors.map((d) => (
+      <li>
+        <a href={d.href}>
+          <span class="ways-q">{d.q}</span>
+          <span class="ways-label">{d.label}{d.n && <span class="ways-n mono">{d.n}</span>}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+  {note && <p class="ways-note small muted">{note}</p>}
+</section>
+<style>
+  .ways { margin: 0 0 40px; max-width: var(--w-measure); }
+  .ways-kicker { font: 500 12px/1.4 var(--f-ui); letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); margin: 0 0 14px; }
+  .ways-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
+  .ways-grid a { display: flex; flex-direction: column; gap: 8px; height: 100%; padding: 18px 20px; background: var(--white); border: 1px solid var(--hairline); border-top: 3px solid var(--navy); text-decoration: none; color: inherit; transition: border-color var(--ease), transform var(--ease); }
+  .ways-grid a:hover { border-top-color: var(--yellow); transform: translateY(-2px); text-decoration: none; color: inherit; }
+  .ways-q { font: 700 17px/1.35 var(--f-title); color: var(--heading); text-wrap: balance; }
+  .ways-label { font: 400 13px/1.5 var(--f-ui); color: var(--muted); margin-top: auto; }
+  .ways-n { color: var(--navy); margin-left: 6px; }
+  .ways-note { margin: 14px 0 0; }
+</style>

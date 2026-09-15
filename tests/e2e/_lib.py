@@ -1,7 +1,7 @@
 from playwright.sync_api import sync_playwright
 
 BASE = "http://127.0.0.1:4321"
-ROUTES = ["/", "/about/", "/projects/", "/publications/", "/visualizations/", "/cv/", "/contact/",
+ROUTES = ["/", "/about/", "/projects/", "/publications/", "/cv/", "/contact/",
           "/projects/janghan/", "/projects/janghan/data/",
           "/projects/buddhist-bridges/", "/projects/buddhist-bridges/explore/",
           "/projects/buddhist-bridges/data/", "/projects/buddhist-bridges/people/P-0001/",

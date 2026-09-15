@@ -25,10 +25,8 @@ const { project: p, scale } = Astro.props;
   <p class="phead-status">
     <span class={`dot dot--${p.state}`} aria-hidden="true"></span>
     <b>{p.stateLabel}</b>
-    <span class="sep" aria-hidden="true">·</span>
-    <span class="mono">{p.version}</span>
-    <span class="sep" aria-hidden="true">·</span>
-    <span>page built {buildDate}</span>
+    <span class="phead-meta"><span class="mono">{p.version}</span></span>
+    <span class="phead-meta">page built {buildDate}</span>
   </p>
 
   <details class="ko-summary">
@@ -51,7 +49,8 @@ const { project: p, scale } = Astro.props;
 
   .phead-status { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font: 400 13px/1.6 var(--f-ui); color: var(--muted); margin: 0; }
   .phead-status b { color: var(--heading); font-weight: 600; }
-  .sep { color: var(--hairline); }
+  .phead-meta { display: inline-flex; align-items: center; }
+  .phead-meta::before { content: "·"; color: var(--hairline); margin: 0 10px 0 2px; }
   .dot { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--grade-medium); flex: none; }
   .dot--frozen, .dot--released { border-color: var(--grade-high); background: var(--grade-high); }
 

@@ -22,8 +22,8 @@ with Browser() as b:
     check(p.request.get(BASE + href).status == 200, f"that edition page exists ({href})")
 
     # the place locator is drawn from the coded evidence
-    check(p.locator("#places svg").count() == 1, "place locator rendered")
-    check(p.locator("#places details.fig-table tbody tr").count() >= 15, "every counted place is in the table")
+    check(p.locator("#fig-places svg").count() == 1, "place locator rendered")
+    check(p.locator("#fig-places details.fig-table tbody tr").count() >= 15, "every counted place is in the table")
 
     # --- Buddhist Bridges: the network slices switch and light ---
     n = b.page()
@@ -50,6 +50,28 @@ with Browser() as b:
     rows = h.locator("#series details.fig-table tbody tr")
     check(rows.count() == 22, f"series table has one row per year plus a total ({rows.count()})")
     check("4,796" in h.locator("main").inner_text() or "4796" in h.locator("main").inner_text(), "print total stated")
+    # isolating a paper recomputes the stack without rescaling the axis
+    shown = lambda: h.locator("#hs-total").inner_text()
+    all_shown = shown()
+    h.locator(".hs-toggle input[data-paper='TOI']").uncheck()
+    check(shown() != all_shown, f"hiding a paper recomputes the total ({all_shown} -> {shown()})")
+    top = h.evaluate("getComputedStyle(document.querySelector('#series svg')).height")
+    h.locator(".hs-toggle input[data-paper='IE']").uncheck()
+    # the last visible paper is refused rather than allowed to empty the chart, so click it
+    # directly: uncheck() would throw on a state that deliberately does not change
+    h.locator(".hs-toggle input[data-paper='HT']").click()
+    check(h.locator(".hs-toggle input[data-paper='HT']").is_checked(), "the last visible paper cannot be hidden")
+    check(h.evaluate("getComputedStyle(document.querySelector('#series svg')).height") == top, "the axis does not rescale")
+    # the annotations describe whole-year totals, so they recede while a paper is hidden
+    h.wait_for_timeout(350)  # let the 200ms opacity transition settle before measuring
+    faded = h.evaluate("getComputedStyle(document.querySelector('.hs-anno')).opacity")
+    check(float(faded) < 0.5, f"annotations recede on a partial selection ({faded})")
+    h.locator(".hs-toggle input[data-paper='TOI']").check()
+    h.locator(".hs-toggle input[data-paper='IE']").check()
+    h.wait_for_timeout(350)
+    check(float(h.evaluate("getComputedStyle(document.querySelector('.hs-anno')).opacity")) == 1.0,
+          "annotations return when every paper is shown")
+    check("all three papers" in h.locator("#hs-total").inner_text(), "the readout names the full selection")
     check(b.errors == [], f"no console errors: {b.errors}")
 
 # Runtime-injected parts of the figures must actually be styled: Astro's scoped attribute never

@@ -3,6 +3,7 @@ import Project from '../../../layouts/Project.astro';
 import PageTitle from '../../../components/PageTitle.astro';
 import Apparatus from '../../../components/Apparatus.astro';
 import CiteBlock from '../../../components/CiteBlock.astro';
+import FigureGrammar from '../../../components/FigureGrammar.astro';
 import Factsheet from '../../../components/Factsheet.astro';
 import JanghanRegisters from '../../../components/figures/JanghanRegisters.astro';
 import j from '../../../data/janghan.json';
@@ -86,6 +87,11 @@ const rows = [
             after reconciliation, and the residual disagreements are published rather than resolved.
           </p>
         </Apparatus>
+      </section>
+
+      <section class="section">
+        <h2>Reading the figures</h2>
+        <FigureGrammar />
       </section>
 
       <section class="section">

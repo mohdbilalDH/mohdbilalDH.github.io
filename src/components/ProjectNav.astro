@@ -1,0 +1,39 @@
+---
+// In-page navigation for a long project page. Long DH projects are browsed, not read top to
+// bottom, so the sections are addressable and the reader always knows where they are.
+interface Props { sections: { id: string; label: string }[] }
+const { sections } = Astro.props;
+---
+<nav class="pnav" aria-label="Sections of this project">
+  <ul class="wrap">
+    {sections.map((s) => (
+      <li><a href={`#${s.id}`} data-target={s.id}>{s.label}</a></li>
+    ))}
+  </ul>
+</nav>
+<style>
+  .pnav { position: sticky; top: 0; z-index: 20; background: var(--ground); border-bottom: 1px solid var(--hairline); margin: 0 0 40px; }
+  .pnav ul { display: flex; gap: 0; list-style: none; margin: 0 auto; overflow-x: auto; scrollbar-width: none; }
+  .pnav ul::-webkit-scrollbar { display: none; }
+  .pnav a { display: block; white-space: nowrap; padding: 14px 18px 12px; font: 500 13px/1.4 var(--f-ui); color: var(--muted); text-decoration: none; border-bottom: 2px solid transparent; transition: color var(--ease), border-color var(--ease); }
+  .pnav a:first-child { padding-left: 0; }
+  .pnav a:hover { color: var(--navy); text-decoration: none; }
+  .pnav a[aria-current='true'] { color: var(--navy); border-bottom-color: var(--yellow); }
+  @media (max-width: 640px) { .pnav a { padding: 12px 14px 10px; font-size: 12.5px; } }
+  @media print { .pnav { display: none; } }
+</style>
+<script>
+  // Mark the section currently in view. Falls back to doing nothing without IntersectionObserver;
+  // the links are plain anchors and work regardless.
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('.pnav a'));
+  if (links.length && 'IntersectionObserver' in window) {
+    const byId = new Map(links.map((a) => [a.dataset.target!, a]));
+    const seen = new Set<string>();
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => (e.isIntersecting ? seen.add(e.target.id) : seen.delete(e.target.id)));
+      const first = links.find((a) => seen.has(a.dataset.target!));
+      links.forEach((a) => (a === first ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current')));
+    }, { rootMargin: '-15% 0px -70% 0px' });
+    byId.forEach((_a, id) => { const el = document.getElementById(id); if (el) io.observe(el); });
+  }
+</script>

@@ -109,3 +109,6 @@ td { border-bottom: 1px solid var(--hairline); padding: 10px 16px 10px 0; vertic
 /* Readability (DESIGN.md #27): paragraph measure is capped by characters, not by the
    container. Tables, factsheets, figures and citation blocks keep the full --w-measure. */
 .prose p, .prose ul, .prose ol, .prose dl, .intro, .lede, .page-head .lede { max-width: 68ch; }
+
+/* Anchored sections clear the sticky in-page project navigation (DESIGN.md #36). */
+[id] { scroll-margin-top: 64px; }

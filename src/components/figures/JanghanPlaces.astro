@@ -51,7 +51,7 @@ const latTicks = [44, 41, 38, 35];
 ---
 <FigureFrame number="4 · Places"
   title={`A map can carry ${data.mappable_mentions} of the ${data.counted_mentions} counted mentions, and that is the finding`}
-  id="places" wide>
+  id="fig-places" wide>
 
   <svg viewBox="0 0 960 560" role="img"
     aria-label={`Coordinate plot of the ${data.mappable_places} mappable places named in 長恨 issue 1. A main panel covers 124 to 137 degrees east and 34 to 45 degrees north and holds ${main.map((p) => short[p.id]).join(', ')}. An inset covers central Kyŏngsŏng and holds ${inset.map((p) => short[p.id]).join(', ')}. Los Angeles is marked off-frame. Circle area is the number of counted mentions.`}>
