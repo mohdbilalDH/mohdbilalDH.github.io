@@ -1,5 +1,7 @@
 // The project contract: every project declares a kind, a state, one question and one
 // finding, and resolves to exactly three routes (argument · explore · data).
+// The argument page is budgeted at 700-1,000 words of prose (figures and their data tables
+// excluded) and at most four figures. tests/e2e/test_contract.py enforces both.
 // Adding a project means adding one entry here and three files under src/pages/projects/.
 
 export type Kind = 'edition' | 'argument' | 'investigation';

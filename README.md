@@ -14,7 +14,7 @@ project is one entry in `src/data/projects.ts` plus three files.
 
 | Route | Job | Budget |
 |---|---|---|
-| `/projects/<slug>/` | The argument. Five slots: Claim · Evidence · Explore · Limits · Cite. | 700–900 words, at most 3 evidence figures |
+| `/projects/<slug>/` | The argument. Five slots: Claim · Evidence · Explore · Limits · Cite. | 700–1,000 words of prose, at most 4 figures |
 | `/projects/<slug>/explore/` | The evidence layer: an edition, an instrument or a register. | one instrument |
 | `/projects/<slug>/data/` | Method, coding, versions, limits, licence, downloads, citation. | no limit |
 | `/projects/<slug>/<entity>/<id>/` | One citable page per entity, generated, never hand-written. | as many as the data has |
