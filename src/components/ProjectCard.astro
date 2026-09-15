@@ -1,0 +1,38 @@
+---
+// Image card in the reference pattern: art under a coloured overlay, content bottom-aligned,
+// year label, Playfair title (the whole card is the link), pill button.
+import type { Project } from '../data/projects';
+import Button from './Button.astro';
+interface Props { project: Project }
+const { project: p } = Astro.props;
+---
+<article class={`project-card fade-up overlay-${p.overlay}`} style={`--art: url('${p.art}')`}>
+  <div class="card-body">
+    <p class="card-year">{p.yearLabel}</p>
+    <h3 class="card-title"><a href={p.href}>{p.title}</a></h3>
+    <Button href={p.href} variant="primary">View project</Button>
+  </div>
+</article>
+<style>
+  .project-card {
+    position: relative; min-height: var(--card-h); border-radius: var(--r-card); overflow: hidden;
+    background: var(--art) center / cover no-repeat, var(--navy);
+    display: flex; align-items: flex-end; isolation: isolate;
+  }
+  .project-card::before { content: ''; position: absolute; inset: 0; z-index: 0; transition: opacity var(--ease); }
+  .overlay-1::before { background: var(--card-overlay-1); }
+  .overlay-2::before { background: var(--card-overlay-2); }
+  .overlay-3::before { background: var(--card-overlay-3); }
+  .overlay-4::before { background: var(--card-overlay-4); }
+  .project-card:hover::before { opacity: 0.86; }
+  .card-body { position: relative; z-index: 1; padding: var(--card-pad); width: 100%; }
+  .card-year { font: 500 15px/1.5 var(--f-body); color: var(--white); margin: 0 0 4px; }
+  .card-title { font: 700 var(--t-card)/1.4 var(--f-title); margin: 0 0 24px; color: var(--white); text-wrap: balance; }
+  .card-title a { color: var(--white); text-decoration: none; }
+  .card-title a::after { content: ''; position: absolute; inset: 0; }
+  .card-title a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
+  .project-card:hover .card-title a { text-decoration: underline; text-underline-offset: 4px; }
+  .card-body :global(.btn) { position: relative; z-index: 2; }
+  .card-body :global(.btn:focus-visible) { outline: 2px solid var(--white); }
+  @media (max-width: 640px) { .card-title { margin-bottom: 16px; } }
+</style>

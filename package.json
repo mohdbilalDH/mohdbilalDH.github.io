@@ -9,6 +9,7 @@
     "preview": "astro preview",
     "cv:pdf": "node scripts/make-cv-pdf.mjs",
     "og": "node scripts/make-og.mjs",
+    "art": "node scripts/make-card-art.mjs",
     "edition": "node scripts/edition-finish.mjs",
     "romanise": "node scripts/romanise.mjs"
   },

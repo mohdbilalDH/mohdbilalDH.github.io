@@ -1,0 +1,79 @@
+---
+import Base from '../layouts/Base.astro';
+import Eyebrow from '../components/Eyebrow.astro';
+import PubList from '../components/PubList.astro';
+import { articles, byStatus, venueLine } from '../data/publications';
+import presentations from '../data/presentations.json';
+
+const years = [...new Set(presentations.map((p) => p.year))].sort((a, b) => b - a);
+const published = byStatus('published')[0];
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'ScholarlyArticle',
+  headline: published.title,
+  author: [
+    { '@type': 'Person', name: 'Mohd Bilal', sameAs: 'https://orcid.org/0009-0007-8367-4690' },
+    { '@type': 'Person', name: 'Santosh Kumar Ranjan' },
+  ],
+  datePublished: String(published.year),
+  isPartOf: {
+    '@type': 'PublicationIssue',
+    issueNumber: published.issue,
+    isPartOf: { '@type': 'PublicationVolume', volumeNumber: published.volume, isPartOf: { '@type': 'Periodical', name: published.venue } },
+  },
+  pagination: published.pages?.replace('–', '-'),
+};
+---
+<Base title="Publications" current="publications"
+  description="Publications and conference presentations by Mohd Bilal — Korean Studies, Hallyu, kisaeng studies, Buddhism, and India–Korea comparative research.">
+  <Fragment slot="head">
+    <meta name="citation_title" content={published.title.replace('’', "'")} />
+    <meta name="citation_author" content="Bilal, Mohd" />
+    <meta name="citation_author" content="Ranjan, Santosh Kumar" />
+    <meta name="citation_publication_date" content={String(published.year)} />
+    <meta name="citation_journal_title" content={published.venue} />
+    <meta name="citation_volume" content={published.volume} />
+    <meta name="citation_issue" content={published.issue} />
+    <meta name="citation_firstpage" content="165" />
+    <meta name="citation_lastpage" content="188" />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />
+  </Fragment>
+
+  <div class="wrap">
+    <div class="page-head">
+      <Eyebrow>Scholarship</Eyebrow>
+      <h1>Publications</h1>
+    </div>
+
+    <section class="section first">
+      <h2>Journal articles</h2>
+      <PubList items={byStatus('published').map((a) => ({ title: a.title, venue: venueLine(a) }))} />
+    </section>
+
+    <section class="section">
+      <h2>Forthcoming</h2>
+      <PubList items={byStatus('forthcoming').map((a) => ({ title: a.title, venue: venueLine(a), meta: a.note }))} />
+    </section>
+
+    <section class="section">
+      <h2>Under review</h2>
+      <PubList items={byStatus('under-review').map((a) => ({ title: a.title, venue: `<em>${a.venue}</em>, ${a.note}.` }))} />
+    </section>
+
+    <section class="section">
+      <h2>Conference presentations</h2>
+      {years.map((y) => (
+        <>
+          <p class="label year">{y}</p>
+          <PubList items={presentations.filter((p) => p.year === y).map((p) => ({ title: p.title, venue: `${p.venue}${p.place ? `, ${p.place}` : ''}, ${p.when}.` }))} />
+        </>
+      ))}
+    </section>
+
+    <p class="muted small">A complete academic record, including training and awards, is on the <a href="/cv/">CV</a>.</p>
+  </div>
+</Base>
+<style>
+  .first { margin-top: 0; border-top: 0; padding-top: 0; }
+  .year { margin: var(--s-4) 0 var(--s-1); }
+</style>
