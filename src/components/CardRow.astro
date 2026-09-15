@@ -4,11 +4,10 @@ const { cols = 3 } = Astro.props;
 ---
 <div class={`card-row cols-${cols}`}><slot /></div>
 <style>
-  .card-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin: 0 0 20px; }
+  .card-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin: 0 0 20px; align-items: stretch; }
   .cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .cols-1 { grid-template-columns: 1fr; }
-  .cols-1 :global(.project-card) { min-height: 420px; }
-  @media (max-width: 640px) { .card-row, .cols-2 { grid-template-columns: 1fr; } .cols-1 :global(.project-card) { min-height: var(--card-h); } }
+  @media (max-width: 640px) { .card-row, .cols-2 { grid-template-columns: 1fr; } }
 </style>
 <script>
   // Reference behaviour: cards fade up as they enter the viewport. Elements already in view

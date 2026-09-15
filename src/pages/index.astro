@@ -67,16 +67,17 @@ const talks = presentations.slice(0, 6);
 </Base>
 <style>
   .hero-band { padding: 100px 0 70px; }
-  .hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; }
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 440px); gap: 48px; align-items: center; }
   .hero-text .page-title { line-height: 1.2; margin-bottom: 20px; }
-  .hero-text .intro { margin-bottom: 32px; }
-  .hero-fig { margin: 0; justify-self: end; max-width: 380px; }
-  .hero-fig img { display: block; width: auto; max-width: 100%; max-height: 460px; margin-left: auto; height: auto; border-radius: var(--r-card); }
+  .hero-text .intro { margin-bottom: 32px; max-width: 54ch; }
+  .hero-fig { margin: 0; justify-self: stretch; }
+  .hero-fig img { display: block; width: auto; max-width: 100%; max-height: 430px; height: auto; margin: 0 auto; }
+  .hero-fig { background: var(--white); border: 1px solid var(--hairline); border-radius: var(--r-card); padding: 24px; }
   .hero-fig figcaption { margin-top: 12px; }
   .band-intro { margin-bottom: 28px; }
   @media (max-width: 900px) {
     .hero-band { padding: 60px 0 50px; }
     .hero { grid-template-columns: 1fr; gap: 36px; }
-    .hero-fig { justify-self: start; max-width: 320px; }
+    .hero-fig { justify-self: start; max-width: 360px; }
   }
 </style>

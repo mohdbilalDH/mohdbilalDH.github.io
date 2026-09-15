@@ -1,6 +1,7 @@
-// Render the three project-card backgrounds (public/art/<slug>.png, 1100×1400) from the
-// site's own material with headless Chrome: the 1927 長恨 cover, the Buddhist Bridges cohort
-// strip, and the Hallyu growth chart. Run after `npm run build`: `npm run art`.
+// Render the three project-card images (public/art/<slug>.png, 1200×420) from the site's own
+// material with headless Chrome: the 1927 長恨 cover, the Buddhist Bridges route diagram and
+// the Hallyu coverage chart. Landscape, because the cards show them as a band above the text
+// rather than as a full-bleed wash behind it. Run after `npm run build`: `npm run art`.
 import { execFile } from 'node:child_process';
 import { createServer } from 'node:http';
 import { existsSync, mkdirSync, readFileSync } from 'node:fs';
@@ -14,24 +15,26 @@ const chrome = [
 if (!chrome) throw new Error('Chrome not found');
 
 const tokens = readFileSync('src/styles/tokens.css', 'utf8');
-const svgFrom = (file, labelStart) => {
+const svgFrom = (file, labelPart) => {
   const html = readFileSync(file, 'utf8');
   const re = /<svg[^>]*aria-label="([^"]*)"[\s\S]*?<\/svg>/g;
   let m;
-  while ((m = re.exec(html))) if (m[1].startsWith(labelStart)) return m[0];
-  throw new Error(`no svg starting with "${labelStart}" in ${file}`);
+  while ((m = re.exec(html))) if (m[1].includes(labelPart)) return m[0];
+  throw new Error(`no svg whose label contains "${labelPart}" in ${file}`);
 };
 const pages = {
-  janghan: `<img src="/public/janghan/assets/jh01-cover.png" style="width:100%;height:100%;object-fit:cover;display:block">`,
-  'buddhist-bridges': `<div class="chart">${svgFrom('dist/projects/buddhist-bridges/index.html', 'Eight documented journey routes')}</div>`,
+  janghan: `<div class="plate"><img src="/public/janghan/assets/jh01-cover.png"><img src="/public/janghan/assets/jh02-cover.png"></div>`,
+  'buddhist-bridges': `<div class="chart">${svgFrom('dist/projects/buddhist-bridges/index.html', 'documented journey routes between Korea')}</div>`,
   hallyu: `<div class="chart">${svgFrom('dist/projects/hallyu-indian-press/index.html', 'Coverage chart, 2000 to 2026')}</div>`,
 };
 const shell = (body) => `<!doctype html><html><head><meta charset="utf-8">
 <link rel="stylesheet" href="/node_modules/@fontsource-variable/mulish/index.css">
 <link rel="stylesheet" href="/node_modules/@fontsource-variable/playfair-display/index.css">
-<style>${tokens} html,body{margin:0;width:1100px;height:1400px;background:var(--ground);overflow:hidden}
-.chart{width:1100px;height:1400px;display:flex;align-items:center;justify-content:center;padding:60px;box-sizing:border-box}
-.chart svg{width:100%;height:auto;transform:scale(1.08)} .chart svg text{font-family:var(--f-body)}</style></head><body>${body}</body></html>`;
+<style>${tokens} html,body{margin:0;width:1200px;height:420px;background:var(--white);overflow:hidden}
+.chart{width:1200px;height:420px;display:flex;align-items:center;justify-content:center;padding:52px 44px;box-sizing:border-box}
+.chart svg{width:100%;height:auto;max-height:100%} .chart svg text{font-family:var(--f-body)}
+.plate{width:1200px;height:420px;display:flex;gap:48px;align-items:center;justify-content:center;background:var(--white)}
+.plate img{height:300px;width:auto;display:block}</style></head><body>${body}</body></html>`;
 
 const MIME = { '.css': 'text/css', '.woff2': 'font/woff2', '.png': 'image/png', '.html': 'text/html' };
 const server = createServer((req, res) => {
@@ -52,7 +55,7 @@ server.listen(0, '127.0.0.1', async () => {
     const out = resolve(`public/art/${slug}.png`);
     await new Promise((ok, fail) => execFile(chrome, [
       '--headless', '--disable-gpu', '--hide-scrollbars', '--force-device-scale-factor=1',
-      '--window-size=1100,1400', `--screenshot=${out}`, '--virtual-time-budget=4000',
+      '--window-size=1200,420', `--screenshot=${out}`, '--virtual-time-budget=4000',
       `http://127.0.0.1:${port}/art/${slug}.html`,
     ], (err) => (err ? fail(err) : ok())));
     console.log(`wrote ${out}`);

@@ -18,7 +18,7 @@ import { projects, categories } from '../../data/projects';
           <>
             <SectionHeading>{c.title}</SectionHeading>
             <CardRow cols={items.length === 1 ? 1 : items.length === 2 ? 2 : 3}>
-              {items.map((p) => <ProjectCard project={p} />)}
+              {items.map((p) => <ProjectCard project={p} feature={items.length === 1} />)}
             </CardRow>
           </>
         );
