@@ -1,14 +1,13 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageTitle from '../components/PageTitle.astro';
-import SectionHeading from '../components/SectionHeading.astro';
-import Factsheet from '../components/Factsheet.astro';
 import Button from '../components/Button.astro';
 import { site } from '../data/site';
+import { projects, kindLabel } from '../data/projects';
 
-const rows = [
+const facts = [
   { term: 'Affiliation', html: 'M.A. student, Division of Global Korean Studies,<br />The Academy of Korean Studies, Seongnam, Republic of Korea' },
-  { term: 'Research areas', html: 'Hallyu and media reception · Korean cultural history (kisaeng and colonial-period print culture) · Digital humanities methods · India–Korea exchanges' },
+  { term: 'Research areas', html: 'Gender and colonial-period print culture (kisaeng studies)<br />Hallyu and media reception<br />India–Korea exchange<br />Digital humanities methods' },
   { term: 'Email', html: `<a href="mailto:${site.email}">${site.email}</a>` },
   { term: 'ORCID', html: `<a href="${site.orcid}">${site.orcidId}</a>` },
   { term: 'Code & data', html: `<a href="${site.github}">${site.githubLabel}</a>` },
@@ -18,15 +17,78 @@ const rows = [
   <PageTitle title="About" lede={site.lede} />
   <section class="band band--flush">
     <div class="wrap">
-      <div class="measure">
-        {site.bio.map((p) => <p class="intro" set:html={p} />)}
+      <div class="about-cols">
+        <div class="about-bio">
+          {site.bio.map((p) => <p class="intro" set:html={p} />)}
+        </div>
+
+        <aside class="about-side" aria-labelledby="glance-h">
+          <h2 class="side-h" id="glance-h">At a glance</h2>
+          <dl class="side-facts">
+            {facts.map((r) => (
+              <div>
+                <dt>{r.term}</dt>
+                <dd set:html={r.html} />
+              </div>
+            ))}
+          </dl>
+          <div class="side-btns no-print">
+            <Button href="/files/mohd-bilal-cv.pdf" variant="primary" download>Download CV (PDF)</Button>
+            <Button href="/cv/" variant="ghost">Read the CV</Button>
+          </div>
+        </aside>
       </div>
-      <SectionHeading>At a glance</SectionHeading>
-      <div class="measure"><Factsheet rows={rows} /></div>
-      <div class="btn-row no-print">
-        <Button href="/files/mohd-bilal-cv.pdf" variant="primary" download>Download CV (PDF)</Button>
-        <Button href="/projects/" variant="ghost">View projects</Button>
-      </div>
+
+      <section class="about-projects" aria-labelledby="work-h">
+        <h2 class="section-heading" id="work-h">The work itself</h2>
+        <p class="intro">
+          Three Digital Humanities projects, each with its own question, corpus and method. Each
+          publishes its evidence, its limits and a citation.
+        </p>
+        <ul class="worklist">
+          {projects.map((p) => (
+            <li>
+              <p class="work-meta">
+                <span class="work-kind">{kindLabel[p.kind]}</span>
+                <span class="work-dates mono">{p.dates}</span>
+                <span class="work-state">{p.stateShort}</span>
+              </p>
+              <h3><a href={p.href}>{p.title}</a></h3>
+              <p class="work-blurb">{p.blurb}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
     </div>
   </section>
 </Base>
+<style>
+  .about-cols { display: grid; gap: 40px; align-items: start; }
+  @media (min-width: 1000px) { .about-cols { grid-template-columns: minmax(0, 1fr) 360px; gap: 72px; } }
+  .about-bio .intro { max-width: 68ch; }
+
+  .about-side { background: var(--white); border: 1px solid var(--hairline); border-radius: var(--r-card); padding: 26px 28px; }
+  @media (min-width: 1000px) { .about-side { position: sticky; top: 24px; } }
+  .side-h { font: 700 18px/1.3 var(--f-title); color: var(--heading); margin: 0 0 4px; }
+  .side-facts { margin: 0 0 22px; }
+  .side-facts > div { padding: 14px 0; border-bottom: 1px solid var(--hairline); }
+  .side-facts > div:last-of-type { border-bottom: 0; }
+  .side-facts dt { font: 500 11px/1.4 var(--f-ui); letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); margin: 0 0 5px; }
+  .side-facts dd { margin: 0; font: 400 13.5px/1.65 var(--f-ui); color: var(--text); }
+  .side-btns { display: flex; flex-wrap: wrap; gap: 10px; }
+
+  .about-projects { margin-top: 64px; padding-top: 28px; border-top: 1px solid var(--hairline); }
+  .about-projects .section-heading { margin-top: 0; }
+  .about-projects .intro { margin-bottom: 8px; }
+  .worklist { list-style: none; margin: 0; padding: 0; max-width: var(--w-measure); }
+  .worklist li { padding: 24px 0; border-bottom: 1px solid var(--hairline); }
+  .worklist li:first-child { border-top: 1px solid var(--hairline); margin-top: 20px; }
+  .work-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin: 0 0 8px; }
+  .work-kind { font: 500 11px/1.4 var(--f-ui); letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); }
+  .work-dates { font-size: 12px; color: var(--muted); }
+  .work-state { font: 400 12px/1.4 var(--f-ui); color: var(--muted); }
+  .worklist h3 { font: 700 21px/1.3 var(--f-title); margin: 0 0 8px; }
+  .worklist h3 a { color: var(--heading); text-decoration: none; }
+  .worklist h3 a:hover { color: var(--navy); text-decoration: underline; text-underline-offset: 4px; }
+  .work-blurb { font: 400 14.5px/1.7 var(--f-ui); color: var(--text); margin: 0; max-width: 72ch; }
+</style>

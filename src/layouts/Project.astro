@@ -18,3 +18,16 @@ const { title, description = 'A Digital Humanities research project by Mohd Bila
   </Fragment>
   <slot />
 </Base>
+<style is:global>
+  /* Project pages are long and are browsed rather than read straight through, so each major
+     section opens on a rule. Scoped to this layout: other pages keep their plain spacing. */
+  main .section { margin-top: 64px; padding-top: 28px; border-top: 1px solid var(--hairline); }
+  main .section.flush { margin-top: 32px; padding-top: 0; border-top: 0; }
+  main .section > h2 { margin-top: 0; }
+  main .section h3 { margin-top: 44px; }
+  main .section h3:first-of-type { margin-top: 24px; }
+  /* "See the evidence" links tie a finding back to the figure that carries it. */
+  main .backto { display: inline-flex; align-items: center; gap: 0.35em; min-height: 44px;
+    margin-top: 2px; font: 500 13.5px/1.4 var(--f-ui); }
+  @media (max-width: 640px) { main .section { margin-top: 44px; padding-top: 22px; } }
+</style>

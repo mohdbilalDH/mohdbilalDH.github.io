@@ -7,3 +7,4 @@ with Browser() as b:
         p.wait_for_load_state("networkidle")
     errs = [e for e in b.errors if "no-such-page" not in e]
     check(errs == [], f"zero console errors across routes: {errs}")
+    check(b.bad_requests() == [], f"no failed resource loads: {b.bad_requests()[:5]}")

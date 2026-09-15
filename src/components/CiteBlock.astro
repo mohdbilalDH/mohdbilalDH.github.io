@@ -1,0 +1,21 @@
+---
+// Slot 5 of the contract. A citation a reader can paste, with the accessed date
+// filled in by the page, plus licence and DOI. Never prints "DOI: pending".
+interface Props { citation: string; licence: string; doi?: string; url: string; buildDate: string }
+const { citation, licence, doi, url, buildDate } = Astro.props;
+---
+<div class="citeblock">
+  <p class="label">Cite this</p>
+  <p class="cite">{citation} {url} (accessed <span class="accessed" data-build={buildDate}>{buildDate}</span>).{doi ? ` doi:${doi}` : ''}</p>
+  <p class="small muted licence">{licence}{doi ? '' : ' · No DOI has been minted for this release yet; cite the version string above.'}</p>
+</div>
+<style>
+  .citeblock { max-width: var(--w-measure); margin: 0 0 24px; }
+  .citeblock .label { margin-bottom: 8px; }
+  .licence { margin: 10px 0 0; }
+</style>
+<script>
+  // The accessed date is a property of the reader's visit, not of the build.
+  const fmt = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+  document.querySelectorAll<HTMLElement>('.accessed').forEach((el) => { el.textContent = fmt.format(new Date()); });
+</script>

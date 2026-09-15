@@ -1,0 +1,237 @@
+---
+import FigureFrame from '../FigureFrame.astro';
+// The two documented network slices. The dataset deliberately exports no all-at-once graph:
+// a single figure spanning 300 to 2026 would draw a connected web across five centuries in
+// which nothing is recorded. Each slice is laid out deterministically — the Koryŏ circle
+// radially around its one hub, the modern web in columns by record type — so the picture does
+// not change between builds, and no force simulation invents structure the data does not have.
+import net from '../../data/network.json';
+
+type Node = { id: string; label: string; type: string; confidence: string; single_source: string };
+type Edge = { id: string; source: string; target: string; kind: string; subtype: string; confidence: string; evidence: string };
+
+const slices = net.slices as Record<string, { nodes: Node[]; edges: Edge[] }>;
+const b2 = slices.b2_circle;
+const b6 = slices.b6_web;
+
+const degree = (edges: Edge[]) => {
+  const d: Record<string, number> = {};
+  for (const e of edges) { d[e.source] = (d[e.source] ?? 0) + 1; d[e.target] = (d[e.target] ?? 0) + 1; }
+  return d;
+};
+
+// ---- slice 1: radial around the hub ----
+const d2 = degree(b2.edges);
+const hub = b2.nodes.reduce((a, b) => ((d2[b.id] ?? 0) > (d2[a.id] ?? 0) ? b : a));
+const spokes = b2.nodes.filter((n) => n.id !== hub.id);
+const CX = 500, CY = 252, RAD = 196;
+const pos2: Record<string, { x: number; y: number }> = { [hub.id]: { x: CX, y: CY } };
+spokes.forEach((n, i) => {
+  const a = (-Math.PI / 2) + (i / spokes.length) * Math.PI * 2;
+  pos2[n.id] = { x: CX + Math.cos(a) * RAD, y: CY + Math.sin(a) * RAD };
+});
+
+// ---- slice 2: columns by record type ----
+const COLS: { key: string; x: number; label: string; types: string[] }[] = [
+  { key: 'people', x: 250, label: 'People', types: ['PEOPLE'] },
+  { key: 'inst', x: 545, label: 'Institutions', types: ['INSTITUTIONS'] },
+  { key: 'events', x: 855, label: 'Events and texts', types: ['EVENTS', 'TEXTS'] },
+];
+const d6 = degree(b6.edges);
+const ROW = 27, TOP = 78;
+const pos6: Record<string, { x: number; y: number; col: string }> = {};
+for (const c of COLS) {
+  const members = b6.nodes
+    .filter((n) => c.types.includes(n.type))
+    .sort((a, b) => (d6[b.id] ?? 0) - (d6[a.id] ?? 0) || a.label.localeCompare(b.label));
+  members.forEach((n, i) => { pos6[n.id] = { x: c.x, y: TOP + i * ROW, col: c.key }; });
+}
+const H6 = TOP + Math.max(...COLS.map((c) => b6.nodes.filter((n) => c.types.includes(n.type)).length)) * ROW + 36;
+
+const TYPE_FILL: Record<string, string> = {
+  PEOPLE: 'var(--b2)', INSTITUTIONS: 'var(--b6)', EVENTS: 'var(--b4)', TEXTS: 'var(--b5)',
+};
+const trim = (s: string, n: number) => (s.length > n ? s.slice(0, n - 1) + '…' : s);
+const r2 = (id: string, d: Record<string, number>) => 5 + Math.min(d[id] ?? 0, 5) * 1.7;
+const KIND: Record<string, string> = {
+  PERSON_ENCOUNTER: 'met or taught', INSTITUTIONAL: 'institutional tie', TEXTUAL_TRANSMISSION: 'text',
+};
+---
+<FigureFrame number="5 · Networks"
+  title="Two periods where the record supports a network, and nothing between them" id="networks" wide interactive>
+
+  <div class="nw">
+    <div class="nw-modes" role="group" aria-label="Choose a period slice">
+      <button class="nw-mode" type="button" data-slice="b2" aria-pressed="true">Koryŏ, 900–1392 · one circle</button>
+      <button class="nw-mode" type="button" data-slice="b6" aria-pressed="false">Institutional, 1990–2026 · a web</button>
+    </div>
+
+    <div class="nw-panel" data-panel="b2">
+      <svg viewBox="0 0 1000 500" role="img"
+        aria-label={`Radial network of ${b2.nodes.length} records around ${hub.label}, with ${b2.edges.length} documented ties.`}>
+        {b2.edges.map((e) => (
+          <line x1={pos2[e.source].x} y1={pos2[e.source].y} x2={pos2[e.target].x} y2={pos2[e.target].y}
+            stroke="var(--heading)" stroke-width={e.confidence === 'HIGH' ? 1.8 : 1.2}
+            stroke-dasharray={e.confidence === 'HIGH' ? undefined : '4 3'} opacity="0.5" />
+        ))}
+        {b2.nodes.map((n) => (
+          <>
+            <circle cx={pos2[n.id].x} cy={pos2[n.id].y} r={r2(n.id, d2)} fill={TYPE_FILL[n.type]}
+              stroke="var(--white)" stroke-width="1.5" />
+            <text x={pos2[n.id].x} y={pos2[n.id].y - r2(n.id, d2) - 7} text-anchor="middle"
+              font-family="var(--f-body)" font-size="12.5" fill="var(--ink)"
+              stroke="var(--white)" stroke-width="3.5" paint-order="stroke">{trim(n.label, 30)}</text>
+          </>
+        ))}
+      </svg>
+      <p class="nw-note">
+        Six people, one monastery, one text and one event. Every tie runs through
+        <b>{hub.label}</b>: the circle has a single hub because the era does, and a solid line is a
+        corroborated tie while a dashed line rests on weaker documentation.
+      </p>
+    </div>
+
+    <div class="nw-panel" data-panel="b6" hidden>
+      <svg viewBox={`0 0 1080 ${H6}`} role="img"
+        aria-label={`Three-column network of ${b6.nodes.length} records and ${b6.edges.length} ties among people, institutions, events and texts, 1990 to 2026.`}>
+        {COLS.map((c) => (
+          <text x={c.x} y="46" text-anchor="middle" font-family="var(--f-ui)" font-size="12.5"
+            fill="var(--muted)" letter-spacing="1">{c.label.toUpperCase()}</text>
+        ))}
+        {b6.edges.map((e) => {
+          const a = pos6[e.source], b = pos6[e.target];
+          if (!a || !b) return null;
+          const mx = (a.x + b.x) / 2;
+          return (
+            <path class="nw-edge" data-a={e.source} data-b={e.target}
+              d={`M ${a.x} ${a.y} C ${mx} ${a.y}, ${mx} ${b.y}, ${b.x} ${b.y}`}
+              fill="none" stroke="var(--heading)" stroke-width={e.confidence === 'HIGH' ? 1.4 : 1}
+              stroke-dasharray={e.confidence === 'HIGH' ? undefined : '4 3'} opacity="0.28" />
+          );
+        })}
+        {b6.nodes.map((n) => (
+          <g class="nw-node" data-id={n.id} tabindex="0" role="listitem"
+            aria-label={`${n.label}, ${n.type.toLowerCase()}, ${d6[n.id] ?? 0} ties`}>
+            <circle cx={pos6[n.id].x} cy={pos6[n.id].y} r={r2(n.id, d6)} fill={TYPE_FILL[n.type]}
+              stroke="var(--white)" stroke-width="1.2" />
+            <text
+              x={pos6[n.id].col === 'people'
+                ? pos6[n.id].x - r2(n.id, d6) - 6
+                : pos6[n.id].x + r2(n.id, d6) + 6}
+              y={pos6[n.id].y + 4}
+              text-anchor={pos6[n.id].col === 'people' ? 'end' : 'start'}
+              font-family="var(--f-body)" font-size="12" fill="var(--ink)"
+              stroke="var(--white)" stroke-width="3" paint-order="stroke">{trim(n.label, 34)}</text>
+          </g>
+        ))}
+      </svg>
+      <p class="nw-note">
+        Twenty-one people, sixteen institutions, seventeen events and three texts. Forty-two of the
+        {' '}{b6.edges.length} ties are institutional, which is the finding: this era is carried by
+        orders, universities and programmes rather than by individual journeys. Select a record to
+        light its own ties.
+      </p>
+    </div>
+
+    <p class="nw-legend">
+      <span><i class="sw" style="background: var(--b2)"></i>People</span>
+      <span><i class="sw" style="background: var(--b6)"></i>Institutions</span>
+      <span><i class="sw" style="background: var(--b4)"></i>Events</span>
+      <span><i class="sw" style="background: var(--b5)"></i>Texts</span>
+      <span><i class="ln"></i>Corroborated tie</span>
+      <span><i class="ln dash"></i>Weaker documentation</span>
+      <span class="muted">Node size is the number of ties, capped at five.</span>
+    </p>
+    <p class="nw-detail" id="nw-detail" role="status" aria-live="polite"></p>
+  </div>
+
+  <div slot="caption">
+    Two slices from the frozen dataset, never one graph. The export deliberately omits an
+    all-at-once network: drawing 300 to 2026 at once would run edges straight across the five
+    centuries of Chosŏn in which no record meets the evidence bar, and would imply a continuity the
+    project's central claim denies. Layouts are computed from the data with no randomness, so the
+    same release always produces the same picture. Line weight and dashing carry confidence, on the
+    grammar used across this site.
+  </div>
+
+  <div slot="table">
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th scope="col">Slice</th><th scope="col">From</th><th scope="col">To</th><th scope="col">Tie</th><th scope="col">Confidence</th><th scope="col">Evidence</th></tr></thead>
+        <tbody>
+          {[['Koryŏ circle', b2] as const, ['Institutional web', b6] as const].flatMap(([name, s]) =>
+            s.edges.map((e) => {
+              const n = (id: string) => s.nodes.find((x) => x.id === id)?.label ?? id;
+              return (
+                <tr>
+                  <td>{name}</td>
+                  <td>{n(e.source)}</td>
+                  <td>{n(e.target)}</td>
+                  <td>{KIND[e.kind] ?? e.kind.toLowerCase()}{e.subtype ? ` · ${e.subtype.replace(/_/g, ' ').toLowerCase()}` : ''}</td>
+                  <td>{e.confidence}</td>
+                  <td>{e.evidence || '—'}</td>
+                </tr>
+              );
+            }),
+          )}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</FigureFrame>
+
+<style>
+  .nw-modes { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 20px; }
+  .nw-mode { font: 500 13px/1.2 var(--f-ui); min-height: 38px; padding: 0.5rem 0.9rem; border: 1px solid var(--hairline); background: var(--ground); color: var(--heading); cursor: pointer; border-radius: var(--r-tile); transition: background var(--ease), border-color var(--ease), color var(--ease); }
+  .nw-mode:hover { border-color: var(--navy); }
+  .nw-mode[aria-pressed='true'] { background: var(--navy); border-color: var(--navy); color: var(--white); }
+  .nw-panel[hidden] { display: none; }
+  .nw-panel svg { display: block; width: 100%; height: auto; }
+  .nw-node { cursor: pointer; }
+  .nw-node:focus-visible circle, .nw-node:hover circle { stroke: var(--navy); stroke-width: 2.5; }
+  .nw-node.dim { opacity: 0.22; }
+  .nw-edge.lit { opacity: 0.95; stroke: var(--navy); }
+  .nw-note { font: 400 14px/1.7 var(--f-ui); color: var(--text); max-width: 68ch; margin: 14px 0 0; }
+  .nw-legend { display: flex; flex-wrap: wrap; gap: 8px 18px; font: 400 12.5px/1.6 var(--f-ui); color: var(--text); margin: 18px 0 0; align-items: center; }
+  .nw-legend .sw { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
+  .nw-legend .ln { display: inline-block; width: 22px; height: 0; border-top: 2px solid var(--heading); margin-right: 6px; vertical-align: 4px; }
+  .nw-legend .ln.dash { border-top-style: dashed; }
+  .nw-detail { font: 400 13px/1.6 var(--f-ui); color: var(--muted); margin: 10px 0 0; min-height: 1.6em; }
+  @media (max-width: 700px) { .nw-panel svg { min-width: 620px; } .nw { overflow-x: auto; } }
+</style>
+
+<script>
+  const panels = document.querySelectorAll('.nw-panel');
+  document.querySelectorAll('.nw-mode').forEach((b) => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('.nw-mode').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      panels.forEach((p) => { p.hidden = p.dataset.panel !== b.dataset.slice; });
+    });
+  });
+
+  const detail = document.getElementById('nw-detail');
+  const nodes = Array.from(document.querySelectorAll('.nw-node'));
+  const edges = Array.from(document.querySelectorAll('.nw-edge'));
+  const clear = () => {
+    nodes.forEach((n) => n.classList.remove('dim'));
+    edges.forEach((e) => e.classList.remove('lit'));
+    detail.textContent = '';
+  };
+  nodes.forEach((n) => {
+    const light = () => {
+      const id = n.dataset.id;
+      const tied = new Set([id]);
+      edges.forEach((e) => {
+        const on = e.dataset.a === id || e.dataset.b === id;
+        e.classList.toggle('lit', on);
+        if (on) { tied.add(e.dataset.a); tied.add(e.dataset.b); }
+      });
+      nodes.forEach((m) => m.classList.toggle('dim', !tied.has(m.dataset.id)));
+      detail.textContent = `${n.getAttribute('aria-label')} — lit above.`;
+    };
+    n.addEventListener('mouseenter', light);
+    n.addEventListener('focus', light);
+    n.addEventListener('mouseleave', clear);
+    n.addEventListener('blur', clear);
+  });
+</script>

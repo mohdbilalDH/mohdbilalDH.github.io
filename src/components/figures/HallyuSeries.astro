@@ -1,0 +1,222 @@
+---
+import FigureFrame from '../FigureFrame.astro';
+// The visibility curve, print editions only. Online and Blogs objects are excluded because they
+// enter the database in 2017 and would fake a jump exactly where the real one occurs — which is
+// the whole reason this figure can be read at all. Two records are marked rather than smoothed:
+// a single-paper collapse that is probably a database gap, and a partial final year.
+// Papers can be isolated because the share between them is itself a stated finding: the
+// Hindustan Times carries 80% in 2006, 13.6% in 2013 and 80.3% again in 2024.
+import hallyu from '../../data/hallyu.json';
+
+const S = hallyu.print_series;
+const rows = S.rows;
+const papers = S.papers as ('HT' | 'TOI' | 'IE')[];
+const FILL: Record<string, string> = { HT: 'var(--b4)', TOI: 'var(--b1)', IE: 'var(--b2)' };
+
+const X0 = 74, X1 = 962, Y0 = 70, Y1 = 372, YMAX = 1000;
+const slot = (X1 - X0) / rows.length;
+const barW = slot - 9;
+const bx = (i: number) => X0 + i * slot + 4.5;
+const y = (v: number) => Y1 - (v / YMAX) * (Y1 - Y0);
+const gridlines = [0, 250, 500, 750, 1000];
+
+const idx = (year: number) => rows.findIndex((r) => r.year === year);
+const anomaly = S.anomaly;
+const trough = rows[idx(2017)];
+const peak = rows.reduce((a, b) => (b.year === S.partial_year ? a : b.total > a.total ? b : a));
+const blocks = hallyu.periodisation.blocks;
+const BLOCK_SPANS: [number, number][] = [[2006, 2011], [2012, 2016], [2017, 2018], [2019, 2022], [2023, 2025]];
+const share = (r: typeof rows[number], p: 'HT' | 'TOI' | 'IE') => Math.round(((r[p] as number) / r.total) * 1000) / 10;
+---
+<FigureFrame number="2 · The curve"
+  title="The visibility curve turns in 2018–19, and 2017 is a trough rather than the hinge" id="series" wide interactive>
+
+  <div class="hs">
+    <div class="hs-toggles" role="group" aria-label="Show or hide a newspaper">
+      {papers.map((p) => (
+        <label class="hs-toggle">
+          <input type="checkbox" data-paper={p} checked />
+          <i class="sw" style={`background: ${FILL[p]}`} aria-hidden="true"></i>
+          {S.paper_names[p]}
+        </label>
+      ))}
+      <span class="hs-note mono" id="hs-total"></span>
+    </div>
+
+    <svg viewBox="0 0 1000 462" role="img"
+      aria-label={`Stacked bar chart of Indian print newspaper articles matching the project's Hallyu vocabulary, ${rows[0].year} to ${rows[rows.length - 1].year}, by newspaper. Totals rise from ${rows[0].total} in ${rows[0].year} to a peak of ${peak.total} in ${peak.year}. 2017 is a local trough at ${trough.total}. The final year is partial.`}>
+
+      {BLOCK_SPANS.map(([a, b], k) => {
+        const x = X0 + idx(a) * slot;
+        const w = (idx(b) - idx(a) + 1) * slot;
+        return (
+          <>
+            <rect x={x} y={Y0 - 26} width={w} height={Y1 - Y0 + 26} fill={k % 2 ? 'var(--ground)' : 'transparent'} opacity="0.7" />
+            <text x={x + w / 2} y={Y0 - 32} text-anchor="middle" font-family="var(--f-ui)" font-size="11" fill="var(--muted)">
+              {blocks[k].per_year}/yr
+            </text>
+          </>
+        );
+      })}
+
+      {gridlines.map((g) => (
+        <>
+          <line x1={X0} y1={y(g)} x2={X1} y2={y(g)} stroke="var(--hairline)" stroke-width="1" />
+          <text x={X0 - 10} y={y(g) + 4} text-anchor="end" font-family="var(--f-mono)" font-size="11" fill="var(--muted)">{g}</text>
+        </>
+      ))}
+
+      <defs>
+        <pattern id="suspect" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <rect width="6" height="6" fill="var(--ground)" />
+          <rect width="2.5" height="6" fill="var(--b1)" />
+        </pattern>
+        <pattern id="partial" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <rect width="6" height="6" fill="var(--ground)" />
+          <rect width="2.5" height="6" fill="var(--muted)" />
+        </pattern>
+      </defs>
+
+      {rows.map((r, i) => {
+        const isPartial = r.year === S.partial_year;
+        return (
+          <>
+            {papers.map((p) => {
+              const v = r[p] as number;
+              const suspect = r.year === anomaly.year && p === anomaly.paper;
+              return (
+                <rect class="hs-seg" data-paper={p} data-value={v} data-i={i}
+                  x={bx(i)} y={Y1} width={barW} height="0"
+                  fill={isPartial ? 'url(#partial)' : suspect ? 'url(#suspect)' : FILL[p]}
+                  stroke={isPartial || suspect ? FILL[p] : 'none'} stroke-width={isPartial || suspect ? 1 : 0}>
+                  <title>{`${r.year} · ${S.paper_names[p]} · ${v} articles, ${share(r, p)}% of that year${suspect ? ' · suspected database gap' : ''}${isPartial ? ' · partial year' : ''}`}</title>
+                </rect>
+              );
+            })}
+            {(r.year % 2 === 0 || r.year === 2017) && (
+              <text x={bx(i) + barW / 2} y={Y1 + 18} text-anchor="middle" font-family="var(--f-mono)" font-size="10.5"
+                fill={r.year === 2017 ? 'var(--heading)' : 'var(--muted)'}>{r.year}</text>
+            )}
+          </>
+        );
+      })}
+
+      <line x1={X0} y1={Y1} x2={X1} y2={Y1} stroke="var(--heading)" stroke-width="1.2" />
+
+      <g class="hs-anno">
+        <line x1={bx(idx(2018))} y1={Y0 - 4} x2={bx(idx(2018))} y2={Y1} stroke="var(--heading)" stroke-width="1.4" stroke-dasharray="5 4" />
+        <text x={bx(idx(2018)) - 10} y={Y0 + 10} text-anchor="end" font-family="var(--f-body)" font-size="13.5" font-weight="600" fill="var(--heading)">
+          2018–19 · the inflection
+        </text>
+        <text x={bx(idx(2018)) - 10} y={Y0 + 27} text-anchor="end" font-family="var(--f-ui)" font-size="11.5" fill="var(--muted)">
+          2.74× then 3.06×, taking the year from 34 to 285
+        </text>
+      </g>
+
+      <g class="hs-anno">
+        <line x1={bx(idx(2017)) + barW / 2} y1={y(trough.total) - 8} x2={bx(idx(2017)) + barW / 2} y2={y(trough.total) - 48} stroke="var(--muted)" stroke-width="1" />
+        <text x={bx(idx(2017)) + barW / 2} y={y(trough.total) - 54} text-anchor="middle" font-family="var(--f-ui)" font-size="11.5" fill="var(--muted)">
+          2017: {trough.total}, a local trough
+        </text>
+      </g>
+
+      <g font-family="var(--f-ui)" font-size="12.5">
+        <rect x={X0} y={Y1 + 40} width="13" height="13" fill="url(#suspect)" stroke="var(--b1)" />
+        <text x={X0 + 20} y={Y1 + 51} fill="var(--muted)">suspected database gap</text>
+        <rect x={X0 + 190} y={Y1 + 40} width="13" height="13" fill="url(#partial)" stroke="var(--muted)" />
+        <text x={X0 + 210} y={Y1 + 51} fill="var(--muted)">partial year</text>
+        <text x={X0 + 330} y={Y1 + 51} fill="var(--muted)">Print editions only · the vertical scale is fixed, so hiding a paper never rescales the chart</text>
+      </g>
+    </svg>
+  </div>
+
+  <div slot="caption">
+    Counts of articles matching the project's candidate Hallyu vocabulary in the licensed
+    full-text workbench, restricted to print-edition objects. {S.source} The periodisation under
+    the bars is derived from the series rather than assumed: an earlier working hypothesis put the
+    break at 2017 on the strength of a BTS breakout, and the evidence contradicts it.
+    {anomaly.note} The final year runs {S.partial_note} and is never used in a rate. Isolating a
+    single paper shows the share swing that makes provenance a core variable of the design: the
+    Hindustan Times carries 80% of print coverage in 2006, 13.6% in 2013 and 80.3% again in 2024.
+  </div>
+
+  <div slot="table">
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th scope="col">Year</th>{papers.map((p) => <th scope="col" class="num">{S.paper_names[p]}</th>)}<th scope="col" class="num">Print total</th><th scope="col">Note</th></tr></thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr>
+              <td class="num">{r.year}</td>
+              {papers.map((p) => <td class="num">{r[p]}</td>)}
+              <td class="num"><b>{r.total}</b></td>
+              <td>{r.year === anomaly.year ? 'Times of India figure treated as a suspected database gap' : r.year === S.partial_year ? `partial, ${S.partial_note}` : ''}</td>
+            </tr>
+          ))}
+          <tr><td class="num"><b>Total</b></td>{papers.map((p) => <td class="num"><b>{rows.reduce((s, r) => s + (r[p] as number), 0)}</b></td>)}<td class="num"><b>{S.total}</b></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</FigureFrame>
+
+<style>
+  .hs-toggles { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; margin: 0 0 18px; }
+  .hs-toggle { display: inline-flex; align-items: center; gap: 8px; min-height: 38px; font: 400 14px/1.4 var(--f-ui); color: var(--text); cursor: pointer; }
+  .hs-toggle input { width: 17px; height: 17px; accent-color: var(--navy); cursor: pointer; }
+  .hs-toggle .sw { display: inline-block; width: 13px; height: 13px; border-radius: 2px; }
+  .hs-toggle:has(input:not(:checked)) { color: var(--muted); }
+  .hs-toggle:has(input:not(:checked)) .sw { opacity: 0.3; }
+  .hs-note { font-size: 12.5px; color: var(--muted); margin-left: auto; }
+  .hs .hs-seg { transition: y 260ms ease-out, height 260ms ease-out, opacity 200ms ease-out; }
+  .hs :global(.hs-anno) { transition: opacity 200ms ease-out; }
+  @media (prefers-reduced-motion: reduce) { .hs .hs-seg, .hs :global(.hs-anno) { transition: none; } }
+</style>
+
+<script define:vars={{ rows, papers, X: { Y1, Y0, YMAX } }}>
+  // Stacking is recomputed from the data on every toggle. The vertical scale is fixed, so
+  // hiding a paper reveals its share of each year rather than rescaling the chart underneath it.
+  const GAP = 2;
+  const TOTAL = rows.reduce((t, r) => t + r.total, 0);
+  const yOf = (v) => X.Y1 - (v / X.YMAX) * (X.Y1 - X.Y0);
+  const segs = Array.from(document.querySelectorAll('.hs-seg'));
+  const boxes = Array.from(document.querySelectorAll('.hs-toggle input'));
+  const totalOut = document.getElementById('hs-total');
+
+  function draw() {
+    const on = papers.filter((p) => boxes.find((b) => b.dataset.paper === p)?.checked);
+    let grand = 0;
+    rows.forEach((r, i) => {
+      let acc = 0;
+      papers.forEach((p) => {
+        const el = segs.find((s) => Number(s.dataset.i) === i && s.dataset.paper === p);
+        if (!el) return;
+        if (!on.includes(p)) { el.setAttribute('height', '0'); el.setAttribute('y', String(X.Y1)); el.style.opacity = '0'; return; }
+        const v = Number(el.dataset.value);
+        grand += v;
+        const top = yOf(acc + v);
+        const h = Math.max(yOf(acc) - top - GAP, v > 0 ? 1 : 0);
+        acc += v;
+        el.setAttribute('y', String(top));
+        el.setAttribute('height', String(h));
+        el.style.opacity = v > 0 ? '1' : '0';
+      });
+    });
+    totalOut.textContent = on.length === papers.length
+      ? `${grand.toLocaleString('en-US')} articles · all three papers`
+      : `${grand.toLocaleString('en-US')} of ${TOTAL.toLocaleString('en-US')} articles · ${on.length} of ${papers.length} papers`;
+    // The annotations describe whole-year totals and are positioned against them, so they are
+    // muted while a paper is hidden rather than left pointing at a bar that is no longer there.
+    const partialView = on.length !== papers.length;
+    document.querySelectorAll('.hs-anno').forEach((g) => {
+      g.style.opacity = partialView ? '0.22' : '1';
+      g.setAttribute('aria-hidden', partialView ? 'true' : 'false');
+    });
+  }
+
+  boxes.forEach((b) => b.addEventListener('change', () => {
+    if (!boxes.some((x) => x.checked)) { b.checked = true; return; }
+    draw();
+  }));
+  draw();
+</script>

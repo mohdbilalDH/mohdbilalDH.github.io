@@ -1,38 +1,82 @@
 ---
-// Image card in the reference pattern: art under a coloured overlay, content bottom-aligned,
-// year label, Playfair title (the whole card is the link), pill button.
+// A project-directory entry, on the pattern the DH directories share: an image drawn from the
+// project's own material, then the method, the span and the status, then a title, then one line
+// stating scope and size, then the counts in the corpus's own units. The image is a band above
+// the text rather than a wash behind it, so a primary source reads as a primary source.
 import type { Project } from '../data/projects';
+import { kindLabel } from '../data/projects';
 import Button from './Button.astro';
-interface Props { project: Project }
-const { project: p } = Astro.props;
+interface Props { project: Project; feature?: boolean }
+const { project: p, feature = false } = Astro.props;
 ---
-<article class={`project-card fade-up overlay-${p.overlay}`} style={`--art: url('${p.art}')`}>
-  <div class="card-body">
-    <p class="card-year">{p.yearLabel}</p>
-    <h3 class="card-title"><a href={p.href}>{p.title}</a></h3>
-    <Button href={p.href} variant="primary">View project</Button>
+<article class:list={['pcard', { 'pcard--feature': feature }]}>
+  <div class="pcard-art">
+    <img src={p.art} width="1200" height="420" loading="lazy" alt={p.artAlt} />
+  </div>
+  <div class="pcard-body">
+    <p class="pcard-meta">
+      <span class="pcard-kind">{kindLabel[p.kind]}</span>
+      <span class="pcard-dates mono">{p.dates}</span>
+      <span class={`pcard-state pcard-state--${p.state}`}>{p.stateShort}</span>
+    </p>
+    <h3 class="pcard-title"><a href={p.href}>{p.title}</a></h3>
+    <p class="pcard-blurb">{p.blurb}</p>
+    <dl class="pcard-counts">
+      {p.counts.map((c) => (
+        <div>
+          <dt class="mono">{c.n}</dt>
+          <dd>{c.unit}</dd>
+        </div>
+      ))}
+    </dl>
+    <div class="pcard-go"><Button href={p.href} variant="primary">View project</Button></div>
   </div>
 </article>
 <style>
-  .project-card {
-    position: relative; min-height: var(--card-h); border-radius: var(--r-card); overflow: hidden;
-    background: var(--art) center / cover no-repeat, var(--navy);
-    display: flex; align-items: flex-end; isolation: isolate;
+  .pcard {
+    position: relative; display: flex; flex-direction: column; background: var(--white);
+    border: 1px solid var(--hairline); border-radius: var(--r-card); overflow: hidden;
+    transition: border-color var(--ease), transform var(--ease);
   }
-  .project-card::before { content: ''; position: absolute; inset: 0; z-index: 0; transition: opacity var(--ease); }
-  .overlay-1::before { background: var(--card-overlay-1); }
-  .overlay-2::before { background: var(--card-overlay-2); }
-  .overlay-3::before { background: var(--card-overlay-3); }
-  .overlay-4::before { background: var(--card-overlay-4); }
-  .project-card:hover::before { opacity: 0.86; }
-  .card-body { position: relative; z-index: 1; padding: var(--card-pad); width: 100%; }
-  .card-year { font: 500 15px/1.5 var(--f-body); color: var(--white); margin: 0 0 4px; }
-  .card-title { font: 700 var(--t-card)/1.4 var(--f-title); margin: 0 0 24px; color: var(--white); text-wrap: balance; }
-  .card-title a { color: var(--white); text-decoration: none; }
-  .card-title a::after { content: ''; position: absolute; inset: 0; }
-  .card-title a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
-  .project-card:hover .card-title a { text-decoration: underline; text-underline-offset: 4px; }
-  .card-body :global(.btn) { position: relative; z-index: 2; }
-  .card-body :global(.btn:focus-visible) { outline: 2px solid var(--white); }
-  @media (max-width: 640px) { .card-title { margin-bottom: 16px; } }
+  .pcard:hover { border-color: var(--navy); transform: translateY(-2px); }
+  .pcard-art { background: var(--white); border-bottom: 1px solid var(--hairline); }
+  .pcard-art img { display: block; width: 100%; height: 190px; object-fit: cover; object-position: center; }
+  .pcard-body { display: flex; flex-direction: column; flex: 1; padding: 24px 28px 28px; }
+
+  .pcard-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin: 0 0 12px; }
+  .pcard-kind { font: 500 11px/1.4 var(--f-ui); letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); }
+  .pcard-dates { font-size: 12px; color: var(--muted); }
+  .pcard-state { font: 400 12px/1.4 var(--f-ui); color: var(--muted); margin-left: auto; }
+  .pcard-state--frozen, .pcard-state--released { color: var(--grade-high); }
+  .pcard-state--in-progress { color: var(--grade-medium); }
+
+  .pcard-title { font: 700 24px/1.3 var(--f-title); color: var(--heading); margin: 0 0 12px; text-wrap: balance; }
+  .pcard-title a { color: inherit; text-decoration: none; }
+  .pcard-title a::after { content: ''; position: absolute; inset: 0; }
+  .pcard:hover .pcard-title a { color: var(--navy); }
+  .pcard-title a:focus-visible { outline: 2px solid var(--navy); outline-offset: 3px; }
+
+  .pcard-blurb { font: 400 14.5px/1.65 var(--f-ui); color: var(--text); margin: 0 0 20px; }
+
+  .pcard-counts { display: flex; flex-wrap: wrap; gap: 0; margin: auto 0 22px; padding-top: 16px; border-top: 1px solid var(--hairline); }
+  .pcard-counts > div { padding-right: 20px; margin-right: 20px; border-right: 1px solid var(--hairline); }
+  .pcard-counts > div:last-child { border-right: 0; margin-right: 0; padding-right: 0; }
+  .pcard-counts dt { font: 500 19px/1.15 var(--f-mono); color: var(--navy); font-variant-numeric: tabular-nums; margin: 0; }
+  .pcard-counts dd { font: 400 11.5px/1.4 var(--f-ui); color: var(--muted); margin: 3px 0 0; max-width: 14ch; }
+  .pcard-go { position: relative; z-index: 2; }
+
+  /* A single card in its own row reads as a feature: image beside the text, not above it. */
+  @media (min-width: 900px) {
+    .pcard--feature { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); }
+    .pcard--feature .pcard-art { border-bottom: 0; border-right: 1px solid var(--hairline); }
+    .pcard--feature .pcard-art img { height: 100%; min-height: 300px; }
+    .pcard--feature .pcard-body { padding: 32px 36px; }
+    .pcard--feature .pcard-title { font-size: 28px; }
+    .pcard--feature .pcard-blurb { font-size: 15.5px; max-width: 58ch; }
+  }
+  @media (max-width: 640px) {
+    .pcard-body { padding: 20px 22px 24px; }
+    .pcard-title { font-size: 21px; }
+    .pcard-art img { height: 150px; }
+  }
 </style>

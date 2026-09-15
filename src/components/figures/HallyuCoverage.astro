@@ -1,0 +1,100 @@
+---
+import FigureFrame from '../FigureFrame.astro';
+// Source-coverage windows for the Indian press corpus. This figure exists because the
+// three-period growth bars it replaces asserted a rise in coverage that the denominator
+// cannot support: each database starts in a different year and begins indexing online
+// editions in 2017. Solid bars are licensed full text; the dashed bar is uneven web-archive
+// coverage, following the site's uncertainty grammar (pattern, not colour).
+import hallyu from '../../data/hallyu.json';
+
+const rows = hallyu.coverage;
+const marker = hallyu.online_edition_marker;
+const unval = hallyu.unvalidated_window;
+
+const Y0 = 2000, Y1 = 2026;
+const X0 = 250, XW = 690, W = 980;
+const ROW_Y = 54, ROW_STEP = 42, BAR_H = 20;
+const x = (y: number) => X0 + ((y - Y0) / (Y1 - Y0)) * XW;
+const AXIS_Y = ROW_Y + rows.length * ROW_STEP + 6;
+const H = AXIS_Y + 96;
+const ticks = [2000, 2005, 2010, 2015, 2020, 2026];
+const markerX = x(marker.year);
+---
+<FigureFrame number="· Source coverage"
+  title="Every rise in the curve coincides with a change in what the databases hold" id="coverage" wide>
+  <svg viewBox={`0 0 ${W} ${H}`} role="img"
+    aria-label={`Coverage chart, 2000 to 2026. ${rows.map((r) => `${r.source}: ${r.start} to ${r.end}${r.kind === 'uneven' ? ', uneven' : ''}`).join('; ')}. A marker at ${marker.year} shows where online editions enter the index.`}>
+
+    {rows.map((r, i) => {
+      const y = ROW_Y + i * ROW_STEP;
+      const x1 = x(r.start), x2 = x(r.end);
+      return (
+        <>
+          <text x={X0 - 18} y={y + 15} text-anchor="end" font-family="var(--f-body)" font-size="15" fill="var(--ink)">{r.source}</text>
+          {r.kind === 'uneven' ? (
+            <rect x={x1} y={y} width={x2 - x1} height={BAR_H} fill="none"
+              stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="5 4" />
+          ) : (
+            <rect x={x1} y={y} width={x2 - x1} height={BAR_H} fill="var(--navy)" opacity="0.72" />
+          )}
+          <text x={r.kind === 'uneven' ? x2 + 10 : x1 - 10} y={y + 15}
+            text-anchor={r.kind === 'uneven' ? 'start' : 'end'}
+            font-family="var(--f-mono)" font-size="12.5" fill="var(--muted)">
+            {r.kind === 'uneven' ? 'uneven' : r.start}
+          </text>
+        </>
+      );
+    })}
+
+    <line x1={markerX} y1={ROW_Y - 22} x2={markerX} y2={AXIS_Y + 8} stroke="var(--heading)" stroke-width="1.5" />
+    <text x={markerX - 10} y={ROW_Y - 28} text-anchor="end" font-family="var(--f-body)" font-size="14" font-weight="600" fill="var(--heading)">
+      {marker.year} · {marker.label}
+    </text>
+
+    <line x1={X0} y1={AXIS_Y} x2={X0 + XW} y2={AXIS_Y} stroke="var(--hairline)" stroke-width="1.5" />
+    {ticks.map((t) => (
+      <text x={x(t)} y={AXIS_Y + 22} text-anchor="middle" font-family="var(--f-mono)" font-size="13" fill="var(--muted)">{t}</text>
+    ))}
+
+    <rect x={x(unval.from)} y={AXIS_Y + 34} width={x(unval.to) - x(unval.from)} height="6" fill="var(--void)" opacity="0.55" />
+    <text x={X0} y={AXIS_Y + 64} font-family="var(--f-body)" font-size="14" fill="var(--muted)">
+      No licensed full text covers {unval.from}–{unval.to}. That window is unvalidated, not empty.
+    </text>
+  </svg>
+
+  <div slot="caption">
+    Solid bars are licensed full text at the host institution; the dashed bar is Internet Archive coverage of
+    The Hindu's daily section indexes, drawn dashed because its density measures archiving rather than
+    publishing. The vertical marker is where the databases begin indexing online-only editions alongside
+    print, which inflates any count that mixes the two. Read together, the bars say that article counts cannot
+    be compared across this period until the denominator is held constant, which is why this project separates
+    print objects from online objects and reports counts per newspaper per year rather than as a single curve.
+    {hallyu.coverage_note}
+  </div>
+
+  <div slot="table">
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th scope="col">Source</th><th scope="col">From</th><th scope="col">To</th><th scope="col">Kind</th><th scope="col">Note</th></tr></thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr>
+              <td>{r.source}</td>
+              <td class="num">{r.start}</td>
+              <td class="num">{r.end}</td>
+              <td>{r.kind === 'uneven' ? 'web archive, uneven' : 'licensed full text'}</td>
+              <td>{r.note}</td>
+            </tr>
+          ))}
+          <tr>
+            <td>{marker.year} marker</td>
+            <td class="num">{marker.year}</td>
+            <td class="num">—</td>
+            <td>index change</td>
+            <td>{marker.note}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</FigureFrame>

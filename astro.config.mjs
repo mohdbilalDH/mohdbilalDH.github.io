@@ -14,5 +14,7 @@ export default defineConfig({
   redirects: {
     '/notes': '/',
     '/projects/hallyu-press': '/projects/hallyu-indian-press',
+    // Retired 2026-09-15: the figures live inside the projects that argue from them.
+    '/visualizations': '/projects',
   },
 });

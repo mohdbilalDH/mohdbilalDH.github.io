@@ -1,9 +1,21 @@
 {
   "generated_from": "hallyu-indian-press data/processed/proquest_counts.csv + outputs/tables/pilot_eval.txt, searched 2026-08-18",
   "proquest_periods": [
-    { "label": "2005–2010", "count": 58, "note": "TOI from 2006-01-06, HT from 2005-01-01, IE from 2009-04-23 (full-text start dates)" },
-    { "label": "2011–2016", "count": 211, "note": "TOI + HT + IE" },
-    { "label": "2017–2026", "count": 4422, "note": "TOI + HT + IE, to 2026-08-18, print-edition objects only" }
+    {
+      "label": "2005–2010",
+      "count": 58,
+      "note": "TOI from 2006-01-06, HT from 2005-01-01, IE from 2009-04-23 (full-text start dates)"
+    },
+    {
+      "label": "2011–2016",
+      "count": 211,
+      "note": "TOI + HT + IE"
+    },
+    {
+      "label": "2017–2026",
+      "count": 4422,
+      "note": "TOI + HT + IE, to 2026-08-18, print-edition objects only"
+    }
   ],
   "korea_baseline_2000_2010": 10146,
   "hallyu_term_uses_2000_2010": 1,
@@ -11,5 +23,261 @@
     "hindu_headline_matches": 83,
     "hindu_years": "2002–2010",
     "corpus_docs": 50
+  },
+  "coverage_note": "Licensed full-text start dates as available at the host institution (Yonsei ProQuest), verified 2026-08-18; GDELT DOC 2.0 floor probed 2026-08-16; Internet Archive coverage measured by CDX enumeration of The Hindu daily section indexes, 2000-2010.",
+  "coverage": [
+    {
+      "source": "Hindustan Times",
+      "start": 2005,
+      "end": 2026,
+      "kind": "licensed",
+      "note": "Licensed full text from 2005-01-01. Heavy wire share; provenance is a core variable."
+    },
+    {
+      "source": "Times of India",
+      "start": 2006,
+      "end": 2026,
+      "kind": "licensed",
+      "note": "Licensed full text from 2006-01-06. The 2022 count is anomalously low and is treated as a suspected database gap, not a finding."
+    },
+    {
+      "source": "Indian Express",
+      "start": 2009,
+      "end": 2026,
+      "kind": "licensed",
+      "note": "Licensed full text from 2009-04-23. Own archive hosts are dead; the licensed copy is the only route."
+    },
+    {
+      "source": "The Hindu (licensed)",
+      "start": 2015,
+      "end": 2026,
+      "kind": "licensed",
+      "note": "Licensed full text at the host institution begins only in 2015. The live archive is bot-gated and is not bypassed."
+    },
+    {
+      "source": "GDELT DOC 2.0",
+      "start": 2017,
+      "end": 2026,
+      "kind": "licensed",
+      "note": "Hard floor at 2017-01-01: earlier queries are rejected. Returns URL and title metadata, not full text."
+    },
+    {
+      "source": "Internet Archive",
+      "start": 2000,
+      "end": 2010,
+      "kind": "uneven",
+      "note": "The Hindu daily section indexes, recovered by CDX enumeration. Preservation grows roughly twentyfold across 2000-2008, so density here measures archiving, not publishing."
+    }
+  ],
+  "online_edition_marker": {
+    "year": 2017,
+    "label": "Online editions enter the index",
+    "note": "From 2017 the databases index online-only editions alongside print. Counts that mix them are not comparable with earlier years; the project separates print objects from online objects for this reason."
+  },
+  "unvalidated_window": {
+    "from": 2000,
+    "to": 2004,
+    "note": "No licensed full-text source at the host institution covers 2000-2004. That window is unvalidated, not empty."
+  },
+  "print_series": {
+    "source": "ProQuest TDM Studio, dataset \"Hallyu Indian Press 2006-2026\" (5,412 records); print-edition objects only. Online and Blogs objects are excluded because they enter the database in 2017 and would fake a jump exactly where the real one occurs.",
+    "papers": [
+      "HT",
+      "TOI",
+      "IE"
+    ],
+    "paper_names": {
+      "HT": "Hindustan Times",
+      "TOI": "Times of India",
+      "IE": "Indian Express"
+    },
+    "total": 4796,
+    "partial_year": 2026,
+    "partial_note": "to 21 August 2026",
+    "anomaly": {
+      "year": 2022,
+      "paper": "TOI",
+      "value": 41,
+      "note": "Down from 207 in 2021 and back to 128 in 2023. A fivefold single-year collapse in one paper while the other two rise is more likely a database coverage gap than an editorial decision, and is treated as suspect rather than as evidence."
+    },
+    "rows": [
+      {
+        "year": 2006,
+        "HT": 4,
+        "TOI": 1,
+        "IE": 0,
+        "total": 5
+      },
+      {
+        "year": 2007,
+        "HT": 12,
+        "TOI": 6,
+        "IE": 0,
+        "total": 18
+      },
+      {
+        "year": 2008,
+        "HT": 8,
+        "TOI": 2,
+        "IE": 0,
+        "total": 10
+      },
+      {
+        "year": 2009,
+        "HT": 10,
+        "TOI": 5,
+        "IE": 2,
+        "total": 17
+      },
+      {
+        "year": 2010,
+        "HT": 5,
+        "TOI": 2,
+        "IE": 6,
+        "total": 13
+      },
+      {
+        "year": 2011,
+        "HT": 6,
+        "TOI": 11,
+        "IE": 6,
+        "total": 23
+      },
+      {
+        "year": 2012,
+        "HT": 6,
+        "TOI": 13,
+        "IE": 13,
+        "total": 32
+      },
+      {
+        "year": 2013,
+        "HT": 6,
+        "TOI": 25,
+        "IE": 13,
+        "total": 44
+      },
+      {
+        "year": 2014,
+        "HT": 20,
+        "TOI": 17,
+        "IE": 22,
+        "total": 59
+      },
+      {
+        "year": 2015,
+        "HT": 17,
+        "TOI": 12,
+        "IE": 9,
+        "total": 38
+      },
+      {
+        "year": 2016,
+        "HT": 12,
+        "TOI": 27,
+        "IE": 17,
+        "total": 56
+      },
+      {
+        "year": 2017,
+        "HT": 14,
+        "TOI": 12,
+        "IE": 8,
+        "total": 34
+      },
+      {
+        "year": 2018,
+        "HT": 29,
+        "TOI": 31,
+        "IE": 33,
+        "total": 93
+      },
+      {
+        "year": 2019,
+        "HT": 80,
+        "TOI": 152,
+        "IE": 53,
+        "total": 285
+      },
+      {
+        "year": 2020,
+        "HT": 61,
+        "TOI": 113,
+        "IE": 57,
+        "total": 231
+      },
+      {
+        "year": 2021,
+        "HT": 224,
+        "TOI": 207,
+        "IE": 116,
+        "total": 547
+      },
+      {
+        "year": 2022,
+        "HT": 234,
+        "TOI": 41,
+        "IE": 165,
+        "total": 440
+      },
+      {
+        "year": 2023,
+        "HT": 543,
+        "TOI": 128,
+        "IE": 110,
+        "total": 781
+      },
+      {
+        "year": 2024,
+        "HT": 748,
+        "TOI": 135,
+        "IE": 49,
+        "total": 932
+      },
+      {
+        "year": 2025,
+        "HT": 424,
+        "TOI": 74,
+        "IE": 291,
+        "total": 789
+      },
+      {
+        "year": 2026,
+        "HT": 191,
+        "TOI": 89,
+        "IE": 69,
+        "total": 349
+      }
+    ]
+  },
+  "periodisation": {
+    "note": "Mean print articles per year by block. The inflection is 2018–19, not 2017: 2017 is a local trough at 0.61x the previous year, and the step change comes in two stages, 2018 at 2.74x and 2019 at 3.06x.",
+    "blocks": [
+      {
+        "span": "2006–2011",
+        "per_year": 14.3,
+        "character": "near-absence"
+      },
+      {
+        "span": "2012–2016",
+        "per_year": 45.8,
+        "character": "slow emergence"
+      },
+      {
+        "span": "2017–2018",
+        "per_year": 63.5,
+        "character": "hinge"
+      },
+      {
+        "span": "2019–2022",
+        "per_year": 375.8,
+        "character": "breakout"
+      },
+      {
+        "span": "2023–2025",
+        "per_year": 834.0,
+        "character": "saturation"
+      }
+    ]
   }
 }

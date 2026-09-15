@@ -20,7 +20,7 @@
   },
   {
    "id": "B3",
-   "label": "The long silence (Joseon)",
+   "label": "The long silence (Chosŏn)",
    "start": 1392,
    "end": 1900
   },
@@ -135,9 +135,9 @@
    ],
    "floruit_precision": "APPROX",
    "india_connection": "If Indian (per some scholars, e.g., Lee Sang-ho 1960), the first Indian Buddhist to reach Korea; at minimum connected to Indian Buddhism via Central Asian monastic networks of the Jin period",
-   "korea_connection": "Arrived Baekje 384 (9th month, King Chimnyu's 1st year); received by the king; Buddhism 'began from this' (Samguk Sagi); temple built 385",
-   "evidence": "Samguk Sagi (sg_024r_0100_0030) and Samguk Yusa records; both mark 384 as the start of Baekje Buddhism",
-   "significance": "Traditional founder of Baekje Buddhism; earliest documented Buddhist arrival in Korean history",
+   "korea_connection": "Arrived Paekche 384 (9th month, King Chimnyu's 1st year); received by the king; Buddhism 'began from this' (Samguk Sagi); temple built 385",
+   "evidence": "Samguk Sagi (sg_024r_0100_0030) and Samguk Yusa records; both mark 384 as the start of Paekche Buddhism",
+   "significance": "Traditional founder of Paekche Buddhism; earliest documented Buddhist arrival in Korean history",
    "confidence": "MEDIUM",
    "status": "VERIFIED",
    "single_source": false,
@@ -192,9 +192,9 @@
     "531"
    ],
    "floruit_precision": "APPROX",
-   "india_connection": "Indian monk who accompanied Gyeomik to Baekje in 531, carrying Sanskrit Abhidharma and Vinaya texts",
-   "korea_connection": "His arrival in Baekje (531) supported the establishment of the Vinaya school",
-   "evidence": "Korean Buddhist tradition (via Gyeomik narrative); encyclopedia entries on Baekje Vinaya",
+   "india_connection": "Indian monk who accompanied Kyŏmik to Paekche in 531, carrying Sanskrit Abhidharma and Vinaya texts",
+   "korea_connection": "His arrival in Paekche (531) supported the establishment of the Vinaya school",
+   "evidence": "Korean Buddhist tradition (via Kyŏmik narrative); encyclopedia entries on Paekche Vinaya",
    "significance": "Attested Indian monk physically present in Korea; rare documented 6th-century India-to-Korea movement",
    "confidence": "MEDIUM",
    "status": "PARTIAL",
@@ -245,9 +245,9 @@
    ],
    "floruit_precision": "",
    "india_connection": "Born in Magadha (Indian royal family per tradition); ordained at Nalanda; famous in India before leaving",
-   "korea_connection": "Invited by King Ch'ungsuk (met at Mongol court); came to Goryeo 1326; founded Hoeamsa 1328 (reportedly modeled on Nalanda); influenced Korean Seon students incl. Naong Hyegeun and Muhak Chach'o; King Kongmin later sent his relics to Goryeo",
+   "korea_connection": "Invited by King Ch'ungsuk (met at Mongol court); came to Koryŏ 1326; founded Hoeamsa 1328 (reportedly modeled on Nalanda); influenced Korean Seon students incl. Naong Hyegŭn and Muhak Chach'o; King Kongmin later sent his relics to Koryŏ",
    "evidence": "Hagiographical and scholastic records; temple foundation (Hoeamsa 1328); lineage transmission to Naong and Muhak",
-   "significance": "The last great Indian monk active in Korea; key figure in late-Goryeo Seon formation",
+   "significance": "The last great Indian monk active in Korea; key figure in late-Koryŏ Seon formation",
    "confidence": "HIGH",
    "status": "VERIFIED",
    "single_source": false,
@@ -488,7 +488,7 @@
   {
    "id": "T-0001",
    "person": "P-0001",
-   "person_name": "Hyecho",
+   "person_name": "Hyech'o",
    "band": "B1",
    "start": "719",
    "end": "727",
@@ -530,7 +530,7 @@
    "precision": "YEAR",
    "purpose": "MISSIONARY",
    "routed": false,
-   "route_description": "From Eastern Jin territory to Baekje by sea (384 CE)",
+   "route_description": "From Eastern Jin territory to Paekche by sea (384 CE)",
    "confidence": "MEDIUM",
    "points": [
     {
@@ -543,14 +543,14 @@
   {
    "id": "T-0003",
    "person": "P-0011",
-   "person_name": "Gyeomik",
+   "person_name": "Kyŏmik",
    "band": "B1",
    "start": "526",
    "end": "531",
    "precision": "YEAR",
    "purpose": "PILGRIMAGE",
    "routed": true,
-   "route_description": "Baekje -> (sea) -> Central India (Sangana monastery, 5 yrs Sanskrit study) -> (sea) -> Baekje 531",
+   "route_description": "Paekche -> (sea) -> Central India (Sangana monastery, 5 yrs Sanskrit study) -> (sea) -> Paekche 531",
    "confidence": "MEDIUM",
    "points": [
     {
@@ -570,7 +570,7 @@
    "precision": "YEAR",
    "purpose": "MISSIONARY",
    "routed": false,
-   "route_description": "India -> Baekje by sea, 531 (with Gyeomik)",
+   "route_description": "India -> Paekche by sea, 531 (with Kyŏmik)",
    "confidence": "MEDIUM",
    "points": []
   },
@@ -602,7 +602,7 @@
   {
    "id": "T-0006",
    "person": "P-0014",
-   "person_name": "Hyeeop",
+   "person_name": "Hyeŏp",
    "band": "B1",
    "start": "",
    "end": "",
@@ -677,7 +677,7 @@
   {
    "id": "T-0009",
    "person": "P-0017",
-   "person_name": "Gubon",
+   "person_name": "Kubon",
    "band": "B1",
    "start": "",
    "end": "",
@@ -722,7 +722,7 @@
   {
    "id": "T-0011",
    "person": "P-0021",
-   "person_name": "Wonpyo",
+   "person_name": "Wŏnp'yo",
    "band": "B1",
    "start": "742",
    "end": "765",
@@ -749,7 +749,7 @@
    "precision": "UNKNOWN",
    "purpose": "PILGRIMAGE",
    "routed": false,
-   "route_description": "Goguryeo -> (via China) -> Sri Lanka; ordained there",
+   "route_description": "Koguryŏ -> (via China) -> Sri Lanka; ordained there",
    "confidence": "MEDIUM",
    "points": [
     {
@@ -769,7 +769,7 @@
    "precision": "YEAR",
    "purpose": "MISSIONARY",
    "routed": true,
-   "route_description": "Magadha -> (Tibet) -> Yuan China -> Goryeo (1326) -> Yuan China; died 1363",
+   "route_description": "Magadha -> (Tibet) -> Yuan China -> Koryŏ (1326) -> Yuan China; died 1363",
    "confidence": "MEDIUM",
    "points": [
     {
@@ -912,7 +912,7 @@
   {
    "id": "T-0028",
    "person": "P-0055",
-   "person_name": "U Myeong-ju",
+   "person_name": "U Myŏng-ju",
    "band": "B6",
    "start": "2001",
    "end": "",
@@ -962,7 +962,7 @@
   {
    "id": "T-0034",
    "person": "P-0063",
-   "person_name": "Hyoseok (Ven.)",
+   "person_name": "Hyosŏk (Ven.)",
    "band": "B6",
    "start": "",
    "end": "",
@@ -987,7 +987,7 @@
   {
    "id": "T-0035",
    "person": "P-0064",
-   "person_name": "Wookwan (Ven.)",
+   "person_name": "Ukwan (Ven.)",
    "band": "B6",
    "start": "",
    "end": "",
@@ -1012,7 +1012,7 @@
   {
    "id": "T-0036",
    "person": "P-0065",
-   "person_name": "Gakseong (Ven.)",
+   "person_name": "Kaksŏng (Ven.)",
    "band": "B6",
    "start": "1992",
    "end": "1998",
@@ -1083,7 +1083,7 @@
    "precision": "YEAR",
    "purpose": "PILGRIMAGE",
    "routed": true,
-   "route_description": "Seoul -> India (Ganges basin; Central, South, West India; Pakistan - Peshawar) on an itinerary matching Hyecho's Wang ocheonchukguk jeon route; visited Nalanda; returned Seoul 1963-05-09",
+   "route_description": "Seoul -> India (Ganges basin; Central, South, West India; Pakistan - Peshawar) on an itinerary matching Hyech'o's Wang ocheonchukguk jeon route; visited Nalanda; returned Seoul 1963-05-09",
    "confidence": "HIGH",
    "points": [
     {
@@ -1561,7 +1561,7 @@
    "type": "RELIC_TRANSFER",
    "start": "1370",
    "end": "1370",
-   "description": "On King Kongmin's order (1370) a stupa enshrining the relics of the Indian master Dhyānabhadra (Jikong) was built at Hoeamsa, supervised by Naong Hyegeun - formally declaring Naong's succession of Jikong's lineage",
+   "description": "On King Kongmin's order (1370) a stupa enshrining the relics of the Indian master Dhyānabhadra (Jikong) was built at Hoeamsa, supervised by Naong Hyegŭn - formally declaring Naong's succession of Jikong's lineage",
    "significance": "Earliest documented enshrinement of an Indian master's relics in Korea; material anchor of the Jikong lineage at the Nalanda-modeled Hoeamsa",
    "confidence": "HIGH",
    "status": "VERIFIED",
@@ -1619,8 +1619,8 @@
    "type": "EXHIBITION",
    "start": "2010-12-18",
    "end": "2011-04-03",
-   "description": "The BnF's Dunhuang manuscript of Hyecho's Wang ocheonchukguk jeon (往五天竺國傳) - the sole surviving 8th-century record of India by a Silla monk - was loaned to the National Museum of Korea for the '실크로드와 둔황: 혜초와 함께 하는 서역기행' special exhibition (18 Dec 2010 - 3 Apr 2011; manuscript on display until 17 Mar 2011 per the BnF's 3-month loan limit): the manuscript's first public display anywhere since Pelliot's 1908 Dunhuang discovery; a second BnF loan followed for the NMK exhibition Dec 2019 - Apr 2020",
-   "significance": "World-first public display of Korea's oldest travel record of India; made Hyecho's 8th-century India pilgrimage tangible for the Korean public and scholars",
+   "description": "The BnF's Dunhuang manuscript of Hyech'o's Wang ocheonchukguk jeon (往五天竺國傳) - the sole surviving 8th-century record of India by a Silla monk - was loaned to the National Museum of Korea for the '실크로드와 둔황: 혜초와 함께 하는 서역기행' special exhibition (18 Dec 2010 - 3 Apr 2011; manuscript on display until 17 Mar 2011 per the BnF's 3-month loan limit): the manuscript's first public display anywhere since Pelliot's 1908 Dunhuang discovery; a second BnF loan followed for the NMK exhibition Dec 2019 - Apr 2020",
+   "significance": "World-first public display of Korea's oldest travel record of India; made Hyech'o's 8th-century India pilgrimage tangible for the Korean public and scholars",
    "confidence": "HIGH",
    "status": "VERIFIED",
    "sources": [
@@ -1786,5 +1786,5 @@
    "count": 9
   }
  ],
- "b3_note": "Joseon (1392–1900): 11 candidate rows classified, all excluded on evidence. Zero carried records is a documented finding under stated inclusion criteria, not an absence of Buddhism and not missing data."
+ "b3_note": "Chosŏn (1392–1900): 11 candidate rows classified, all excluded on evidence. Zero carried records is a documented finding under stated inclusion criteria, not an absence of Buddhism and not missing data."
 }

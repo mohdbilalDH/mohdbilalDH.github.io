@@ -1,0 +1,129 @@
+---
+// One stable, citable page per mediator, generated from the frozen record.
+// Replaces the modal: a prosopography entry that cannot be linked is not a reference resource.
+import Project from '../../../../layouts/Project.astro';
+import Apparatus from '../../../../components/Apparatus.astro';
+import CiteBlock from '../../../../components/CiteBlock.astro';
+import { carried, life, TYPO, DIRECTION, bandLabel, bandSpan, personHref, CONFIDENCE_LEGEND } from '../../../../data/bb';
+import { buildDate } from '../../../../data/build';
+
+export async function getStaticPaths() {
+  const { carried } = await import('../../../../data/bb');
+  return carried.map((person) => ({ params: { id: person.id }, props: { person } }));
+}
+
+const { person: p } = Astro.props;
+const sameBand = carried.filter((x) => x.band === p.band && x.id !== p.id);
+const sameType = carried.filter((x) => x.typology === p.typology && x.id !== p.id);
+const url = `https://mohdbilaldh.github.io${personHref(p.id)}`;
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: p.name,
+  alternateName: [p.hangul, p.hanja].filter(Boolean),
+  description: p.significance || p.role,
+  identifier: p.id,
+  url,
+};
+---
+<Project title={`${p.name} — Buddhist Bridges`}
+  description={`${p.name} (${p.hangul}${p.hanja ? ', ' + p.hanja : ''}), ${life(p)}: the full cited record from the frozen Buddhist Bridges dataset v3.0.`}
+  jsonld={jsonld}>
+  <div class="wrap">
+    <div class="page-head person-head">
+      <p class="mono back">
+        <a href="/projects/buddhist-bridges/explore/">← The register</a>
+      </p>
+      <p class="mono ident">{p.id} · {p.band} · {bandLabel(p.band)}, {bandSpan(p.band)} · frozen v3.0</p>
+      <h1>{p.name}{p.hangul && <span class="hangul" lang="ko">{p.hangul}</span>}{p.hanja && <span class="hanja">{p.hanja}</span>}</h1>
+      <p class="lede prose">{p.significance || p.role}</p>
+      <p class="grades">
+        <span class={`badge ${p.confidence.toLowerCase()}`}>{p.confidence}</span>
+        <span class="badge">{p.status}</span>
+        {p.single_source && <span class="badge low">single source</span>}
+        <span class="badge">{p.source_count} sources</span>
+      </p>
+    </div>
+
+    <div class="record">
+      <dl class="rec">
+        <div><dt>Dates</dt><dd class="mono">{life(p)}{p.floruit?.[0] && !p.birth ? ' — a floruit window, not a lifespan' : ''}</dd></div>
+        <div><dt>Era</dt><dd>{p.band} · {bandLabel(p.band)} ({bandSpan(p.band)})</dd></div>
+        <div><dt>Role</dt><dd>{p.role}</dd></div>
+        <div><dt>Mediation</dt><dd>{TYPO[p.typology] ?? p.typology.toLowerCase()} · movement: {p.movement === '-' ? 'none documented' : p.movement} · direction: {DIRECTION[p.direction] ?? p.direction}</dd></div>
+        {p.nationality && <div><dt>Origin</dt><dd>{p.nationality}</dd></div>}
+        {p.variants && <div><dt>Name variants</dt><dd class="variants">{p.variants}</dd></div>}
+        <div><dt>India connection</dt><dd>{p.india_connection}</dd></div>
+        <div><dt>Korea connection</dt><dd>{p.korea_connection}</dd></div>
+        <div><dt>Evidence</dt><dd>{p.evidence}</dd></div>
+      </dl>
+
+      <Apparatus label="Reading the grades">
+        <p>{CONFIDENCE_LEGEND}</p>
+        <p>Fields are shown verbatim from the frozen record. A record without a safe date is never placed on the timeline axis.</p>
+      </Apparatus>
+    </div>
+
+    <section class="section">
+      <h2>Sources ({p.sources.length})</h2>
+      <ol class="srclist">
+        {p.sources.map((s) => (
+          <li>
+            {s.url ? <a href={s.url} rel="noopener">{s.citation}</a> : <span>{s.citation}</span>}
+            <span class="srcmeta mono">{s.type} · {s.reliability} · {s.id}</span>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="section">
+      <h2>Elsewhere in the record</h2>
+      <div class="sideways">
+        <div>
+          <p class="label">Same era — {bandLabel(p.band)}</p>
+          <p class="links">{sameBand.map((x, i) => (<><a href={personHref(x.id)}>{x.name}</a>{i < sameBand.length - 1 ? ' · ' : ''}</>))}</p>
+        </div>
+        <div>
+          <p class="label">Same mediation — {TYPO[p.typology] ?? p.typology.toLowerCase()}</p>
+          <p class="links">{sameType.map((x, i) => (<><a href={personHref(x.id)}>{x.name}</a>{i < sameType.length - 1 ? ' · ' : ''}</>))}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 id="cite">Cite this record</h2>
+      <CiteBlock
+        citation={`Bilal, Mohd. “${p.name} (${p.hangul}).” Buddhist Bridges: Documented Mediators of India–Korea Buddhist Exchange, 300–2026, dataset v3.0, no. ${p.id}.`}
+        licence="Dataset CC BY 4.0 · code MIT"
+        url={url}
+        buildDate={buildDate} />
+      <p class="small muted">
+        The full dataset, its inclusion criteria and its limits are on the
+        <a href="/projects/buddhist-bridges/data/"> data page</a>.
+      </p>
+    </section>
+  </div>
+</Project>
+<style>
+  .person-head { padding-bottom: 24px; }
+  .back { margin: 0 0 16px; }
+  .ident { color: var(--muted); margin: 0 0 10px; font-size: 12px; letter-spacing: 0.04em; }
+  .person-head h1 { line-height: 1.25; }
+  .hangul, .hanja { font-weight: 400; color: var(--muted); font-size: 0.6em; margin-left: 0.4em; }
+  .grades { margin: 16px 0 0; }
+  .record { max-width: var(--w-measure); }
+  .rec { margin: 0 0 24px; }
+  .rec > div { display: grid; grid-template-columns: 180px 1fr; gap: 20px; padding: 12px 0; border-bottom: 1px solid var(--hairline); }
+  .rec dt { font: 500 12px/1.5 var(--f-ui); letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); }
+  .rec dd { margin: 0; font: 400 15px/1.7 var(--f-ui); color: var(--text); }
+  .rec .variants { font-family: var(--f-mono); font-size: 13px; }
+  .srclist { max-width: var(--w-measure); padding-left: 20px; }
+  .srclist li { margin-bottom: 12px; font-size: 15px; line-height: 1.6; }
+  .srcmeta { display: block; font-size: 11.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 3px; }
+  .sideways { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: var(--w-measure); }
+  .links { font: 400 14px/1.9 var(--f-ui); margin: 6px 0 0; }
+  @media (max-width: 700px) {
+    .rec > div { grid-template-columns: 1fr; gap: 3px; }
+    .sideways { grid-template-columns: 1fr; gap: 20px; }
+  }
+</style>

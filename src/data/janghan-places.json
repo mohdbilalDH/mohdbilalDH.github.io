@@ -1,0 +1,381 @@
+{
+ "_meta": {
+  "source": "public/janghan/data/v1/{places,place_mentions}.json",
+  "dataset": "place list v1.1 · coded place evidence v1.2 · Issue 1 only",
+  "note": "Counted mentions only. Gap-logged, logged-not-counted, excluded-evidence and false-positive records are published in the edition and are deliberately absent here."
+ },
+ "counted_mentions": 53,
+ "counted_places": 20,
+ "mappable_places": 10,
+ "mappable_mentions": 20,
+ "places": [
+  {
+   "id": "P30",
+   "name": "Chosŏn (조선/朝鮮)",
+   "category": "geographic_country",
+   "mappable": false,
+   "lat": null,
+   "lng": null,
+   "n": 14,
+   "functions": [
+    {
+     "k": "comparison",
+     "v": 7
+    },
+    {
+     "k": "place_of_action",
+     "v": 4
+    },
+    {
+     "k": "place_of_origin",
+     "v": 2
+    },
+    {
+     "k": "residence",
+     "v": 1
+    }
+   ],
+   "note": "The unmarked homeland; macro-frame of every domestic place."
+  },
+  {
+   "id": "P01",
+   "name": "Seoul (Keijō/京城)",
+   "category": "geographic_city",
+   "mappable": true,
+   "lat": 37.5665,
+   "lng": 126.978,
+   "n": 5,
+   "functions": [
+    {
+     "k": "place_of_action",
+     "v": 4
+    },
+    {
+     "k": "destination",
+     "v": 1
+    }
+   ],
+   "note": "The gisaeng authors' local civic center; the editor-fiction's Korean endpoint."
+  },
+  {
+   "id": "P05",
+   "name": "Daegu (大邱)",
+   "category": "geographic_city",
+   "mappable": true,
+   "lat": 35.8714,
+   "lng": 128.6014,
+   "n": 4,
+   "functions": [
+    {
+     "k": "place_of_origin",
+     "v": 3
+    },
+    {
+     "k": "place_of_action",
+     "v": 1
+    }
+   ],
+   "note": "Departure point for a gisaeng protagonist's flight from gisaeng life (1호 fiction)."
+  },
+  {
+   "id": "P10",
+   "name": "USA",
+   "category": "geographic_country",
+   "mappable": false,
+   "lat": null,
+   "lng": null,
+   "n": 4,
+   "functions": [
+    {
+     "k": "comparison",
+     "v": 2
+    },
+    {
+     "k": "destination",
+     "v": 1
+    },
+    {
+     "k": "place_of_action",
+     "v": 1
+    }
+   ],
+   "note": "Comparative reference (1호 anecdote, medical statistics, Fraser Bence byline)."
+  },
+  {
+   "id": "P13",
+   "name": "Italy",
+   "category": "geographic_country",
+   "mappable": false,
+   "lat": null,
+   "lng": null,
+   "n": 3,
+   "functions": [
+    {
+     "k": "fictional_setting",
+     "v": 2
+    },
+    {
+     "k": "place_of_origin",
+     "v": 1
+    }
+   ],
+   "note": "Comparative reference only."
+  },
+  {
+   "id": "P12",
+   "name": "Japan",
+   "category": "geographic_country",
+   "mappable": false,
+   "lat": null,
+   "lng": null,
+   "n": 3,
+   "functions": [
+    {
+     "k": "comparison",
+     "v": 2
+    },
+    {
+     "k": "residence",
+     "v": 1
+    }
+   ],
+   "note": "Comparative reference."
+  },
+  {
+   "id": "P20",
+   "name": "Jongno (鐘路)",
+   "category": "sublocation",
+   "mappable": true,
+   "lat": 37.5705,
+   "lng": 126.9822,
+   "n": 3,
+   "functions": [
+    {
+     "k": "place_of_action",
+     "v": 2
+    },
+    {
+     "k": "institutional",
+     "v": 1
+    }
+   ],
+   "note": "Site of a class-boundary scene in 1호 fiction; the colonial Seoul commercial centre."
+  },
+  {
+   "id": "P11",
+   "name": "China",
+   "category": "geographic_country",
+   "mappable": false,
+   "lat": null,
+   "lng": null,
+   "n": 2,
+   "functions": [
+    {
+     "k": "fictional_setting",
+     "v": 2
+    }
+   ],
+   "note": "Locus of 王大名's 30-year Korea-residency narrative; 紅參個物 satire."
+  },
+  {
+   "id": "P18",
+   "name": "Europe",
+   "category": "geographic_region",
+   "mappable": false,
+   "lat": null,
+   "lng": null,
+   "n": 2,
+   "functions": [
+    {
+     "k": "place_of_origin",
+     "v": 1
+    },
+    {
+     "k": "comparison",
+     "v": 1
+    }
+   ],
+   "note": "Comparative reference (1호 dental statistics)."
+  },
+  {
+   "id": "P07",
+   "name": "Los Angeles",
+   "category": "geographic_city",
+   "mappable": true,
+   "lat": 34.0522,
+   "lng": -118.2437,
+   "n": 2,
+   "functions": [
+    {
+     "k": "place_of_action",
+     "v": 2
+    }
+   ],
+   "note": "Comparative reference only."
+  },
+  {
+   "id": "P15",
+   "name": "Russia",
+   "category": "geographic_country",
+   "mappable": false,
+   "lat": null,
+   "lng": null,
+   "n": 2,
+   "functions": [
+    {
+     "k": "fictional_setting",
+     "v": 1
+    },
+    {
+     "k": "comparison",
+     "v": 1
+    }
+   ],
+   "note": "Comparative reference only."
+  },
+  {
+   "id": "P09",
+   "name": "Changchun (長春)",
+   "category": "geographic_city",
+   "mappable": true,
+   "lat": 43.8868,
+   "lng": 125.3245,
+   "n": 1,
+   "functions": [
+    {
+     "k": "destination",
+     "v": 1
+    }
+   ],
+   "note": "Transit point in 王大名's 1호 essay."
+  },
+  {
+   "id": "P32",
+   "name": "Chŏn-dong (전동/典洞)",
+   "category": "sublocation",
+   "mappable": true,
+   "lat": 37.571,
+   "lng": 126.983,
+   "n": 1,
+   "functions": [
+    {
+     "k": "place_of_action",
+     "v": 1
+    }
+   ],
+   "note": "Newspaper-office location in jh01.a40 satire."
+  },
+  {
+   "id": "P16",
+   "name": "Manchuria",
+   "category": "geographic_region",
+   "mappable": false,
+   "lat": null,
+   "lng": null,
+   "n": 1,
+   "functions": [
+    {
+     "k": "destination",
+     "v": 1
+    }
+   ],
+   "note": "Transit context for 王大名's 1호 essay."
+  },
+  {
+   "id": "P27",
+   "name": "Myŏngwŏlgwan (明月館)",
+   "category": "venue",
+   "mappable": false,
+   "lat": null,
+   "lng": null,
+   "n": 1,
+   "functions": [
+    {
+     "k": "place_of_action",
+     "v": 1
+    }
+   ],
+   "note": "In 2호 (jh02.a22), the place where male protagonist 김남수 meets gisaeng 채봉이. The canonical site of gisaeng entertainment."
+  },
+  {
+   "id": "P25",
+   "name": "Osaka Medical School (大阪醫科大學)",
+   "category": "institution",
+   "mappable": true,
+   "lat": 34.6525,
+   "lng": 135.5063,
+   "n": 1,
+   "functions": [
+    {
+     "k": "institutional",
+     "v": 1
+    }
+   ],
+   "note": "Authority credential for the medical author of the 1호 oral-hygiene essay."
+  },
+  {
+   "id": "P02",
+   "name": "Pyŏngyang (平壤)",
+   "category": "geographic_city",
+   "mappable": true,
+   "lat": 39.0392,
+   "lng": 125.7625,
+   "n": 1,
+   "functions": [
+    {
+     "k": "memory_reference",
+     "v": 1
+    }
+   ],
+   "note": "Lyric-mourned other — referenced as the home of a vanished friend 매화 in a 1호 sijo; not a contemporary gisaeng site."
+  },
+  {
+   "id": "P31",
+   "name": "Sŏkwangsa (석왕사/釋王寺)",
+   "category": "religious",
+   "mappable": true,
+   "lat": 38.983,
+   "lng": 127.517,
+   "n": 1,
+   "functions": [
+    {
+     "k": "place_of_action",
+     "v": 1
+    }
+   ],
+   "note": "Title-place of jh01.a36 (박점홍 travel poem); gisaeng leisure/pilgrimage mobility."
+  },
+  {
+   "id": "P33",
+   "name": "T'aep'yŏng-t'ong (태평통/太平通)",
+   "category": "sublocation",
+   "mappable": true,
+   "lat": 37.564,
+   "lng": 126.977,
+   "n": 1,
+   "functions": [
+    {
+     "k": "place_of_action",
+     "v": 1
+    }
+   ],
+   "note": "Newspaper-office location in jh01.a40 satire."
+  },
+  {
+   "id": "P14",
+   "name": "UK",
+   "category": "geographic_country",
+   "mappable": false,
+   "lat": null,
+   "lng": null,
+   "n": 1,
+   "functions": [
+    {
+     "k": "fictional_setting",
+     "v": 1
+    }
+   ],
+   "note": "Comparative reference only."
+  }
+ ]
+}

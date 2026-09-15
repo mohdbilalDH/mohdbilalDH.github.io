@@ -1,6 +1,5 @@
 ---
 import Project from '../../../layouts/Project.astro';
-import PersonDialog from '../../../components/PersonDialog.astro';
 import DataTable from '../../../components/DataTable.astro';
 import ChartFrame from '../../../components/ChartFrame.astro';
 import EmptyState from '../../../components/EmptyState.astro';
@@ -36,7 +35,7 @@ const columns = [
       <h1>Explore the evidence</h1>
       <p class="lede prose">
         Every dated mark in the frozen dataset, and the complete register of the 43 mediators.
-        Any person opens to the full cited record.
+        Every person has a page of their own carrying the full cited record and a citation you can paste.
       </p>
     </div>
 
@@ -85,7 +84,7 @@ const columns = [
         {people.people.map((p) => (
           <tr class="reg-row" data-row data-person={p.id} data-name={p.name} data-band={p.band} data-start={start(p)} data-confidence={GRADE[p.confidence] ?? 5}
               data-search={`${p.name} ${p.hangul} ${p.band} ${TYPO[p.typology] ?? p.typology}`.toLowerCase()} tabindex="0">
-            <td class="name">{p.name}</td>
+            <td class="name"><a href={`/projects/buddhist-bridges/people/${p.id}/`}>{p.name}</a></td>
             <td class="muted" lang="ko">{p.hangul}</td>
             <td><span class="badge" style={`color: var(--${p.band.toLowerCase()});`}>{p.band}</span></td>
             <td class="num">{life(p)}</td>
@@ -105,12 +104,13 @@ const columns = [
     </section>
   </div>
 
-  <PersonDialog />
-
   <script>
     // ——— register ———
     document.querySelectorAll('.reg-row').forEach((r) => {
-      r.addEventListener('keydown', (ev) => { if (ev.key === 'Enter') window.showPerson(r.dataset.person); });
+      const go = () => { location.href = `/projects/buddhist-bridges/people/${r.dataset.person}/`; };
+      r.addEventListener('keydown', (ev) => { if (ev.key === 'Enter') go(); });
+      // Clicking anywhere on the row follows the same link as the name cell.
+      r.addEventListener('click', (ev) => { if (!ev.target.closest('a')) go(); });
     });
     const regInput = document.getElementById('reg-search');
     const regRows = [...document.querySelectorAll('.reg-row')];
@@ -317,7 +317,7 @@ const columns = [
         const mid = (x(Math.max(g0.start, t0)) + x(Math.min(g0.end, t1))) / 2;
         el('line', { x1: x(Math.max(g0.start, t0)), y1: (AXIS_Y + 20) / 2, x2: x(Math.min(g0.end, t1)), y2: (AXIS_Y + 20) / 2, stroke: 'var(--void)', 'stroke-width': '2', 'stroke-dasharray': '1 7', 'stroke-linecap': 'round' }, svg);
         const t = el('text', { x: mid, y: (AXIS_Y + 20) / 2 - 10, 'text-anchor': 'middle', fill: 'var(--muted)', style: 'font: italic 13px var(--f-display)' }, svg);
-        t.textContent = 'Joseon: no carried records — a documented finding, not missing data';
+        t.textContent = 'Chosŏn: no carried records — a documented finding, not missing data';
       }
 
       for (const { lane, lm, rowOf, y0, rh } of laneGeom) {
@@ -402,7 +402,7 @@ const columns = [
       g.addEventListener('mouseleave', hideTip);
       g.addEventListener('focus', (ev) => showTip(ev, m));
       g.addEventListener('blur', hideTip);
-      if (m.id.startsWith('P-')) g.addEventListener('click', () => window.showPerson && window.showPerson(m.id));
+      if (m.id.startsWith('P-')) g.addEventListener('click', () => { location.href = `/projects/buddhist-bridges/people/${m.id}/`; });
     }
 
     const fmtSpan = (m) => m.start === m.end ? `${m.start}` : `${m.start}–${m.end}`;
