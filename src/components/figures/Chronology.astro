@@ -207,7 +207,7 @@ const slim = people.people.map((p) => ({
     if (undated.length) {
       const div = document.createElement('p');
       div.className = 'undated';
-      div.append('Known only by name and record — no safe dates: ');
+      div.append('Known only by name and record, with no safe dates: ');
       undated.forEach((p) => {
         const b = document.createElement('button');
         b.textContent = p.name;

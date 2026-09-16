@@ -5,8 +5,8 @@ export const cv = {
   profile:
     'Korean Studies scholar specializing in modern and contemporary Korean history, colonial-era cultural history, gender history, and kisaeng studies. My research also engages with comparative Korean–Indian cultural history and Digital Humanities approaches to historical and cultural materials, examining gender, performance, cultural memory, representation, and cultural exchange across Korea and India.',
   education: [
-    { when: '2024–present', role: 'M.A. in Korean Studies', org: 'The Academy of Korean Studies, Republic of Korea' },
-    { when: 'Fall 2025', role: 'Exchange Student, International College', org: 'Seoul National University, Republic of Korea', detail: 'GPA 4.3/4.3' },
+    { when: '2024–present', role: 'M.A. in Korean Studies', org: 'Graduate School of Korean Studies, The Academy of Korean Studies, Republic of Korea' },
+    { when: 'Fall 2025', role: 'Exchange Student, Graduate School of International Studies (GSIS)', org: 'Seoul National University, Republic of Korea', detail: 'GPA 4.3/4.3' },
     { when: '2020–2023', role: 'B.A. in Korean Studies', org: 'Jawaharlal Nehru University, New Delhi, India', detail: 'GPA 3.43/4.00' },
   ] as Entry[],
   experience: [

@@ -4,7 +4,7 @@ from _lib import Browser, BASE, ROUTES, check
 # already carry. Every project route marks Projects current, data and person pages included.
 CURRENT = {
     "/": "Home", "/about/": "About", "/projects/": "Projects",
-    "/publications/": "Publications", "/cv/": "CV", "/contact/": "Contact",
+    "/publications/": "Publications", "/cv/": "CV", "/cv/ko/": "CV", "/contact/": "Contact",
     "/projects/janghan/": "Projects", "/projects/janghan/data/": "Projects",
     "/projects/buddhist-bridges/": "Projects", "/projects/buddhist-bridges/explore/": "Projects",
     "/projects/buddhist-bridges/data/": "Projects",

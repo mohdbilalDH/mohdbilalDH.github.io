@@ -23,7 +23,7 @@ const svgFrom = (file, labelPart) => {
   throw new Error(`no svg whose label contains "${labelPart}" in ${file}`);
 };
 const pages = {
-  janghan: `<div class="plate"><img src="/public/janghan/assets/jh01-cover.png"><img src="/public/janghan/assets/jh02-cover.png"></div>`,
+  janghan: `<div class="plate"><img src="/public/janghan/assets/jh01-cover-emuseum.jpg"><img src="/public/janghan/assets/jh02-cover-emuseum.jpg"></div>`,
   'buddhist-bridges': `<div class="chart">${svgFrom('dist/projects/buddhist-bridges/index.html', 'documented journey routes between Korea')}</div>`,
   hallyu: `<div class="chart">${svgFrom('dist/projects/hallyu-indian-press/index.html', 'Coverage chart, 2000 to 2026')}</div>`,
 };
@@ -36,7 +36,7 @@ const shell = (body) => `<!doctype html><html><head><meta charset="utf-8">
 .plate{width:1200px;height:420px;display:flex;gap:48px;align-items:center;justify-content:center;background:var(--white)}
 .plate img{height:300px;width:auto;display:block}</style></head><body>${body}</body></html>`;
 
-const MIME = { '.css': 'text/css', '.woff2': 'font/woff2', '.png': 'image/png', '.html': 'text/html' };
+const MIME = { '.css': 'text/css', '.woff2': 'font/woff2', '.png': 'image/png', '.jpg': 'image/jpeg', '.html': 'text/html' };
 const server = createServer((req, res) => {
   const p = decodeURIComponent(new URL(req.url, 'http://x').pathname);
   const m = p.match(/^\/art\/(.+)\.html$/);

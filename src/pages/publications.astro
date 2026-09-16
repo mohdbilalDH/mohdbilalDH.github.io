@@ -7,6 +7,8 @@ import presentations from '../data/presentations.json';
 
 const years = [...new Set(presentations.map((p) => p.year))].sort((a, b) => b - a);
 const published = byStatus('published')[0];
+// The section renders only when there is something under review, so no empty heading is printed.
+const underReview = byStatus('under-review');
 const jsonld = {
   '@context': 'https://schema.org',
   '@type': 'ScholarlyArticle',
@@ -25,7 +27,7 @@ const jsonld = {
 };
 ---
 <Base title="Publications" current="publications"
-  description="Publications and conference presentations by Mohd Bilal — Korean Studies, Hallyu, kisaeng studies, Buddhism, and India–Korea comparative research.">
+  description="Publications and conference presentations by Mohd Bilal: Korean Studies, Hallyu, kisaeng studies, Buddhism, and comparative research on India and Korea.">
   <Fragment slot="head">
     <meta name="citation_title" content={published.title.replace('’', "'")} />
     <meta name="citation_author" content="Bilal, Mohd" />
@@ -55,10 +57,12 @@ const jsonld = {
       <PubList items={byStatus('forthcoming').map((a) => ({ title: a.title, venue: venueLine(a), meta: a.note }))} />
     </section>
 
-    <section class="section">
-      <h2>Under review</h2>
-      <PubList items={byStatus('under-review').map((a) => ({ title: a.title, venue: `<em>${a.venue}</em>, ${a.note}.` }))} />
-    </section>
+    {underReview.length > 0 && (
+      <section class="section">
+        <h2>Under review</h2>
+        <PubList items={underReview.map((a) => ({ title: a.title, venue: `<em>${a.venue}</em>, ${a.note}.` }))} />
+      </section>
+    )}
 
     <section class="section">
       <h2>Conference presentations</h2>

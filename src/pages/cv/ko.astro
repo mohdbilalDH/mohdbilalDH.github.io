@@ -1,0 +1,157 @@
+---
+// The Korean CV. Same page anatomy and the same styles as /cv/, with the Korean layer from
+// cv-ko.ts over the same underlying record. Publication and presentation titles are left in the
+// language they were published in, so every line stays checkable against the venue.
+import Base from '../../layouts/Base.astro';
+import Button from '../../components/Button.astro';
+import Eyebrow from '../../components/Eyebrow.astro';
+import { site } from '../../data/site';
+import { cv } from '../../data/cv';
+import { cvKo, koDate, mirrors, type EntryKo } from '../../data/cv-ko';
+import { articles, venueLine } from '../../data/publications';
+import presentations from '../../data/presentations.json';
+
+// If the English record gains an entry, the Korean layer has to gain one too; failing the build
+// is better than quietly publishing a CV that is shorter in one language than the other.
+if (!mirrors(cv.education, cvKo.education) || !mirrors(cv.experience, cvKo.experience)
+  || !mirrors(cv.training, cvKo.training) || !mirrors(cv.awards, cvKo.awards)) {
+  throw new Error('cv-ko.ts is out of step with cv.ts: the two records must list the same entries.');
+}
+
+const years = [...new Set(presentations.map((p) => p.year))].sort((a, b) => b - a);
+const order = { forthcoming: 0, published: 1, 'under-review': 2 } as const;
+const pubs = [...articles].sort((a, b) => order[a.status] - order[b.status] || b.year - a.year);
+const pubWhen = (a: (typeof articles)[number]) =>
+  a.status === 'forthcoming' ? cvKo.forthcoming : a.status === 'under-review' ? cvKo.underReview : `${a.year}년`;
+const pubOrg = (a: (typeof articles)[number]) =>
+  a.status === 'under-review' ? `<em>${a.venue}</em>, ${a.note}.` : venueLine(a) + (a.note ? ` ${a.note}.` : '');
+const sections: { title: string; entries: EntryKo[] }[] = [
+  { title: cvKo.sections.education, entries: cvKo.education },
+  { title: cvKo.sections.experience, entries: cvKo.experience },
+];
+---
+<Base title="이력서" current="cv"
+  description="모드 빌랄(Mohd Bilal) 이력서. 한국학, 한국근현대사, 젠더 및 문화사, 디지털인문학. 한국학중앙연구원.">
+  <div class="wrap" lang="ko">
+    <div class="page-head cv-head">
+      <Eyebrow>{cvKo.eyebrow}</Eyebrow>
+      <h1>{cvKo.name} <span class="latin">{cvKo.nameLatin}</span></h1>
+      <p class="lede prose">{cvKo.headline}</p>
+      <p class="mono muted contact">
+        <span class="affil">{cvKo.affiliation}</span><br />
+        <a href={`mailto:${site.email}`}>{site.email}</a> ·
+        <a href={site.github}>{site.githubLabel}</a> ·
+        <a href={site.orcid}>orcid.org/{site.orcidId}</a>
+      </p>
+      <div class="btn-row no-print">
+        <Button href="/files/mohd-bilal-cv.pdf" variant="primary" download>영문 CV 내려받기 (PDF)</Button>
+        <Button href="/cv/" variant="ghost">{cvKo.toEnglish}</Button>
+      </div>
+    </div>
+
+    <section class="cv-section">
+      <h2>{cvKo.sections.profile}</h2>
+      <p class="prose">{cvKo.profile}</p>
+    </section>
+
+    {sections.map((s) => (
+      <section class="cv-section">
+        <h2>{s.title}</h2>
+        {s.entries.map((e) => (
+          <div class="cv-item">
+            <div class="cv-when mono muted">{e.when}</div>
+            <div class="cv-what">
+              <div class="role">{e.role}</div>
+              {e.org && <div class="org muted">{e.org}</div>}
+              {e.detail && <div class="detail small muted">{e.detail}</div>}
+            </div>
+          </div>
+        ))}
+      </section>
+    ))}
+
+    <section class="cv-section">
+      <h2>{cvKo.sections.awards}</h2>
+      {cvKo.awards.map((e) => (
+        <div class="cv-item">
+          <div class="cv-when mono muted">{e.when}</div>
+          <div class="cv-what"><div class="role">{e.role}</div><div class="detail small muted">{e.detail}</div></div>
+        </div>
+      ))}
+    </section>
+
+    <section class="cv-section">
+      <h2>{cvKo.sections.publications}</h2>
+      {pubs.map((a) => (
+        <div class="cv-item">
+          <div class="cv-when mono muted">{pubWhen(a)}</div>
+          <div class="cv-what">
+            <div class="role" lang="en">“{a.title}.”</div>
+            <div class="org muted" lang="en" set:html={pubOrg(a)} />
+          </div>
+        </div>
+      ))}
+    </section>
+
+    <section class="cv-section">
+      <h2>{cvKo.sections.presentations}</h2>
+      {years.map((y) =>
+        presentations.filter((p) => p.year === y).map((p, i) => (
+          <div class="cv-item">
+            <div class="cv-when mono muted">{i === 0 ? `${y}년` : ''}</div>
+            <div class="cv-what">
+              <div class="role" lang="en">“{p.title}.”</div>
+              <div class="org muted"><span lang="en">{p.venue}{p.place ? `, ${p.place}` : ''}</span>, {koDate(p.when)}.</div>
+            </div>
+          </div>
+        ))
+      )}
+      <p class="small muted titlenote">{cvKo.titleNote}</p>
+    </section>
+
+    <section class="cv-section">
+      <h2>{cvKo.sections.training}</h2>
+      {cvKo.training.map((e) => (
+        <div class="cv-item">
+          <div class="cv-when mono muted">{e.when}</div>
+          <div class="cv-what"><div class="role">{e.role}</div><div class="org muted">{e.org}</div></div>
+        </div>
+      ))}
+    </section>
+
+    <section class="cv-section">
+      <h2>{cvKo.sections.memberships}</h2>
+      <p class="prose">{cvKo.memberships}</p>
+    </section>
+
+    <section class="cv-section last">
+      <h2>{cvKo.sections.languages}</h2>
+      <p class="prose">{cvKo.languages}</p>
+    </section>
+  </div>
+</Base>
+<style>
+  .cv-head { border-bottom: 0; margin-bottom: 0; }
+  .cv-head h1 .latin { font-weight: 400; color: var(--muted); font-size: 0.55em; margin-left: 0.4em; white-space: nowrap; }
+  .contact { margin: var(--s-2) 0 0; }
+  /* The machine-readable identifiers stay in the mono face; Korean does not read well in it. */
+  .contact .affil { font-family: var(--f-ui); letter-spacing: 0; }
+  .contact a { color: var(--muted); }
+  .contact a:hover { color: var(--accent); }
+  .cv-section { border-top: var(--rule-w) solid var(--rule); padding-top: var(--s-2); margin-top: var(--s-5); }
+  .cv-section h2 { margin-top: 0; font-size: 1.375rem; margin-bottom: var(--s-3); }
+  .cv-section.last { margin-bottom: var(--s-6); }
+  .cv-item { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 0 var(--s-3); margin-bottom: var(--s-3); max-width: var(--w-wide); }
+  .cv-when { padding-top: 0.2rem; }
+  .role { font-weight: 600; }
+  .detail { margin-top: 0.2rem; }
+  .titlenote { margin-top: var(--s-3); }
+  @media (max-width: 639px) {
+    .cv-item { grid-template-columns: 1fr; }
+    .cv-when { margin-bottom: 0.2rem; }
+  }
+  @media print {
+    .cv-section { break-inside: avoid-page; margin-top: 1.2rem; }
+    .cv-item { break-inside: avoid; }
+  }
+</style>

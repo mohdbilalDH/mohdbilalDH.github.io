@@ -18,7 +18,7 @@ const sections: { title: string; entries: Entry[] }[] = [
 ];
 ---
 <Base title="CV" current="cv"
-  description="Curriculum vitae of Mohd Bilal — Korean Studies, modern Korean history, gender and cultural history, Digital Humanities. The Academy of Korean Studies.">
+  description="Curriculum vitae of Mohd Bilal: Korean Studies, modern Korean history, gender and cultural history, Digital Humanities. The Academy of Korean Studies.">
   <div class="wrap">
     <div class="page-head cv-head">
       <Eyebrow>Curriculum vitae</Eyebrow>
@@ -32,6 +32,7 @@ const sections: { title: string; entries: Entry[] }[] = [
       </p>
       <div class="btn-row no-print">
         <Button href="/files/mohd-bilal-cv.pdf" variant="primary" download>Download PDF</Button>
+        <Button href="/cv/ko/" variant="ghost"><span lang="ko">한국어 이력서</span></Button>
       </div>
     </div>
 
@@ -55,6 +56,16 @@ const sections: { title: string; entries: Entry[] }[] = [
         ))}
       </section>
     ))}
+
+    <section class="cv-section">
+      <h2>Awards &amp; fellowships</h2>
+      {cv.awards.map((e) => (
+        <div class="cv-item">
+          <div class="cv-when mono muted">{e.when}</div>
+          <div class="cv-what"><div class="role">{e.role}</div><div class="detail small muted">{e.detail}</div></div>
+        </div>
+      ))}
+    </section>
 
     <section class="cv-section">
       <h2>Publications</h2>
@@ -90,16 +101,6 @@ const sections: { title: string; entries: Entry[] }[] = [
         <div class="cv-item">
           <div class="cv-when mono muted">{e.when}</div>
           <div class="cv-what"><div class="role">{e.role}</div><div class="org muted">{e.org}</div></div>
-        </div>
-      ))}
-    </section>
-
-    <section class="cv-section">
-      <h2>Awards &amp; fellowships</h2>
-      {cv.awards.map((e) => (
-        <div class="cv-item">
-          <div class="cv-when mono muted">{e.when}</div>
-          <div class="cv-what"><div class="role">{e.role}</div><div class="detail small muted">{e.detail}</div></div>
         </div>
       ))}
     </section>

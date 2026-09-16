@@ -35,7 +35,7 @@ const rows = [
   { title: 'How secure the identification behind the byline is', segs: certainty, y: 150 },
 ];
 ---
-<FigureFrame number="4 · Bylines" title="Most texts in 長恨 are kisaeng-attributed — and most of those identities remain unestablished" id="fig-bylines" wide>
+<FigureFrame number="4 · Bylines" title="Most texts in 長恨 are kisaeng-attributed, and most of those identities remain unestablished" id="fig-bylines" wide>
 
   <svg viewBox="0 0 760 348" role="img"
     aria-label={`Two stacked bars over ${TOTAL} textual items. Attribution: ${attribution.map((s) => `${s.name} ${s.n}`).join(', ')}. Identity certainty: ${certainty.map((s) => `${s.name} ${s.n}`).join(', ')}. Below, ${j.cross_issue_contributors} contributor threads recur across both issues: ${j.cross_issue_threads.map((t) => `${t.name}, ${t.certainty}`).join('; ')}.`}>
@@ -64,7 +64,7 @@ const rows = [
               <>
                 <rect x={cx} y={cy - 9} width="11" height="11" fill={s.fill} opacity={s.op} />
                 <text x={cx + 17} y={cy} font-family="var(--f-body)" font-size="11.5" fill="var(--muted)">
-                  {s.name} — {s.n}
+                  {s.name} · {s.n}
                 </text>
               </>
             );
@@ -79,7 +79,7 @@ const rows = [
       {j.cross_issue_contributors} threads run across both issues
     </text>
     <text x="0" y="295" font-family="var(--f-body)" font-size="11.5" fill="var(--muted)">
-      out of {j.contributors} bylines — each labelled with what the evidence supports
+      out of {j.contributors} bylines, each labelled with what the evidence supports
     </text>
     {j.cross_issue_threads.map((t, i) => (
       <>
@@ -102,11 +102,11 @@ const rows = [
     {j.certainty.confirmed} identities across the whole corpus are confirmed; {j.certainty.probable} are
     probable, {j.certainty.carried_over_unchecked} are carried over from the inherited baseline without
     independent check, and {j.certainty.unresolved} remain unresolved. A byline is evidence that a text was
-    published under a name — not that a particular person wrote it — so pen names are never silently merged
+    published under a name, not that a particular person wrote it, so pen names are never silently merged
     into people. Of the {j.cross_issue_contributors} threads recurring across both issues,
     {j.cross_issue_certainty.confirmed} are confirmed by explicit serial numbering printed in the magazine,
     {j.cross_issue_certainty.probable} are probable on byline evidence alone, and
-    {j.cross_issue_certainty.unresolved} is an unsigned recurring column whose narrating persona returns —
+    {j.cross_issue_certainty.unresolved} is an unsigned recurring column whose narrating persona returns:
     continuity of a voice, which is not evidence of a person.
   </div>
 

@@ -27,7 +27,7 @@ const columns = [
   { key: 'confidence', label: 'Confidence', sortable: true, numeric: true },
 ];
 ---
-<Project title="Buddhist Bridges — Explore the Evidence"
+<Project title="Buddhist Bridges: explore the evidence"
   description="The full timeline instrument and prosopographical register behind Five Bridges, One Silence.">
   <div class="wrap">
     <div class="page-head">
@@ -317,7 +317,7 @@ const columns = [
         const mid = (x(Math.max(g0.start, t0)) + x(Math.min(g0.end, t1))) / 2;
         el('line', { x1: x(Math.max(g0.start, t0)), y1: (AXIS_Y + 20) / 2, x2: x(Math.min(g0.end, t1)), y2: (AXIS_Y + 20) / 2, stroke: 'var(--void)', 'stroke-width': '2', 'stroke-dasharray': '1 7', 'stroke-linecap': 'round' }, svg);
         const t = el('text', { x: mid, y: (AXIS_Y + 20) / 2 - 10, 'text-anchor': 'middle', fill: 'var(--muted)', style: 'font: italic 13px var(--f-display)' }, svg);
-        t.textContent = 'Chosŏn: no carried records — a documented finding, not missing data';
+        t.textContent = 'Chosŏn: no carried records, a documented finding rather than missing data';
       }
 
       for (const { lane, lm, rowOf, y0, rh } of laneGeom) {

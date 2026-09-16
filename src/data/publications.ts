@@ -30,13 +30,6 @@ export const articles: Article[] = [
     status: 'forthcoming',
     note: 'Accepted · in proofs',
   },
-  {
-    title: 'The Role of Remakes and Adaptations in Activating Indian Agency',
-    venue: 'Asian Communication Research',
-    year: 2026,
-    status: 'under-review',
-    note: 'special issue “Circuits of K-content: Co-productions, Collaborations, and Connections.” Manuscript under review',
-  },
 ];
 
 export const venueLine = (a: Article): string =>

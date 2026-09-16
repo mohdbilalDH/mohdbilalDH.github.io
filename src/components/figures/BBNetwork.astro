@@ -227,7 +227,7 @@ const KIND: Record<string, string> = {
         if (on) { tied.add(e.dataset.a); tied.add(e.dataset.b); }
       });
       nodes.forEach((m) => m.classList.toggle('dim', !tied.has(m.dataset.id)));
-      detail.textContent = `${n.getAttribute('aria-label')} — lit above.`;
+      detail.textContent = `${n.getAttribute('aria-label')}, lit above.`;
     };
     n.addEventListener('mouseenter', light);
     n.addEventListener('focus', light);

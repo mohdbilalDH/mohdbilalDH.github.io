@@ -95,7 +95,7 @@ export const projects: Project[] = [
       { n: '4', unit: 'witnesses' },
     ],
     art: '/art/janghan.png',
-    artAlt: 'The two 1927 covers of 長恨 side by side: a woman seated inside a birdcage, and two women in hanbok and Western dress beneath a rising sun.',
+    artAlt: 'The two surviving 1927 issues of 長恨 photographed side by side: a woman seated inside a birdcage, and two women in hanbok and Western dress beneath a rising sun.',
     overlay: 1,
     summaryKo:
       '1927년 경성에서 장한사가 발행한 잡지 『장한』 두 호의 수록 내용을 네 개의 서로 다른 증거(1927년 원본 스캔, 2009년 영인·자료편, 연세대 목록, 기존 서지)로부터 재구성한 연구입니다. 네 증거는 수록 기사 수를 각각 다르게 기록하는데, 이는 부주의가 아니라 세는 단위가 다르기 때문입니다. 본 연구는 서지 항목·편집 단위·텍스트 항목의 세 층위를 구분하여 기록하며, 두 호를 합쳐 89개 편집 단위 안에 98개 텍스트 항목을 확인했습니다. 서명(byline)은 저자성이 아니라 "그 이름으로 발표되었다"는 증거로만 기록하고, 확정·개연·미확인 등 확실성 등급을 함께 표시합니다. 98개 텍스트 중 51개가 기생 서명이지만 신원이 확정된 경우는 8건에 그칩니다. 저작권 문제로 지면 이미지와 전문 번각은 공개하지 않으며, 메타데이터·구조·증거 관계만 공개합니다. 창간호 말뭉치는 v3.3으로 동결되었고, 2월호는 작업 층위로 남아 있습니다. 장소 분석은 창간호만 코딩된 진행 중 연구입니다.',

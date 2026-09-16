@@ -13,4 +13,19 @@ with Browser() as b:
               "Awards", "Languages", "Relic, Axis, and Adaptation", "Jawaharlal Nehru University"]:
         check(s in txt, f"CV contains {s}")
     check("Khan" not in txt, "no Khan")
+
+    # Awards and fellowships sit immediately before publications.
+    heads = [h.strip() for h in p.locator("main h2").all_inner_texts()]
+    check(heads.index("Awards & fellowships") + 1 == heads.index("Publications"),
+          f"awards immediately before publications: {heads}")
+    # The two corrected affiliations.
+    check("Graduate School of Korean Studies, The Academy of Korean Studies" in txt,
+          "current affiliation is the Graduate School of Korean Studies")
+    check("Graduate School of International Studies (GSIS)" in txt, "exchange year is SNU GSIS")
+    # The withdrawn paper, and the heading it sat under, are gone.
+    check("Under review" not in txt and "Remakes and Adaptations" not in txt, "no under-review paper")
+    # The 2026 Chungbuk conference is listed.
+    check("Framing Heritage: A Digital Humanities Analysis" in txt
+          and "2026 Global K-culture Conference" in txt
+          and "August 20\u201322, 2026" in txt, "2026 Global K-culture Conference listed")
     check(b.errors == [], f"no console errors: {b.errors}")

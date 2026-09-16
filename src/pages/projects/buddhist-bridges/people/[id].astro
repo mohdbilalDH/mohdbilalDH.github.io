@@ -29,7 +29,7 @@ const jsonld = {
   url,
 };
 ---
-<Project title={`${p.name} — Buddhist Bridges`}
+<Project title={`${p.name} · Buddhist Bridges`}
   description={`${p.name} (${p.hangul}${p.hanja ? ', ' + p.hanja : ''}), ${life(p)}: the full cited record from the frozen Buddhist Bridges dataset v3.0.`}
   jsonld={jsonld}>
   <div class="wrap">
@@ -50,7 +50,7 @@ const jsonld = {
 
     <div class="record">
       <dl class="rec">
-        <div><dt>Dates</dt><dd class="mono">{life(p)}{p.floruit?.[0] && !p.birth ? ' — a floruit window, not a lifespan' : ''}</dd></div>
+        <div><dt>Dates</dt><dd class="mono">{life(p)}{p.floruit?.[0] && !p.birth ? ', a floruit window rather than a lifespan' : ''}</dd></div>
         <div><dt>Era</dt><dd>{p.band} · {bandLabel(p.band)} ({bandSpan(p.band)})</dd></div>
         <div><dt>Role</dt><dd>{p.role}</dd></div>
         <div><dt>Mediation</dt><dd>{TYPO[p.typology] ?? p.typology.toLowerCase()} · movement: {p.movement === '-' ? 'none documented' : p.movement} · direction: {DIRECTION[p.direction] ?? p.direction}</dd></div>
@@ -83,11 +83,11 @@ const jsonld = {
       <h2>Elsewhere in the record</h2>
       <div class="sideways">
         <div>
-          <p class="label">Same era — {bandLabel(p.band)}</p>
+          <p class="label">Same era: {bandLabel(p.band)}</p>
           <p class="links">{sameBand.map((x, i) => (<><a href={personHref(x.id)}>{x.name}</a>{i < sameBand.length - 1 ? ' · ' : ''}</>))}</p>
         </div>
         <div>
-          <p class="label">Same mediation — {TYPO[p.typology] ?? p.typology.toLowerCase()}</p>
+          <p class="label">Same mediation: {TYPO[p.typology] ?? p.typology.toLowerCase()}</p>
           <p class="links">{sameType.map((x, i) => (<><a href={personHref(x.id)}>{x.name}</a>{i < sameType.length - 1 ? ' · ' : ''}</>))}</p>
         </div>
       </div>

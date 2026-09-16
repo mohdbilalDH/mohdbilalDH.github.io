@@ -26,11 +26,11 @@ const levels = [
     note: 'each continuous signed text' },
 ];
 ---
-<FigureFrame number="2 · Three levels" title="One page of 長恨, counted three ways — this is why the witnesses disagree" id="fig-levels" wide>
+<FigureFrame number="2 · Three levels" title="One page of 長恨, counted three ways: this is why the witnesses disagree" id="fig-levels" wide>
 
   {s && (
     <svg viewBox={`0 0 760 ${H}`} role="img"
-      aria-label={`Diagram. One bibliographic entry, ${s.bib_label}, corresponds to one editorial unit — the prompt ${s.prompt} — which contains ${s.item_count} separate signed textual items: ${s.answers.map((a) => `${a.title}, signed ${a.byline}`).join('; ')}. A catalogue counting the answers separately and a magazine presenting them as one feature both give an honest but different count.`}>
+      aria-label={`Diagram. One bibliographic entry, ${s.bib_label}, corresponds to one editorial unit, the prompt ${s.prompt}, which contains ${s.item_count} separate signed textual items: ${s.answers.map((a) => `${a.title}, signed ${a.byline}`).join('; ')}. A catalogue counting the answers separately and a magazine presenting them as one feature both give an honest but different count.`}>
 
       {levels.map((L) => (
         <>
@@ -97,7 +97,7 @@ const levels = [
     A real feature from 창간호: the prompt <span lang="ko">{s?.prompt}</span> (“if I were a customer”), which
     the magazine prints as one item and three women answer over their own signatures. The Yonsei catalogue
     records it as {s?.bib_entries} entry; this edition records {s?.item_count} textual items inside
-    1 editorial unit. Both counts are correct at their own level, and neither is wrong — which is precisely
+    1 editorial unit. Both counts are correct at their own level, and neither is wrong, which is precisely
     why the totals in Figure 1 can never be reconciled into a single number. Across both issues
     {j.nested_items} texts sit nested inside a parent unit this way, as prompt answers, poems printed within
     other articles, or serial parts. A byline recorded with a queried reading is shown as recorded.

@@ -48,13 +48,13 @@ const H = y;
 
 const aria = panels.map((p) =>
   `${p.label}: ` + p.rows.map((r) =>
-    r.kind === 'absent' ? `${r.name}, none — ${r.unit}`
+    r.kind === 'absent' ? `${r.name}, none: ${r.unit}`
     : r.kind === 'edition' ? `${r.name}, ${r.n} ${r.unit}`
     : r.kind === 'partial' ? `${r.name}, ${r.n} of ${r.of} attested`
     : `${r.name}, ${r.n} ${r.unit}`).join('; ')
 ).join('. ');
 ---
-<FigureFrame number="1 · Four witnesses" title="No two sources divide 長恨 the same way — and they are not counting the same kind of thing" id="fig-witnesses" wide>
+<FigureFrame number="1 · Four witnesses" title="No two sources divide 長恨 the same way, and they are not counting the same kind of thing" id="fig-witnesses" wide>
   <svg viewBox={`0 0 760 ${H}`} role="img" aria-label={`Grouped bar chart. ${aria}.`}>
     <defs>
       <pattern id="jh-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
@@ -135,10 +135,10 @@ const aria = panels.map((p) =>
 
   <div slot="caption">
     Counts as each witness gives them, drawn from zero on a common scale. The three encodings mark evidence
-    that cannot be compared like for like: <b>hatched</b> — the published bibliography counts at issue level,
-    so it can never be checked item by item; <b>dashed</b> — the 1927 table of contents is a curated selection
+    that cannot be compared like for like: <b>hatched</b>, the published bibliography counts at issue level,
+    so it can never be checked item by item; <b>dashed</b>, the 1927 table of contents is a curated selection
     on a degraded scan, and {j.toc_1927_attested} of {j.issue1.items} items are attested in it by direct
-    reading, the remainder unlisted rather than missing; <b>two-tone</b> — this edition counts at two levels at
+    reading, the remainder unlisted rather than missing; <b>two-tone</b>, this edition counts at two levels at
     once, {j.issue1.units + j.issue2.units} editorial units containing {j.issue1.items + j.issue2.items}
     textual items. The witnesses cluster but never coincide, and the reason is structural, not careless: see
     Figure 2.
@@ -159,8 +159,8 @@ const aria = panels.map((p) =>
               <td class="num">{r.kind === 'absent' ? '—' : r.kind === 'edition' ? `${r.n} / ${r.n2}` : r.n}</td>
               <td>{r.unit}</td>
               <td>{
-                r.kind === 'issue-level' ? 'Issue-level only — not verifiable item by item'
-                : r.kind === 'partial' ? `Partial reading — ${r.n} of ${r.of} attested`
+                r.kind === 'issue-level' ? 'Issue-level only: not verifiable item by item'
+                : r.kind === 'partial' ? `Partial reading: ${r.n} of ${r.of} attested`
                 : r.kind === 'absent' ? 'No witness survives'
                 : r.kind === 'edition' ? 'Editorial units / textual items'
                 : 'Full item-level listing'
