@@ -1,0 +1,303 @@
+---
+// Project page anatomy per the dh-site-publish skill: identity, research question, the interactive
+// object high on the page, evidence, findings, method, limits, data and citation. This project is a
+// register: the finished work is a dataset whose evidence is graded record by record, and the page
+// says what that dataset can and cannot carry before it draws anything from it.
+import Project from '../../../layouts/Project.astro';
+import ProjectHeader from '../../../components/ProjectHeader.astro';
+import ProjectNav from '../../../components/ProjectNav.astro';
+import ResearchQuestion from '../../../components/ResearchQuestion.astro';
+import ProjectFacts from '../../../components/ProjectFacts.astro';
+import Apparatus from '../../../components/Apparatus.astro';
+import HallyuEventsMap from '../../../components/figures/HallyuEventsMap.astro';
+import HallyuEventsContest from '../../../components/figures/HallyuEventsContest.astro';
+import HallyuEventsChannels from '../../../components/figures/HallyuEventsChannels.astro';
+import D from '../../../data/hallyu-events.json';
+import { projects } from '../../../data/projects';
+
+const p = projects.find((x) => x.slug === 'hallyu-india-events')!;
+const S = D.scale;
+const n = (x: number) => x.toLocaleString('en-US');
+const peak = D.contest.years.reduce((a, b) => (b.in_person_cities > a.in_person_cities ? b : a));
+const online = D.contest.years.filter((y) => y.online_regions > 0);
+const after = D.contest.years.filter((y) => y.year > online[online.length - 1].year);
+const ne = Object.fromEntries(D.northeast.map((r) => [r.period, r]));
+const delhi = D.cities.find((c) => c.city === 'New Delhi')!;
+const mumbai = D.cities.find((c) => c.city === 'Mumbai')!;
+const nonContestCities = D.cities.filter((c) => !D.contest.cities.some((x) => x.city === c.city)).length;
+const NE_CITIES = ['Dimapur', 'Imphal', 'Kohima', 'Shillong', 'Aizawl', 'Guwahati', 'Itanagar', 'Gangtok', 'Diphu', 'Agartala'];
+const commercialNE = D.commercial.by_city.filter((c) => NE_CITIES.includes(c.city)).reduce((s, c) => s + c.n, 0);
+const commercialIn = (city: string) => D.commercial.by_city.find((c) => c.city === city)?.n ?? 0;
+const fan2020s = D.coproduction.by_period.find((r) => r.period === '2020–2022')?.n ?? 0;
+const rec = (id: string) => `/projects/hallyu-india-events/explore/?id=${id}`;
+const list = (xs: (string | number)[]) => xs.join(', ');
+
+const scale = [
+  { n: n(S.occurrences), unit: 'documented occurrences, 2012–2025' },
+  { n: String(S.cities), unit: 'cities with an in-person record' },
+  { n: n(S.sources), unit: 'sources cited' },
+  { n: '4', unit: 'channels read independently' },
+  { n: n(S.grades.A), unit: 'records confirmed from outside the mission' },
+];
+
+const sections = [
+  { id: 'question', label: 'Question' },
+  { id: 'explore', label: 'Map' },
+  { id: 'evidence', label: 'Evidence' },
+  { id: 'findings', label: 'Findings' },
+  { id: 'method', label: 'Method' },
+  { id: 'limits', label: 'Limits' },
+  { id: 'data', label: 'Data & citation' },
+];
+
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: 'Hallyu Events in India, 2012–2025: a source-critical event register',
+  description:
+    'A register of documented Korean popular-culture events in India, 2012–2025, coded from four channels (Korean Cultural Centre India, the Embassy of the Republic of Korea, KOFICE correspondent reports, and the English-language press with setlist.fm). Each occurrence carries an EDTF date, a place with its precision, an evidence grade, its actors and its sources.',
+  creator: { '@type': 'Person', name: 'Mohd Bilal', affiliation: { '@type': 'CollegeOrUniversity', name: 'The Academy of Korean Studies' } },
+  temporalCoverage: '2012/2025',
+  spatialCoverage: { '@type': 'Place', name: 'India' },
+  inLanguage: 'en',
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+  version: '0.2.0',
+  isAccessibleForFree: true,
+  keywords: ['Hallyu', 'Korean Wave', 'India', 'cultural diplomacy', 'event data', 'K-pop', 'digital humanities'],
+  distribution: [
+    { '@type': 'DataDownload', encodingFormat: 'application/geo+json', contentUrl: 'https://mohdbilaldh.github.io/data/hallyu-india-events/events.geojson' },
+    { '@type': 'DataDownload', encodingFormat: 'application/json', contentUrl: 'https://mohdbilaldh.github.io/data/hallyu-india-events/events_unmapped.json' },
+  ],
+  variableMeasured: ['occurrence date (EDTF)', 'city and venue with geo precision', 'evidence grade', 'documenting channels', 'actors and roles'],
+};
+---
+<Project title="Hallyu Events in India, 2012–2025"
+  description="A source-critical register of 724 documented Korean popular-culture events in India, 2012–2025, read from four channels and mapped with the strength of their evidence. The contest took the state's programme to fifteen cities; the state's own record holds seven of 42 commercial K-pop concerts."
+  citationTitle="Hallyu Events in India, 2012–2025: A Source-Critical Event Register"
+  jsonld={jsonld}>
+
+  <div class="wrap">
+    <ProjectHeader project={p} scale={scale} />
+  </div>
+
+  <ProjectNav sections={sections} />
+
+  <div class="wrap">
+    <ResearchQuestion status="Status: first complete build, v0.2.0. Claude coded every record in a first pass under a delegation of 27 October 2026. The 47 coding rules await the author's review, and a human second coder has still to check a 15% sample. The counts on this page may move when that happens. The design will not.">
+      <p>
+        Where did the Korean state stage Hallyu programming in India between 2012 and 2025, how did
+        that geography change, and how much of what the record shows depends on whose record is read?
+      </p>
+      <p slot="prior">
+        Maps of Hallyu in India are usually drawn from the state's own calendar or from fan memory.
+        This register reads four channels separately and keeps each record's evidence with it, so a
+        reader can see where the channels agree, where only one of them was looking, and where none
+        was.
+      </p>
+    </ResearchQuestion>
+
+    <section class="section flush" id="explore" aria-labelledby="explore-h">
+      <h2 id="explore-h"><span class="mark">The map</span>{n(S.mapped)} placed occurrences, graded by their evidence</h2>
+      <div class="prose">
+        <p>
+          Each mark is one documented occurrence. Use the years, the filters and the search to read
+          the register. The list under the map gives every matching record with its sources,
+          including the {S.online} online ones that have no point. Select a single year to see that
+          year's circuit, or set the organiser filter to ticketed concerts to see what the Korean
+          mission had no part in.
+        </p>
+      </div>
+      <HallyuEventsMap />
+      <p class="small muted explore-link">
+        <a href="/projects/hallyu-india-events/explore/">Open the map full screen →</a>
+        The filters and the selected record stay in the address, so a view can be cited.
+      </p>
+      <Apparatus label="What a mark is">
+        <p>
+          The map draws what was documented. It does not draw what happened. The number of marks
+          rises after 2018 partly because record-keeping rose: the Korean Cultural Centre began posting
+          press clippings on its own site in 2020, and the English-language press wrote about Hallyu
+          far more often after 2018 than before. Where nothing was documented, nothing is drawn, and
+          the register says so instead of filling the gap (G1 and G2 on the data page).
+        </p>
+      </Apparatus>
+    </section>
+
+    <section class="section" id="evidence" aria-labelledby="evidence-h">
+      <h2 id="evidence-h"><span class="mark">Evidence</span>The contest, the record, and what the record leaves out</h2>
+      <div class="prose">
+        <p>
+          The All India K-Pop Contest is the state's spatial instrument. It is the one programme the
+          Korean Cultural Centre runs outside Delhi every year, and the register follows every
+          documented regional round and final, from the Embassy's single contest in
+          <a href={rec(D.examples.first_contest_2012)}>August 2012</a> to the ten-city circuit of
+          2025. The circuit's growth is the growth of the state's reach: four cities in 2014, seven in
+          2015, eleven in 2017, {peak.in_person_cities} in {peak.year}. The pandemic changed its form
+          rather than stopping it. For {list(online.map((y) => y.year))} the rounds were live-streamed
+          by region, with local fan clubs and King Sejong Institutes as hosts
+          ({list(online.map((y) => y.online_regions))} regions in turn), and the circuit came back in
+          person at {list(after.map((y) => y.in_person_cities))} cities.
+        </p>
+      </div>
+      <HallyuEventsContest />
+      <div class="prose">
+        <p>
+          Away from the contest, the state's in-person programme is a Delhi programme. New Delhi holds
+          {delhi.total} of the {n(S.mapped)} placed records, {delhi.pop} of them in popular culture.
+          Mumbai, next, holds {mumbai.total}. Of the {S.cities} cities with any in-person record,
+          {nonContestCities} never hosted a round, and most of those appear once or twice: a touring
+          theatre group, a film weekend, a concert somebody else put on.
+        </p>
+        <p>
+          The register also measures its own record. Every occurrence carries the channels that
+          documented it, so the stack below can separate three kinds of record: what the Korean
+          mission posted and nobody else reported, what the mission and an outside source both carry,
+          and what is known only from outside the mission, which means the press, setlist.fm or a
+          KOFICE correspondent.
+        </p>
+      </div>
+      <HallyuEventsChannels />
+      <div class="prose">
+        <p>
+          The two ends of the stack belong together. Of the {D.mission.total} popular-culture events the
+          mission organised or co-organised, {D.mission.alone} rest on its own word and nothing else;
+          the press rarely covers the state's programme beyond the contest finals. In the other
+          direction, of the {D.commercial.total} ticketed K-pop concerts and fan meetings with no mission
+          actor in any role, the Centre's record documents {D.commercial.in_kcci} and the Embassy's
+          {D.commercial.in_mofa}. Commercial K-pop barely exists in the state's record, and that is
+          where the Northeast is: {commercialNE} of those {D.commercial.total} concerts took place in
+          northeastern cities, against {commercialIn('New Delhi')} in Delhi and {commercialIn('Mumbai')} in Mumbai.
+        </p>
+      </div>
+      <Apparatus label="Grades, and why two posts by the mission do not make an A">
+        <p>
+          Grade A needs a post-event source from outside the Korean mission. An Embassy post about a
+          Centre event, or a Centre post about an Embassy event, is the same organiser speaking twice,
+          because the Centre is the Embassy's cultural section (codebook D-45). Applying that rule at
+          build time lowered 179 coded grades from A to B, each change logged. Of the
+          {n(S.occurrences)} occurrences in the series, {S.grades.A} are grade A, {S.grades.B} grade B
+          and {S.grades.C} grade C.
+        </p>
+      </Apparatus>
+    </section>
+
+    <section class="section" id="findings" aria-labelledby="findings-h">
+      <h2 id="findings-h"><span class="mark">Findings</span>What the first build establishes</h2>
+      <div class="prose">
+        <ol class="findlist">
+          <li>
+            <b>The contest carried the state's programme across India, and little else did.</b>
+            One city in 2012, {peak.in_person_cities} in {peak.year}, three online years, then
+            {list(after.map((y) => y.in_person_cities))} cities. Outside the contest, the mission's
+            in-person programme stayed in Delhi. <a class="backto" href="#contest">See the circuit →</a>
+          </li>
+          <li>
+            <b>Whose record you read decides what you see.</b> The state's record holds
+            {D.commercial.in_mission} of {D.commercial.total} commercial K-pop concerts and fan meetings, and the
+            press holds little of the state's programme beyond its finals. Neither channel can stand in
+            for the field, which is why the channel stays attached to every record.
+            <a class="backto" href="#channels">See the stack →</a>
+          </li>
+          <li>
+            <b>The Northeast's documented share peaked with the pre-debut tours and the fan-run rounds.</b>
+            Northeastern cities hold {ne['2012–2016'].northeast} of {ne['2012–2016'].total} in-person
+            popular-culture records in 2012–2016, {ne['2017–2019'].northeast} of {ne['2017–2019'].total} in
+            2017–2019 (the M.O.N.T, VAV and Jang Hanbyul tours, the Imphal and Kohima rounds) and
+            {ne['2023–2025'].northeast} of {ne['2023–2025'].total} in 2023–2025, when ticketed K-pop concentrated
+            in Mumbai and Delhi. <a class="backto" href="#map">See the map →</a>
+          </li>
+          <li>
+            <b>Fan collectives co-produced the state's programme for a few years, and intensely.</b>
+            {D.coproduction.fan_events} popular-culture events have a fan collective as organiser or
+            co-organiser. {D.coproduction.fan_events_mission} of them carry the mission's brand, and
+            {fan2020s} of those fall in 2020–2022, when the regional rounds were handed to local fan
+            clubs and then run online with them. The
+            <a href={rec(D.examples.imphal_2019)}>Imphal round of 2019</a>, run by three fan clubs and a
+            university K-club with KOFICE money, is the clearest case, and only the KOFICE correspondent
+            documented it in any detail.
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="method" aria-labelledby="method-h">
+      <h2 id="method-h"><span class="mark">Method</span>Four channels, read blind to one another</h2>
+      <div class="prose">
+        <p>
+          The unit is the occurrence: one round, one screening, one concert, at one place and time
+          (D-02). Four channels were harvested politely and cached, then coded in separate passes that
+          could not see each other's coding (D-30, D-34): the Korean Cultural Centre's event,
+          press-release and media boards; the Embassy's notices; the KOFICE correspondent reports from
+          India, 2007 to 2022; and the English-language press with setlist.fm, searched year by year.
+          A script drafted the matches between channels on date, city and series. The decisions were
+          made by hand on event identity, and the resolution files are kept as the record (D-42, D-44).
+        </p>
+        <p>
+          Every record carries an EDTF date with its precision, a city with its Wikidata identifier,
+          the venue as written, and a note of whether the venue was geocoded: {S.venue_geocoded} of
+          {n(S.mapped)} placed records are at venue level, and the rest sit at the city's coordinate,
+          offset a little so that they do not hide one another. It also carries an evidence grade, the
+          actors with their roles and the source for each role, and every source with its URL and
+          whether it is independent of the organiser. Contestants, winners and minors are never named
+          (D-28). Nothing was fetched past a block or a robots exclusion. One coder did fetch one
+          blocked page; that source was removed, the record was re-graded, and the incident is in the
+          disclosure statement.
+        </p>
+      </div>
+      <Apparatus label="Delegation and disclosure">
+        <p>
+          The author delegated the codebook's rulings, the harvesting and the first-pass coding to
+          Claude (Anthropic) on 27 October 2026, under rules written before coding began. Each ruling
+          is logged as "decided by Claude, pending review", each record carries
+          <code>coded_by</code>, and the agreement test with a human second coder has not yet been
+          run. The <a href="/projects/hallyu-india-events/data/">data page</a> carries the full method,
+          the known gaps and the disclosure.
+        </p>
+      </Apparatus>
+    </section>
+
+    <section class="section" id="limits" aria-labelledby="limits-h">
+      <h2 id="limits-h"><span class="mark">Limits</span>What this register cannot show</h2>
+      <div class="prose">
+        <ul class="limits">
+          <li><b>Documentation grows over time.</b> The Centre's boards begin in 2012–13 and its press-clipping board in 2020. A rising count of records is partly a rising volume of record-keeping, and this page never reads it as rising activity.</li>
+          <li><b>Fan-run events outside Delhi before 2019 are mostly missing.</b> No institution recorded them, and Instagram cannot be searched historically. What the channels mention but cannot place or date is kept as 266 leads rather than as records.</li>
+          <li><b>Three years have no geography on the map.</b> The 2020–2022 rounds were live-streamed by region. They are in the list with the region in the title, and no point is drawn for them.</li>
+          <li><b>Eight of the ten 2025 regional rounds are dated to the month.</b> No channel records their day. They are coded at month precision under D-47 and drawn at the city centre.</li>
+          <li><b>The press was searched in English only.</b> Manipuri, Mizo, Assamese, Bengali and Tamil coverage would change the counts for the Northeast and the South. A collaborator could close this gap first.</li>
+          <li><b>The KOFICE eyewitness channel ends in 2022,</b> so the fan-run detail of 2019 has no counterpart after it.</li>
+          <li><b>One AI coder did the first pass.</b> The blindness between channels is between agent contexts, not people. The second-coder sample and the author's review of all 47 rulings come next, and the grades may move.</li>
+        </ul>
+        <p class="small muted">
+          The full list of known gaps (G1 to G17), with the cause of each and whether a later release
+          can close it, is on the <a href="/projects/hallyu-india-events/data/#gaps">data page</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="data" aria-labelledby="facts-h">
+      <ProjectFacts
+        project={p}
+        duration="Proposal reviewed and scope fixed on 27 October 2026; pilot on 2019 and 2024 completed the same day; full 2012–2025 build on 29 October; map, data closure and this page on 5 November 2026. Review, second coder and deposit to follow."
+        resources={[
+          { href: '/projects/hallyu-india-events/explore/', label: 'The map, full screen', note: 'filters, search and the list of every record' },
+          { href: '/projects/hallyu-india-events/data/', label: 'Method and data', note: 'channels, codebook, known gaps, disclosure, figure grammar' },
+          { href: '/data/hallyu-india-events/events.geojson', label: 'events.geojson', note: `the ${n(S.mapped)} placed occurrences of 2012–2025 with their actors and sources, plus the records before 2012 and the 2026 addendum`, download: true },
+          { href: '/data/hallyu-india-events/events_unmapped.json', label: 'events_unmapped.json', note: `${S.online} online and unplaced occurrences`, download: true },
+          { href: '/data/hallyu-india-events/stats.json', label: 'stats.json', note: 'yearly statistics and the contest geography', download: true },
+          { href: 'https://github.com/mohdbilalDH/hallyu-india-events', label: 'Repository', note: 'codebook, coding files, pipeline, leads and the full CSV tables' },
+        ]}
+        licence="Register data (records, actors, sources, gazetteer): CC BY 4.0. Pipeline and map code: MIT. Boundaries: Natural Earth, India point of view (public domain). City coordinates: Wikidata (CC0); one coordinate from OpenStreetMap through Nominatim (ODbL). Sources are cited by URL and never redistributed."
+        citation="Bilal, Mohd. Hallyu Events in India, 2012–2025: A Source-Critical Event Register. Version 0.2.0. The Academy of Korean Studies, 2026."
+        url="https://mohdbilaldh.github.io/projects/hallyu-india-events/"
+        credits="Research design, data, code, map and design: Mohd Bilal (The Academy of Korean Studies). First-pass coding was delegated to Claude (Anthropic) on 27 October 2026 under rules recorded in the codebook; every ruling awaits the author's review. No external funding." />
+    </section>
+  </div>
+</Project>
+<style>
+  .flush { margin-top: 0; }
+  .explore-link { margin: -24px 0 28px; }
+  .explore-link a { margin-right: 10px; font-weight: 500; }
+  .limits, .findlist { max-width: var(--w-measure); }
+  .limits li, .findlist li { margin-bottom: 12px; }
+</style>

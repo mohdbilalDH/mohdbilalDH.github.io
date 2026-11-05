@@ -3,7 +3,7 @@
 // drive the project pages themselves. Adding a project means one entry here plus its pages.
 
 export type Category = 'editions' | 'networks' | 'corpora';
-export type Kind = 'edition' | 'argument' | 'investigation';
+export type Kind = 'edition' | 'argument' | 'investigation' | 'register';
 export type State = 'frozen' | 'in-progress' | 'released';
 
 export type Project = {
@@ -55,13 +55,14 @@ export type Project = {
 
 export const categories: { key: Category; title: string }[] = [
   { key: 'editions', title: 'Digital editions and datasets' },
-  { key: 'corpora', title: 'Press corpora' },
+  { key: 'corpora', title: 'Hallyu in India: the press corpus and the event register' },
 ];
 
 export const kindLabel: Record<Kind, string> = {
   edition: 'Digital edition',
   argument: 'Prosopography',
   investigation: 'Corpus in development',
+  register: 'Event register',
 };
 
 export const projects: Project[] = [
@@ -183,5 +184,46 @@ export const projects: Project[] = [
     overlay: 2,
     summaryKo:
       '2000년부터 2026년까지 인도 영자 일간지가 한국 대중문화를 어떻게 다루었는지 연구하기 위한 말뭉치 구축 및 자료 가용성 조사입니다. 현재 완료된 것은 프레이밍 분석이 아니라 자료 조사 단계이며, 그 결과 자체가 하나의 발견입니다. 라이선스 전문 검색(ProQuest: Times of India, Hindustan Times, Indian Express)에서 2000–2010년 한국 관련 기사는 10,146건이지만 "Hallyu" 또는 "Korean wave"라는 단어는 전 기간에 걸쳐 단 1회 나타납니다. 인터넷 아카이브를 통한 The Hindu 독립 수집에서도 문화 맥락의 한류 표제어는 0건으로, 같은 결과가 독립적으로 확인되었습니다. 지면판만으로 집계한 2006–2026년 계열(4,796건)에서 곡선이 꺾이는 지점은 2017년이 아니라 2018–19년이며, 2017년은 오히려 국지적 저점입니다. 또한 각 신문의 전문 수록 개시 연도가 서로 다르고 2017년부터 온라인판이 색인에 들어오기 때문에 기사 수의 증가를 곧 인기의 증가로 읽을 수 없습니다. 신문 본문은 저작권 대상이므로 이 저장소는 메타데이터·빈도·파생 통계만 공개합니다.',
+  },
+  {
+    slug: 'hallyu-india-events',
+    href: '/projects/hallyu-india-events/',
+    shortTitle: 'Hallyu events in India',
+    title: 'Hallyu Events in India, 2012–2025',
+    subtitle: 'A source-critical register of 724 documented Korean popular-culture events, mapped with the strength of their evidence',
+    method: 'event register',
+    kind: 'register',
+    state: 'in-progress',
+    stateLabel: 'First complete build · first-pass coding pending review',
+    stateShort: 'First build',
+    dates: '2012–2025',
+    description:
+      'Where did the Korean state stage Hallyu programming in India between 2012 and 2025, how did that geography change, and how much of the picture depends on whose record is read? A register of 724 documented occurrences from four channels, each graded by its evidence and placed on a map.',
+    question:
+      'Where did the Korean state stage Hallyu programming in India between 2012 and 2025, how did that geography change, and how much of what the record shows depends on whose record is read?',
+    finding:
+      'The All India K-Pop Contest carried the state’s programme from one city to fifteen by 2019 and back to ten or eleven after the pandemic; almost everything else it staged stayed in Delhi. Of 42 ticketed K-pop concerts and fan meetings with no state involvement, the state’s own record holds seven.',
+    version: 'v0.2.0, built 5 November 2026 · 724 occurrences · 1,357 sources · codebook v0.2 (D-01 to D-47)',
+    tags: ['Event data', 'Leaflet', 'Python + DuckDB', 'evidence grades', 'data CC-BY-4.0'],
+    category: 'corpora',
+    yearLabel: '2012–2025 · First complete build',
+    blurb:
+      'A register of 724 documented Korean popular-culture occurrences across 34 Indian cities, 2012–2025, read from the Korean Cultural Centre, the Embassy, KOFICE correspondents and the press, each record graded by its evidence and placed on a map.',
+    counts: [
+      { n: '724', unit: 'occurrences' },
+      { n: '34', unit: 'cities' },
+      { n: '1,357', unit: 'sources' },
+    ],
+    art: '/art/hallyu-india-events.png',
+    artAlt: 'Dot matrix of the All India K-Pop Contest’s rounds by city and year: a single row for New Delhi in 2012 widens to fifteen cities in 2019, a grey band marks three online years, and eleven rows return after 2022.',
+    overlay: 3,
+    summaryKo:
+      '2012년 주인도한국문화원 개원부터 2025년까지 인도에서 열린 한국 대중문화 행사를 기록한 사료 비판적 행사 대장입니다. 한국문화원과 주인도 한국대사관의 게시물, KOFICE 해외통신원 리포트, 인도 영자 언론과 setlist.fm의 네 채널을 서로 독립적으로 읽어 724건의 행사 발생(occurrence)을 코딩했습니다. 각 기록에는 증거 등급(A: 행사 후 주최 측 외부 자료로 확인, B: 주최 측 자체 사후 기록만 존재, C: 사전 공지만 존재)과 날짜·장소의 정밀도, 기록한 채널을 함께 적었습니다. 지도에 표시되는 것은 일어난 행사가 아니라 기록된 행사입니다. 전인도 케이팝 경연대회는 한국 국가 프로그램이 인도 각지로 뻗어 나간 통로였습니다. 2012년 델리 한 곳에서 시작한 대회는 2019년 15개 도시로 늘었고, 2020–22년에는 지역별 온라인 예선(18–20개 지역)으로 이어지다가 그 뒤 10–11개 도시로 자리를 잡았습니다. 대회 밖의 국가 프로그램은 대부분 델리를 벗어나지 않았습니다. 누구의 기록을 읽느냐에 따라 보이는 것도 달라집니다. 국가 기관이 관여하지 않은 유료 케이팝 콘서트와 팬미팅 42건 가운데 문화원과 대사관 기록에 남은 것은 7건뿐입니다. 반대로 문화원이 주최한 대중문화 행사 260건 중 89건은 주최 측 기록 말고는 어떤 자료도 없습니다. 동북부 인도의 비중은 2017–19년(82건 중 19건)에 가장 높았고, 팬 단체가 국가 브랜드 행사를 주최하거나 공동 주최한 사례는 2019–22년에 몰려 있습니다. 지도의 국경선은 Natural Earth의 인도 관점(India point of view) 자료를 따릅니다. 1차 코딩은 2026년 10월 27일 저자의 위임에 따라 Claude(Anthropic)가 맡았고, 코딩 규칙(D-01~D-47) 전체가 저자의 검토를 기다리고 있습니다. 데이터는 CC BY 4.0, 코드는 MIT로 공개합니다.',
+    explore: {
+      href: '/projects/hallyu-india-events/explore/',
+      label: 'Open the map full screen',
+      blurb:
+        'Every documented occurrence on one map, filterable by year, domain, evidence grade and organiser, with a search by place and a list of every record for the keyboard.',
+    },
   },
 ];

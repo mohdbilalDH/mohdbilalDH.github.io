@@ -1,0 +1,75 @@
+---
+import FigureFrame from '../FigureFrame.astro';
+// The All India K-Pop Contest's circuit, one row per city and one column per year. A filled mark
+// is a documented in-person round in that city; the three pandemic years are drawn as a band with
+// the number of regions streamed, because those rounds had a region but no place (KNOWN_GAPS G15).
+// Rows are ordered by the year a city first held a round, so the circuit's growth reads top to
+// bottom. Drawn from stats.json through scripts/hallyu-events-views.mjs; nothing is typed in.
+import D from '../../data/hallyu-events.json';
+const years = D.contest.years;
+const cities = D.contest.cities;
+const online = years.filter((y) => y.online_regions > 0 && y.in_person_cities === 0);
+const peak = years.reduce((a, b) => (b.in_person_cities > a.in_person_cities ? b : a));
+const NE = new Set(['Arunachal Pradesh', 'Assam', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Sikkim', 'Tripura']);
+
+const X0 = 190, COL = 48, ROW = 24, Y0 = 56;
+const W = X0 + years.length * COL + 24;
+const H = Y0 + cities.length * ROW + 52;
+const cx = (i: number) => X0 + i * COL + COL / 2;
+const cy = (i: number) => Y0 + i * ROW + ROW / 2;
+const onlineX1 = cx(years.findIndex((y) => y.year === online[0]?.year)) - COL / 2;
+const onlineX2 = cx(years.findIndex((y) => y.year === online[online.length - 1]?.year)) + COL / 2;
+const alt = `Dot matrix of contest rounds by city and year, 2012 to 2025. The circuit grows from New Delhi alone in 2012 and 2013 to ${peak.in_person_cities} cities in ${peak.year}, ` +
+  `moves online for ${online.map((y) => y.year).join(', ')} with ${online.map((y) => y.online_regions).join(', ')} regions, and returns to ${years[years.length - 1].in_person_cities} cities in ${years[years.length - 1].year}. ` +
+  `${cities.filter((c) => NE.has(c.state)).length} of the ${cities.length} cities are in the Northeast.`;
+---
+<FigureFrame number="2" title={`The contest grew from one city to ${peak.in_person_cities} by ${peak.year}, survived the pandemic online, and settled at ${years[years.length - 1].in_person_cities}`} id="contest" wide>
+  <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={alt}>
+    {/* the online band first, under everything */}
+    {online.length > 0 && (
+      <>
+        <rect x={onlineX1} y={Y0 - 8} width={onlineX2 - onlineX1} height={cities.length * ROW + 16} fill="var(--void)" opacity="0.22" />
+        <text x={(onlineX1 + onlineX2) / 2} y={Y0 + cities.length * ROW + 30} text-anchor="middle" font-family="var(--f-body)" font-size="12.5" fill="var(--heading)">
+          streamed by region: {online.map((y) => y.online_regions).join(' · ')}
+        </text>
+      </>
+    )}
+    {years.map((y, i) => (
+      <text x={cx(i)} y={Y0 - 20} text-anchor="middle" font-family="var(--f-mono)" font-size="12.5" fill="var(--muted)">{String(y.year).slice(2)}</text>
+    ))}
+    <text x={X0 - 8} y={Y0 - 20} text-anchor="end" font-family="var(--f-body)" font-size="12" fill="var(--muted)">’12 to ’25</text>
+    {cities.map((c, r) => (
+      <>
+        <line x1={X0} y1={cy(r)} x2={X0 + years.length * COL} y2={cy(r)} stroke="var(--hairline)" stroke-width="1" />
+        <text x={X0 - 10} y={cy(r) + 4.5} text-anchor="end" font-family="var(--f-body)" font-size="13.5" fill={NE.has(c.state) ? 'var(--navy)' : 'var(--ink)'} font-weight={NE.has(c.state) ? 600 : 400}>{c.city}</text>
+        {years.map((y, i) => c.years.includes(y.year) && (
+          <circle cx={cx(i)} cy={cy(r)} r="6" fill="var(--navy)" />
+        ))}
+      </>
+    ))}
+    {years.map((y, i) => (
+      <text x={cx(i)} y={Y0 + cities.length * ROW + 12} text-anchor="middle" font-family="var(--f-mono)" font-size="12" fill="var(--navy)">{y.in_person_cities || ''}</text>
+    ))}
+    <text x={X0 - 8} y={Y0 + cities.length * ROW + 12} text-anchor="end" font-family="var(--f-body)" font-size="12" fill="var(--muted)">cities</text>
+  </svg>
+  <div slot="caption">
+    One row per city, one column per year. A mark is a documented in-person regional round or final of
+    the All India K-Pop Contest, and northeastern cities are set in navy. The grey band is the pandemic
+    format, when the rounds were live-streamed by region with local fan clubs and cannot be placed.
+    The number under each column is the count of cities that year. The 2025 rounds outside Delhi and
+    Chennai are dated to the month only (codebook D-47).
+  </div>
+  <div slot="table">
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th scope="col">Year</th><th scope="col" class="num">In-person cities</th><th scope="col" class="num">Online regions</th><th scope="col" class="num">Occurrences</th><th scope="col">Cities</th></tr></thead>
+        <tbody>
+          {years.map((y) => (
+            <tr><td class="mono">{y.year}</td><td class="num">{y.in_person_cities}</td><td class="num">{y.online_regions || '—'}</td><td class="num">{y.occurrences}</td>
+              <td>{cities.filter((c) => c.years.includes(y.year)).map((c) => c.city).join(', ') || (y.online_regions ? 'online' : '—')}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</FigureFrame>

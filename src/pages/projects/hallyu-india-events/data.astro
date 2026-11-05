@@ -1,0 +1,196 @@
+---
+import Project from '../../../layouts/Project.astro';
+import PageTitle from '../../../components/PageTitle.astro';
+import Apparatus from '../../../components/Apparatus.astro';
+import CiteBlock from '../../../components/CiteBlock.astro';
+import FigureGrammar from '../../../components/FigureGrammar.astro';
+import Factsheet from '../../../components/Factsheet.astro';
+import D from '../../../data/hallyu-events.json';
+import { projects } from '../../../data/projects';
+import { buildDate } from '../../../data/build';
+
+const p = projects.find((x) => x.slug === 'hallyu-india-events')!;
+const S = D.scale;
+const n = (x: number) => x.toLocaleString('en-US');
+const C = D.channel_totals as Record<string, number>;
+
+const channels = [
+  { name: 'Korean Cultural Centre India (KCCI)', read: 'The Performances & Events, Press Release, Announcement, Hallyu Programs and Media Coverage boards in English: 2,157 posts harvested and read. The Korean-language boards (1,817 posts) were harvested and consulted for dates but not coded; their event boards mirror the English ones.', span: '2012–2026', n: C.kcci },
+  { name: 'Embassy of the Republic of Korea in India', read: 'The Embassy’s news and notice boards in English and Korean: 3,339 posts harvested, the cultural notices read.', span: '2005–2026', n: C.mofa },
+  { name: 'KOFICE correspondent reports', read: 'All 175 India reports by the overseas correspondents of the Korea Foundation for International Cultural Exchange, in Korean, read in full. This is the one channel with eyewitness detail of fan-run events.', span: '2007–2022', n: C.kofice },
+  { name: 'Press and setlist.fm', read: 'The Indian English-language press, searched year by year with the project’s event vocabulary: the national dailies, the northeastern press, and Hallyu fan media such as Hallyuism and Namaste Hallyu. setlist.fm for ticketed concerts. No paywall, block or robots exclusion was bypassed.', span: '2012–2025', n: (C.press || 0) + (C.setlist || 0) },
+];
+
+const gaps = [
+  ['G1', 'Documentation grows over time, so later years have more records.', 'KCCI began publishing its own calendar online in 2012–13 and its press-clipping board in 2020. Press coverage of Hallyu rose many times over after 2018.', 'No. Counts are reported beside the coverage matrix, and a rising curve is never read as rising activity.'],
+  ['G2', 'Fan-run events outside Delhi before 2019.', 'No institution recorded them, and Instagram cannot be searched historically.', 'Partly, through a qualitative case register and interviews. Both are out of scope here.'],
+  ['G3', 'Anything before 2012.', 'There was no Cultural Centre, and the Embassy’s earlier notices are consular. Four events from 2009–2011, documented by KOFICE, are kept outside the series.', 'Partly, through an information-disclosure request to the ministry.'],
+  ['G4', 'The KOFICE channel is silent in 2014–15 and 2021, and ends in 2022.', 'The correspondents’ posting stopped. Hallyu did not.', 'No.'],
+  ['G5', 'KCCI’s Hallyu Programs board covers 2021–23 only.', 'The board was created in 2021 and abandoned in 2023.', 'No. The other boards partly cover it.'],
+  ['G6', 'The regional-language press (Manipuri, Mizo, Assamese, Bengali, Tamil) was not searched.', 'Language and database access.', 'Yes, with collaborators.'],
+  ['G7', 'Korean titles inside general Indian film festivals are not coded as events.', 'A scope decision (D-11).', 'Yes, from festival catalogues.'],
+  ['G8', 'The consulates’ own boards (Mumbai, Chennai) were not harvested.', 'Time.', 'Yes.'],
+  ['G9', 'The Korea Foundation’s annual Hallyu surveys were not read for India.', 'The PDFs sit behind a download plug-in.', 'Yes, by the author.'],
+  ['G10', 'No information-disclosure request has been filed.', 'The author has not filed one yet.', 'Yes.'],
+  ['G12', 'Commercial concerts with no press or setlist coverage.', 'The nature of the record.', 'Partly, from ticketing pages in the Wayback Machine.'],
+  ['G13', `Venue-level coordinates exist only where Wikidata has the venue (${S.venue_geocoded} of ${n(S.mapped)} placed records). The rest sit at the city centre and are drawn as circles.`, 'There is no open gazetteer of Indian venues.', 'Yes, by manual geocoding with a documented method.'],
+  ['G14', 'One AI coder did all of the first-pass coding, and the blindness between channels is between agent contexts rather than people.', 'The delegated build.', 'Yes: a human second coder on a 15% sample (D-29) and the author’s review of every ruling.'],
+  ['G15', 'The 2020–2022 contest rounds were held online, one live-stream per region, and have no map point.', 'The pandemic format.', 'No. The regions are kept in the titles and the regional partners among the actors.'],
+  ['G16', 'Parallel coders produced colliding lead ids and duplicate actor ids.', 'Parallel coding.', 'Closed at build time (D-46) by aliases and renumbering. The coded lines are left as written.'],
+  ['G17', 'Eight of the ten 2025 regional rounds have no recorded day, and the 2023 final is dated to the month.', 'The organiser scheduled the rounds for June 2025 and left the dates to the regional hosts. No channel records them.', 'Partly. They are coded at month precision under D-47; a regional host’s own notice could date each round.'],
+];
+
+const rows = [
+  { term: 'Unit', html: 'One occurrence: a bounded programme at one place and time, including each regional round of a contest (D-02). Standing weekly classes, mail-in competitions and festival strands without a programme of their own are not occurrences (D-33, D-36, D-37).' },
+  { term: 'Scope', html: 'Korean popular-culture events in India, 2012–2025, with a two-tier domain field. K-pop, K-drama, film, other Korean music and mixed programmes are the default; language, taekwondo, exhibitions and talks are coded but off by default (D-08). Four events from 2009–2011 and sixteen from 2026 are kept outside the series (D-43, D-15).' },
+  { term: 'Evidence', html: `Grade A: confirmed after the event by a source outside the Korean mission. B: the organiser’s own post-event record. C: announced only. An Embassy post about a Centre event is the same organiser speaking twice (D-45); the build lowers any coded grade the sources cannot support and logs the change. Of ${n(S.occurrences)} occurrences: A ${S.grades.A}, B ${S.grades.B}, C ${S.grades.C}.` },
+  { term: 'Dates and places', html: `EDTF dates with their precision (day, range, month, year), and never an invented day. Cities carry a Wikidata identifier. Venues are geocoded from Wikidata where it has them (${S.venue_geocoded} records); otherwise the record sits at the city coordinate and is drawn as a circle (D-18). One coordinate comes from Nominatim (ODbL). The map’s boundaries are Natural Earth’s India point-of-view release, which draws India’s international boundary as India represents it.` },
+  { term: 'Actors', html: `${n(S.actors)} named organisations and artists with typed roles (organiser, co-organiser, sponsor, funder, venue partner, performer, media partner), each role tied to the source that states it. No contestant, winner or minor is named (D-28).` },
+  { term: 'Leads', html: '266 open leads: what the channels mention but cannot place or date, kept with the reason and never deposited as events. Twenty leads were promoted or matched on 5 November 2026 and keep their lines with the record they became.' },
+  { term: 'Build', html: `Register built 5 November 2026 (v0.2.0). The figures are derived from the web contract by <code>scripts/hallyu-events-views.mjs</code>; site built ${buildDate}.` },
+];
+---
+<Project title="Hallyu events in India: method and data"
+  description="Channels, codebook, pipeline, known gaps, AI disclosure, licence and citation for the Hallyu events register, 2012–2025.">
+  <PageTitle title="Method and data"
+    lede="Which records were read, how an occurrence was coded and graded, what the register cannot show, who did the coding, and how to cite it." />
+  <section class="band band--flush">
+    <div class="wrap">
+      <p class="small muted breadcrumb"><a href={p.href}>← {p.shortTitle}</a></p>
+
+      <section class="section first">
+        <h2>The four channels</h2>
+        <div class="prose">
+          <p>
+            Each channel was harvested politely with an identified user agent, and every response was
+            cached so that a re-run never touches the network again. Each was then coded in a pass
+            that could not see the other channels' coding. A record documented by two channels counts
+            in both columns below. {n(D.one_channel_only)} of the {n(S.occurrences)} occurrences are
+            known from one channel only, which is a measure of how much any single record would miss.
+          </p>
+        </div>
+        <div class="tablewrap">
+          <table>
+            <thead><tr><th scope="col">Channel</th><th scope="col">What was read</th><th scope="col">Span</th><th scope="col" class="num">Records documented</th></tr></thead>
+            <tbody>
+              {channels.map((c) => (
+                <tr><td><b>{c.name}</b></td><td>{c.read}</td><td class="mono">{c.span}</td><td class="num">{c.n}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <Apparatus label="Why the channels are kept apart">
+          <p>
+            The press reprints the Centre's releases, the Embassy posts about the Centre's events, and
+            the KOFICE correspondent attends what fans organise. Which of them documented a record is
+            the register's second finding rather than noise to be averaged away. So the channel travels
+            with every record, and the coverage matrix is published beside every count.
+          </p>
+        </Apparatus>
+      </section>
+
+      <section class="section">
+        <h2>The codebook, in brief</h2>
+        <div class="measure"><Factsheet rows={rows} /></div>
+        <div class="prose">
+          <p>
+            The full codebook, with 47 numbered rulings and the reasoning and reversal cost of each, is
+            in the repository's <code>docs/</code> folder with the coding protocol, the source audit
+            and the search log. Boundary cases that no rule covered were numbered as they arose and
+            applied retroactively, with the recode noted on the record.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Pipeline</h2>
+        <div class="prose">
+          <p>
+            <b>Harvest</b> fetches each channel's list pages and posts through a cached, throttled
+            fetcher. <b>Parse</b> turns the cache into one row per post. <b>Candidates</b> sifts the
+            posts by year and vocabulary into sheets for coding. <b>Code</b> writes one JSON line per
+            occurrence, with its actors and sources, in channel-separated files. <b>Match</b> drafts
+            cross-channel matches on date, city and series and leaves every non-trivial one to be
+            decided by hand; the resolution files are the record. <b>Build</b> validates every field
+            against the codebook's vocabularies, applies the independence rule to the grades, resolves
+            actor aliases, geocodes, writes the CSV tables and a DuckDB database, and emits the files
+            this site reads: <code>events.geojson</code>, <code>events_unmapped.json</code>,
+            <code>coverage.json</code>, <code>stats.json</code> and <code>basemap.json</code>. Nothing
+            on this site is typed from the data. A script derives the figures from those files and is
+            re-run after every copy.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="gaps">
+        <h2>Known gaps</h2>
+        <div class="prose">
+          <p>
+            What the register cannot show, by construction. Each row names the gap, its cause and
+            whether a later release could close it. The list is kept current with every build.
+          </p>
+        </div>
+        <div class="tablewrap">
+          <table>
+            <thead><tr><th scope="col">#</th><th scope="col">Gap</th><th scope="col">Cause</th><th scope="col">Closable?</th></tr></thead>
+            <tbody>
+              {gaps.map((g) => (
+                <tr><td class="mono">{g[0]}</td><td>{g[1]}</td><td>{g[2]}</td><td>{g[3]}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section" id="disclosure">
+        <h2>Who did the coding</h2>
+        <div class="prose">
+          <p>
+            On 27 October 2026 the author delegated the codebook's rulings, the harvesting and the
+            first-pass coding to Claude (Anthropic), to be done under rules written before coding began
+            and logged as they were made. Twenty-six agent contexts coded the five channel groups.
+            Blindness between channels was kept by giving each context the codebook and its channel's
+            texts but not the other channels' coding. Every ruling in the codebook is marked "decided
+            by Claude, pending review", and every record carries <code>coded_by</code> and
+            <code>coded_on</code>. One coder fetched a single blocked newspaper page past a 403; the
+            source was removed, the record re-graded, and the incident recorded. The author's review of
+            all 47 rulings and a human second coder on a 15% sample are the next steps, and the counts
+            on these pages may move when they are done. The full statement is in the repository's
+            <code>docs/ai-disclosure.md</code>.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Limits</h2>
+        <div class="prose">
+          <ul>
+            <li>The map draws what was documented, not what happened. Where nothing was documented there is nothing to draw.</li>
+            <li>Fan-run events outside Delhi before 2019 are mostly missing, and the regional-language press was not searched.</li>
+            <li>The 2020–2022 contest rounds have a region but no place, and eight 2025 rounds have a month but no day.</li>
+            <li>Most records outside Delhi sit at the city coordinate rather than the venue.</li>
+            <li>One AI coder did the first pass, and the author has not yet reviewed any ruling.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Reading the figures</h2>
+        <FigureGrammar />
+      </section>
+
+      <section class="section">
+        <h2 id="cite">Cite</h2>
+        <CiteBlock
+          citation={`Bilal, Mohd. Hallyu Events in India, 2012–2025: A Source-Critical Event Register. Version 0.2.0. The Academy of Korean Studies, 2026.`}
+          licence="Register data CC BY 4.0 · code MIT · boundaries Natural Earth, India point of view (public domain) · city coordinates Wikidata (CC0). Sources are cited by URL and not redistributed."
+          url="https://mohdbilaldh.github.io/projects/hallyu-india-events/"
+          buildDate={buildDate} />
+      </section>
+    </div>
+  </section>
+</Project>
+<style>
+  .breadcrumb { margin: 0 0 24px; }
+  .first { margin-top: 0; }
+</style>

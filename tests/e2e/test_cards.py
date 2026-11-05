@@ -8,7 +8,7 @@ with Browser() as b:
         p.goto(BASE + "/projects/")
         p.wait_for_load_state("networkidle")
         cards = p.locator(".pcard")
-        check(cards.count() == 3, f"{w}: three project entries")
+        check(cards.count() == 4, f"{w}: four project entries")
         xs = p.evaluate("[...document.querySelectorAll('.card-row.cols-2 .pcard')].map(c => Math.round(c.getBoundingClientRect().left))")
         check(len(set(xs)) == cols, f"{w}: {cols} column(s) in the two-up row ({xs})")
 
@@ -23,17 +23,17 @@ with Browser() as b:
         check(c.locator("a.btn").inner_text().strip() == "View project", f"{w}: view-project affordance")
 
         # the image is the project's own material, served and sized
-        for slug in ["janghan", "buddhist-bridges", "hallyu"]:
+        for slug in ["janghan", "buddhist-bridges", "hallyu", "hallyu-india-events"]:
             r = p.request.get(BASE + f"/art/{slug}.png")
             check(r.status == 200 and len(r.body()) > 6000, f"{w}: art {slug} served")
         alt = c.locator(".pcard-art img").get_attribute("alt")
         check(alt and len(alt) > 60 and p.locator("h3.pcard-title").first.inner_text().strip()[:12] not in alt,
               f"{w}: card image alt describes the image, not the project ({alt!r})")
 
-        # the single-card row reads as a feature above 900px
+        # a single-card row reads as a feature above 900px; with two two-up rows there is none
         feat = p.locator(".pcard--feature")
-        check(feat.count() == 1, f"{w}: one feature entry")
-        if w >= 900:
+        check(feat.count() <= 1, f"{w}: at most one feature entry")
+        if w >= 900 and feat.count() == 1:
             box = feat.locator(".pcard-art").bounding_box()
             body = feat.locator(".pcard-body").bounding_box()
             check(abs(box["y"] - body["y"]) < 40, f"{w}: the feature lays image beside text")

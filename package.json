@@ -12,7 +12,8 @@
     "art": "node scripts/make-card-art.mjs",
     "edition": "node scripts/edition-finish.mjs",
     "romanise": "node scripts/romanise.mjs",
-    "janghan:views": "node scripts/janghan-views.mjs"
+    "janghan:views": "node scripts/janghan-views.mjs",
+    "hallyu-events:views": "node scripts/hallyu-events-views.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
@@ -22,6 +23,8 @@
     "@fontsource/ibm-plex-mono": "^5.3.0",
     "@fontsource/noto-sans-kr": "^5.3.0",
     "@fontsource/noto-serif-kr": "^5.3.0",
-    "astro": "^5.0.0"
+    "astro": "^5.0.0",
+    "leaflet": "^1.9.4",
+    "leaflet.markercluster": "^1.5.3"
   }
 }

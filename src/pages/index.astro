@@ -48,7 +48,7 @@ const talks = presentations.slice(0, 6);
     <div class="wrap">
       <SectionHeading>Explore my Projects</SectionHeading>
       <p class="intro band-intro">Digital Humanities projects built on documented sources, graded evidence, and reproducible pipelines.</p>
-      <CardRow cols={3}>
+      <CardRow cols={2}>
         {projects.map((p) => <ProjectCard project={p} />)}
       </CardRow>
       <div class="btn-row"><Button href="/projects/" variant="primary">View all projects »</Button></div>

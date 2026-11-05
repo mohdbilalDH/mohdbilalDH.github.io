@@ -15,9 +15,9 @@ with Browser() as b:
     check("\uad6c14026" in cap and "National Museum of Korean Contemporary History" in cap,
           f"hero credits the holding museum and accession: {cap}")
     check(p.locator("section.band").count() >= 4, "at least four bands")
-    check(p.locator(".pcard").count() == 3, "three project entries")
-    check(p.locator(".pcard-counts > div").count() == 9, "every entry carries its counts")
-    check(p.locator(".pcard-blurb").count() == 3, "every entry states its scope")
+    check(p.locator(".pcard").count() == 4, "four project entries")
+    check(p.locator(".pcard-counts > div").count() == 12, "every entry carries its counts")
+    check(p.locator(".pcard-blurb").count() == 4, "every entry states its scope")
     check(p.locator("a.btn[href='/projects/']").inner_text().strip() == "View all projects »", "view all projects button")
     check(p.locator(".tile").count() >= 6, "news and talk tiles")
     check(p.locator("header nav a[aria-current='page']").text_content().strip() == "Home", "Home is current")

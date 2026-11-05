@@ -1,0 +1,1164 @@
+{
+ "built_from": "public/data/hallyu-india-events (register v0.2.0, build of 5 November 2026)",
+ "periods": [
+  "2012–2016",
+  "2017–2019",
+  "2020–2022",
+  "2023–2025"
+ ],
+ "scale": {
+  "occurrences": 724,
+  "mapped": 557,
+  "online": 167,
+  "cities": 34,
+  "states": 25,
+  "sources": 1357,
+  "actors": 405,
+  "grades": {
+   "A": 206,
+   "B": 342,
+   "C": 176
+  },
+  "pre_register": 4,
+  "addendum": 16,
+  "venue_geocoded": 196
+ },
+ "by_year": [
+  {
+   "year": 2012,
+   "all": 6,
+   "default_domains": 3,
+   "in_person": 6,
+   "online": 0,
+   "A": 2,
+   "B": 1,
+   "C": 3,
+   "occurred": 3,
+   "kpop": 1,
+   "cities_in_person": 2,
+   "mission_record": 3,
+   "independent_only": 0,
+   "commercial_concerts": 0
+  },
+  {
+   "year": 2013,
+   "all": 32,
+   "default_domains": 9,
+   "in_person": 32,
+   "online": 0,
+   "A": 19,
+   "B": 3,
+   "C": 10,
+   "occurred": 21,
+   "kpop": 1,
+   "cities_in_person": 6,
+   "mission_record": 8,
+   "independent_only": 1,
+   "commercial_concerts": 2
+  },
+  {
+   "year": 2014,
+   "all": 31,
+   "default_domains": 9,
+   "in_person": 31,
+   "online": 0,
+   "A": 10,
+   "B": 14,
+   "C": 7,
+   "occurred": 21,
+   "kpop": 6,
+   "cities_in_person": 5,
+   "mission_record": 9,
+   "independent_only": 0,
+   "commercial_concerts": 0
+  },
+  {
+   "year": 2015,
+   "all": 30,
+   "default_domains": 17,
+   "in_person": 29,
+   "online": 1,
+   "A": 2,
+   "B": 15,
+   "C": 13,
+   "occurred": 15,
+   "kpop": 15,
+   "cities_in_person": 9,
+   "mission_record": 12,
+   "independent_only": 5,
+   "commercial_concerts": 0
+  },
+  {
+   "year": 2016,
+   "all": 46,
+   "default_domains": 14,
+   "in_person": 45,
+   "online": 1,
+   "A": 13,
+   "B": 7,
+   "C": 26,
+   "occurred": 18,
+   "kpop": 11,
+   "cities_in_person": 12,
+   "mission_record": 6,
+   "independent_only": 8,
+   "commercial_concerts": 1
+  },
+  {
+   "year": 2017,
+   "all": 51,
+   "default_domains": 22,
+   "in_person": 50,
+   "online": 1,
+   "A": 17,
+   "B": 15,
+   "C": 19,
+   "occurred": 30,
+   "kpop": 15,
+   "cities_in_person": 17,
+   "mission_record": 20,
+   "independent_only": 2,
+   "commercial_concerts": 2
+  },
+  {
+   "year": 2018,
+   "all": 70,
+   "default_domains": 24,
+   "in_person": 69,
+   "online": 1,
+   "A": 18,
+   "B": 31,
+   "C": 21,
+   "occurred": 48,
+   "kpop": 21,
+   "cities_in_person": 17,
+   "mission_record": 11,
+   "independent_only": 13,
+   "commercial_concerts": 5
+  },
+  {
+   "year": 2019,
+   "all": 66,
+   "default_domains": 40,
+   "in_person": 64,
+   "online": 2,
+   "A": 24,
+   "B": 16,
+   "C": 26,
+   "occurred": 40,
+   "kpop": 31,
+   "cities_in_person": 20,
+   "mission_record": 29,
+   "independent_only": 11,
+   "commercial_concerts": 10
+  },
+  {
+   "year": 2020,
+   "all": 65,
+   "default_domains": 28,
+   "in_person": 11,
+   "online": 54,
+   "A": 9,
+   "B": 41,
+   "C": 15,
+   "occurred": 42,
+   "kpop": 26,
+   "cities_in_person": 4,
+   "mission_record": 27,
+   "independent_only": 1,
+   "commercial_concerts": 0
+  },
+  {
+   "year": 2021,
+   "all": 76,
+   "default_domains": 40,
+   "in_person": 8,
+   "online": 68,
+   "A": 9,
+   "B": 59,
+   "C": 8,
+   "occurred": 57,
+   "kpop": 31,
+   "cities_in_person": 3,
+   "mission_record": 32,
+   "independent_only": 8,
+   "commercial_concerts": 0
+  },
+  {
+   "year": 2022,
+   "all": 81,
+   "default_domains": 48,
+   "in_person": 50,
+   "online": 31,
+   "A": 14,
+   "B": 58,
+   "C": 9,
+   "occurred": 69,
+   "kpop": 37,
+   "cities_in_person": 11,
+   "mission_record": 36,
+   "independent_only": 12,
+   "commercial_concerts": 2
+  },
+  {
+   "year": 2023,
+   "all": 66,
+   "default_domains": 31,
+   "in_person": 62,
+   "online": 4,
+   "A": 32,
+   "B": 25,
+   "C": 9,
+   "occurred": 54,
+   "kpop": 22,
+   "cities_in_person": 15,
+   "mission_record": 21,
+   "independent_only": 10,
+   "commercial_concerts": 7
+  },
+  {
+   "year": 2024,
+   "all": 52,
+   "default_domains": 33,
+   "in_person": 49,
+   "online": 3,
+   "A": 18,
+   "B": 24,
+   "C": 10,
+   "occurred": 41,
+   "kpop": 26,
+   "cities_in_person": 12,
+   "mission_record": 20,
+   "independent_only": 13,
+   "commercial_concerts": 10
+  },
+  {
+   "year": 2025,
+   "all": 52,
+   "default_domains": 31,
+   "in_person": 51,
+   "online": 1,
+   "A": 19,
+   "B": 33,
+   "C": 0,
+   "occurred": 52,
+   "kpop": 19,
+   "cities_in_person": 13,
+   "mission_record": 17,
+   "independent_only": 14,
+   "commercial_concerts": 3
+  }
+ ],
+ "channel_split": [
+  {
+   "year": 2012,
+   "mission_only": 5,
+   "both": 1,
+   "independent_only": 0,
+   "total": 6
+  },
+  {
+   "year": 2013,
+   "mission_only": 15,
+   "both": 9,
+   "independent_only": 8,
+   "total": 32
+  },
+  {
+   "year": 2014,
+   "mission_only": 26,
+   "both": 5,
+   "independent_only": 0,
+   "total": 31
+  },
+  {
+   "year": 2015,
+   "mission_only": 22,
+   "both": 3,
+   "independent_only": 5,
+   "total": 30
+  },
+  {
+   "year": 2016,
+   "mission_only": 25,
+   "both": 8,
+   "independent_only": 13,
+   "total": 46
+  },
+  {
+   "year": 2017,
+   "mission_only": 27,
+   "both": 15,
+   "independent_only": 9,
+   "total": 51
+  },
+  {
+   "year": 2018,
+   "mission_only": 38,
+   "both": 3,
+   "independent_only": 29,
+   "total": 70
+  },
+  {
+   "year": 2019,
+   "mission_only": 34,
+   "both": 20,
+   "independent_only": 12,
+   "total": 66
+  },
+  {
+   "year": 2020,
+   "mission_only": 40,
+   "both": 21,
+   "independent_only": 4,
+   "total": 65
+  },
+  {
+   "year": 2021,
+   "mission_only": 40,
+   "both": 23,
+   "independent_only": 13,
+   "total": 76
+  },
+  {
+   "year": 2022,
+   "mission_only": 30,
+   "both": 35,
+   "independent_only": 16,
+   "total": 81
+  },
+  {
+   "year": 2023,
+   "mission_only": 37,
+   "both": 18,
+   "independent_only": 11,
+   "total": 66
+  },
+  {
+   "year": 2024,
+   "mission_only": 26,
+   "both": 13,
+   "independent_only": 13,
+   "total": 52
+  },
+  {
+   "year": 2025,
+   "mission_only": 23,
+   "both": 15,
+   "independent_only": 14,
+   "total": 52
+  }
+ ],
+ "commercial": {
+  "total": 42,
+  "in_kcci": 6,
+  "in_mofa": 1,
+  "in_mission": 7,
+  "by_city": [
+   {
+    "city": "New Delhi",
+    "n": 12
+   },
+   {
+    "city": "Mumbai",
+    "n": 11
+   },
+   {
+    "city": "Dimapur",
+    "n": 4
+   },
+   {
+    "city": "Imphal",
+    "n": 3
+   },
+   {
+    "city": "Bengaluru",
+    "n": 3
+   },
+   {
+    "city": "Kohima",
+    "n": 2
+   },
+   {
+    "city": "Shillong",
+    "n": 2
+   },
+   {
+    "city": "Chennai",
+    "n": 2
+   },
+   {
+    "city": "Pune",
+    "n": 1
+   },
+   {
+    "city": "Gangtok",
+    "n": 1
+   },
+   {
+    "city": "Diphu",
+    "n": 1
+   }
+  ]
+ },
+ "mission": {
+  "total": 260,
+  "outside": 171,
+  "alone": 89
+ },
+ "contest": {
+  "cities": [
+   {
+    "city": "New Delhi",
+    "years": [
+     2012,
+     2013,
+     2014,
+     2015,
+     2016,
+     2017,
+     2018,
+     2019,
+     2023,
+     2024,
+     2025
+    ],
+    "first": 2012,
+    "n": 11,
+    "state": "Delhi"
+   },
+   {
+    "city": "Chennai",
+    "years": [
+     2014,
+     2015,
+     2016,
+     2017,
+     2018,
+     2019,
+     2023,
+     2024,
+     2025
+    ],
+    "first": 2014,
+    "n": 9,
+    "state": "Tamil Nadu"
+   },
+   {
+    "city": "Mumbai",
+    "years": [
+     2014,
+     2015,
+     2016,
+     2017,
+     2018,
+     2019,
+     2023,
+     2024,
+     2025
+    ],
+    "first": 2014,
+    "n": 9,
+    "state": "Maharashtra"
+   },
+   {
+    "city": "Dimapur",
+    "years": [
+     2014
+    ],
+    "first": 2014,
+    "n": 1,
+    "state": "Nagaland"
+   },
+   {
+    "city": "Bengaluru",
+    "years": [
+     2015,
+     2016,
+     2017,
+     2018,
+     2019,
+     2023,
+     2024,
+     2025
+    ],
+    "first": 2015,
+    "n": 8,
+    "state": "Karnataka"
+   },
+   {
+    "city": "Kolkata",
+    "years": [
+     2015,
+     2016,
+     2017,
+     2018,
+     2019,
+     2023,
+     2024,
+     2025
+    ],
+    "first": 2015,
+    "n": 8,
+    "state": "West Bengal"
+   },
+   {
+    "city": "Patna",
+    "years": [
+     2015,
+     2016,
+     2017,
+     2018,
+     2019
+    ],
+    "first": 2015,
+    "n": 5,
+    "state": "Bihar"
+   },
+   {
+    "city": "Aizawl",
+    "years": [
+     2015,
+     2017,
+     2018
+    ],
+    "first": 2015,
+    "n": 3,
+    "state": "Mizoram"
+   },
+   {
+    "city": "Hyderabad",
+    "years": [
+     2017,
+     2018,
+     2019,
+     2023,
+     2024,
+     2025
+    ],
+    "first": 2017,
+    "n": 6,
+    "state": "Telangana"
+   },
+   {
+    "city": "Kohima",
+    "years": [
+     2017,
+     2023,
+     2024,
+     2025
+    ],
+    "first": 2017,
+    "n": 4,
+    "state": "Nagaland"
+   },
+   {
+    "city": "Bhubaneswar",
+    "years": [
+     2017,
+     2019
+    ],
+    "first": 2017,
+    "n": 2,
+    "state": "Odisha"
+   },
+   {
+    "city": "Guwahati",
+    "years": [
+     2017,
+     2023
+    ],
+    "first": 2017,
+    "n": 2,
+    "state": "Assam"
+   },
+   {
+    "city": "Bhopal",
+    "years": [
+     2019,
+     2023,
+     2024,
+     2025
+    ],
+    "first": 2019,
+    "n": 4,
+    "state": "Madhya Pradesh"
+   },
+   {
+    "city": "Itanagar",
+    "years": [
+     2019,
+     2023,
+     2024,
+     2025
+    ],
+    "first": 2019,
+    "n": 4,
+    "state": "Arunachal Pradesh"
+   },
+   {
+    "city": "Lucknow",
+    "years": [
+     2019,
+     2023,
+     2024
+    ],
+    "first": 2019,
+    "n": 3,
+    "state": "Uttar Pradesh"
+   },
+   {
+    "city": "Dehradun",
+    "years": [
+     2019
+    ],
+    "first": 2019,
+    "n": 1,
+    "state": "Uttarakhand"
+   },
+   {
+    "city": "Guntur",
+    "years": [
+     2019
+    ],
+    "first": 2019,
+    "n": 1,
+    "state": "Andhra Pradesh"
+   },
+   {
+    "city": "Imphal",
+    "years": [
+     2019
+    ],
+    "first": 2019,
+    "n": 1,
+    "state": "Manipur"
+   },
+   {
+    "city": "Pune",
+    "years": [
+     2019
+    ],
+    "first": 2019,
+    "n": 1,
+    "state": "Maharashtra"
+   },
+   {
+    "city": "Ahmedabad",
+    "years": [
+     2024,
+     2025
+    ],
+    "first": 2024,
+    "n": 2,
+    "state": "Gujarat"
+   }
+  ],
+  "years": [
+   {
+    "year": 2012,
+    "in_person_cities": 1,
+    "online_regions": 0,
+    "occurrences": 1
+   },
+   {
+    "year": 2013,
+    "in_person_cities": 1,
+    "online_regions": 0,
+    "occurrences": 1
+   },
+   {
+    "year": 2014,
+    "in_person_cities": 4,
+    "online_regions": 0,
+    "occurrences": 5
+   },
+   {
+    "year": 2015,
+    "in_person_cities": 7,
+    "online_regions": 0,
+    "occurrences": 10
+   },
+   {
+    "year": 2016,
+    "in_person_cities": 6,
+    "online_regions": 0,
+    "occurrences": 8
+   },
+   {
+    "year": 2017,
+    "in_person_cities": 11,
+    "online_regions": 0,
+    "occurrences": 13
+   },
+   {
+    "year": 2018,
+    "in_person_cities": 8,
+    "online_regions": 0,
+    "occurrences": 10
+   },
+   {
+    "year": 2019,
+    "in_person_cities": 15,
+    "online_regions": 0,
+    "occurrences": 17
+   },
+   {
+    "year": 2020,
+    "in_person_cities": 0,
+    "online_regions": 18,
+    "occurrences": 20
+   },
+   {
+    "year": 2021,
+    "in_person_cities": 0,
+    "online_regions": 20,
+    "occurrences": 22
+   },
+   {
+    "year": 2022,
+    "in_person_cities": 0,
+    "online_regions": 20,
+    "occurrences": 22
+   },
+   {
+    "year": 2023,
+    "in_person_cities": 11,
+    "online_regions": 0,
+    "occurrences": 15
+   },
+   {
+    "year": 2024,
+    "in_person_cities": 11,
+    "online_regions": 0,
+    "occurrences": 14
+   },
+   {
+    "year": 2025,
+    "in_person_cities": 10,
+    "online_regions": 0,
+    "occurrences": 12
+   }
+  ]
+ },
+ "cities": [
+  {
+   "city": "New Delhi",
+   "state": "Delhi",
+   "total": 339,
+   "pop": 95,
+   "2012–2016": 106,
+   "2017–2019": 93,
+   "2020–2022": 45,
+   "2023–2025": 95
+  },
+  {
+   "city": "Mumbai",
+   "state": "Maharashtra",
+   "total": 35,
+   "pop": 29,
+   "2012–2016": 5,
+   "2017–2019": 9,
+   "2020–2022": 5,
+   "2023–2025": 16
+  },
+  {
+   "city": "Chennai",
+   "state": "Tamil Nadu",
+   "total": 27,
+   "pop": 17,
+   "2012–2016": 8,
+   "2017–2019": 9,
+   "2020–2022": 5,
+   "2023–2025": 5
+  },
+  {
+   "city": "Bengaluru",
+   "state": "Karnataka",
+   "total": 23,
+   "pop": 16,
+   "2012–2016": 3,
+   "2017–2019": 8,
+   "2020–2022": 2,
+   "2023–2025": 10
+  },
+  {
+   "city": "Kolkata",
+   "state": "West Bengal",
+   "total": 18,
+   "pop": 12,
+   "2012–2016": 2,
+   "2017–2019": 8,
+   "2020–2022": 2,
+   "2023–2025": 6
+  },
+  {
+   "city": "Hyderabad",
+   "state": "Telangana",
+   "total": 15,
+   "pop": 10,
+   "2012–2016": 1,
+   "2017–2019": 8,
+   "2020–2022": 1,
+   "2023–2025": 5
+  },
+  {
+   "city": "Gurugram",
+   "state": "Haryana",
+   "total": 11,
+   "pop": 5,
+   "2012–2016": 4,
+   "2017–2019": 2,
+   "2020–2022": 1,
+   "2023–2025": 4
+  },
+  {
+   "city": "Imphal",
+   "state": "Manipur",
+   "total": 10,
+   "pop": 6,
+   "2012–2016": 0,
+   "2017–2019": 6,
+   "2020–2022": 3,
+   "2023–2025": 1
+  },
+  {
+   "city": "Pune",
+   "state": "Maharashtra",
+   "total": 8,
+   "pop": 6,
+   "2012–2016": 1,
+   "2017–2019": 4,
+   "2020–2022": 1,
+   "2023–2025": 2
+  },
+  {
+   "city": "Kohima",
+   "state": "Nagaland",
+   "total": 6,
+   "pop": 6,
+   "2012–2016": 1,
+   "2017–2019": 2,
+   "2020–2022": 0,
+   "2023–2025": 3
+  },
+  {
+   "city": "Dimapur",
+   "state": "Nagaland",
+   "total": 5,
+   "pop": 5,
+   "2012–2016": 1,
+   "2017–2019": 3,
+   "2020–2022": 0,
+   "2023–2025": 1
+  },
+  {
+   "city": "Patna",
+   "state": "Bihar",
+   "total": 5,
+   "pop": 5,
+   "2012–2016": 2,
+   "2017–2019": 3,
+   "2020–2022": 0,
+   "2023–2025": 0
+  },
+  {
+   "city": "Shillong",
+   "state": "Meghalaya",
+   "total": 5,
+   "pop": 4,
+   "2012–2016": 0,
+   "2017–2019": 3,
+   "2020–2022": 0,
+   "2023–2025": 2
+  },
+  {
+   "city": "Ahmedabad",
+   "state": "Gujarat",
+   "total": 4,
+   "pop": 4,
+   "2012–2016": 1,
+   "2017–2019": 0,
+   "2020–2022": 1,
+   "2023–2025": 2
+  },
+  {
+   "city": "Bhopal",
+   "state": "Madhya Pradesh",
+   "total": 4,
+   "pop": 4,
+   "2012–2016": 0,
+   "2017–2019": 1,
+   "2020–2022": 0,
+   "2023–2025": 3
+  },
+  {
+   "city": "Guwahati",
+   "state": "Assam",
+   "total": 4,
+   "pop": 4,
+   "2012–2016": 1,
+   "2017–2019": 2,
+   "2020–2022": 0,
+   "2023–2025": 1
+  },
+  {
+   "city": "Itanagar",
+   "state": "Arunachal Pradesh",
+   "total": 4,
+   "pop": 4,
+   "2012–2016": 0,
+   "2017–2019": 1,
+   "2020–2022": 0,
+   "2023–2025": 3
+  },
+  {
+   "city": "Kochi",
+   "state": "Kerala",
+   "total": 4,
+   "pop": 0,
+   "2012–2016": 2,
+   "2017–2019": 2,
+   "2020–2022": 0,
+   "2023–2025": 0
+  },
+  {
+   "city": "Lucknow",
+   "state": "Uttar Pradesh",
+   "total": 4,
+   "pop": 3,
+   "2012–2016": 0,
+   "2017–2019": 2,
+   "2020–2022": 0,
+   "2023–2025": 2
+  },
+  {
+   "city": "Noida",
+   "state": "Uttar Pradesh",
+   "total": 4,
+   "pop": 1,
+   "2012–2016": 1,
+   "2017–2019": 2,
+   "2020–2022": 1,
+   "2023–2025": 0
+  },
+  {
+   "city": "Aizawl",
+   "state": "Mizoram",
+   "total": 3,
+   "pop": 3,
+   "2012–2016": 1,
+   "2017–2019": 2,
+   "2020–2022": 0,
+   "2023–2025": 0
+  },
+  {
+   "city": "Bhubaneswar",
+   "state": "Odisha",
+   "total": 3,
+   "pop": 3,
+   "2012–2016": 0,
+   "2017–2019": 3,
+   "2020–2022": 0,
+   "2023–2025": 0
+  },
+  {
+   "city": "Guntur",
+   "state": "Andhra Pradesh",
+   "total": 3,
+   "pop": 1,
+   "2012–2016": 0,
+   "2017–2019": 3,
+   "2020–2022": 0,
+   "2023–2025": 0
+  },
+  {
+   "city": "Gangtok",
+   "state": "Sikkim",
+   "total": 2,
+   "pop": 2,
+   "2012–2016": 1,
+   "2017–2019": 0,
+   "2020–2022": 0,
+   "2023–2025": 1
+  },
+  {
+   "city": "Panaji",
+   "state": "Goa",
+   "total": 2,
+   "pop": 1,
+   "2012–2016": 2,
+   "2017–2019": 0,
+   "2020–2022": 0,
+   "2023–2025": 0
+  },
+  {
+   "city": "Chandigarh",
+   "state": "Chandigarh",
+   "total": 1,
+   "pop": 1,
+   "2012–2016": 0,
+   "2017–2019": 0,
+   "2020–2022": 1,
+   "2023–2025": 0
+  },
+  {
+   "city": "Dehradun",
+   "state": "Uttarakhand",
+   "total": 1,
+   "pop": 1,
+   "2012–2016": 0,
+   "2017–2019": 1,
+   "2020–2022": 0,
+   "2023–2025": 0
+  },
+  {
+   "city": "Diphu",
+   "state": "Assam",
+   "total": 1,
+   "pop": 1,
+   "2012–2016": 0,
+   "2017–2019": 1,
+   "2020–2022": 0,
+   "2023–2025": 0
+  },
+  {
+   "city": "Faridabad",
+   "state": "Haryana",
+   "total": 1,
+   "pop": 0,
+   "2012–2016": 0,
+   "2017–2019": 0,
+   "2020–2022": 1,
+   "2023–2025": 0
+  },
+  {
+   "city": "Gaya",
+   "state": "Bihar",
+   "total": 1,
+   "pop": 0,
+   "2012–2016": 0,
+   "2017–2019": 1,
+   "2020–2022": 0,
+   "2023–2025": 0
+  },
+  {
+   "city": "Jaipur",
+   "state": "Rajasthan",
+   "total": 1,
+   "pop": 1,
+   "2012–2016": 0,
+   "2017–2019": 1,
+   "2020–2022": 0,
+   "2023–2025": 0
+  },
+  {
+   "city": "Surat",
+   "state": "Gujarat",
+   "total": 1,
+   "pop": 1,
+   "2012–2016": 0,
+   "2017–2019": 1,
+   "2020–2022": 0,
+   "2023–2025": 0
+  },
+  {
+   "city": "Thiruvananthapuram",
+   "state": "Kerala",
+   "total": 1,
+   "pop": 0,
+   "2012–2016": 0,
+   "2017–2019": 1,
+   "2020–2022": 0,
+   "2023–2025": 0
+  },
+  {
+   "city": "Vijayawada",
+   "state": "Andhra Pradesh",
+   "total": 1,
+   "pop": 0,
+   "2012–2016": 0,
+   "2017–2019": 1,
+   "2020–2022": 0,
+   "2023–2025": 0
+  }
+ ],
+ "northeast": [
+  {
+   "period": "2012–2016",
+   "northeast": 5,
+   "total": 50
+  },
+  {
+   "period": "2017–2019",
+   "northeast": 19,
+   "total": 82
+  },
+  {
+   "period": "2020–2022",
+   "northeast": 0,
+   "total": 28
+  },
+  {
+   "period": "2023–2025",
+   "northeast": 11,
+   "total": 91
+  }
+ ],
+ "coproduction": {
+  "fan_events": 74,
+  "fan_events_mission": 58,
+  "by_period": [
+   {
+    "period": "2012–2016",
+    "n": 0
+   },
+   {
+    "period": "2017–2019",
+    "n": 9
+   },
+   {
+    "period": "2020–2022",
+    "n": 44
+   },
+   {
+    "period": "2023–2025",
+    "n": 5
+   }
+  ],
+  "peak_years": [
+   {
+    "year": 2020,
+    "n": 15
+   },
+   {
+    "year": 2022,
+    "n": 15
+   },
+   {
+    "year": 2021,
+    "n": 14
+   },
+   {
+    "year": 2019,
+    "n": 8
+   }
+  ]
+ },
+ "examples": {
+  "imphal_2019": "HI-2019-0033",
+  "diphu_2019": "HI-2019-0066",
+  "first_contest_2012": "HI-2012-0005"
+ },
+ "channel_totals": {
+  "kcci": 509,
+  "kofice": 64,
+  "mofa": 118,
+  "other": 32,
+  "press": 284,
+  "setlist": 15,
+  "social": 1,
+  "university": 4
+ },
+ "one_channel_only": 499
+}

@@ -1,0 +1,61 @@
+---
+// The register's map on its own: the instrument fills the viewport under the site header, and a
+// sheet beneath it carries the title, one paragraph and the ways back, on the pattern of the LSE
+// Booth map. Same instrument, same data, same filters as the project page; only the frame differs.
+import Project from '../../../layouts/Project.astro';
+import HallyuEventsMap from '../../../components/figures/HallyuEventsMap.astro';
+import D from '../../../data/hallyu-events.json';
+import { projects } from '../../../data/projects';
+const p = projects.find((x) => x.slug === 'hallyu-india-events')!;
+const S = D.scale;
+---
+<Project title="Hallyu Events in India: the map"
+  description="Every documented Hallyu occurrence in India, 2012–2025, on one map: filter by year, domain, evidence grade and organiser, search by place, and open any record with its sources.">
+  <div class="explore">
+    <div class="explore-map">
+      <HallyuEventsMap frame={false} id="map" height="calc(100dvh - var(--header-h) - var(--strip-h) - 236px)" scrollWheel />
+    </div>
+    <section class="sheet" aria-labelledby="sheet-h">
+      <div class="wrap sheet-in">
+        <div class="sheet-text">
+          <p class="mono back"><a href="/projects/hallyu-india-events/">← {p.shortTitle}</a></p>
+          <h1 id="sheet-h">Hallyu Events in India, 2012–2025</h1>
+          <p class="sheet-lede">
+            {S.occurrences.toLocaleString('en-US')} documented occurrences read from four channels. {S.mapped} of them
+            are placed in {S.cities} cities and coloured by how well they are documented. The filters, the years
+            and the selected record stay in the address, so a view can be cited. The List panel gives every record
+            in reading order, including the {S.online} online ones that have no point.
+          </p>
+        </div>
+        <dl class="sheet-facts">
+          <div><dt>Evidence</dt><dd>A {S.grades.A} · B {S.grades.B} · C {S.grades.C}</dd></div>
+          <div><dt>Version</dt><dd class="mono">v0.2.0 · first-pass coding, pending review</dd></div>
+          <div><dt>Data</dt><dd><a href="/data/hallyu-india-events/events.geojson" download>events.geojson</a> · <a href="/data/hallyu-india-events/events_unmapped.json" download>events_unmapped.json</a> · <a href="/projects/hallyu-india-events/data/">method and data</a></dd></div>
+          <div><dt>Boundaries</dt><dd>Natural Earth, India point of view (public domain): India's international boundary as India represents it</dd></div>
+        </dl>
+      </div>
+    </section>
+  </div>
+</Project>
+<style>
+  .explore { display: flex; flex-direction: column; }
+  .explore-map { padding: 16px var(--pad) 0; }
+  .explore-map :global(.hm-stage) { border-radius: var(--r-card); }
+  .explore-map :global(.hm-map) { min-height: 480px; }
+  .sheet { padding: 8px 0 48px; }
+  .sheet-in { display: grid; gap: 20px 48px; align-items: start; }
+  @media (min-width: 960px) { .sheet-in { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); } }
+  .back { margin: 0 0 10px; font-size: 13px; }
+  .sheet h1 { font: 600 clamp(26px, 3vw, 36px)/1.2 var(--f-title); color: var(--title); margin: 0 0 10px; }
+  .sheet-lede { font: 400 16px/1.7 var(--f-ui); color: var(--text); max-width: 68ch; margin: 0; }
+  .sheet-facts { margin: 6px 0 0; border-top: 1px solid var(--hairline); }
+  .sheet-facts > div { display: grid; grid-template-columns: 110px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--hairline); }
+  .sheet-facts dt { font: 500 12px/1.6 var(--f-ui); letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); }
+  .sheet-facts dd { margin: 0; font: 400 14px/1.6 var(--f-ui); color: var(--text); }
+  @media (max-width: 640px) {
+    .explore-map { padding: 12px 12px 0; }
+    .explore-map :global(.hm-stage) { border-radius: var(--r-tile); }
+    .sheet { padding-bottom: 36px; }
+    .sheet-facts > div { grid-template-columns: 1fr; gap: 2px; }
+  }
+</style>

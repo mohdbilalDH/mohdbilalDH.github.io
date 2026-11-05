@@ -1,0 +1,70 @@
+---
+import FigureFrame from '../FigureFrame.astro';
+// Who documented what, year by year: records known only from the Korean mission's own posts,
+// records the mission and an outside channel both carry, and records known only from outside it
+// (press, setlist.fm, KOFICE correspondents). The stack is the register's denominator: a column
+// that grows because the mission-only share grows is growing documentation, not activity.
+// Pattern, not just colour, separates the three (the site's uncertainty grammar).
+import D from '../../data/hallyu-events.json';
+const rows = D.channel_split;
+const max = Math.max(...rows.map((r) => r.total));
+const X0 = 54, COL = 58, Y0 = 24, PLOT = 230, W = X0 + rows.length * COL + 16, H = Y0 + PLOT + 64;
+const yOf = (v: number) => Y0 + PLOT - (v / max) * PLOT;
+const ticks = [0, 20, 40, 60, 80].filter((t) => t <= max);
+const tot = rows.reduce((a, r) => ({ m: a.m + r.mission_only, b: a.b + r.both, i: a.i + r.independent_only }), { m: 0, b: 0, i: 0 });
+const all = tot.m + tot.b + tot.i;
+const pct = (n: number) => Math.round((n / all) * 100);
+const alt = `Stacked bars, 2012 to 2025, of documented occurrences by who recorded them. Over the whole period ${tot.m} of ${all} records (${pct(tot.m)}%) rest on the Korean mission's own posts alone, ` +
+  `${tot.b} (${pct(tot.b)}%) are carried by the mission and an outside channel, and ${tot.i} (${pct(tot.i)}%) are known only from outside the mission. The tallest years are 2021 and 2022, when most records are mission-only online events.`;
+---
+<FigureFrame number="3" title={`${pct(tot.m)}% of the register rests on the mission's own word; ${pct(tot.i)}% exists only outside it`} id="channels" wide>
+  <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={alt}>
+    <defs>
+      <pattern id="hec-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="6" stroke="var(--navy)" stroke-width="1.6" />
+      </pattern>
+    </defs>
+    {ticks.map((t) => (
+      <>
+        <line x1={X0} y1={yOf(t)} x2={X0 + rows.length * COL} y2={yOf(t)} stroke="var(--hairline)" stroke-width="1" />
+        <text x={X0 - 8} y={yOf(t) + 4} text-anchor="end" font-family="var(--f-mono)" font-size="12" fill="var(--muted)">{t}</text>
+      </>
+    ))}
+    {rows.map((r, i) => {
+      const x = X0 + i * COL + 9, w = COL - 18;
+      const y1 = yOf(r.independent_only), y2 = yOf(r.independent_only + r.both), y3 = yOf(r.total);
+      return (
+        <>
+          <rect x={x} y={y1} width={w} height={Y0 + PLOT - y1} fill="var(--navy)" />
+          <rect x={x} y={y2} width={w} height={y1 - y2 - (r.independent_only ? 2 : 0)} fill="url(#hec-hatch)" stroke="var(--navy)" stroke-width="1" />
+          <rect x={x} y={y3} width={w} height={y2 - y3 - (r.both ? 2 : 0)} fill="var(--white)" stroke="var(--muted)" stroke-width="1.2" />
+          <text x={x + w / 2} y={Y0 + PLOT + 20} text-anchor="middle" font-family="var(--f-mono)" font-size="12.5" fill="var(--muted)">{String(r.year).slice(2)}</text>
+          <text x={x + w / 2} y={y3 - 6} text-anchor="middle" font-family="var(--f-mono)" font-size="11.5" fill="var(--heading)">{r.total}</text>
+        </>
+      );
+    })}
+    <text x={X0} y={H - 14} font-family="var(--f-body)" font-size="12.5" fill="var(--muted)">
+      ■ known only from outside the mission · ▨ mission and an outside channel · □ the mission's posts alone
+    </text>
+  </svg>
+  <div slot="caption">
+    Solid: records known only from the press, setlist.fm or a KOFICE correspondent. Hatched: records
+    that the Korean Cultural Centre or the Embassy posted and an outside channel also reported.
+    Hollow: the mission's own posts and nothing else. The hollow share is largest in 2020–2022, when
+    the programme was online and the press did not follow it. The solid share is where ticketed K-pop
+    lives. The press channel was searched in English only.
+  </div>
+  <div slot="table">
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th scope="col">Year</th><th scope="col" class="num">Outside only</th><th scope="col" class="num">Mission and outside</th><th scope="col" class="num">Mission only</th><th scope="col" class="num">All</th></tr></thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr><td class="mono">{r.year}</td><td class="num">{r.independent_only}</td><td class="num">{r.both}</td><td class="num">{r.mission_only}</td><td class="num"><b>{r.total}</b></td></tr>
+          ))}
+          <tr><td><b>2012–2025</b></td><td class="num"><b>{tot.i}</b></td><td class="num"><b>{tot.b}</b></td><td class="num"><b>{tot.m}</b></td><td class="num"><b>{all}</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</FigureFrame>

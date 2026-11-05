@@ -3,7 +3,7 @@
 # not articles, so there is a floor on substance and no ceiling.
 from _lib import Browser, BASE, check
 
-SLUGS = ["janghan", "buddhist-bridges", "hallyu-indian-press"]
+SLUGS = ["janghan", "buddhist-bridges", "hallyu-indian-press", "hallyu-india-events"]
 MIN_PROSE = 900
 
 PROSE_JS = """

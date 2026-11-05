@@ -26,6 +26,7 @@ const pages = {
   janghan: `<div class="plate"><img src="/public/janghan/assets/jh01-cover-emuseum.jpg"><img src="/public/janghan/assets/jh02-cover-emuseum.jpg"></div>`,
   'buddhist-bridges': `<div class="chart">${svgFrom('dist/projects/buddhist-bridges/index.html', 'documented journey routes between Korea')}</div>`,
   hallyu: `<div class="chart">${svgFrom('dist/projects/hallyu-indian-press/index.html', 'Coverage chart, 2000 to 2026')}</div>`,
+  'hallyu-india-events': `<div class="chart">${svgFrom('dist/projects/hallyu-india-events/index.html', 'Dot matrix of contest rounds')}</div>`,
 };
 const shell = (body) => `<!doctype html><html><head><meta charset="utf-8">
 <link rel="stylesheet" href="/node_modules/@fontsource-variable/mulish/index.css">

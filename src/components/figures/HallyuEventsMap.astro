@@ -1,0 +1,74 @@
+---
+import FigureFrame from '../FigureFrame.astro';
+// The register's map, served from the project's web contract (public/data/hallyu-india-events/):
+// Leaflet and Leaflet.markercluster are vendored (public/vendor/leaflet/), the instrument itself is
+// map.js from the analysis repository, unchanged, so the standalone preview there and this page
+// draw the same thing. The data table is the keyboard and no-script route to the same records:
+// every in-person city by period, with the full record list reachable through the instrument's
+// own List panel and the downloads on the data page.
+import D from '../../data/hallyu-events.json';
+interface Props { id?: string; height?: string; title?: string; number?: string; frame?: boolean; scrollWheel?: boolean }
+const { id = 'map', height = '620px', number = '1', frame = true, scrollWheel = false,
+  title = 'The contest carried the Korean state’s programme to fifteen cities; almost everything else it staged stayed in Delhi' } = Astro.props;
+const P = D.periods;
+const rows = D.cities;
+const alt = `Map of ${D.scale.mapped} documented Hallyu occurrences in India, 2012–2025, in ${D.scale.cities} cities. ` +
+  `New Delhi holds ${rows[0].total} records; the next cities are ${rows.slice(1, 5).map((r) => `${r.city} (${r.total})`).join(', ')}. ` +
+  `Each mark is coloured by its evidence grade (A ${D.scale.grades.A}, B ${D.scale.grades.B}, C ${D.scale.grades.C}) and shaped by whether its venue is known.`;
+---
+<link rel="stylesheet" href="/vendor/leaflet/leaflet.css" />
+<link rel="stylesheet" href="/vendor/leaflet/MarkerCluster.css" />
+<link rel="stylesheet" href="/data/hallyu-india-events/map.css" />
+{!frame && (
+  <div class="hm-host" id={id} data-hallyu-map data-scroll-wheel={String(scrollWheel)} style={`--hm-height:${height}`} role="group" aria-label={alt}>
+    <noscript><p class="small muted">The map needs JavaScript. The <a href="/projects/hallyu-india-events/">project page</a> lists the same records by city and period, and the data page carries the full downloads.</p></noscript>
+  </div>
+)}
+{frame && <FigureFrame number={number} title={title} id={id} wide interactive>
+  <div class="hm-host" data-hallyu-map data-scroll-wheel={String(scrollWheel)} style={`--hm-height:${height}`} role="group" aria-label={alt}>
+    <noscript><p class="small muted">The map needs JavaScript. The table under this figure lists the same records by city and period, and the data page carries the full downloads.</p></noscript>
+  </div>
+  <div slot="caption">
+    Each mark is one documented occurrence, as one of four channels recorded it: a round of a contest,
+    a screening, a concert, a workshop. Colour is the evidence grade. A was confirmed afterwards by a
+    source outside the Korean mission, B rests on the organiser's own record, C was announced only. A
+    square is a geocoded venue and a circle a city-centre point. Online records, most of 2020–2022,
+    have no point and are in the instrument's list. The boundaries are Natural Earth's India
+    point-of-view release, which draws India's international boundary as India represents it; there is
+    no street map underneath, because the register's places are cities and venues. Records before 2012
+    ({D.scale.pre_register}) and the 2026 addendum ({D.scale.addendum}) are off by default.
+  </div>
+  <div slot="table">
+    <div class="tablewrap">
+      <table>
+        <caption class="small muted">In-person occurrences by city and period, all domains, 2012–2025. “Pop culture” is the K-pop, K-drama, film, other-music and mixed subset. Online records are not placed.</caption>
+        <thead><tr><th scope="col">City</th><th scope="col">State</th>{P.map((p) => <th scope="col" class="num">{p}</th>)}<th scope="col" class="num">Total</th><th scope="col" class="num">Pop culture</th></tr></thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr><td>{r.city}</td><td>{r.state}</td>{P.map((p) => <td class="num">{r[p] || '—'}</td>)}<td class="num"><b>{r.total}</b></td><td class="num">{r.pop}</td></tr>
+          ))}
+          <tr><td><b>Online, no place</b></td><td>—</td>{P.map(() => <td class="num">—</td>)}<td class="num"><b>{D.scale.online}</b></td><td class="num">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</FigureFrame>}
+<script is:inline src="/vendor/leaflet/leaflet.js"></script>
+<script is:inline src="/vendor/leaflet/leaflet.markercluster.js"></script>
+<script type="module" is:inline>
+  import { createHallyuMap } from '/data/hallyu-india-events/map.js';
+  document.querySelectorAll('[data-hallyu-map]').forEach((el) => {
+    createHallyuMap(window.L, el, {
+      data: '/data/hallyu-india-events/events.geojson',
+      unmapped: '/data/hallyu-india-events/events_unmapped.json',
+      basemap: '/data/hallyu-india-events/basemap.json',
+      scrollWheel: el.dataset.scrollWheel === 'true',
+      links: { gaps: '/projects/hallyu-india-events/data/#gaps', data: '/projects/hallyu-india-events/data/' },
+    });
+  });
+</script>
+<style is:global>
+  /* The instrument writes its own markup at runtime, so its styles are global (DESIGN.md #35). */
+  .hm-host { min-height: 320px; }
+  .fig--live .fig-body > .hm-host { margin: 0; }
+</style>

@@ -6,6 +6,8 @@ ROUTES = ["/", "/about/", "/projects/", "/publications/", "/cv/", "/cv/ko/", "/c
           "/projects/buddhist-bridges/", "/projects/buddhist-bridges/explore/",
           "/projects/buddhist-bridges/data/", "/projects/buddhist-bridges/people/P-0001/",
           "/projects/hallyu-indian-press/", "/projects/hallyu-indian-press/data/",
+          "/projects/hallyu-india-events/", "/projects/hallyu-india-events/explore/",
+          "/projects/hallyu-india-events/data/",
           "/no-such-page/"]
 
 
