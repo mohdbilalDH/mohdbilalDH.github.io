@@ -36,7 +36,9 @@ const TYPE = {
   competition_other: 'other competition', culture_festival: 'culture festival',
 };
 const INDIA = [[6.5, 68.0], [37.3, 97.5]];   // the extent of India as the base map draws it
-const COUNTRY_SHORT = { "People's Republic of China": 'China' };
+const FRAME = [[-14, 38], [52, 122]];         // the extent of the drawn base map (basemap.json "frame")
+const NEIGHBOURS = new Set(['PAK', 'CHN', 'NPL', 'BTN', 'BGD', 'MMR', 'LKA', 'AFG']);
+const COUNTRY_SHORT = { "People's Republic of China": 'China', 'United Arab Emirates': 'UAE' };
 const DEFAULTS = () => ({ y0: Y0, y1: Y1, pre: false, add: false, domain: new Set(DEFAULT_DOMAINS), grade: new Set(['A', 'B', 'C']), status: new Set(['occurred', 'announced_only']), who: 'all', id: '' });
 
 const ICON = {
@@ -88,9 +90,13 @@ export function createHallyuMap(L, root, opts = {}) {
   // ---------- the map ----------
   const map = L.map(mapEl, {
     scrollWheelZoom: !!O.scrollWheel, zoomAnimation: !reduced, fadeAnimation: !reduced, markerZoomAnimation: !reduced,
-    minZoom: 4, maxZoom: 13, zoomSnap: 0.5, zoomControl: false, attributionControl: true, worldCopyJump: false,
-    maxBounds: [[-12, 40], [50, 120]], maxBoundsViscosity: 0.8,
+    minZoom: 3, maxZoom: 13, zoomSnap: 0.5, zoomControl: false, attributionControl: true, worldCopyJump: false,
+    maxBounds: FRAME, maxBoundsViscosity: 0.8,
   });
+  // the view can never be wider than the drawn frame, so no edge of the drawing is ever seen
+  const fitMinZoom = () => map.setMinZoom(Math.max(3, map.getBoundsZoom(FRAME, true)));
+  fitMinZoom();
+  map.on('resize', fitMinZoom);
   map.attributionControl.setPrefix('<a href="https://leafletjs.com">Leaflet</a>');
   map.attributionControl.addAttribution('Boundaries: <a href="https://www.naturalearthdata.com/">Natural Earth</a>, India point of view');
   L.control.zoom({ position: 'topright' }).addTo(map);
@@ -106,9 +112,9 @@ export function createHallyuMap(L, root, opts = {}) {
   const labels = [];
   function drawBasemap(bm) {
     L.geoJSON(bm.countries, { interactive: false, style: (f) => ({ className: f.properties.india ? 'hm-land hm-land--in' : 'hm-land', weight: 1 }) }).addTo(map);
-    L.geoJSON(bm.states, { interactive: false, style: () => ({ className: 'hm-state', weight: 1 }) }).addTo(map);
-    bm.countries.features.filter((f) => f.properties.area >= 3 && f.properties.label).forEach((f) => {
-      labels.push({ latlng: f.properties.label, kind: 'country', html: `<span class="hm-lbl hm-lbl--country">${esc(COUNTRY_SHORT[f.properties.name] || f.properties.name)}</span>` });
+    L.geoJSON(bm.states, { interactive: false, style: (f) => ({ className: f.properties.india ? 'hm-state hm-state--in' : 'hm-state', weight: 1 }) }).addTo(map);
+    bm.countries.features.filter((f) => f.properties.label && (NEIGHBOURS.has(f.properties.iso3) || f.properties.area >= 8)).forEach((f) => {
+      labels.push({ latlng: f.properties.label, kind: 'country', near: NEIGHBOURS.has(f.properties.iso3), html: `<span class="hm-lbl hm-lbl--country">${esc(COUNTRY_SHORT[f.properties.name] || f.properties.name)}</span>` });
     });
   }
   function buildLabels() {
@@ -122,7 +128,7 @@ export function createHallyuMap(L, root, opts = {}) {
   function updateLabels() {                           // the busiest cities are named at every zoom, the rest as the map closes in
     const z = map.getZoom();
     labels.forEach((l) => {
-      const show = l.kind === 'country' ? z <= 6 : (l.n >= 15 || (l.n >= 5 && z >= 6.5) || z >= 8);
+      const show = l.kind === 'country' ? (l.near ? z <= 7 : z <= 5.5) : (l.n >= 15 || (l.n >= 5 && z >= 6.5) || z >= 8);
       if (show && !labelLayer.hasLayer(l.marker)) labelLayer.addLayer(l.marker);
       if (!show && labelLayer.hasLayer(l.marker)) labelLayer.removeLayer(l.marker);
     });

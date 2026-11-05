@@ -99,9 +99,10 @@
 
 /* ---- the drawn base map: sea is the page ground, India is white, its neighbours a shade darker ---- */
 .hm .leaflet-pane > svg { max-width: none !important; max-height: none !important; }   /* host pages size inline svg; the renderer must keep its own */
-.hm .hm-land { fill: var(--hm-hair); fill-opacity: 0.55; stroke: var(--hm-hair); stroke-width: 1; stroke-opacity: 1; }
+.hm .hm-land { fill: var(--hm-hair); fill-opacity: 0.8; stroke: var(--hm-white); stroke-width: 1; stroke-opacity: 1; }
 .hm .hm-land--in { fill: var(--hm-white); fill-opacity: 1; stroke: var(--hm-navy); stroke-opacity: 0.6; stroke-width: 1.2; }
-.hm .hm-state { fill: none; stroke: var(--hm-muted); stroke-opacity: 0.3; stroke-width: 1; }
+.hm .hm-state { fill: none; stroke: var(--hm-white); stroke-opacity: 0.9; stroke-width: 1; }
+.hm .hm-state--in { stroke: var(--hm-muted); stroke-opacity: 0.3; }
 .hm-lblw { background: none; border: 0; pointer-events: none; }
 .hm-lbl { display: inline-block; white-space: nowrap; font: 400 11.5px/1 var(--hm-f-ui); color: var(--hm-text); text-shadow: 0 0 3px var(--hm-white), 0 0 3px var(--hm-white), 0 0 2px var(--hm-white); }
 .hm-lbl--city { transform: translate(-50%, 24px); }
