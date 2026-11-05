@@ -133,7 +133,13 @@ export function createHallyuMap(L, root, opts = {}) {
       if (!show && labelLayer.hasLayer(l.marker)) labelLayer.removeLayer(l.marker);
     });
   }
-  map.fitBounds(INDIA, { padding: [8, 8] });
+  // The home view is set once the container has a size: a map initialised in a hidden or
+  // still-empty panel would otherwise compute its zoom from a zero-size box and draw nothing.
+  const sized = () => mapEl.clientWidth > 0 && mapEl.clientHeight > 0;
+  const home = () => { map.invalidateSize(); fitMinZoom(); if (!selectedId) map.fitBounds(INDIA, { padding: [8, 8] }); };
+  if (sized()) home();
+  else if (window.ResizeObserver) { const ro = new ResizeObserver(() => { if (sized()) { home(); ro.disconnect(); } }); ro.observe(mapEl); }
+  else map.fitBounds(INDIA, { padding: [8, 8] });
   if (!O.scrollWheel) {                                 // the wheel scrolls the page until the map has focus
     map.on('focus', () => map.scrollWheelZoom.enable());
     map.on('blur', () => map.scrollWheelZoom.disable());
