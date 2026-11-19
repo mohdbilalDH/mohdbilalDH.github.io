@@ -79,6 +79,9 @@ for (const file of files) {
       `<meta property="og:type" content="website"><meta property="og:url" content="${url}"><meta property="og:image" content="${SITE}/og.png">`);
   }
 
+  // ---- the site's icon, so edition pages stop asking for a favicon.ico that does not exist ----
+  if (!html.includes('rel="icon"')) html = html.replace('</title>', '</title><link rel="icon" href="/favicon.svg" type="image/svg+xml">');
+
   // ---- a citation on every record page ----
   const isRecord = /\/(item|contributor|place)\//.test(file);
   if (isRecord && !html.includes('class="recordcite"')) {

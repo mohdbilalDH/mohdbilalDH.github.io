@@ -385,3 +385,5 @@ main a,main code{overflow-wrap:anywhere}
 /* ---- Grid tracks may shrink below their content, so nothing pushes a phone wider than its screen. ---- */
 .item-grid>*,.hero-grid>*,.pl-sum>*{min-width:0}
 @media(max-width:400px){.pl-mapstate{white-space:normal}}
+/* ---- Breadcrumb links are underlined: colour alone does not mark a link (WCAG 1.4.1). ---- */
+.crumb a{text-decoration:underline;text-underline-offset:3px}
