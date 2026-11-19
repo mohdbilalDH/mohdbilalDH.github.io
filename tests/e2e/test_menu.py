@@ -24,5 +24,5 @@ with Browser() as b:
     d.goto(BASE + "/")
     check(not d.locator("button.nav-toggle").is_visible() and d.locator("#site-nav").is_visible(), "desktop nav inline")
     check(d.evaluate("getComputedStyle(document.querySelector('#site-nav a')).textTransform") == "uppercase", "nav uppercase")
-    check(d.evaluate("Math.round(document.querySelector('.site-header .inner').getBoundingClientRect().height)") >= 124, "header 124px")
+    check(d.evaluate("Math.round(document.querySelector('.site-header .inner').getBoundingClientRect().height)") == 96, "header 96px (DESIGN.md row 69)")
     check(b.errors == [], f"no console errors: {b.errors}")

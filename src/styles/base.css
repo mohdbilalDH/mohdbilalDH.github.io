@@ -21,7 +21,7 @@ a, button, input, summary, [tabindex] { touch-action: manipulation; -webkit-tap-
 ::selection { background: var(--button); color: var(--on-button); }
 
 h1, h2, h3 { font-family: var(--f-title); margin: 0; text-wrap: balance; }
-h1 { font: 600 var(--t-page)/1.5 var(--f-title); color: var(--title); }
+h1 { font: 600 var(--t-page)/1.2 var(--f-title); color: var(--title); }
 h2 { font: 700 var(--t-section)/1.4 var(--f-title); color: var(--heading); margin: 55px 0 20px; }
 h3 { font: 700 1.25rem/1.4 var(--f-title); color: var(--heading); margin: 32px 0 10px; }
 p { margin: 0 0 1em; }
@@ -35,7 +35,7 @@ strong, b { font-weight: 700; }
 code { font: 0.85em var(--f-mono); background: var(--white); padding: 0.1em 0.35em; border-radius: 4px; border: 1px solid var(--hairline); }
 
 /* ---- type roles ---- */
-.page-title { font: 600 var(--t-page)/1.5 var(--f-title); color: var(--title); margin: 0; }
+.page-title { font: 600 var(--t-page)/1.2 var(--f-title); color: var(--title); margin: 0; }
 .section-heading { font: 700 var(--t-section)/1.4 var(--f-title); color: var(--heading); margin: 55px 0 20px; }
 .section-heading:first-child { margin-top: 0; }
 .intro { font: 400 var(--t-intro)/30px var(--f-ui); color: var(--text); max-width: var(--w-measure); }
@@ -67,7 +67,7 @@ code { font: 0.85em var(--f-mono); background: var(--white); padding: 0.1em 0.35
 
 /* ---- page scaffolding used by content pages ---- */
 .page-head { padding: 100px 0 32px; border-bottom: 1px solid var(--hairline); margin-bottom: 40px; }
-.page-head h1 { font: 600 var(--t-page)/1.5 var(--f-title); color: var(--title); }
+.page-head h1 { font: 600 var(--t-page)/1.2 var(--f-title); color: var(--title); margin-bottom: 12px; }
 .page-head .lede { margin-top: 12px; margin-bottom: 0; }
 .lede { font: 400 var(--t-intro)/30px var(--f-ui); color: var(--text); max-width: var(--w-measure); margin: 0 0 24px; }
 .prose { max-width: var(--w-measure); }

@@ -148,7 +148,7 @@
 .hm-tl-extra { display: flex; gap: 0 6px; flex-wrap: wrap; align-items: center; }
 .hm-tl-extra .hm-chip { margin: 0 0 4px; min-height: 30px; }
 .hm { --hm-bars-h: 60px; }
-.hm-bars { display: grid; grid-template-columns: repeat(14, 1fr); gap: 3px; align-items: end; height: var(--hm-bars-h); margin: 0; padding: 0; list-style: none; }
+.hm-bars { display: grid; grid-template-columns: repeat(14, minmax(0, 1fr)); gap: 3px; align-items: end; height: var(--hm-bars-h); margin: 0; padding: 0; list-style: none; }
 .hm-bars li { margin: 0; height: var(--hm-bars-h); }
 /* the button's height is definite so that the bar's percentage height has something to resolve against */
 .hm-yr { position: relative; display: flex; flex-direction: column; justify-content: flex-end; width: 100%; height: var(--hm-bars-h); min-height: 44px; border: 0; background: none; padding: 0; cursor: pointer; border-radius: 3px; }
@@ -158,7 +158,7 @@
 .hm-yr.is-out .hm-yr-bar { background: var(--hm-hair); }
 .hm-yr-n { position: absolute; left: 0; right: 0; bottom: calc(var(--h, 0%) + 3px); text-align: center; font: 400 10.5px/1 var(--hm-f-mono); color: var(--hm-muted); visibility: hidden; pointer-events: none; }
 .hm-yr:hover .hm-yr-n, .hm-yr:focus-visible .hm-yr-n { visibility: visible; }
-.hm-labels { display: grid; grid-template-columns: repeat(14, 1fr); gap: 3px; margin: 5px 0 0; padding: 0; list-style: none; }
+.hm-labels { display: grid; grid-template-columns: repeat(14, minmax(0, 1fr)); gap: 3px; margin: 5px 0 0; padding: 0; list-style: none; }
 .hm-labels li { text-align: center; font: 400 11px/1.2 var(--hm-f-mono); color: var(--hm-muted); font-variant-numeric: tabular-nums; }
 .hm-labels .hm-lbl-s { display: none; }
 .hm-range { position: relative; height: 30px; margin: 2px calc(100% / 28 - 9px) 0; }

@@ -431,9 +431,9 @@ const columns = [
   .back a:hover { color: var(--accent); }
   .instrument h2 { margin-top: 0; }
   .tl-controls { display: flex; flex-wrap: wrap; gap: var(--s-1); margin: var(--s-2) 0 var(--s-1); }
-  .preset { font: 600 var(--t-small)/1.2 var(--f-body); min-height: 44px; padding: 0.5rem 1rem; border: var(--rule-w) solid var(--ink); border-radius: var(--radius); background: transparent; color: var(--ink); cursor: pointer; transition: background var(--ease), color var(--ease), border-color var(--ease); }
-  .preset:hover { background: var(--ink); color: var(--paper); }
-  .preset[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+  .preset { font: 500 13px/1.2 var(--f-ui); min-height: 40px; padding: 0 16px; border: 1px solid var(--hairline); background: var(--white); color: var(--navy); cursor: pointer; border-radius: var(--r-pill); transition: background var(--ease), border-color var(--ease), color var(--ease); }
+  .preset:hover { border-color: var(--navy); }
+  .preset[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: var(--white); }
   .zoombar { display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-2); align-items: center; margin: var(--s-1) 0; }
   .zoombar button { font: 400 var(--t-meta)/1 var(--f-mono); min-height: 32px; border: 0; background: none; color: var(--muted); cursor: pointer; padding: 0 0.1rem; text-decoration: underline; text-decoration-color: var(--hairline); text-underline-offset: 3px; transition: color var(--ease); }
   .zoombar button:hover { color: var(--accent); }

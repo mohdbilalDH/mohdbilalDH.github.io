@@ -13,13 +13,13 @@ const { sections } = Astro.props;
 </nav>
 <style>
   .pnav { position: sticky; top: 0; z-index: 20; background: var(--ground); border-bottom: 1px solid var(--hairline); margin: 0 0 40px; }
-  .pnav ul { display: flex; gap: 0; list-style: none; margin: 0 auto; overflow-x: auto; scrollbar-width: none; }
+  .pnav ul { display: flex; list-style: none; margin: 0 auto; overflow-x: auto; scrollbar-width: none; }
   .pnav ul::-webkit-scrollbar { display: none; }
-  .pnav a { display: block; white-space: nowrap; padding: 14px 18px 12px; font: 500 13px/1.4 var(--f-ui); color: var(--muted); text-decoration: none; border-bottom: 2px solid transparent; transition: color var(--ease), border-color var(--ease); }
-  .pnav a:first-child { padding-left: 0; }
+  .pnav a { display: block; white-space: nowrap; padding: 14px 0 12px; font: 500 13px/1.4 var(--f-ui); color: var(--muted); text-decoration: none; border-bottom: 2px solid transparent; transition: color var(--ease), border-color var(--ease); }
+  .pnav ul { column-gap: 28px; }
   .pnav a:hover { color: var(--navy); text-decoration: none; }
   .pnav a[aria-current='true'] { color: var(--navy); border-bottom-color: var(--yellow); }
-  @media (max-width: 640px) { .pnav a { padding: 12px 14px 10px; font-size: 12.5px; } }
+  @media (max-width: 640px) { .pnav a { padding: 12px 0 10px; font-size: 12.5px; } .pnav ul { column-gap: 22px; } }
   @media print { .pnav { display: none; } }
 </style>
 <script>

@@ -28,8 +28,8 @@ const { current = '' } = Astro.props;
   .lockup-name { font: 600 22px/1.1 var(--f-title); letter-spacing: -0.01em; }
   .lockup-rule { width: 1px; height: 44px; background: var(--navy); opacity: 0.5; }
   .lockup-mark { font: 400 13px/1.3 var(--f-ui); letter-spacing: 0.2em; text-transform: uppercase; }
-  .site-nav { display: flex; }
-  .site-nav a { font: 400 var(--t-nav)/var(--header-h) var(--f-ui); text-transform: uppercase; color: var(--navy); padding: 0 15px; text-decoration: none; transition: box-shadow var(--ease); }
+  .site-nav { display: flex; margin-right: -15px; }
+  .site-nav a { font: 400 var(--t-nav)/var(--header-h) var(--f-ui); text-transform: uppercase; letter-spacing: 0.04em; color: var(--navy); padding: 0 15px; text-decoration: none; transition: box-shadow var(--ease); }
   .site-nav a:hover, .site-nav a[aria-current='page'] { color: var(--navy); text-decoration: none; box-shadow: inset 0 -4px 0 var(--yellow); }
   .nav-toggle { display: none; width: 44px; height: 44px; border: 0; background: transparent; cursor: pointer; padding: 0; align-items: center; justify-content: center; }
   .bars { display: inline-flex; flex-direction: column; gap: 5px; }
@@ -42,7 +42,7 @@ const { current = '' } = Astro.props;
     .nav-toggle { display: inline-flex; }
     .site-header[data-js] .site-nav { display: none; }
     .site-header[data-js].is-open .site-nav { display: flex; }
-    .site-nav { flex-basis: 100%; flex-direction: column; border-top: 1px solid var(--hairline); margin-bottom: 8px; }
+    .site-nav { flex-basis: 100%; flex-direction: column; margin-right: 0; border-top: 1px solid var(--hairline); margin-bottom: 8px; }
     .site-nav a { line-height: 48px; padding: 0; border-bottom: 1px solid var(--hairline); }
     .site-nav a:last-child { border-bottom: 0; }
   }
