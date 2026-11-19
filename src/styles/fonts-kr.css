@@ -1,0 +1,5 @@
+/* Korean fallbacks: ~360 unicode-range @font-face rules (260 KB raw, 80 KB gzipped).
+   Loaded as a non-blocking stylesheet from Base.astro so they never delay first paint. */
+@import '@fontsource/noto-serif-kr/400.css';
+@import '@fontsource/noto-sans-kr/400.css';
+@import '@fontsource/noto-sans-kr/500.css';

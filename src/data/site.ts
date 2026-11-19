@@ -2,7 +2,7 @@ export const site = {
   name: 'Mohd Bilal',
   title: 'Mohd Bilal · Korean Studies and Digital Humanities',
   description:
-    'Korean Studies and Digital Humanities at The Academy of Korean Studies. Modern Korean history, colonial-era cultural history, gender, kisaeng studies, and computational research on Korea and India.',
+    'Mohd Bilal: Korean Studies and Digital Humanities at The Academy of Korean Studies. Colonial-era cultural history, kisaeng studies, Hallyu, and India–Korea research.',
   url: 'https://mohdbilaldh.github.io',
   role: 'Korean Studies · Digital Humanities',
   affiliation: 'Graduate School of Korean Studies, The Academy of Korean Studies, Seongnam, Republic of Korea',

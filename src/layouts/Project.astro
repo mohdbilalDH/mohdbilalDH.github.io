@@ -4,6 +4,11 @@
 import Base from './Base.astro';
 interface Props { title: string; description?: string; citationTitle?: string; jsonld?: object }
 const { title, description = 'A Digital Humanities research project by Mohd Bilal.', citationTitle, jsonld } = Astro.props;
+const crumbs = {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [['Home', '/'], ['Projects', '/projects/'], [title, Astro.url.pathname]].map(([name, path], i) => (
+    { '@type': 'ListItem', position: i + 1, name, item: new URL(path, Astro.site).href })),
+};
 ---
 <Base title={title} description={description} current="projects">
   <Fragment slot="head">
@@ -14,6 +19,7 @@ const { title, description = 'A Digital Humanities research project by Mohd Bila
         <meta name="citation_publication_date" content="2026" />
       </>
     )}
+    <script type="application/ld+json" set:html={JSON.stringify(crumbs)} />
     {jsonld && <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />}
   </Fragment>
   <slot />

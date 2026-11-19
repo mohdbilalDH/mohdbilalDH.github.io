@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Eyebrow from '../components/Eyebrow.astro';
 ---
 <Base title="Page not found">
+  <meta slot="head" name="robots" content="noindex" />
   <div class="wrap">
     <div class="page-head">
       <Eyebrow>404</Eyebrow>

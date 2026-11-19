@@ -69,6 +69,16 @@ for (const file of files) {
     );
   }
 
+  // ---- canonical, description and Open Graph: the builder emits a bare <head> ----
+  if (!html.includes('rel="canonical"')) {
+    const pageTitle = (html.match(/<title>([\s\S]*?)<\/title>/) || [])[1] || '長恨 Digital Edition';
+    const url = `${SITE}/janghan/${relative(ROOT, file).split('/').map(encodeURIComponent).join('/')}`;
+    const desc = `${pageTitle.replace(/ · 長恨 Digital Edition$/, '')}: from the digital edition of 長恨 (Changhan, 1927), the magazine made by kisaeng in colonial Korea, reconstructed from four witnesses.`;
+    html = html.replace('</title>', `</title><link rel="canonical" href="${url}"><meta name="description" content="${desc}">` +
+      `<meta property="og:title" content="${pageTitle}"><meta property="og:description" content="${desc}">` +
+      `<meta property="og:type" content="website"><meta property="og:url" content="${url}"><meta property="og:image" content="${SITE}/og.png">`);
+  }
+
   // ---- a citation on every record page ----
   const isRecord = /\/(item|contributor|place)\//.test(file);
   if (isRecord && !html.includes('class="recordcite"')) {

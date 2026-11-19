@@ -5,9 +5,7 @@
 @import '@fontsource-variable/open-sans/index.css';
 @import '@fontsource/ibm-plex-mono/400.css';
 @import '@fontsource/ibm-plex-mono/500.css';
-@import '@fontsource/noto-serif-kr/400.css';
-@import '@fontsource/noto-sans-kr/400.css';
-@import '@fontsource/noto-sans-kr/500.css';
+/* Noto KR faces load from fonts-kr.css, non-blocking: see Base.astro. */
 
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
@@ -31,6 +29,7 @@ ul, ol { padding-left: 1.25rem; }
 li { margin-bottom: 0.35rem; }
 a { color: var(--link); text-decoration: none; transition: color var(--ease); }
 a:hover { color: var(--navy); text-decoration: underline; text-underline-offset: 3px; }
+:where(p, li, dd, td, figcaption) > a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 em { font-style: italic; }
 strong, b { font-weight: 700; }
 code { font: 0.85em var(--f-mono); background: var(--white); padding: 0.1em 0.35em; border-radius: 4px; border: 1px solid var(--hairline); }
