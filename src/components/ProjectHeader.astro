@@ -35,7 +35,7 @@ const { project: p, scale } = Astro.props;
   </details>
 </header>
 <style>
-  .phead { padding: 100px 0 32px; border-bottom: 1px solid var(--hairline); margin-bottom: 40px; }
+  .phead { padding: 64px 0 32px; border-bottom: 1px solid var(--hairline); margin-bottom: 40px; }
   .phead-kind { font: 500 12px/1.4 var(--f-ui); letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); margin: 0 0 14px; }
   .phead h1 { font: 600 var(--t-page)/1.18 var(--f-title); color: var(--title); margin: 0 0 14px; max-width: 20ch; }
   .phead-sub { font: 400 21px/1.5 var(--f-ui); color: var(--heading); max-width: 52ch; margin: 0 0 30px; }
@@ -59,6 +59,16 @@ const { project: p, scale } = Astro.props;
   .ko-summary summary { cursor: pointer; font: 500 13px/1.5 var(--f-ui); color: var(--muted); letter-spacing: 0.04em; min-height: 32px; display: flex; align-items: center; }
   .ko-summary p { font: 400 14px/1.95 var(--f-body); color: var(--text); margin: 10px 0 0; max-width: 62ch; }
 
+  @media (min-width: 1000px) {
+    .phead { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: 56px; }
+    .phead > * { grid-column: 1; }
+    .phead-sub { margin-bottom: 0; }
+    .phead .scale { grid-column: 2; grid-row: 1 / span 3; align-self: end; margin: 0; grid-template-columns: repeat(3, minmax(0, 1fr));
+      background: var(--white); border: 1px solid var(--hairline); border-radius: var(--r-tile); padding: 6px 24px; overflow: hidden; }
+    .scale-cell { border-right: 0; border-bottom: 1px solid var(--hairline); margin-bottom: -1px; padding: 16px 0; }
+    .phead .phead-status { grid-column: 1 / -1; margin-top: 30px; }
+    .phead .ko-summary { grid-column: 1 / -1; }
+  }
   @media (max-width: 768px) {
     .phead { padding: 60px 0 24px; margin-bottom: 28px; }
     .phead-sub { font-size: 18px; }

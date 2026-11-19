@@ -13,7 +13,7 @@ const rows = [
 ---
 <Base title="Contact" current="contact"
   description="Contact Mohd Bilal, Korean Studies and Digital Humanities, The Academy of Korean Studies.">
-  <div class="wrap">
+  <div class="wrap contact-cols">
     <div class="page-head">
       <Eyebrow>Get in touch</Eyebrow>
       <h1>Contact</h1>
@@ -27,4 +27,9 @@ const rows = [
 </Base>
 <style>
   .note { margin-top: var(--s-4); }
+  @media (min-width: 900px) {
+    .contact-cols { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: 56px; align-items: start; padding-bottom: 40px; }
+    .contact-cols .page-head { border-bottom: 0; margin-bottom: 0; }
+    .contact-cols > .prose { padding-top: 64px; max-width: none; }
+  }
 </style>

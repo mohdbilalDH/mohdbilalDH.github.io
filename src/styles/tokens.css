@@ -60,7 +60,7 @@
   --strip-h: 8px;
   --w-page: 1359px;
   --pad: 20px;
-  --w-measure: 1060px;
+  --w-measure: var(--w-page);
   --card-pad: 230px 30px 30px;
   --card-h: 650px;
 

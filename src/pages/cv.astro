@@ -128,6 +128,15 @@ const sections: { title: string; entries: Entry[] }[] = [
   .cv-when { padding-top: 0.2rem; }
   .role { font-weight: 600; }
   .detail { margin-top: 0.2rem; }
+  @media screen and (min-width: 900px) {
+    .cv-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 56px; align-items: end; }
+    .cv-head > * { grid-column: 1; }
+    .cv-head .contact { grid-column: 2; grid-row: 2; margin: 0 0 12px; text-align: right; }
+    .cv-head :global(.btn-row) { grid-column: 2; grid-row: 3; margin: 0; justify-content: flex-end; }
+    .cv-section { display: grid; grid-template-columns: 240px minmax(0, 1fr); column-gap: 56px; }
+    .cv-section > * { grid-column: 2; }
+    .cv-section > h2 { grid-column: 1; grid-row: 1 / span 60; }
+  }
   @media (max-width: 639px) {
     .cv-item { grid-template-columns: 1fr; }
     .cv-when { margin-bottom: 0.2rem; }

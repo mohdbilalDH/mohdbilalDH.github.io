@@ -35,5 +35,17 @@ const crumbs = {
   /* "See the evidence" links tie a finding back to the figure that carries it. */
   main .backto { display: inline-flex; align-items: center; gap: 0.35em; min-height: 44px;
     margin-top: 2px; font: 500 13.5px/1.4 var(--f-ui); }
+  @media (min-width: 1000px) {
+    main .section { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: 56px; }
+    main .section > * { grid-column: 1 / -1; }
+    main .section > :is(h2, h3):has(+ .prose) { grid-column: 1; }
+    main .section > .prose { grid-column: 2; }
+    /* numbered findings keep the same two columns: the claim on the left, its support beside it */
+    main .finds > li > .prose:has(> b + p) { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: 56px; max-width: none; }
+    main .finds > li > .prose:has(> b + p) > b { grid-column: 1; grid-row: 1 / span 9; font: 700 1.125rem/1.4 var(--f-title); color: var(--heading); }
+    main .finds > li > .prose:has(> b + p) > :not(b) { grid-column: 2; }
+    main .section > h3:has(+ .prose), main .section > h3:has(+ .prose) + .prose { margin-top: 44px; }
+    main .section > h3:first-of-type:has(+ .prose), main .section > h3:first-of-type:has(+ .prose) + .prose { margin-top: 24px; }
+  }
   @media (max-width: 640px) { main .section { margin-top: 44px; padding-top: 22px; } }
 </style>
