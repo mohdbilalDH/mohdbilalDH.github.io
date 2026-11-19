@@ -379,3 +379,9 @@ nav.site a.on{border-bottom:2px solid var(--yellow)}
 /* ---- Related views, linked from Contents now that the nav is five items. ---- */
 .relviews{margin:0 0 24px;font-family:var(--ui);font-size:13.5px;color:var(--ink-soft)}
 .relviews a{margin-right:14px}
+
+/* ---- Long file paths and URLs wrap instead of widening the page on phones. ---- */
+main a,main code{overflow-wrap:anywhere}
+/* ---- Grid tracks may shrink below their content, so nothing pushes a phone wider than its screen. ---- */
+.item-grid>*,.hero-grid>*,.pl-sum>*{min-width:0}
+@media(max-width:400px){.pl-mapstate{white-space:normal}}

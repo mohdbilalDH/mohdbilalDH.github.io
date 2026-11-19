@@ -4,7 +4,7 @@
 // rather than as a full-bleed wash behind it. Run after `npm run build`: `npm run art`.
 import { execFile } from 'node:child_process';
 import { createServer } from 'node:http';
-import { existsSync, mkdirSync, readFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve, join, extname } from 'node:path';
 
 const chrome = [
@@ -59,6 +59,9 @@ server.listen(0, '127.0.0.1', async () => {
       '--window-size=1200,420', `--screenshot=${out}`, '--virtual-time-budget=4000',
       `http://127.0.0.1:${port}/art/${slug}.html`,
     ], (err) => (err ? fail(err) : ok())));
+    // Chrome writes truecolour PNGs; 256 colours is visually identical here and less than half the bytes.
+    const { default: sharp } = await import('sharp');
+    writeFileSync(out, await sharp(readFileSync(out)).png({ palette: true, quality: 90, effort: 10 }).toBuffer());
     console.log(`wrote ${out}`);
   }
   server.close();

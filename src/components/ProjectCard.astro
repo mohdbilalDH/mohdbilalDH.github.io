@@ -58,7 +58,7 @@ const { project: p, feature = false } = Astro.props;
 
   .pcard-blurb { font: 400 14.5px/1.65 var(--f-ui); color: var(--text); margin: 0 0 20px; }
 
-  .pcard-counts { display: flex; flex-wrap: wrap; gap: 0; margin: auto 0 22px; padding-top: 16px; border-top: 1px solid var(--hairline); }
+  .pcard-counts { display: grid; grid-auto-flow: column; justify-content: start; gap: 0; margin: auto 0 22px; padding-top: 16px; border-top: 1px solid var(--hairline); }
   .pcard-counts > div { padding-right: 20px; margin-right: 20px; border-right: 1px solid var(--hairline); }
   .pcard-counts > div:last-child { border-right: 0; margin-right: 0; padding-right: 0; }
   .pcard-counts dt { font: 500 19px/1.15 var(--f-mono); color: var(--navy); font-variant-numeric: tabular-nums; margin: 0; }
